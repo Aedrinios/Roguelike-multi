@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 public class InputSet
 {
-	private List <InputBinder> inputList ;
+	private ArrayList inputList ;
 	//private Dictionary <string, InputBinder> axisList ;
 	private string name;
 	public bool isActive = true;
@@ -15,7 +16,7 @@ public class InputSet
 	/// <param name="name">Name of the Input set</param>
 	public InputSet (string name) {
 		this.name = name;
-		inputList = new ArrayList<InputBinder> ();
+		inputList = new ArrayList ();
 		//inputList = new Dictionary<string, AxisBinder> ();
 		InputMannager.AddSet (this);
 	}
@@ -44,10 +45,10 @@ public class InputSet
 	/// <param name="inputName">Name of the input</param>
 	/// <param name="function">Function to be removed</param>
 	/// <param name="inputType">Remove function from UP, PRESSED or DOWN event</param>
-	public void RemoveInput (string inputName, InputBinder.inputPrototype function, InputType type = InputType.DOWN) {
+	public void RemoveInput (string inputName, Action<object[]> function, InputType inputType = InputType.DOWN) {
 		int indexToRemove = -1;
-		for (int i = 0; i < inputList.Count(); ++i){
-			InputBinder inputBinder = inputList[i];
+		for (int i = 0; i < inputList.Count; ++i){
+			InputBinder inputBinder = (InputBinder) inputList[i];
 			if ( String.Equals(inputBinder.GetName(), inputName)
 				&& inputBinder.IsThisFunction(function)
 					&& inputBinder.GetInputType() == inputType ){
@@ -58,29 +59,14 @@ public class InputSet
 			inputList.RemoveAt(indexToRemove);
 	}
 
-	/*public void AddAxis (string axisName, InputBinder.inputPrototype functionName, InputType type = InputType.DOWN)
-	{
-		if (axisList.ContainsKey(axisName))
-		{
-			axisList[axisName].AddFunction(functionName, type);
-		}
-		else
-		{
-			axisList.Add(axisName, new InputBinder(axisName, functionName, type));
-		}
-	}
-
-	public void RemoveAxis (string inputName, InputBinder.inputPrototype functionName, InputType type = InputType.DOWN)
-	{
-		inputList[inputName].RemoveFunction(functionName, type);
-	}*/
-
 	/// <summary>
 	/// Retrieve input list
 	/// </summary>
-	/// <returns>The input list </returns>
-	public List<InputBinder> GetInput () {
-		return inputList;
+	/// <returns>The input list if set is active</returns>
+	public ArrayList GetInputs () {
+		if (isActive)
+			return inputList;
+		return new ArrayList();
 	}
 
 	/// <summary>

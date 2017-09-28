@@ -29,11 +29,11 @@ public class Character : MonoBehaviour {
 
 	}
 
-	public void Shrink (string input = "") {
+	public void Shrink (params object[] parameters) {
 		this.transform.localScale *= 0.9f;
 	}
 
-	public void Grow (string input = "") {
+	public void Grow (params object[] parameters) {
 		this.transform.localScale *= 1.1f;
 	}
 }

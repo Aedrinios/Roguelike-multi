@@ -21,18 +21,11 @@ public class InputMannager : MonoBehaviour
 		inputSet.Clear();
 	}
 
-	void Update ()
-	{
-		foreach (InputSet set in inputSet)
-		{
-			if (set.isActive)
-			{
-				List<InputBinder> inputList = set.GetInput();
-				foreach (InputBinder inputBinder in inputList)
-				{
-					if (  InputIsBeingUsed (inputBinder) )
-						inputBinder.PlayBindedFunction();
-				}
+	void Update () {
+		foreach (InputSet set in inputSet) {
+			foreach (InputBinder inputBinder in set.GetInputs()) {
+				if (  InputIsBeingUsed (inputBinder) )
+					inputBinder.PlayBindedFunction();
 			}
 		}
 	}
