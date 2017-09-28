@@ -4,63 +4,28 @@ using System.Collections.Generic;
 
 public class InputBinder
 {
-	private class InputEvent {
-		public event inputPrototype inputBinding;
-		public InputEvent ( inputPrototype function){ inputBinding += function;}
-		public void Play(string name){
-			if ( inputBinding != null )
-				inputBinding (name);
-		}
-	}
 	private string name;
-	public bool isActive = false;
+	private InputType inputType;
+	private object[] parameters;
+	private Action<object[]> function;
 
-	public delegate void inputPrototype (string inputName);
-	private Dictionary <InputType, InputEvent> inputBindings;
-
-	public InputBinder (string name)
-	{
+	public InputBinder (string name, Action<object[]> function, InputType inputType = InputType.DOWN, params object[] parameters) {
 		this.name = name;
-		inputBindings = new Dictionary <InputType, InputEvent> ();
+		this.inputType = inputType;
+		this.parameters = parameters;
+		this.function = function;
 	}
 
-	public InputBinder (string name, inputPrototype function, InputType type = InputType.DOWN)
-		: this (name)
-	{
-		AddFunction (function, type);
-	}
-		
-	public void AddFunction (inputPrototype function, InputType type = InputType.DOWN)
-	{
-		InputEvent inputEvent;
-		if (inputBindings.TryGetValue (type, out inputEvent))
-			inputEvent.inputBinding += function;
-		else
-			inputBindings.Add (type, new InputEvent(function));
+	public bool IsThisFunction (Action<object[]> function) {
+		return this.function == function;
 	}
 
-	public void RemoveFunction (inputPrototype function, InputType type = InputType.DOWN)
-	{
-		InputEvent inputEvent;
-		if (inputBindings.TryGetValue (type, out inputEvent))
-			inputEvent.inputBinding -= function;
+	public void PlayBindedFunction (params object[] parameters) {
+		if ( function != null )
+			function(parameters);
 	}
 
-	public string GetName ()
-	{
-		return name;
+	public InputType GetInputType () {
+		return inputType;
 	}
-
-	public void Play (InputType type = InputType.DOWN)
-	{
-		InputEvent inputEvent;
-		if ( inputBindings.TryGetValue (type, out inputEvent) )
-			inputEvent.Play(name);
-	}
-}
-
-public enum InputType{
-	UP,
-	DOWN,
-	PRESSED
 }

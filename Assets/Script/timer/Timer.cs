@@ -38,7 +38,7 @@ public class Timer {
 			state = TimerState.FINISHED;
 		}
 	}
-		
+
 	/// <summary>
 	/// Crée un nouveau Timer
 	/// </summary>
@@ -50,7 +50,7 @@ public class Timer {
 	}
 
 	public float m_time {
-		get { 
+		get {
 			return time;
 		}
 		set {
@@ -69,7 +69,7 @@ public class Timer {
 	/// <summary>
 	/// Remet le timer à 0.
 	/// /!\ Reset() ne relance pas le timer!
-	/// Pour cela, il y a ResetPlay() 
+	/// Pour cela, il y a ResetPlay()
 	/// </summary>
 	public void Reset () {
 		state = TimerState.NONE;
@@ -97,7 +97,7 @@ public class Timer {
 	/// <summary>
 	/// Lance le timer.
 	/// /!\ Cette méthode ne remet pas le timer à 0!
-	/// Pour cela, il y a la méthode Reset(). 
+	/// Pour cela, il y a la méthode Reset().
 	/// </summary>
 	public void Play () {
 		state = TimerState.STARTED;

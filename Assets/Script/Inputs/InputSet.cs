@@ -2,61 +2,60 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class InputSet 
+public class InputSet
 {
-	private Dictionary <string, InputBinder> inputList ;
+	private List <InputBinder> inputList ;
 	//private Dictionary <string, InputBinder> axisList ;
 	private string name;
 	public bool isActive = true;
 
-	public InputSet (string m_name)
-	{
-		name = m_name;
-		inputList = new Dictionary<string, InputBinder> ();
+	/// <summary>
+	/// Create a new Input set
+	/// </summary>
+	/// <param name="name">Name of the Input set</param>
+	public InputSet (string name) {
+		this.name = name;
+		inputList = new ArrayList<InputBinder> ();
 		//inputList = new Dictionary<string, AxisBinder> ();
 		InputMannager.AddSet (this);
 	}
 
-	public void ActivateInput (string inputName)
-	{
-		inputList[inputName].isActive = true;
-	}
-
-	public void DeactivateInput (string inputName)
-	{
-		inputList[inputName].isActive = false;
-	}
-
-	/*public void ActivateAxis (string axisName)
-	{
-		axisList[axisName].isActive = true;
-	}
-
-	public void DeactivateAxis (string axisName)
-	{
-		axisList[axisName].isActive = false;
-	}*/
-
-	public void Clear ()
-	{
+	/// <summary>
+	/// Empty the input set
+	/// </summary>
+	public void Clear () {
 		inputList.Clear();
 	}
 
-	public void AddInput (string inputName, InputBinder.inputPrototype functionName, InputType type = InputType.DOWN)
-	{
-		if (inputList.ContainsKey(inputName))
-		{
-			inputList[inputName].AddFunction(functionName, type);
-		}
-		else
-		{
-			inputList.Add(inputName, new InputBinder(inputName, functionName, type));
-		}
+	/// <summary>
+	/// Bind an input to a function
+	/// </summary>
+	/// <param name="inputName">Name of the input</param>
+	/// <param name="function">Function to bind</param>
+	/// <param name="inputType">Function called when input is UP, PRESSED or DOWN</param>
+	/// <param name="parameters">Parameters to be sent to the function</param>
+	public void AddInput (string inputName, Action<object[]> function, InputType inputType = InputType.DOWN, params object[] parameters) {
+		inputList.Add(new InputBinder(inputName, function, inputType, parameters));
 	}
 
-	public void RemoveInput (string inputName, InputBinder.inputPrototype functionName, InputType type = InputType.DOWN)
-	{
-		inputList[inputName].RemoveFunction(functionName, type);
+	/// <summary>
+	/// Remove a binded function from an input
+	/// </summary>
+	/// <param name="inputName">Name of the input</param>
+	/// <param name="function">Function to be removed</param>
+	/// <param name="inputType">Remove function from UP, PRESSED or DOWN event</param>
+	public void RemoveInput (string inputName, InputBinder.inputPrototype function, InputType type = InputType.DOWN) {
+		int indexToRemove = -1;
+		for (int i = 0; i < inputList.Count(); ++i){
+			InputBinder inputBinder = inputList[i];
+			if ( String.Equals(inputBinder.GetName(), inputName)
+				&& inputBinder.IsThisFunction(function)
+					&& inputBinder.GetInputType() == inputType ){
+						indexToRemove = i;
+					}
+		}
+		if (indexToRemove != -1)
+			inputList.RemoveAt(indexToRemove);
 	}
 
 	/*public void AddAxis (string axisName, InputBinder.inputPrototype functionName, InputType type = InputType.DOWN)
@@ -76,17 +75,18 @@ public class InputSet
 		inputList[inputName].RemoveFunction(functionName, type);
 	}*/
 
-	//Copiele dictionnaire pour renvoyer une liste d'InputBinder
-	public List<InputBinder> GetInput ()
-	{
-		List<InputBinder> inputs = new List<InputBinder>();
-		foreach (KeyValuePair<string, InputBinder> entry in inputList)
-		{
-			inputs.Add(entry.Value);
-		}
-		return inputs;
+	/// <summary>
+	/// Retrieve input list
+	/// </summary>
+	/// <returns>The input list </returns>
+	public List<InputBinder> GetInput () {
+		return inputList;
 	}
 
+	/// <summary>
+	/// Retrieve input set name
+	/// </summary>
+	/// <returns>The name of this input set</returns>
 	public string GetName(){
 		return name;
 	}

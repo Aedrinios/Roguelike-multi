@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class InputMannager : MonoBehaviour 
+public class InputMannager : MonoBehaviour
 {
 	private static List<InputSet> inputSet = new List<InputSet>();
 
@@ -28,15 +28,19 @@ public class InputMannager : MonoBehaviour
 			if (set.isActive)
 			{
 				List<InputBinder> inputList = set.GetInput();
-				foreach (InputBinder input in inputList)
+				foreach (InputBinder inputBinder in inputList)
 				{
-					if (Input.GetButtonDown(set.GetName() + " " + input.GetName()))
-						input.Play(InputType.DOWN);
-					else if (Input.GetButtonUp(set.GetName() + " " + input.GetName()))
-						input.Play(InputType.UP);
+					if (  InputIsBeingUsed (inputBinder) )
+						inputBinder.PlayBindedFunction();
 				}
 			}
 		}
+	}
+
+	bool InputIsBeingUsed (InputBinder input) {
+		return	( input.GetInputType() == InputType.DOWN && Input.GetButtonDown(set.GetName() + " " + input.GetName()) )
+			|| 	( input.GetInputType() == InputType.PRESSED && Input.GetButton(set.GetName() + " " + input.GetName()) )
+			|| 	( input.GetInputType() == InputType.UP && Input.GetButtonUp(set.GetName() + " " + input.GetName()) );
 	}
 
 }
