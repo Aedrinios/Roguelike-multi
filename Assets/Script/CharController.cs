@@ -45,11 +45,8 @@ public class CharController : MonoBehaviour {
 	private void BindInputs (){
 		if (inputs == null || player == null)
 			return;
-		inputs.AddInput ("grow", player.Grow);
-		inputs.AddInput ("shrink", player.Shrink);
-	}
-
-	public void print (string input) {
-		Debug.Log (input);
+		Debug.Log(inputs.GetName());
+		/*inputs.AddInput ("grow", player.Grow);
+		inputs.AddInput ("shrink", player.Shrink);*/
 	}
 }

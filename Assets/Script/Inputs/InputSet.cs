@@ -8,14 +8,16 @@ public class InputSet
 	private ArrayList inputList ;
 	//private Dictionary <string, InputBinder> axisList ;
 	private string name;
-	public bool isActive = true;
+	public bool isActive;
 
 	/// <summary>
 	/// Create a new Input set
 	/// </summary>
 	/// <param name="name">Name of the Input set</param>
-	public InputSet (string name) {
+	/// <param name="isActive">Is the inputSet active after creation</param>
+	public InputSet (string name = "", bool isActive = true) {
 		this.name = name;
+		this.isActive = isActive;
 		inputList = new ArrayList ();
 		//inputList = new Dictionary<string, AxisBinder> ();
 		InputMannager.AddSet (this);
@@ -33,10 +35,11 @@ public class InputSet
 	/// </summary>
 	/// <param name="inputName">Name of the input</param>
 	/// <param name="function">Function to bind</param>
-	/// <param name="inputType">Function called when input is UP, PRESSED or DOWN</param>
+	/// <param name="inputType">Function called when input is UP (default), PRESSED or DOWN</param>
+	/// <param name="isAxis">Is the input actually an axis? (default false)</param>
 	/// <param name="parameters">Parameters to be sent to the function</param>
-	public void AddInput (string inputName, Action<object[]> function, InputType inputType = InputType.DOWN, params object[] parameters) {
-		inputList.Add(new InputBinder(inputName, function, inputType, parameters));
+	public void AddInput (string inputName, Action<object[]> function, InputType inputType = InputType.DOWN, bool isAxis = false, params object[] parameters) {
+		inputList.Add(new InputBinder(inputName, function, inputType, isAxis, parameters));
 	}
 
 	/// <summary>
@@ -46,17 +49,12 @@ public class InputSet
 	/// <param name="function">Function to be removed</param>
 	/// <param name="inputType">Remove function from UP, PRESSED or DOWN event</param>
 	public void RemoveInput (string inputName, Action<object[]> function, InputType inputType = InputType.DOWN) {
-		int indexToRemove = -1;
 		for (int i = 0; i < inputList.Count; ++i){
 			InputBinder inputBinder = (InputBinder) inputList[i];
 			if ( String.Equals(inputBinder.GetName(), inputName)
-				&& inputBinder.IsThisFunction(function)
-					&& inputBinder.GetInputType() == inputType ){
-						indexToRemove = i;
-					}
+				&& inputBinder.IsThisFunction(function) )
+						inputList.RemoveAt(i);
 		}
-		if (indexToRemove != -1)
-			inputList.RemoveAt(indexToRemove);
 	}
 
 	/// <summary>

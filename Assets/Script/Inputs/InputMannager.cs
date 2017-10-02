@@ -24,16 +24,10 @@ public class InputMannager : MonoBehaviour
 	void Update () {
 		foreach (InputSet set in inputSet) {
 			foreach (InputBinder inputBinder in set.GetInputs()) {
-				if (  InputIsBeingUsed (inputBinder, set.GetName() + " " + inputBinder.GetName()) )
+				if ( inputBinder.IsBeingCalled( set.GetName()) )
 					inputBinder.PlayBindedFunction();
 			}
 		}
-	}
-
-	bool InputIsBeingUsed (InputBinder input, string inputCompleteName) {
-		return	( input.GetInputType() == InputType.DOWN && Input.GetButtonDown(inputCompleteName) )
-			|| 	( input.GetInputType() == InputType.PRESSED && Input.GetButton(inputCompleteName) )
-			|| 	( input.GetInputType() == InputType.UP && Input.GetButtonUp(inputCompleteName) );
 	}
 
 }
