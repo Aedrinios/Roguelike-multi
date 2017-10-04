@@ -10,6 +10,7 @@ public class Character : MonoBehaviour {
 
 	void Start () {
 		rigidb = this.GetComponent<Rigidbody2D> ();
+		this.GetComponent<SpriteRenderer>().color = new Color (Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
 	}
 
 	public void Move(Vector2 direction){
