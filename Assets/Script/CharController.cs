@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CharController : MonoBehaviour {
 
+
 	InputSet inputs;
 	Character player;
-
 	Vector2 direction;
 	string XaxisName = "X axis";
 	string YaxisName = "Y axis";
@@ -45,8 +45,13 @@ public class CharController : MonoBehaviour {
 	private void BindInputs (){
 		if (inputs == null || player == null)
 			return;
-		Debug.Log(inputs.GetName());
-		/*inputs.AddInput ("grow", player.Grow);
-		inputs.AddInput ("shrink", player.Shrink);*/
+
+		object[] primaryParameters = new object[1];
+		primaryParameters[0] = 0;
+
+		object[] secondaryParameters = new object[1];
+		secondaryParameters[0] = 1;
+		inputs.AddInput ("primary", player.InputAction, parameters:primaryParameters);
+		inputs.AddInput ("secondary", player.InputAction, parameters:secondaryParameters);
 	}
 }

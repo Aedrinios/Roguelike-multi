@@ -42,8 +42,8 @@ public class ControllerDelivery : MonoBehaviour {
 	void ListenKeyboard (int keyboardNumber) {
 		if ( Input.GetButtonDown("Keyboard " + (keyboardNumber + 1) + " start") )
 			ChangeInputState(keyboardNumber, true);
-		else if ( Input.GetButtonDown("Keyboard " + (keyboardNumber + 1) + " secondary") )
-			ChangeInputState(keyboardNumber, false);
+		// else if ( Input.GetButtonDown("Keyboard " + (keyboardNumber + 1) + " secondary") )
+		// 	ChangeInputState(keyboardNumber, false);
 	}
 
 	void ListenController (int controllerNumber) {
@@ -51,8 +51,8 @@ public class ControllerDelivery : MonoBehaviour {
 				AddSingleController(controllerNumber);
 			else if ( Input.GetKeyDown("joystick " + (controllerNumber + 1) + " button 6") )
 				AddMultipleController(controllerNumber);
-			else if ( Input.GetKeyDown("joystick " + (controllerNumber + 1) + " button 1") )
-				RemoveController(maxKeyboardsInpus);
+			// else if ( Input.GetKeyDown("joystick " + (controllerNumber + 1) + " button 1") )
+			// 	RemoveController(maxKeyboardsInpus);
 	}
 
 	void AddSingleController(int controllerRequested){
