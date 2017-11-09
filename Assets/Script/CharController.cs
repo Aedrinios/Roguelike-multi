@@ -19,17 +19,19 @@ public class CharController : MonoBehaviour {
 
 	void Update () {
 		if (inputs != null) {
-			direction.x = Input.GetAxis (inputs.GetName() + " " + XaxisName);
-			direction.y = Input.GetAxis (inputs.GetName() + " " + YaxisName);
+			direction.x = Input.GetAxis (inputs.GetName () + " " + XaxisName);
+			direction.y = Input.GetAxis (inputs.GetName () + " " + YaxisName);
 		}
 	}
 
 	void FixedUpdate () {
-		if (player != null) {
+		if (direction.magnitude > 0.1) {
 			if (direction.magnitude > 1)
 				direction.Normalize ();
 			player.Move (direction);
 		}
+		else
+			player.Idle ();
 	}
 
 	public void SetPlayer (Character player) {

@@ -10,21 +10,26 @@ public class Character : MonoBehaviour {
 	public ArrayList ground;
 	public bool stun = false;
 	private Rigidbody2D rigidb;
+	private Animator animator;
 
 	void Start () {
 		inventory = new InanimateEntity [2];
 		ground = new ArrayList();
 		rigidb = this.GetComponent<Rigidbody2D> ();
-		this.GetComponent<SpriteRenderer>().color = new Color (Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+		//this.GetComponent<SpriteRenderer>().color = new Color (Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+		animator = this.GetComponent<Animator> ();
 	}
 
-	public void Move(Vector2 direction){
-		this.direction = direction.normalized; 
-		if (rigidb != null)
-			if (!stun) 
-				rigidb.velocity = direction * speed;
-			else 
-				rigidb.velocity = Vector2.zero;
+	public void Move(Vector2 direction){	//Le if stun doit être retiré (ça doit être implémenté avec le pattern state)
+		if (!stun) {
+			rigidb.velocity = direction * speed;
+			animator.SetFloat ("directionX", direction.x);
+			animator.SetFloat ("directionY", direction.y);
+			animator.SetBool ("isMoving", true);
+		} else {
+			rigidb.velocity = Vector2.zero;
+			animator.SetBool ("isMoving", false);
+		}
 	}
 
 	public void ReceiveHit (){
@@ -56,6 +61,11 @@ public class Character : MonoBehaviour {
 
 	public void Interract () {
 		//Si un objet interractible est sous ses pieds, alors interragis avec.
+	}
+
+	public void Idle() {
+		animator.SetBool ("isMoving", false);
+		rigidb.velocity = Vector3.zero;
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
