@@ -22,6 +22,7 @@ public class Character : MonoBehaviour {
 
 	public void Move(Vector2 direction){	//Le if stun doit être retiré (ça doit être implémenté avec le pattern state)
 		if (!stun) {
+            this.direction = direction.normalized; //utile pour diriger les armes
 			rigidb.velocity = direction * speed;
 			animator.SetFloat ("directionX", direction.x);
 			animator.SetFloat ("directionY", direction.y);
