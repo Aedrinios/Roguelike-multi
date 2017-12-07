@@ -8,16 +8,18 @@ public class InputSet
 	private ArrayList inputList ;
 	//private Dictionary <string, InputBinder> axisList ;
 	private string name;
-	public bool isActive;
+	public bool isActive = true;
+	public bool isController = false;
 
 	/// <summary>
 	/// Create a new Input set
 	/// </summary>
 	/// <param name="name">Name of the Input set</param>
 	/// <param name="isActive">Is the inputSet active after creation</param>
-	public InputSet (string name = "", bool isActive = true) {
+	public InputSet (string name = "", bool isActive = true, bool isController = false) {
 		this.name = name;
 		this.isActive = isActive;
+		this.isController = isController;
 		inputList = new ArrayList ();
 		//inputList = new Dictionary<string, AxisBinder> ();
 		InputMannager.AddSet (this);
@@ -38,8 +40,11 @@ public class InputSet
 	/// <param name="inputType">Function called when input is UP (default), PRESSED or DOWN</param>
 	/// <param name="isAxis">Is the input actually an axis? (default false)</param>
 	/// <param name="parameters">Parameters to be sent to the function</param>
-	public void AddInput (string inputName, Action<object[]> function, InputType inputType = InputType.DOWN, bool isAxis = false, params object[] parameters) {
-		inputList.Add(new InputBinder(inputName, function, inputType, isAxis, parameters));
+	public void AddInput (string inputName, Action<object[]> function, bool isAxis = false, InputType inputType = InputType.DOWN, params object[] parameters) {
+		if (isAxis)
+			inputList.Add(new AxisBinder(inputName, function, inputType, parameters));
+		else
+			inputList.Add(new InputBinder(inputName, function, inputType, parameters));
 	}
 
 	/// <summary>
@@ -65,6 +70,14 @@ public class InputSet
 		if (isActive)
 			return inputList;
 		return new ArrayList();
+	}
+
+	public void VerifyInputs(){
+		if (!isActive)
+			return;
+		foreach (InputBinder inputBinder in inputList)
+			if (inputBinder.IsBeingCalled(name))
+				inputBinder.PlayBindedFunction();
 	}
 
 	/// <summary>

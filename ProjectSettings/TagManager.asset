@@ -37,11 +37,20 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Compositeur
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Items
     uniqueID: 437912767
+    locked: 0
+  - name: Ground Circle
+    uniqueID: 786613315
+    locked: 0
+  - name: Players
+    uniqueID: 4054716253
+    locked: 0
+  - name: Foreground
+    uniqueID: 4119750099
     locked: 0

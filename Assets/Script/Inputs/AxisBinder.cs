@@ -1,64 +1,44 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AxisBinder {
+public class AxisBinder : InputBinder{
 
-	/*public delegate void axisPrototype (string axisName, float axisValue);
-
-	private class AxisEvent {
-		public event axisPrototype axisBinding;
-		public AxisEvent ( axisPrototype function){ axisBinding += function;}
-		public void Play(string name, float value){
-			if ( axisBinding != null )
-				axisBinding (name, value);
-		}
+	private bool isPressed = false;
+	
+	public AxisBinder (string name, Action<object[]> function, InputType inputType = InputType.DOWN, params object[] parameters) :
+		base(name, function, inputType, parameters){
 	}
 
-
-	private string name;
-	public bool isActive = false;
-
-	public delegate void inputPrototype (string inputName);
-	private Dictionary <InputType, AxisEvent> inputBindings;
-
-	public AxisBinder (string name)
-	{
-		this.name = name;
-		inputBindings = new Dictionary <InputType, AxisEvent> ();
+	public override bool IsBeingCalled(string inputSetName){
+		string inputCalled = inputSetName + " " + this.name;
+			if (IsInputJustPressed(inputCalled)){
+				isPressed = true;
+				if (inputType == InputType.DOWN)
+					return true;
+			}
+			else if (IsInputReleased(inputCalled)){
+				isPressed = false;
+					if (inputType == InputType.UP)
+						return true;
+			}
+		return inputType == InputType.PRESSED && isPressed;
 	}
 
-	public AxisBinder (string name, inputPrototype function, InputType type = InputType.DOWN)
-		: this (name)
-	{
-		AddFunction (function, type);
+	private bool IsInputJustPressed(string inputCalled){
+		return Input.GetAxis(inputCalled) > 0f && !isPressed;
 	}
 
-	public void AddFunction (inputPrototype function, InputType type = InputType.DOWN)
-	{
-		InputEvent inputEvent;
-		if (inputBindings.TryGetValue (type, out inputEvent))
-			inputEvent.inputBinding += function;
-		else
-			inputBindings.Add (type, new InputEvent(function));
+	private bool IsInputReleased(string inputCalled){
+		return Input.GetAxis(inputCalled) <= 0f && isPressed;
 	}
 
-	public void RemoveFunction (inputPrototype function, InputType type = InputType.DOWN)
-	{
-		InputEvent inputEvent;
-		if (inputBindings.TryGetValue (type, out inputEvent))
-			inputEvent.inputBinding -= function;
+	public override void PlayBindedFunction () {
+		base.PlayBindedFunction();
+		if(inputType == InputType.DOWN)
+			isPressed = true;
+		else if (inputType == InputType.UP)
+			isPressed = false;
 	}
-
-	public string GetName ()
-	{
-		return name;
-	}
-
-	public void Play (InputType type = InputType.DOWN)
-	{
-		InputEvent inputEvent;
-		if ( inputBindings.TryGetValue (type, out inputEvent) )
-			inputEvent.Play(name);
-	}*/
 }

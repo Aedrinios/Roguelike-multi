@@ -44,6 +44,10 @@ public class CharController : MonoBehaviour {
 		BindInputs ();
 	}
 
+	public InputSet GetInputs(){
+		return inputs;
+	}
+
 	private void BindInputs (){
 		if (inputs == null || player == null)
 			return;
@@ -55,5 +59,6 @@ public class CharController : MonoBehaviour {
 		secondaryParameters[0] = 1;
 		inputs.AddInput ("primary", player.InputAction, parameters:primaryParameters);
 		inputs.AddInput ("secondary", player.InputAction, parameters:secondaryParameters);
+		inputs.isActive = true;
 	}
 }

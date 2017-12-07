@@ -7,7 +7,13 @@ public class Weapon : InanimateEntity {
 public float pushPower;
 	public Animator animator;
 	public Rigidbody2D rigid;
-	public override void Use(Character user) {
+
+    private void Start()
+    {
+        damage = 5;
+    }
+
+    public override void Use(Character user) {
 		CopyUserRotation(user);
 		LaunchAnimation();
 	}
@@ -31,9 +37,12 @@ public float pushPower;
 		Debug.Log("wut");
 	}
 
-	public void OnCharacterHit(Character other){
-		Vector2 push = (Vector2) (other.transform.position - holder.transform.position).normalized;
-		other.GetComponent<Rigidbody2D>().AddForce( push * pushPower);
+	public void OnCharacterHit(AnimateEntity other){
+        if(other!=gameObject)
+        {
+            //other.DecreaseHealth(holder.GetAttack() * damage);
+            //Vector2 push = (Vector2) (other.transform.position - holder.transform.position).normalized;
+            //other.GetComponent<Rigidbody2D>().AddForce( push * pushPower *200,ForceMode2D.Impulse);
+        }
 	}
-
 }

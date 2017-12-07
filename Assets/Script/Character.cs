@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour {
+public class Character : AnimateEntity {
 
 	public float speed = 10;
 	public Vector2 direction;
 	public InanimateEntity[] inventory;
 	public ArrayList ground;
-	public bool stun = false;
 	private Rigidbody2D rigidb;
 	private Animator animator;
 
 	void Start () {
+        speed = 10;
+        life = 10;
+        attack = 1;
 		inventory = new InanimateEntity [2];
 		ground = new ArrayList();
 		rigidb = this.GetComponent<Rigidbody2D> ();
@@ -20,20 +22,34 @@ public class Character : MonoBehaviour {
 		animator = this.GetComponent<Animator> ();
 	}
 
-	public void Move(Vector2 direction){	//Le if stun doit être retiré (ça doit être implémenté avec le pattern state)
-		if (!stun) {
-			rigidb.velocity = direction * speed;
-			animator.SetFloat ("directionX", direction.x);
-			animator.SetFloat ("directionY", direction.y);
-			animator.SetBool ("isMoving", true);
-		} else {
-			rigidb.velocity = Vector2.zero;
-			animator.SetBool ("isMoving", false);
-		}
+	public override void Move(Vector2 direction){	//Le if stun doit être retiré (ça doit être implémenté avec le pattern state)
+    	this.direction = direction.normalized; 
+		rigidb.velocity = direction * speed;
+		animator.SetFloat ("directionX", direction.x);
+		animator.SetFloat ("directionY", direction.y);
+		animator.SetBool ("isMoving", true);
 	}
 
-	public void ReceiveHit (){
-
+    public void Update() // déséquiper pour l'instant
+    {
+       if(Input.GetKeyDown(KeyCode.T))
+        {
+            inventory[1].Unequip();
+        }    
+       if(life<=0)
+        {
+            Debug.Log("YOU DIED!  (git gud)");
+        }
+    }
+	public IEnumerator ReceiveHit (){
+        if(canBeDamaged)
+        {
+            canBeDamaged = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            yield return new WaitForSeconds(1);          
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            canBeDamaged = true;
+        }
 	}
 
 	public void InputAction (params object[] args) {	//pas fan de ce nom
@@ -42,6 +58,7 @@ public class Character : MonoBehaviour {
 			TryPickupItem(item);
 		else
 			inventory[item].Use(this);
+		Debug.Log("pressed");
 
 	}
 

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class WeaponDamagingPart : MonoBehaviour {
 	public Weapon weaponPart;
-	void OnTriggerEnter2D(Collider2D other){
-		if (other.tag.Equals("Player")){
-			Character hit = other.GetComponent<Character>();
-			if ( hit != weaponPart.Holder)
-				weaponPart.OnCharacterHit(hit);
-		}
+	void OnTriggerEnter2Dz(BoxCollider2D other){
+		//if (other.tag.Equals("Ennemi")){
+			GameObject hit = other.gameObject;
+			if ( hit != weaponPart.Holder.gameObject)
+            {
+                Debug.Log("hit");
+                other.gameObject.GetComponent<AnimateEntity>().DecreaseHealth(weaponPart.Holder.GetAttack() * weaponPart.GetDamage());
+				//weaponPart.OnCharacterHit(hit);
+            }
+		//}
 	}
 }
