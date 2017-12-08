@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class AnimateEntity : InanimateEntity {
 
-    protected float life;
+    protected int life;
     protected float speed;
     protected float attack;
     protected bool canBeDamaged=true;
