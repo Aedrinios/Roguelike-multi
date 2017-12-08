@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class InanimateEntity : MonoBehaviour {
 	protected bool isEquipped;
 	public BoxCollider2D pickupCollider;
+	public Sprite thumbnail;
 	[SerializeField]protected Character holder;
     protected float damage;
 

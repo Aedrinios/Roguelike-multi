@@ -7,6 +7,8 @@ public class Weapon : InanimateEntity {
 public float pushPower;
 	public Animator animator;
 	public Rigidbody2D rigid;
+	[Range(0,6)]
+	public int armorPoints;
 
     private void Start()
     {
