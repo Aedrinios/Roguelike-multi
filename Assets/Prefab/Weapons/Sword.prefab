@@ -205,9 +205,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupCollider: {fileID: 61562861659585958}
+  thumbnail: {fileID: 0}
+  holder: {fileID: 0}
   pushPower: 1000
   animator: {fileID: 95539792337997306}
   rigid: {fileID: 50869987158023970}
+  armorPoints: 5
 --- !u!212 &212425270120971522
 SpriteRenderer:
   m_ObjectHideFlags: 1

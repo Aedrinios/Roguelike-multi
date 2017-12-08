@@ -54,7 +54,7 @@ public class Warrior : AnimateEntity {
         if (collision.gameObject.tag == "Player")
         {
            collision.gameObject.GetComponent<Character>().StartCoroutine("ReceiveHit");
-           collision.gameObject.GetComponent<Character>().DecreaseHealth(attack);
+			collision.gameObject.GetComponent<Character>().DecreaseHealth(attack);
         }
     }
 }

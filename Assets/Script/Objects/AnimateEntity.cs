@@ -7,7 +7,7 @@ public abstract class AnimateEntity : InanimateEntity {
 
     protected int life;
     protected float speed;
-    protected float attack;
+    protected int attack;
     protected bool canBeDamaged=true;
     public bool stun = false;
     protected Rigidbody2D rigidb;
@@ -17,7 +17,7 @@ public abstract class AnimateEntity : InanimateEntity {
 
     public abstract void Move(Vector2 direction);
 
-    public virtual void DecreaseHealth(float damage)
+    public virtual void DecreaseHealth(int damage)
     {
         this.life -= damage;
     }
@@ -34,7 +34,7 @@ public abstract class AnimateEntity : InanimateEntity {
         throw new System.NotImplementedException();
     }
 
-    public float GetAttack()
+    public int GetAttack()
     {
         return attack;
     }

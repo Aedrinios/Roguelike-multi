@@ -10,7 +10,7 @@ public class WeaponDamagingPart : MonoBehaviour {
 			if ( hit != weaponPart.Holder.gameObject)
             {
                 Debug.Log("hit");
-                other.gameObject.GetComponent<AnimateEntity>().DecreaseHealth(weaponPart.Holder.GetAttack() * weaponPart.GetDamage());
+			other.gameObject.GetComponent<AnimateEntity>().DecreaseHealth((int) (weaponPart.Holder.GetAttack() * weaponPart.GetDamage()));
 				//weaponPart.OnCharacterHit(hit);
             }
 		//}
