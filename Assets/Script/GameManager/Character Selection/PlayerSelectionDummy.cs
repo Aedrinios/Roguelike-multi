@@ -14,9 +14,7 @@ public class PlayerSelectionDummy : MonoBehaviour {
 			return selectedPlayer;
 		}
 		set {
-			Debug.Log("Before modification " + selectedPlayer);
 			selectedPlayer = (value < 0) ? value + availablePlayers.Length : value % availablePlayers.Length;
-			Debug.Log("After modification " + selectedPlayer);
 			UpdatePlayerInformations();
 		}
 	}

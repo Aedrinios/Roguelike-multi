@@ -5,6 +5,7 @@ using UnityEngine;
 public class SelectCharState : GameState {
 	public GameObject[] dummies;
 	public GameObject resetZone;
+	public PlayerUI[] playerUI;
 	private Dictionary<InputSet, GameObject> dummiesToInputsDictionary = new Dictionary<InputSet, GameObject>();
 	private ControllerDelivery controllerDelivery ;
 	private ArrayList players = new ArrayList();
@@ -13,7 +14,7 @@ public class SelectCharState : GameState {
 	void Update(){
 		if (ValidationPlatform.validatedPlatforms == players.Count && players.Count > 1){
 			GameManager.instance.SetGameState(this.GetComponent<PlayState>());
-			Debug.Log("should change");
+			
 		}
 	}
 	public override void Begin () {
@@ -35,6 +36,8 @@ public class SelectCharState : GameState {
 			dummy.SetActive(false);
 		controllerDelivery.enabled = false;
 		resetZone.GetComponent<PlayerSelectionResetZone>().Deactivate();
+		ValidationPlatform.DoorsOpened();
+		GameManager.instance.players = players;
 	}
 
 	void StartPressed(InputSet inputSet){
@@ -95,11 +98,17 @@ public class SelectCharState : GameState {
 		inputSet.Clear();
 		createdPlayer.GetComponent<CharController>().SetInputs(inputSet);
 		dummiesToInputsDictionary[inputSet].SetActive(false);
+		GetUnusedPlayerUI().player = createdPlayer.GetComponent<Character>();
 	}
 
+	private PlayerUI GetUnusedPlayerUI(){
+		for (int i = 0; i < playerUI.Length; ++i)
+			if (playerUI[i].player == null)
+				return playerUI[i];
+		return null;	//Should not happen
+	}
 
 	void SetDummySelection(params object[] args){
-		Debug.Log("value modified " + (int) args[0]);
 		PlayerSelectionDummy dummy = (PlayerSelectionDummy) args[1];
 		dummy.SelectedPlayer += (int) args[0];
 	}

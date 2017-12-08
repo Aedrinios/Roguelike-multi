@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class PlayState : GameState {
 
+	public GameObject walls, captureCamera;
 	private static PlayState instance;
 
 	void Start () {
 		
+	}
+
+	public override void Begin (){
+		base.Begin();
 	}
 	
 	void Update () {
 		
 	}
 
-	void End () {
-		
+	public override void End () {
+		base.End();
 	}
 
 	public static PlayState GetInstance(){
