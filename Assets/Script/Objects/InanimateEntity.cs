@@ -23,12 +23,12 @@ public abstract class InanimateEntity : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
-	public virtual void Unequip (){
+	public virtual void Unequip (int no){
         transform.position = holder.transform.position;
-        holder.inventory[1] = null;
+        holder.inventory[no] = null;
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
         this.GetComponentInChildren<CircleCollider2D>().enabled = true;
-        GetComponent<Rigidbody2D>().AddForce(holder.direction.normalized*50, ForceMode2D.Impulse);
+        //GetComponent<Rigidbody2D>().AddForce(holder.direction.normalized*50, ForceMode2D.Impulse);
 		pickupCollider.enabled = true;
         this.transform.parent = null;
         holder = null;
