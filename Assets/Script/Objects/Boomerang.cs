@@ -12,11 +12,6 @@ public class Boomerang : InanimateEntity {
     public Vector3 previousDir;
     public Character owner;
 
-    private void Start()
-    {
-        damage = 3;
-    }
-
     public override void Use(Character user)
     {
         if(isUsed==0) // lance le boomerang

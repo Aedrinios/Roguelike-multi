@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class Weapon : InanimateEntity {
 
-public float pushPower;
+	public int damages = 2;
 	public Animator animator;
 	public Rigidbody2D rigid;
 	[Range(0,6)]
 	public int armorPoints;
-
-    private void Start()
-    {
-        damage = 5;
-    }
 
     public override void Use(Character user) {
 		CopyUserRotation(user);
@@ -36,7 +31,6 @@ public float pushPower;
 	public void EndAnim(){
 		GetComponentInChildren<SpriteRenderer>().enabled = false;
 		holder.stun = false;
-		Debug.Log("wut");
 	}
 
 	public void OnCharacterHit(AnimateEntity other){

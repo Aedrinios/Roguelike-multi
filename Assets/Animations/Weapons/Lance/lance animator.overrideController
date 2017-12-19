@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: lance animator
+  m_Controller: {fileID: 9100000, guid: 3f172eef57e16421f8866d20be38d817, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c99cb78208b9c431286e6125f007e928, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c1da9ee4aa4d64505a924a985230d3f0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2000caf0ed1ec4fdcb20f945bdc9fb0f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cf1e2f002543041f8a00523ea13e2bea, type: 2}

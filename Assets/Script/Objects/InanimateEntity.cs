@@ -8,7 +8,6 @@ public abstract class InanimateEntity : MonoBehaviour {
 	public BoxCollider2D pickupCollider;
 	public Sprite thumbnail;
 	[SerializeField]protected Character holder;
-    protected float damage;
 
 	public Character Holder {
 		get {return holder;}
@@ -36,9 +35,4 @@ public abstract class InanimateEntity : MonoBehaviour {
         isEquipped = false;      
     }
 	public abstract void Use (Character user);
-
-    public virtual float GetDamage()
-    {
-        return damage;
-    }
 }

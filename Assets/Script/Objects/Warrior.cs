@@ -3,58 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Warrior : AnimateEntity {
-
-    public CircleCollider2D targetChoice;
     public GameObject target;
-    public bool hasTarget =false;
-
-
-
-	// Use this for initialization
-	void Start () {
-        speed = 10;
-        attack = 2;
-        life = 10;
-        rigidb = gameObject.GetComponent<Rigidbody2D>();
-    }
-	
-
+    public WarriorDetectionZone detectionZone;
 
 	// Update is called once per frame
 	void Update () {
-        if(hasTarget)
+        if(target != null)
         {
-            direction = (target.transform.position - gameObject.transform.position);
-            gameObject.GetComponent<CircleCollider2D>().radius= direction.magnitude*2;
-            rigidb.velocity = direction.normalized * speed/4;
+            Move(target.transform.position - gameObject.transform.position);
         }
-        
-        if(life<=0)
-        {
-            Destroy(gameObject);
-        }
+        else 
+            Idle();
 	}
 
-    public override void Move(Vector2 direction)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.tag == "Player")
-        {
-            target = other.gameObject;
-            hasTarget = true;
-        }
+    protected override void Die(){
+        Destroy(this.gameObject);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-           collision.gameObject.GetComponent<Character>().StartCoroutine("ReceiveHit");
-			collision.gameObject.GetComponent<Character>().DecreaseHealth(attack);
+           collision.gameObject.GetComponent<Character>().ReceiveHit(attack, this.gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+           collision.gameObject.GetComponent<Character>().ReceiveHit(attack, this.gameObject);
         }
     }
 }

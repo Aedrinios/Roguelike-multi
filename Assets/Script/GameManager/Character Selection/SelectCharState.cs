@@ -41,8 +41,10 @@ public class SelectCharState : GameState {
 	}
 
 	void StartPressed(InputSet inputSet){
-		if(dummiesToInputsDictionary.ContainsKey(inputSet) )
-			AddPlayer(inputSet);
+		if(dummiesToInputsDictionary.ContainsKey(inputSet)){
+			if (dummiesToInputsDictionary[inputSet].activeSelf)
+				AddPlayer(inputSet);
+		}
 		else if (dummiesToInputsDictionary.Count == dummies.Length)
 			return;
 		else 
@@ -97,13 +99,13 @@ public class SelectCharState : GameState {
 		players.Add(createdPlayer);
 		inputSet.Clear();
 		createdPlayer.GetComponent<CharController>().SetInputs(inputSet);
+		createdPlayer.GetComponent<Character>().SetUI(GetUnusedPlayerUI());
 		dummiesToInputsDictionary[inputSet].SetActive(false);
-		GetUnusedPlayerUI().player = createdPlayer.GetComponent<Character>();
 	}
 
 	private PlayerUI GetUnusedPlayerUI(){
 		for (int i = 0; i < playerUI.Length; ++i)
-			if (playerUI[i].player == null)
+			if (playerUI[i].IsUnused())
 				return playerUI[i];
 		return null;	//Should not happen
 	}
@@ -115,6 +117,7 @@ public class SelectCharState : GameState {
 	
 	public void RemovePlayer(GameObject player){
 		InputSet inputSet = player.GetComponent<CharController>().GetInputs();
+		player.GetComponent<Character>().UI.RemovePlayer();
 		inputSet.Clear();
 		players.Remove(player);
 		Destroy(player);

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212425270120971522}
   - component: {fileID: 60794141475793882}
   - component: {fileID: 114017609760987554}
+  - component: {fileID: 50948184178369876}
   m_Layer: 0
   m_Name: Sword Sprite
   m_TagString: Untagged
@@ -96,6 +97,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!50 &50948184178369876
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1338201244088468}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &58072786369633810
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -205,9 +226,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupCollider: {fileID: 61562861659585958}
-  thumbnail: {fileID: 0}
+  thumbnail: {fileID: 21300000, guid: 2e9370e1df78ef1469d66485eb4990d2, type: 3}
   holder: {fileID: 0}
-  pushPower: 5000
+  damages: 2
   animator: {fileID: 95539792337997306}
   rigid: {fileID: 50869987158023970}
   armorPoints: 5
