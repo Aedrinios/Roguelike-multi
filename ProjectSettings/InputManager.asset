@@ -859,8 +859,8 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: q
     positiveButton: d
-    altNegativeButton: left
-    altPositiveButton: right
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 100000
     dead: 0.1
     sensitivity: 10000
@@ -875,8 +875,8 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: s
     positiveButton: z
-    altNegativeButton: down
-    altPositiveButton: up
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 100000
     dead: 0.1
     sensitivity: 10000
@@ -971,6 +971,38 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: r
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 100000
+    dead: 0.1
+    sensitivity: 10000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Keyboard 1 left-selection
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: left
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 100000
+    dead: 0.1
+    sensitivity: 10000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Keyboard 1 right-selection
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: right
     altNegativeButton: 
     altPositiveButton: 
     gravity: 100000
