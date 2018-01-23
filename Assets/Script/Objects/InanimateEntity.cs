@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class InanimateEntity : MonoBehaviour {
-	protected bool isEquipped;
-	public BoxCollider2D pickupCollider;
-	public Sprite thumbnail;
-	[SerializeField]protected Character holder;
+    protected bool isEquipped;
+    public BoxCollider2D pickupCollider;
+    public Sprite thumbnail;
+    [SerializeField] protected AnimateEntity holder;
+    protected float damage;
 
-	public Character Holder {
-		get {return holder;}
+    public AnimateEntity Holder {
+        get { return holder; }
+        set { holder = value; }
 	}
 	public virtual void Equip (Character user){
 		isEquipped = true;
@@ -25,7 +27,7 @@ public abstract class InanimateEntity : MonoBehaviour {
 
 	public virtual void Unequip (int no){
         transform.position = holder.transform.position;
-        holder.inventory[no] = null;
+        holder.GetComponent<Character>().inventory[no] = null;
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
         this.GetComponentInChildren<CircleCollider2D>().enabled = true;
         //GetComponent<Rigidbody2D>().AddForce(holder.direction.normalized*50, ForceMode2D.Impulse);
@@ -35,4 +37,9 @@ public abstract class InanimateEntity : MonoBehaviour {
         isEquipped = false;      
     }
 	public abstract void Use (Character user);
+
+    public virtual float GetDamage()
+    {
+        return damage;
+    }
 }

@@ -5,35 +5,23 @@ using UnityEngine;
 
 public abstract class AnimateEntity : InanimateEntity {
 
-    private Timer invincibility;
-    public int health = 10;
-    public float speed = 10;
-    public int attack = 2;
-    public AudioSource dyingSound, hitSound;
-    protected bool canBeDamaged = true;
-    [HideInInspector]
+    protected int life;
+    protected float speed;
+    protected int attack;
+    protected bool canBeDamaged=true;
     public bool stun = false;
-    public float timeOfInvincibility;
     protected Rigidbody2D rigidb;
     protected Animator animator;
-    [HideInInspector]
-    public Vector2 direction;
-    protected bool isDying = false;
+    public Vector3 direction;
 
 
-    protected virtual void Start(){
-        animator = this.GetComponent<Animator> ();
-        invincibility = new Timer(timeOfInvincibility,true);
-        rigidb = GetComponent<Rigidbody2D>();
+    public abstract void Move(Vector2 direction);
+
+    public virtual void DecreaseHealth(int damage)
+    {
+        this.life -= damage;
     }
 
-	public virtual void Move(Vector2 directionRequired) {
-    	this.direction = directionRequired.normalized; 
-		rigidb.velocity = direction * speed;
-		animator.SetFloat ("directionX", direction.x);
-		animator.SetFloat ("directionY", direction.y);
-		animator.SetBool ("isMoving", true);
-	}
     public virtual void Idle()
     {
         animator.SetBool("isMoving", false);
@@ -51,36 +39,4 @@ public abstract class AnimateEntity : InanimateEntity {
         return attack;
     }
 
-    protected virtual void Die(){
-        dyingSound.Play();
-    }
-    
-	public virtual void ReceiveHit (int value, GameObject other){
-        if(!invincibility.IsFinished())
-            return;
-        hitSound.Play();
-        invincibility.ResetPlay();
-        health -= value;
-
-        KnockBack(other);
-
-        if (health <= 0)
-            Die();
-	}
-
-    public bool IsDying(){
-        return isDying;
-    }
-
-    private void KnockBack (GameObject other) {
-        Vector3 knockBackDirection = (transform.position - other.transform.position ).normalized;
-        transform.position += knockBackDirection * (int) knockbackDistances.low;
-    }
-
-}
-
-public enum knockbackDistances {
-    low = 1,
-    medium = 2,
-    high = 4
 }
