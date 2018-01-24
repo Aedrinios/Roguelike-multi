@@ -8,28 +8,45 @@ public class Character : AnimateEntity {
 	public Vector2 direction;
 	public InanimateEntity[] inventory;
 	public ArrayList ground;
+
+
 	private Rigidbody2D rigidb;
 	private Animator animator;
     private float primaryTimer;
     private float secondaryTimer;
-
     private bool isCarrying = false;
     private InanimateEntity carriedObject;
+    private float deathTime;
+    private float deathTimeCount;
+    private int startLife;
+    private bool deathAudioHasPlayed;
+    private float opacityValue;
+    private float blinkTime;
+    private float blinkTimeCount;
 
     void Start () {
         speed = 10;
         life = 10;
         attack = 1;
-         primaryTimer=0;
-    secondaryTimer=0;
-    inventory = new InanimateEntity [2];
+        primaryTimer=0;
+        secondaryTimer=0;
+        inventory = new InanimateEntity [2];
 		ground = new ArrayList();
 		rigidb = this.GetComponent<Rigidbody2D> ();
 		//this.GetComponent<SpriteRenderer>().color = new Color (Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
 		animator = this.GetComponent<Animator> ();
-	}
+        deathTime = 5;
+        deathTimeCount = 0;
+        startLife = life;
+        audioSource = gameObject.GetComponent<AudioSource>();
+        deathAudioHasPlayed = false;
+        opacityValue = 0.3f;
+        blinkTime = 0.2f;
+        blinkTimeCount = 0;
 
-	public override void Move(Vector2 direction){	//Le if stun doit être retiré (ça doit être implémenté avec le pattern state)
+    }
+
+	public override void Move(Vector2 direction){
     	this.direction = direction.normalized; 
 		rigidb.velocity = direction * speed;
 		animator.SetFloat ("directionX", direction.x);
@@ -38,10 +55,68 @@ public class Character : AnimateEntity {
 	}
 
     public void Update() // déséquiper pour l'instant
-    {    
+    {
+        //death
+
+        //bouton pour faire mourir le joueur (POUR LES TESTS)
+        if (Input.GetKeyDown("2"))
+        {
+            DecreaseHealth(startLife);
+        }
+        Debug.Log(canAttack);
+
+
        if(life<=0)
         {
-            Debug.Log("YOU DIED!  (git gud)");
+            canBeDamaged = false;
+            canAttack = false;
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacityValue);
+
+            //joue le son de mort
+            if (deathAudioHasPlayed == false)
+            {
+                audioSource.PlayOneShot(getSound("goule2Mort2"));
+                deathAudioHasPlayed = true;
+            }
+
+            //temps d'invincibilité
+            deathTimeCount += Time.deltaTime;
+            blinkTimeCount += Time.deltaTime;
+
+            //RESPAWN
+            if (deathTimeCount >= deathTime)
+            {
+                canAttack = true;
+                canBeDamaged = true;
+                deathTimeCount = 0;
+                life = startLife;
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
+                deathAudioHasPlayed = false;
+                audioSource.PlayOneShot(getSound("respawnSound"));
+                opacityValue = 0.3f;
+                //globalHealthCounter --;
+            }
+            //clignotement avant de respawn
+            else if (deathTimeCount >= deathTime*0.75f)
+            {
+                if (blinkTimeCount >= blinkTime)
+                {
+                    if (opacityValue==1f)
+                    {
+                        opacityValue = 0.3f;
+                        blinkTimeCount = 0;
+                    }
+                    else
+                    {
+                        opacityValue = 1f;
+                        blinkTimeCount = 0;
+                    }
+                }
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, opacityValue);
+            }
+            
+
+            
         }
 
         //ramassage puis lancer
@@ -84,12 +159,21 @@ public class Character : AnimateEntity {
         }
 	}
 
+    //atack
 	public void InputAction (params object[] args) {	//pas fan de ce nom
-		int item = (int) args[0]; 	
-		if (inventory[item] == null)
-			TryPickupItem(item);
-		else
-			inventory[item].Use(this);
+		int item = (int) args[0];
+        if (canAttack)
+        {
+            if (inventory[item] == null)
+            {
+                TryPickupItem(item);
+            }
+            else
+            {
+                inventory[item].Use(this);
+            }
+        }
+        
 		Debug.Log("pressed");
 
 	}
@@ -160,7 +244,7 @@ public class Character : AnimateEntity {
         if (isCarrying)
         {
             Debug.Log("blib");
-            if (carriedObject.tag == "Player" || carriedObject.tag == "ennemy")
+            if (carriedObject.tag == "Player" || carriedObject.tag == "ennemi")
             {
                 carriedObject.GetComponent<AnimateEntity>().stun = false;
             }
