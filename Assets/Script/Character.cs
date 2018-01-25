@@ -23,8 +23,10 @@ public class Character : AnimateEntity {
     private float opacityValue;
     private float blinkTime;
     private float blinkTimeCount;
+    private GlobalHealthManager globalHealthManager;
 
     void Start () {
+        globalHealthManager = FindObjectOfType<GlobalHealthManager>();
         speed = 10;
         life = 10;
         attack = 1;
@@ -63,11 +65,15 @@ public class Character : AnimateEntity {
         {
             DecreaseHealth(startLife);
         }
-        Debug.Log(canAttack);
 
 
        if(life<=0)
         {
+            if (isDead == false)
+            {
+                globalHealthManager.globalHealth--;
+            }
+            isDead = true;
             canBeDamaged = false;
             canAttack = false;
             gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacityValue);
@@ -86,6 +92,7 @@ public class Character : AnimateEntity {
             //RESPAWN
             if (deathTimeCount >= deathTime)
             {
+                isDead = false;
                 canAttack = true;
                 canBeDamaged = true;
                 deathTimeCount = 0;
@@ -94,7 +101,6 @@ public class Character : AnimateEntity {
                 deathAudioHasPlayed = false;
                 audioSource.PlayOneShot(getSound("respawnSound"));
                 opacityValue = 0.3f;
-                //globalHealthCounter --;
             }
             //clignotement avant de respawn
             else if (deathTimeCount >= deathTime*0.75f)

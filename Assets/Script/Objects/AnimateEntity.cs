@@ -8,6 +8,7 @@ public abstract class AnimateEntity : InanimateEntity {
     protected int life;
     protected float speed;
     protected int attack;
+    protected bool isDead = false;
     protected bool canBeDamaged=true;
     protected bool canAttack = true;
     public bool stun = false;
