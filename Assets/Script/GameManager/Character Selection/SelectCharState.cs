@@ -9,6 +9,7 @@ public class SelectCharState : GameState {
 	private Dictionary<InputSet, GameObject> dummiesToInputsDictionary = new Dictionary<InputSet, GameObject>();
 	private ControllerDelivery controllerDelivery ;
 	private ArrayList players = new ArrayList();
+    public bool hasSpawned=false;
 
 
 	void Update(){
@@ -18,11 +19,14 @@ public class SelectCharState : GameState {
 		}
 	}
 	public override void Begin () {
-		base.Begin();
-		foreach (GameObject dummy in dummies)
-			dummy.SetActive(true);
-		SetupControllerDelivery();
-		controllerDelivery.enabled = true;
+        if(!hasSpawned)
+        {
+		    base.Begin();
+		    foreach (GameObject dummy in dummies)
+			    dummy.SetActive(true);
+		    SetupControllerDelivery();
+		    controllerDelivery.enabled = true;
+        }
 	}
 	void SetupControllerDelivery(){
 		controllerDelivery = this.GetComponent<ControllerDelivery>();
@@ -31,35 +35,45 @@ public class SelectCharState : GameState {
 	}
 
 	public override void End () {
-		base.End();
-		foreach (GameObject dummy in dummies)
-			dummy.SetActive(false);
-		controllerDelivery.enabled = false;
-		resetZone.GetComponent<PlayerSelectionResetZone>().Deactivate();
-		ValidationPlatform.DoorsOpened();
-		GameManager.instance.players = players;
+        if(hasSpawned)
+        {
+		    base.End();
+		    foreach (GameObject dummy in dummies)
+			    dummy.SetActive(false);
+		    controllerDelivery.enabled = false;
+		    resetZone.GetComponent<PlayerSelectionResetZone>().Deactivate();
+		    ValidationPlatform.DoorsOpened();
+		    GameManager.instance.players = players;
+            hasSpawned = false;
+        }
 	}
 
 	void StartPressed(InputSet inputSet){
-		if(dummiesToInputsDictionary.ContainsKey(inputSet) )
-			AddPlayer(inputSet);
-		else if (dummiesToInputsDictionary.Count == dummies.Length)
-			return;
-		else 
-			AddSelectionDummy(inputSet);
+        //if(!hasSpawned)
+        {
+		    if(dummiesToInputsDictionary.ContainsKey(inputSet) )
+			    AddPlayer(inputSet);
+		    else if (dummiesToInputsDictionary.Count == dummies.Length)
+			    return;
+		    else 
+			    AddSelectionDummy(inputSet);
+        }
 	}
 
 	private void AddSelectionDummy(InputSet inputSet) {
-		PlayerSelectionDummy dummy = null;
-		if (!dummiesToInputsDictionary.ContainsKey(inputSet)){
-			dummy = GetUnusedDummy();
-			dummiesToInputsDictionary.Add(inputSet, dummy.gameObject);
-		}
-		else
-			dummy = dummiesToInputsDictionary[inputSet].GetComponent<PlayerSelectionDummy>();
-		BindInputs(inputSet, dummy, inputSet.isController);
-		dummy.gameObject.SetActive(true);
-		dummy.Possess();
+        //if(!hasSpawned)
+        {
+            PlayerSelectionDummy dummy = null;
+		    if (!dummiesToInputsDictionary.ContainsKey(inputSet)){
+			    dummy = GetUnusedDummy();
+			    dummiesToInputsDictionary.Add(inputSet, dummy.gameObject);
+		    }
+		    else
+			    dummy = dummiesToInputsDictionary[inputSet].GetComponent<PlayerSelectionDummy>();
+		    BindInputs(inputSet, dummy, inputSet.isController);
+		    dummy.gameObject.SetActive(true);
+		    dummy.Possess();
+        }
 	}
 
 	private PlayerSelectionDummy GetUnusedDummy(){
@@ -91,15 +105,20 @@ public class SelectCharState : GameState {
 	}
 
 	void AddPlayer(InputSet inputSet){
-		PlayerSelectionDummy dummy = dummiesToInputsDictionary[inputSet].GetComponent<PlayerSelectionDummy>();
-		GameObject selectedPlayer = dummy.GetSelectedPlayer();
-		GameObject createdPlayer = Instantiate(selectedPlayer, dummy.transform.position, Quaternion.identity);
-		players.Add(createdPlayer);
-		inputSet.Clear();
-		createdPlayer.GetComponent<CharController>().SetInputs(inputSet);
-		dummiesToInputsDictionary[inputSet].SetActive(false);
-		GetUnusedPlayerUI().player = createdPlayer.GetComponent<Character>();
-	}
+        if(!hasSpawned)
+        {
+		    PlayerSelectionDummy dummy = dummiesToInputsDictionary[inputSet].GetComponent<PlayerSelectionDummy>();
+		    GameObject selectedPlayer = dummy.GetSelectedPlayer();
+		    GameObject createdPlayer = Instantiate(selectedPlayer, dummy.transform.position, Quaternion.identity);
+		    players.Add(createdPlayer);
+		    inputSet.Clear();
+		    createdPlayer.GetComponent<CharController>().SetInputs(inputSet);
+		    dummiesToInputsDictionary[inputSet].SetActive(false);
+		    GetUnusedPlayerUI().player = createdPlayer.GetComponent<Character>();
+            hasSpawned = true;
+
+        }
+    }
 
 	private PlayerUI GetUnusedPlayerUI(){
 		for (int i = 0; i < playerUI.Length; ++i)
@@ -109,8 +128,11 @@ public class SelectCharState : GameState {
 	}
 
 	void SetDummySelection(params object[] args){
-		PlayerSelectionDummy dummy = (PlayerSelectionDummy) args[1];
-		dummy.SelectedPlayer += (int) args[0];
+        if(!hasSpawned)
+        {
+		    PlayerSelectionDummy dummy = (PlayerSelectionDummy) args[1];
+		    dummy.SelectedPlayer += (int) args[0];
+        }
 	}
 	
 	public void RemovePlayer(GameObject player){
@@ -119,6 +141,7 @@ public class SelectCharState : GameState {
 		players.Remove(player);
 		Destroy(player);
 		AddSelectionDummy(inputSet);
+        hasSpawned = false;
 	}
 	
 }
