@@ -1,0 +1,21 @@
+diff a/Assets/Script/GameManager/Character Selection/SelectCharState.cs b/Assets/Script/GameManager/Character Selection/SelectCharState.cs	(rejected hunks)
+@@ -19,11 +19,14 @@
+ 		}
+ 	}
+ 	public override void Begin () {
+-		base.Begin();
+-		foreach (GameObject dummy in dummies)
+-			dummy.SetActive(true);
+-		SetupControllerDelivery();
+-		controllerDelivery.enabled = true;
++        if(!hasSpawned)
++        {
++		    base.Begin();
++		    foreach (GameObject dummy in dummies)
++			    dummy.SetActive(true);
++		    SetupControllerDelivery();
++		    controllerDelivery.enabled = true;
++        }
+ 	}
+ 	void SetupControllerDelivery(){
+ 		controllerDelivery = this.GetComponent<ControllerDelivery>();
