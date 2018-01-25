@@ -17,14 +17,13 @@ public class SelectCharState : GameState
         if (ValidationPlatform.validatedPlatforms == players.Count && players.Count > 1)
         {
             GameManager.instance.SetGameState(this.GetComponent<PlayState>());
-
         }
     }
     public override void Begin()
     {
         base.Begin();
         foreach (GameObject dummy in dummies)
-            dummy.SetActive(true);
+        dummy.SetActive(true);
         SetupControllerDelivery();
         controllerDelivery.enabled = true;
     }
@@ -105,14 +104,26 @@ public class SelectCharState : GameState
 
     void AddPlayer(InputSet inputSet)
     {
-        PlayerSelectionDummy dummy = dummiesToInputsDictionary[inputSet].GetComponent<PlayerSelectionDummy>();
-        GameObject selectedPlayer = dummy.GetSelectedPlayer();
-        GameObject createdPlayer = Instantiate(selectedPlayer, dummy.transform.position, Quaternion.identity);
-        players.Add(createdPlayer);
-        inputSet.Clear();
-        createdPlayer.GetComponent<CharController>().SetInputs(inputSet);
-        dummiesToInputsDictionary[inputSet].SetActive(false);
-        GetUnusedPlayerUI().player = createdPlayer.GetComponent<Character>();
+        bool exists=false;
+        foreach(GameObject p in players)
+        {
+            if(p.GetComponent<CharController>().GetInputs()== inputSet)
+            {
+                exists = true;
+            }
+        }
+        if(!exists)
+        {
+            PlayerSelectionDummy dummy = dummiesToInputsDictionary[inputSet].GetComponent<PlayerSelectionDummy>();
+            GameObject selectedPlayer = dummy.GetSelectedPlayer();
+            GameObject createdPlayer = Instantiate(selectedPlayer, dummy.transform.position, Quaternion.identity);
+            players.Add(createdPlayer);
+            inputSet.Clear();
+            createdPlayer.GetComponent<CharController>().SetInputs(inputSet);
+            dummiesToInputsDictionary[inputSet].SetActive(false);
+            GetUnusedPlayerUI().player = createdPlayer.GetComponent<Character>();
+        }
+
     }
 
     private PlayerUI GetUnusedPlayerUI()
