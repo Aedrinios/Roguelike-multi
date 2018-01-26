@@ -114,9 +114,6 @@ public class Character : AnimateEntity
                 }
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, opacityValue);
             }
-
-
-
         }
 
         //ramassage puis lancer
@@ -167,12 +164,15 @@ public class Character : AnimateEntity
 
     public void InputAction(params object[] args)
     {   
-        int item = (int)args[0];
-        if (inventory[item] == null)
-            TryPickupItem(item);
-        else
-            inventory[item].Use(this);
-        Debug.Log("pressed");
+        if(!isDead)
+        {
+            int item = (int)args[0];
+            if (inventory[item] == null)
+                TryPickupItem(item);
+            else
+                inventory[item].Use(this);
+            Debug.Log("pressed");
+        }
     }
 
     public float GetRotation()

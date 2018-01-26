@@ -136,8 +136,15 @@ MonoBehaviour:
   pickupCollider: {fileID: 61568429016266998}
   thumbnail: {fileID: 0}
   holder: {fileID: 0}
+  health: 10
+  speed: 5
+  attack: 2
+  dyingSound: {fileID: 0}
+  hitSound: {fileID: 0}
   stun: 0
+  timeOfInvincibility: 0
   direction: {x: 0, y: 0, z: 0}
+  sounds: []
   targetChoice: {fileID: 58141533618952788}
   target: {fileID: 0}
   hasTarget: 0

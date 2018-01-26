@@ -76,8 +76,11 @@ public abstract class AnimateEntity : InanimateEntity
             return;
         //hitSound.Play();
         invincibility.ResetPlay();
-        health -= value;
-
+        
+        if (canBeDamaged == true &&!isDead)
+        {
+            health -= value;
+        }
         KnockBack(other);
 
         if (health <= 0)
