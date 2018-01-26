@@ -25,6 +25,7 @@ public abstract class AnimateEntity : InanimateEntity
     public Vector3 direction;
     protected bool isDying = false;
     public AudioClip[] sounds;
+    public Sprite[] sprites;
     protected AudioSource audioSource;
 
 
