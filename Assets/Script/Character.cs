@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : AnimateEntity {
+public class Character : AnimateEntity
+{
 
-	public float speed = 10;
-	public Vector2 direction;
-	public InanimateEntity[] inventory;
-	public ArrayList ground;
+    public InanimateEntity[] inventory;
+    public ArrayList ground;
+    [HideInInspector]
+    public PlayerUI UI;
 
 
-	private Rigidbody2D rigidb;
-	private Animator animator;
+    private Rigidbody2D rigidb;
+    private Animator animator;
     private float primaryTimer;
     private float secondaryTimer;
     private bool isCarrying = false;
@@ -25,49 +26,42 @@ public class Character : AnimateEntity {
     private float blinkTimeCount;
     private GlobalHealthManager globalHealthManager;
 
-    void Start () {
+
+    protected override void Start()
+    {
         globalHealthManager = FindObjectOfType<GlobalHealthManager>();
-        speed = 10;
-        life = 10;
-        attack = 1;
-        primaryTimer=0;
-        secondaryTimer=0;
-        inventory = new InanimateEntity [2];
-		ground = new ArrayList();
-		rigidb = this.GetComponent<Rigidbody2D> ();
-		//this.GetComponent<SpriteRenderer>().color = new Color (Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
-		animator = this.GetComponent<Animator> ();
+
+        base.Start();
+        inventory = new InanimateEntity[2];
+        ground = new ArrayList();
+        rigidb = this.GetComponent<Rigidbody2D>();
+        animator = this.GetComponent<Animator>();
         deathTime = 5;
         deathTimeCount = 0;
-        startLife = life;
+        startLife = health;
         audioSource = gameObject.GetComponent<AudioSource>();
         deathAudioHasPlayed = false;
         opacityValue = 0.3f;
         blinkTime = 0.2f;
         blinkTimeCount = 0;
-
     }
 
-	public override void Move(Vector2 direction){
-    	this.direction = direction.normalized; 
-		rigidb.velocity = direction * speed;
-		animator.SetFloat ("directionX", direction.x);
-		animator.SetFloat ("directionY", direction.y);
-		animator.SetBool ("isMoving", true);
-	}
+    public override void ReceiveHit(int value, GameObject other)
+    {
+        base.ReceiveHit(value, other);
+        UI.SetHealth(health);
+    }
 
     public void Update() // déséquiper pour l'instant
     {
-        //death
 
-        //bouton pour faire mourir le joueur (POUR LES TESTS)
         if (Input.GetKeyDown("2"))
         {
-            DecreaseHealth(startLife);
+            ReceiveHit(startLife,gameObject);
         }
 
 
-       if(life<=0)
+        if (health <= 0)
         {
             if (isDead == false)
             {
@@ -97,18 +91,18 @@ public class Character : AnimateEntity {
                 canAttack = true;
                 canBeDamaged = true;
                 deathTimeCount = 0;
-                life = startLife;
+                health = startLife;
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
                 deathAudioHasPlayed = false;
                 audioSource.PlayOneShot(getSound("respawnSound"));
                 opacityValue = 0.3f;
             }
             //clignotement avant de respawn
-            else if (deathTimeCount >= deathTime*0.75f)
+            else if (deathTimeCount >= deathTime * 0.75f)
             {
                 if (blinkTimeCount >= blinkTime)
                 {
-                    if (opacityValue==1f)
+                    if (opacityValue == 1f)
                     {
                         opacityValue = 0.3f;
                         blinkTimeCount = 0;
@@ -121,9 +115,9 @@ public class Character : AnimateEntity {
                 }
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, opacityValue);
             }
-            
 
-            
+
+
         }
 
         //ramassage puis lancer
@@ -149,55 +143,78 @@ public class Character : AnimateEntity {
         {
             Debug.Log("gg");
             secondaryTimer += Time.deltaTime;
-            if (secondaryTimer > 2 && inventory[1]!=null)
+            if (secondaryTimer > 2 && inventory[1] != null)
                 Carry(inventory[1]);
         }
         if (Input.GetButtonUp("Keyboard 2 secondary"))
             secondaryTimer = 0;
     }
-	public IEnumerator ReceiveHit (){
-        if(canBeDamaged)
+
+
+    protected override void Die()
+    {
+        base.Die();
+        isDying = true;
+        animator.SetBool("isDying", true);
+    }
+
+    public void Revive()
+    {
+        isDying = false;
+        animator.SetBool("isDying", false);
+        health = 10;
+        UI.SetHealth(health);
+    }
+
+    public void InputAction(params object[] args)
+    {   
+        int item = (int)args[0];
+        if (inventory[item] == null)
+            TryPickupItem(item);
+        else
+            inventory[item].Use(this);
+        Debug.Log("pressed");
+    }
+
+    public float GetRotation()
+    {
+        float rotation = Vector2.Angle(new Vector2(0, 1), this.direction);
+        if (direction.x < 0)
+            rotation *= -1;
+        return rotation;
+    }
+
+    private void TryPickupItem(int slot)
+    {
+        if (ground.Count != 0)
         {
-            canBeDamaged = false;
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            yield return new WaitForSeconds(1);          
-            gameObject.GetComponent<BoxCollider2D>().enabled = true;
-            canBeDamaged = true;
-        }
-	}
+            inventory[slot] = (InanimateEntity)ground[0];
+            inventory[slot].Equip(this);
+            UI.ChangeWeapon(this, slot);
+        }   
+    }
 
-    //atack
-	public void InputAction (params object[] args) {	//pas fan de ce nom
-		int item = (int) args[0];
-        if (canAttack)
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag.Equals("item"))
         {
-            if (inventory[item] == null)
-            {
-                TryPickupItem(item);
-            }
-            else
-            {
-                inventory[item].Use(this);
-            }
+            ground.Add(other.GetComponent<InanimateEntity>());
         }
-        
-		Debug.Log("pressed");
+    }
 
-	}
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag.Equals("item"))
+        {
+            ground.Remove(other.GetComponent<InanimateEntity>());
+        }
+    }
 
-	public float GetRotation(){
-		float rotation = Vector2.Angle(new Vector2(0,1), this.direction);
-			if (direction.x < 0)
-				rotation *= -1;
-		return rotation ;
-	}
-
-	private void TryPickupItem(int slot){
-		if(ground.Count != 0 ){
-			inventory[slot] = (InanimateEntity) ground[0];
-			inventory[slot].Equip(this);
-		}	//No need to remove the item from the ground list, it's done in OnTriggerExit
-	}
+    public void SetUI(PlayerUI UI)
+    {
+        this.UI = UI;
+        UI.SetPlayer(this);
+    }
 
     private void TryCarry()
     {
@@ -208,7 +225,8 @@ public class Character : AnimateEntity {
         }   //No need to remove the item from the ground list, it's done in OnTriggerExit
     }
 
-    public void Interract () {
+    public void Interract()
+    {
         //Si un objet interractible est sous ses pieds, alors interragis avec.
         if (isCarrying)
         {
@@ -222,7 +240,7 @@ public class Character : AnimateEntity {
 
     public void Carry(InanimateEntity Ientity)
     {
-        if(Ientity == inventory[0])
+        if (Ientity == inventory[0])
         {
             Ientity.Unequip(0);
         }
@@ -265,21 +283,6 @@ public class Character : AnimateEntity {
             isCarrying = false;
         }
     }
-
-    public override void  Idle() {
-		animator.SetBool ("isMoving", false);
-		rigidb.velocity = Vector3.zero;
-	}
-
-	void OnTriggerEnter2D(Collider2D other){
-		if (other.tag.Equals("item")){
-			ground.Add(other.GetComponent<InanimateEntity>());
-		}
-	}
-
-	void OnTriggerExit2D(Collider2D other) {
-		if (other.tag.Equals("item")){
-			ground.Remove(other.GetComponent<InanimateEntity>());
-		}
-	}
 }
+
+

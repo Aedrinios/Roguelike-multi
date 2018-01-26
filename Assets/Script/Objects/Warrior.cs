@@ -14,7 +14,7 @@ public class Warrior : AnimateEntity {
 	void Start () {
         speed = 6;
         attack = 4;
-        life = 10;
+        health = 10;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
     }
 	
@@ -29,7 +29,7 @@ public class Warrior : AnimateEntity {
             rigidb.velocity = direction.normalized * speed;
         }
         
-        if(life<=0)
+        if(health<=0)
         {
             Destroy(gameObject);
         }
@@ -53,8 +53,8 @@ public class Warrior : AnimateEntity {
     {
         if (collision.gameObject.tag == "Player")
         {
-           collision.gameObject.GetComponent<Character>().StartCoroutine("ReceiveHit");
-			collision.gameObject.GetComponent<Character>().DecreaseHealth(attack);
+           //collision.gameObject.GetComponent<Character>().StartCoroutine("ReceiveHit");
+			collision.gameObject.GetComponent<Character>().ReceiveHit(attack,gameObject);
         }
     }
 }
