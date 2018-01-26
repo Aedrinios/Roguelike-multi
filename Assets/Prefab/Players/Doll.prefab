@@ -266,6 +266,8 @@ MonoBehaviour:
   sounds:
   - {fileID: 8300000, guid: 0d22f30248c4b4401a0cd9afbc42bffa, type: 3}
   - {fileID: 8300000, guid: 2b4b24a218eb28142a96a4523737149a, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 250e15878f3c17245892cc17162da98a, type: 3}
   speed: 5
   direction: {x: 0, y: 0}
   inventory: []

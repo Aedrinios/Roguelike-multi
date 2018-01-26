@@ -17,6 +17,7 @@ public abstract class AnimateEntity : InanimateEntity {
     public Vector3 direction;
 
     public AudioClip[] sounds;
+    public Sprite[] sprites;
     protected AudioSource audioSource;
 
 

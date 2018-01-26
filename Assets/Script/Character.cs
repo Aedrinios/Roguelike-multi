@@ -76,6 +76,7 @@ public class Character : AnimateEntity {
             isDead = true;
             canBeDamaged = false;
             canAttack = false;
+            
             gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacityValue);
 
             //joue le son de mort
