@@ -19,7 +19,7 @@ public class Summoner : AnimateEntity
     {
         speed = 3;
         attack = 1;
-        life = 6;
+        health = 6;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
         summonTimer = 7;
@@ -52,7 +52,7 @@ public class Summoner : AnimateEntity
                     Summon(target.transform.position - direction/2);
                 }
             }
-            if (life <= 0)
+            if (health <= 0)
             {
                 Destroy(gameObject);
             }
@@ -78,7 +78,7 @@ public class Summoner : AnimateEntity
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Character>().StartCoroutine("ReceiveHit");
-            collision.gameObject.GetComponent<Character>().DecreaseHealth(attack);
+            collision.gameObject.GetComponent<Character>().ReceiveHit(attack,gameObject);
         }
     }
 

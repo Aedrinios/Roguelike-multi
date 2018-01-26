@@ -22,7 +22,7 @@ public class Archer : AnimateEntity
     {
         speed = 10;
         attack = 2;
-        life = 10;
+        health = 10;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
         shootTimer = 1;
@@ -56,7 +56,7 @@ public class Archer : AnimateEntity
             }
         }
 
-        if (life <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
@@ -81,7 +81,7 @@ public class Archer : AnimateEntity
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Character>().StartCoroutine("ReceiveHit");
-            collision.gameObject.GetComponent<Character>().DecreaseHealth(attack);
+            collision.gameObject.GetComponent<Character>().ReceiveHit(attack,gameObject);
         }
     }
 
