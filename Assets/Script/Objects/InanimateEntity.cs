@@ -8,7 +8,7 @@ public abstract class InanimateEntity : MonoBehaviour {
     public BoxCollider2D pickupCollider;
     public Sprite thumbnail;
     [SerializeField] protected AnimateEntity holder;
-    protected float damage;
+    protected int damage;
 
     public AnimateEntity Holder {
         get { return holder; }
@@ -38,7 +38,7 @@ public abstract class InanimateEntity : MonoBehaviour {
     }
 	public abstract void Use (Character user);
 
-    public virtual float GetDamage()
+    public virtual int GetDamage()
     {
         return damage;
     }

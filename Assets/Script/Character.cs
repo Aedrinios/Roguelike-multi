@@ -248,7 +248,7 @@ public class Character : AnimateEntity
         {
             Ientity.Unequip(1);
         }
-        if (Ientity.tag == "Player" || Ientity.tag == "ennemi")
+        if (Ientity.tag == "Player" || Ientity.tag == "enemy")
         {
             Ientity.GetComponent<AnimateEntity>().stun = true;
         }
@@ -269,7 +269,7 @@ public class Character : AnimateEntity
         if (isCarrying)
         {
             Debug.Log("blib");
-            if (carriedObject.tag == "Player" || carriedObject.tag == "ennemi")
+            if (carriedObject.tag == "Player" || carriedObject.tag == "enemy")
             {
                 carriedObject.GetComponent<AnimateEntity>().stun = false;
             }

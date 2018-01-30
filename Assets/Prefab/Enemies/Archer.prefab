@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114347715124960136}
   m_Layer: 0
   m_Name: Archer
-  m_TagString: ennemy
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,8 +136,15 @@ MonoBehaviour:
   pickupCollider: {fileID: 61000283630620258}
   thumbnail: {fileID: 0}
   holder: {fileID: 0}
+  health: 10
+  speed: 10
+  attack: 2
+  dyingSound: {fileID: 0}
+  hitSound: {fileID: 0}
   stun: 0
+  timeOfInvincibility: 0
   direction: {x: 0, y: 0, z: 0}
+  sounds: []
   targetChoice: {fileID: 58549647256269662}
   target: {fileID: 0}
   hasTarget: 0
