@@ -36,7 +36,7 @@ public class Character : AnimateEntity
         ground = new ArrayList();
         rigidb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
-        deathTime = 5;
+        deathTime = 3;
         deathTimeCount = 0;
         startLife = health;
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -67,9 +67,11 @@ public class Character : AnimateEntity
             {
                 globalHealthManager.globalHealth--;
             }
+            //changer sprite = mort
             isDead = true;
             canBeDamaged = false;
             canAttack = false;
+            GetComponent<CharController>().enabled = false;
             
             gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacityValue);
 
@@ -98,7 +100,7 @@ public class Character : AnimateEntity
                 opacityValue = 0.3f;
             }
             //clignotement avant de respawn
-            else if (deathTimeCount >= deathTime * 0.75f)
+            else if (deathTimeCount >= deathTime * 0.66f)
             {
                 if (blinkTimeCount >= blinkTime)
                 {
@@ -113,6 +115,11 @@ public class Character : AnimateEntity
                         blinkTimeCount = 0;
                     }
                 }
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, opacityValue);
+            }
+            else if (deathTimeCount >= deathTime * 0.33f)
+            {
+                //sprite normal
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, opacityValue);
             }
         }
