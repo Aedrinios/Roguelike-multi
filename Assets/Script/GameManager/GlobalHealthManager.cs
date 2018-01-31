@@ -15,7 +15,7 @@ public class GlobalHealthManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        globalHealthNumber.text = "x " +globalHealth;
+        globalHealthNumber.text = "x" +globalHealth;
 		
 	}
 }

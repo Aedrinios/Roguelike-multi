@@ -65,13 +65,16 @@ public class Character : AnimateEntity
         {
             if (isDead == false)
             {
+                gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 globalHealthManager.globalHealth--;
+                animator.SetBool("isDead", true);
+                animator.SetFloat("directionY", -1);
+                animator.SetFloat("directionX", 0);
+                GetComponent<CharController>().enabled = false;
             }
-            //changer sprite = mort
             isDead = true;
             canBeDamaged = false;
             canAttack = false;
-            GetComponent<CharController>().enabled = false;
             
             gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacityValue);
 
@@ -119,8 +122,8 @@ public class Character : AnimateEntity
             }
             else if (deathTimeCount >= deathTime * 0.33f)
             {
-                //sprite normal
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, opacityValue);
+                GetComponent<CharController>().enabled = true;
+                animator.SetBool("isDead", false);
             }
         }
 
@@ -157,17 +160,12 @@ public class Character : AnimateEntity
 
     protected override void Die()
     {
-        base.Die();
-        isDying = true;
-        animator.SetBool("isDying", true);
+        animator.SetBool("isDead", true);
     }
 
     public void Revive()
     {
-        isDying = false;
-        animator.SetBool("isDying", false);
-        health = 10;
-        UI.SetHealth(health);
+        animator.SetBool("isDead", false);
     }
 
     public void InputAction(params object[] args)
