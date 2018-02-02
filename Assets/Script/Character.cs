@@ -49,7 +49,7 @@ public class Character : AnimateEntity
     public override void ReceiveHit(int value, GameObject other)
     {
         base.ReceiveHit(value, other);
-        UI.SetHealth(4);
+        UI.SetHealth(health);
     }
 
     public void Update() // déséquiper pour l'instant
@@ -64,6 +64,10 @@ public class Character : AnimateEntity
 
         if (health <= 0)
         {
+            UI.emptyFullInventory();
+            inventory[0] = null;
+            inventory[1] = null;
+
             if (isDead == false)
             {
                 gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
@@ -102,6 +106,7 @@ public class Character : AnimateEntity
                 deathAudioHasPlayed = false;
                 audioSource.PlayOneShot(getSound("respawnSound"));
                 opacityValue = 0.3f;
+                UI.reactivateInventory();
             }
             //clignotement avant de respawn
             else if (deathTimeCount >= deathTime * 0.66f)
@@ -249,10 +254,12 @@ public class Character : AnimateEntity
         if (Ientity == inventory[0])
         {
             Ientity.Unequip(0);
+            UI.emptySlotInventory(0);
         }
         if (Ientity == inventory[1])
         {
             Ientity.Unequip(1);
+            UI.emptySlotInventory(1);
         }
         if (Ientity.tag == "Player" || Ientity.tag == "enemy")
         {
@@ -285,6 +292,7 @@ public class Character : AnimateEntity
             carriedObject.transform.parent = null;
             //carriedObject.transform.localPosition = Vector3.zero;
             //carriedObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            carriedObject.GetComponent<CircleCollider2D>().enabled = true;
             carriedObject = null;
             isCarrying = false;
         }
