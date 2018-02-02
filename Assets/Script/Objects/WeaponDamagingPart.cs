@@ -14,7 +14,7 @@ public class WeaponDamagingPart : MonoBehaviour
             if (hit != weaponPart.Holder.gameObject)
             {
                 Debug.Log("hit");
-                other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), null);
+                other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), other.gameObject);
             }
         }
     }

@@ -11,11 +11,14 @@ public class Warrior : AnimateEntity {
 
 
 	// Use this for initialization
-	void Start () {
+	protected override void  Start () {
         speed = 6;
         attack = 4;
         health = 10;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
+        animator = this.GetComponent<Animator>();
+        invincibility = new Timer(timeOfInvincibility, true);
+        rigidb = GetComponent<Rigidbody2D>();
     }
 	
 
