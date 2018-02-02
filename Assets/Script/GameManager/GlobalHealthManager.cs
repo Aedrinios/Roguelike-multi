@@ -23,23 +23,11 @@ public class GlobalHealthManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        /*
-        panel = GameObject.Find("PanelFlou");
-        quite = GameObject.Find("Quite");*/
-       // gameOver = GameObject.Find("GameOver");
-       // gameOver = GetComponent<Image>();
-        //   replay = GameObject.Find("Replay");
-
-
         panel.gameObject.SetActive(false);
         gameOver.gameObject.SetActive(false);
         quite.gameObject.SetActive(false);
         replay.gameObject.SetActive(false);
-/*           panel.gameObject.SetActive(true);
-          gameOver.gameObject.SetActive(true);
-          quite.gameObject.SetActive(true);
-          replay.gameObject.SetActive(true);
-  */
+
         numb = 0;
     }
 	
@@ -89,19 +77,14 @@ public class GlobalHealthManager : MonoBehaviour {
     
     public void changeSprite(int i)
     {
-        Debug.Log("Changement de sprite");
         if (i == 0)
         {
-            Debug.Log("Changement de sprite 0");
             quite.GetComponent<UnityEngine.UI.Image>().overrideSprite = notSelectedQuite;
             replay.GetComponent<UnityEngine.UI.Image>().overrideSprite = selectedReplay;
-       //     gameOver.GetComponent<UnityEngine.UI.Image>().overrideSprite = notSelectedQuite;
         }
 
         if (i == 1)
         {
-            Debug.Log("Changement de sprite 1");
-           // gameOver.GetComponent<UnityEngine.UI.Image> ().overrideSprite = notSelectedQuite;
             replay.GetComponent<UnityEngine.UI.Image>().overrideSprite = notSelectedReplay;
             quite.GetComponent<UnityEngine.UI.Image>().overrideSprite = selectedQuite;
         }
