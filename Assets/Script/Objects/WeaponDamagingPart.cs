@@ -8,6 +8,7 @@ public class WeaponDamagingPart : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(!other.isTrigger)
         if (other.tag.Equals("enemy"))
         {
             GameObject hit = other.gameObject;
