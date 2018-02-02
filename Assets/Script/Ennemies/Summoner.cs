@@ -23,45 +23,49 @@ public class Summoner : AnimateEntity
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
         summonTimer = 7;
+		animator = this.GetComponent<Animator>();
     }
 
 
 
     // Update is called once per frame
     void Update()
-    {
+	{
 
-        if (hasTarget)
-        {
-            summonTimer -= Time.deltaTime;
-            direction = target.transform.position - gameObject.transform.position;
-            circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius = direction.magnitude * 2;
+		if (hasTarget) 
+		{
+			summonTimer -= Time.deltaTime;
+			direction = target.transform.position - gameObject.transform.position;
+			circleColliderRadius = gameObject.GetComponent<CircleCollider2D> ().radius = direction.magnitude * 2;
 
-            if (circleColliderRadius < 10)
-                rigidb.velocity = -direction.normalized * speed;
 
-            else if (circleColliderRadius > 30)
-                rigidb.velocity = direction.normalized * speed;
-
-            else
-            {
-                rigidb.velocity = Vector2.zero;
-                if (summonTimer <= 0)
-                {
-                    summonTimer = 5;
-                    Summon(target.transform.position - direction/2);
-                }
-            }
-            if (health <= 0)
-            {
-                Destroy(gameObject);
-            }
-        }
+			if (circleColliderRadius < 10)
+				Move (-this.direction);
+			else if (circleColliderRadius > 30)
+				Move (this.direction);
+			else 
+			{
+				
+				if (summonTimer <= 0) {
+					Idle ();
+					summonTimer = 5;
+					Summon (target.transform.position - direction / 2);
+				}
+			}
+			if (health <= 0) 
+			{
+				Destroy (gameObject);
+			}
+		} else
+			Idle ();
     }
 
     public override void Move(Vector2 direction)
     {
-        throw new System.NotImplementedException();
+		rigidb.velocity = direction.normalized * speed;
+		animator.SetFloat ("directionX", direction.x);
+		animator.SetFloat ("directionY", direction.y);
+		animator.SetBool ("isMoving", true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

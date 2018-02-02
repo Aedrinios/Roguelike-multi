@@ -33,7 +33,7 @@ public class GlobalHealthManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        globalHealthNumber.text = "x " +globalHealth;
+        globalHealthNumber.text = "x" +globalHealth;
         
         var butT = UnityEngine.Input.GetButtonDown("Keyboard 2 left-selection"); // Bouton Q pour gauche
         var butG = UnityEngine.Input.GetButtonDown("Keyboard 2 right-selection"); // Bouton D pour droite

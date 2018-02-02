@@ -9,22 +9,22 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1996090752085960}
+  m_RootGameObject: {fileID: 1525185932922534}
   m_IsPrefabParent: 1
---- !u!1 &1996090752085960
+--- !u!1 &1525185932922534
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4552439191269408}
-  - component: {fileID: 212003569883356148}
-  - component: {fileID: 50956557728070626}
-  - component: {fileID: 61568429016266998}
-  - component: {fileID: 95391378928952500}
-  - component: {fileID: 114576406263659318}
-  - component: {fileID: 58141533618952788}
+  - component: {fileID: 4537616283130186}
+  - component: {fileID: 212504934331694216}
+  - component: {fileID: 50082957106650884}
+  - component: {fileID: 61768616180329552}
+  - component: {fileID: 95518742006604098}
+  - component: {fileID: 114815769210232670}
+  - component: {fileID: 58207627152475806}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: enemy
@@ -32,26 +32,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4552439191269408
+--- !u!4 &4537616283130186
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1996090752085960}
+  m_GameObject: {fileID: 1525185932922534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.89, y: 4.25, z: 0}
+  m_LocalPosition: {x: -24.79, y: 14.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50956557728070626
+--- !u!50 &50082957106650884
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1996090752085960}
+  m_GameObject: {fileID: 1525185932922534}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -65,12 +65,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &58141533618952788
+--- !u!58 &58207627152475806
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1996090752085960}
+  m_GameObject: {fileID: 1525185932922534}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -80,12 +80,12 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 10
---- !u!61 &61568429016266998
+--- !u!61 &61768616180329552
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1996090752085960}
+  m_GameObject: {fileID: 1525185932922534}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -105,13 +105,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!95 &95391378928952500
+--- !u!95 &95518742006604098
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1996090752085960}
+  m_GameObject: {fileID: 1525185932922534}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 22100000, guid: caf47ad7fb6c14c24bc0bbe33c205896, type: 2}
@@ -122,18 +122,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114576406263659318
+--- !u!114 &114815769210232670
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1996090752085960}
+  m_GameObject: {fileID: 1525185932922534}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1ab693cc9d0ce64d9b7a8e94f34a80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupCollider: {fileID: 61568429016266998}
+  pickupCollider: {fileID: 61768616180329552}
   thumbnail: {fileID: 0}
   holder: {fileID: 0}
   health: 10
@@ -145,15 +145,17 @@ MonoBehaviour:
   timeOfInvincibility: 0.1
   direction: {x: 0, y: 0, z: 0}
   sounds: []
-  targetChoice: {fileID: 58141533618952788}
+  sprites: []
+
+  targetChoice: {fileID: 58207627152475806}
   target: {fileID: 0}
   hasTarget: 0
---- !u!212 &212003569883356148
+--- !u!212 &212504934331694216
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1996090752085960}
+  m_GameObject: {fileID: 1525185932922534}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

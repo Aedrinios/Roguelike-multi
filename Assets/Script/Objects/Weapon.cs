@@ -15,6 +15,14 @@ public float pushPower;
         damage = 5;
     }
 
+    private void Update()
+    {
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.sqrMagnitude < 0.1)
+        {
+            this.GetComponent<CircleCollider2D>().enabled = false;
+        }
+    }
+
     public override void Use(Character user) {
 		CopyUserRotation(user);
 		LaunchAnimation();
