@@ -36,7 +36,7 @@ public class Character : AnimateEntity
         ground = new ArrayList();
         rigidb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
-        deathTime = 5;
+        deathTime = 3;
         deathTimeCount = 0;
         startLife = health;
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -65,7 +65,12 @@ public class Character : AnimateEntity
         {
             if (isDead == false)
             {
+                gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 globalHealthManager.globalHealth--;
+                animator.SetBool("isDead", true);
+                animator.SetFloat("directionY", -1);
+                animator.SetFloat("directionX", 0);
+                GetComponent<CharController>().enabled = false;
             }
             isDead = true;
             canBeDamaged = false;
@@ -98,7 +103,7 @@ public class Character : AnimateEntity
                 opacityValue = 0.3f;
             }
             //clignotement avant de respawn
-            else if (deathTimeCount >= deathTime * 0.75f)
+            else if (deathTimeCount >= deathTime * 0.66f)
             {
                 if (blinkTimeCount >= blinkTime)
                 {
@@ -114,6 +119,11 @@ public class Character : AnimateEntity
                     }
                 }
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, opacityValue);
+            }
+            else if (deathTimeCount >= deathTime * 0.33f)
+            {
+                GetComponent<CharController>().enabled = true;
+                animator.SetBool("isDead", false);
             }
         }
 
@@ -150,17 +160,12 @@ public class Character : AnimateEntity
 
     protected override void Die()
     {
-        base.Die();
-        isDying = true;
-        animator.SetBool("isDying", true);
+        animator.SetBool("isDead", true);
     }
 
     public void Revive()
     {
-        isDying = false;
-        animator.SetBool("isDying", false);
-        health = 10;
-        UI.SetHealth(health);
+        animator.SetBool("isDead", false);
     }
 
     public void InputAction(params object[] args)
