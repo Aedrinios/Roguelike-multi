@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponDamagingPart : MonoBehaviour {
-	public Weapon weaponPart;
-	void OnTriggerEnter2Dz(BoxCollider2D other){
-		//if (other.tag.Equals("Ennemi")){
-			GameObject hit = other.gameObject;
-			if ( hit != weaponPart.Holder.gameObject)
+public class WeaponDamagingPart : MonoBehaviour
+{
+    public Weapon weaponPart;
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag.Equals("enemy"))
+        {
+            GameObject hit = other.gameObject;
+            if (hit != weaponPart.Holder.gameObject)
             {
                 Debug.Log("hit");
-			other.gameObject.GetComponent<AnimateEntity>().ReceiveHit((int) (weaponPart.Holder.GetAttack() * weaponPart.GetDamage()),null);
-				//weaponPart.OnCharacterHit(hit);
+                other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), other.gameObject);
             }
-		//}
-	}
+        }
+    }
 }
+
