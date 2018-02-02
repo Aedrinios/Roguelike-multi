@@ -5547,6 +5547,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114576406263659318, guid: 71466c24edb9b5c4d8093b78f0fce735,
+        type: 2}
+      propertyPath: attack
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71466c24edb9b5c4d8093b78f0fce735, type: 2}
   m_IsPrefabParent: 0
@@ -12982,8 +12987,8 @@ MonoBehaviour:
   - {fileID: 1591963721}
   hearts:
   - {fileID: 21300000, guid: 0847851633c7343fb8ed1e308edfba38, type: 3}
-  - {fileID: 21300000, guid: 8d159ffa723c24549b54d644259ae280, type: 3}
   - {fileID: 21300000, guid: 021e35030ada648999293a4b765aba49, type: 3}
+  - {fileID: 21300000, guid: 8d159ffa723c24549b54d644259ae280, type: 3}
 --- !u!114 &2021948312
 MonoBehaviour:
   m_ObjectHideFlags: 0

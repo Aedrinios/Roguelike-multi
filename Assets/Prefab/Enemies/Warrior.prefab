@@ -145,6 +145,7 @@ MonoBehaviour:
   timeOfInvincibility: 0
   direction: {x: 0, y: 0, z: 0}
   sounds: []
+  sprites: []
   targetChoice: {fileID: 58141533618952788}
   target: {fileID: 0}
   hasTarget: 0

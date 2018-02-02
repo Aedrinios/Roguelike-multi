@@ -54,6 +54,7 @@ public class Character : AnimateEntity
 
     public void Update() // déséquiper pour l'instant
     {
+        Debug.Log(health);
 
         if (Input.GetKeyDown("2"))
         {

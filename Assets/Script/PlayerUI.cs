@@ -34,11 +34,11 @@ public class PlayerUI : MonoBehaviour
     {
         for (int i = 0; i < 5; ++i)
         {
-            if (i * 2 <= health - 2)    // Full heart
+            if (i * 2 <= health - 2 )                    // Full heart
                 healthHearts[i].sprite = hearts[0];
-            else if (i * 2 > health + health % 2)   // empty heart
+            else if (i * 2 > health + health % 2)        // empty heart
                 healthHearts[i].sprite = hearts[2];
-            else    // Half heart
+            else                                         // Half heart
                 healthHearts[i].sprite = hearts[1];
         }
     }
