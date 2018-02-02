@@ -8,3 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BastienTest.unity
     guid: b252b0756d7bc1b49b715aab7496519d
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 5d5e53329bcc1de4b875ff76a5cc69b2
