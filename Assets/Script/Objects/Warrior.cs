@@ -28,7 +28,7 @@ public class Warrior : AnimateEntity {
         if(hasTarget)
         {
             direction = target.transform.position - gameObject.transform.position;
-            gameObject.GetComponent<CircleCollider2D>().radius= direction.magnitude*2;
+            gameObject.GetComponent<CircleCollider2D>().radius= direction.magnitude;
             rigidb.velocity = direction.normalized * speed;
         }
         
