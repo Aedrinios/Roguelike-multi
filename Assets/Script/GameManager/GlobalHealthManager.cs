@@ -13,12 +13,7 @@ public class GlobalHealthManager : MonoBehaviour {
     public GameObject gameOver;
     public GameObject quite;
     public GameObject replay;
-    /*
-    private GameObject panel;
-    private GameObject gameOver;
-    private GameObject quite;
-    private GameObject replay;
-    */
+ 
     public Sprite notSelectedQuite;
     public Sprite selectedQuite;
     public Sprite notSelectedReplay;
@@ -64,6 +59,8 @@ public class GlobalHealthManager : MonoBehaviour {
             quite.gameObject.SetActive(true);
             replay.gameObject.SetActive(true);
 
+            Time.timeScale = 0.0f;
+
             if (butT) // gauche
             {
                 numb = 0;
@@ -78,11 +75,13 @@ public class GlobalHealthManager : MonoBehaviour {
             if (numb == 0 && butB) // Selection de play
             {
                 SceneManager.LoadScene("BastienTest");
+                Time.timeScale = 1.0f;
 
             }
             if (numb == 1 && butB) // Selection de quite
             {
                 SceneManager.LoadScene("Menu");
+                Time.timeScale = 1.0f;
             }
             
         }
