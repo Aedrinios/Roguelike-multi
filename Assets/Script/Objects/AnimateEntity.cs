@@ -8,7 +8,7 @@ using UnityEngine;
 public abstract class AnimateEntity : InanimateEntity
 {
 
-    private Timer invincibility;
+    protected Timer invincibility;
     public int health = 10;
     public float speed = 10;
     public int attack = 2;
@@ -25,7 +25,6 @@ public abstract class AnimateEntity : InanimateEntity
     public Vector3 direction;
     protected bool isDying = false;
     public AudioClip[] sounds;
-    public Sprite[] sprites;
     protected AudioSource audioSource;
 
 
@@ -74,18 +73,23 @@ public abstract class AnimateEntity : InanimateEntity
     public virtual void ReceiveHit(int value, GameObject other)
     {
         if (!invincibility.IsFinished())
+        {
             return;
+        }
         //hitSound.Play();
         invincibility.ResetPlay();
         
         if (canBeDamaged == true &&!isDead)
         {
-            health -= value;
-        }
-        KnockBack(other);
 
+            Debug.Log(value);
+            health -= value;
+            KnockBack(other);
+        }
         if (health <= 0)
+        {
             Die();
+        }
     }
 
     public bool IsDying()
@@ -112,8 +116,6 @@ public abstract class AnimateEntity : InanimateEntity
     }
 
 }
-
-
 
 public enum knockbackDistances
 {
