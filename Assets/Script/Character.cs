@@ -49,7 +49,7 @@ public class Character : AnimateEntity
     public override void ReceiveHit(int value, GameObject other)
     {
         base.ReceiveHit(value, other);
-        UI.SetHealth(health);
+        UI.SetHealth(4);
     }
 
     public void Update() // déséquiper pour l'instant
