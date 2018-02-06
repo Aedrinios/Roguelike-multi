@@ -35,13 +35,10 @@ public class GlobalHealthManager : MonoBehaviour {
 	void Update () {
         globalHealthNumber.text = "x" +globalHealth;
         
-        var butT = UnityEngine.Input.GetButtonDown("Keyboard 2 left-selection"); // Bouton Q pour gauche
-        var butG = UnityEngine.Input.GetButtonDown("Keyboard 2 right-selection"); // Bouton D pour droite
-        var butB = UnityEngine.Input.GetButtonDown("Keyboard 2 start"); // Bouton W pour selectionner
+        var butSelect = UnityEngine.Input.GetButtonDown("Keyboard 2 start"); // Bouton W pour selectionner
 
         if (globalHealth == 0)
         {
-            
             panel.gameObject.SetActive(true);
             gameOver.gameObject.SetActive(true);
             quite.gameObject.SetActive(true);
@@ -49,24 +46,24 @@ public class GlobalHealthManager : MonoBehaviour {
 
             Time.timeScale = 0.0f;
 
-            if (butT) // gauche
+            if (Input.GetKeyDown(KeyCode.Z)) // gauche
             {
                 numb = 0;
                 changeSprite(numb);
             }
-            if (butG) // droite
+            if (Input.GetKeyDown(KeyCode.S)) // droite
             {
                 numb = 1;
                 changeSprite(numb);
             }
 
-            if (numb == 0 && butB) // Selection de play
+            if (numb == 0 && butSelect) // Selection de play
             {
                 SceneManager.LoadScene("BastienTest");
                 Time.timeScale = 1.0f;
 
             }
-            if (numb == 1 && butB) // Selection de quite
+            if (numb == 1 && butSelect) // Selection de quite
             {
                 SceneManager.LoadScene("Menu");
                 Time.timeScale = 1.0f;
