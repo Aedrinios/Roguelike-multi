@@ -18,7 +18,6 @@ public class Warrior : AnimateEntity {
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
         invincibility = new Timer(timeOfInvincibility, true);
-        rigidb = GetComponent<Rigidbody2D>();
     }
 	
 
