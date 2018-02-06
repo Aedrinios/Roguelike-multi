@@ -36,6 +36,7 @@ public class Warrior : AnimateEntity {
         
         if(health<=0)
         {
+            audioSource.PlayOneShot(getSound("guerrierMort1"));
             Destroy(gameObject);
         }
 	}

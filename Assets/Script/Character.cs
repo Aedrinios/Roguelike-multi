@@ -202,6 +202,7 @@ public class Character : AnimateEntity
             inventory[slot] = (InanimateEntity)ground[0];
             inventory[slot].Equip(this);
             UI.ChangeWeapon(this, slot);
+            audioSource.PlayOneShot(getSound("pickUpItem"));
         }   
     }
 

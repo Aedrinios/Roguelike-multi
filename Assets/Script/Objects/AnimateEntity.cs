@@ -12,7 +12,6 @@ public abstract class AnimateEntity : InanimateEntity
     public int health = 10;
     public float speed = 10;
     public int attack = 2;
-    public AudioSource dyingSound, hitSound;
     protected bool canBeDamaged = true;
     protected bool canAttack = true;
     protected bool isDead = false;
@@ -33,6 +32,7 @@ public abstract class AnimateEntity : InanimateEntity
         animator = this.GetComponent<Animator>();
         invincibility = new Timer(timeOfInvincibility, true);
         rigidb = GetComponent<Rigidbody2D>();
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     public virtual void Move(Vector2 directionRequired)
