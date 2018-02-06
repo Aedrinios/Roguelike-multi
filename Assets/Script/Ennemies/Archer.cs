@@ -18,13 +18,15 @@ public class Archer : AnimateEntity
 
 
     // Use this for initialization
-    void Start()
+    protected override void  Start()
     {
         speed = 10;
         attack = 2;
         health = 10;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
+        invincibility = new Timer(timeOfInvincibility, true);
+        animator = this.GetComponent<Animator>();
         shootTimer = 1;
     }
 
@@ -33,28 +35,25 @@ public class Archer : AnimateEntity
     // Update is called once per frame
     void Update()
     {       
-        if(hasTarget)
-        {
-            shootTimer -= Time.deltaTime;
-            direction = target.transform.position - gameObject.transform.position;
-            circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius = direction.magnitude * 2;
+		if (hasTarget) {
+			shootTimer -= Time.deltaTime;
+			direction = target.transform.position - gameObject.transform.position;
+			circleColliderRadius = gameObject.GetComponent<CircleCollider2D> ().radius = direction.magnitude * 2;
 
-            if (circleColliderRadius < 10)
-                rigidb.velocity = -direction.normalized * speed;
-
-            else if (circleColliderRadius > 30)
-                rigidb.velocity = direction.normalized * speed;
-
-            else
-            {
-                rigidb.velocity = Vector2.zero;
-                if (shootTimer <= 0)
-                {
-                    shootTimer = 3;
-                    Shoot();
-                }      
-            }
-        }
+			if (circleColliderRadius < 10) {
+				Move (-this.direction);
+			} else if (circleColliderRadius > 30) {
+				Move (this.direction);
+			} else {
+				//Idle ();
+				if (shootTimer <= 0) {
+					Idle ();
+					shootTimer = 3;
+					Shoot ();
+				}      
+			}
+		} else 
+			Idle ();
 
         if (health <= 0)
         {
@@ -64,7 +63,10 @@ public class Archer : AnimateEntity
 
     public override void Move(Vector2 direction)
     {
-        throw new System.NotImplementedException();
+		rigidb.velocity = direction.normalized * speed;
+		animator.SetFloat ("directionX", direction.x);
+		animator.SetFloat ("directionY", direction.y);
+		animator.SetBool ("isMoving", true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

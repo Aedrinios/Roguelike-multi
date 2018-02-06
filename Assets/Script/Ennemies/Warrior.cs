@@ -18,7 +18,6 @@ public class Warrior : AnimateEntity {
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
         invincibility = new Timer(timeOfInvincibility, true);
-        rigidb = GetComponent<Rigidbody2D>();
     }
 	
 
@@ -29,8 +28,10 @@ public class Warrior : AnimateEntity {
         {
             direction = target.transform.position - gameObject.transform.position;
             gameObject.GetComponent<CircleCollider2D>().radius= direction.magnitude;
-            rigidb.velocity = direction.normalized * speed;
-        }
+			Move (this.direction);
+		} else
+			Idle ();
+        
         
         if(health<=0)
         {
@@ -40,7 +41,10 @@ public class Warrior : AnimateEntity {
 
     public override void Move(Vector2 direction)
     {
-        throw new System.NotImplementedException();
+		rigidb.velocity = direction.normalized * speed;
+		animator.SetFloat ("directionX", direction.x);
+		animator.SetFloat ("directionY", direction.y);
+		animator.SetBool ("isMoving", true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

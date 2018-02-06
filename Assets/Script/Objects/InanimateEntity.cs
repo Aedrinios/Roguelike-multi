@@ -34,7 +34,7 @@ public abstract class InanimateEntity : MonoBehaviour {
 		pickupCollider.enabled = true;
         this.transform.parent = null;
         holder = null;
-        isEquipped = false;      
+        isEquipped = false;    
     }
 	public abstract void Use (Character user);
 
