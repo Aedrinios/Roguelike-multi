@@ -11,6 +11,7 @@ public class Summoner : AnimateEntity
     public float summonTimer;
     public GameObject[] summon;
     public float circleColliderRadius;
+    public float baseColliderRadius;
 
 
 
@@ -21,7 +22,7 @@ public class Summoner : AnimateEntity
         attack = 1;
         health = 6;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
-        circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
+        baseColliderRadius=circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
         invincibility = new Timer(timeOfInvincibility, true);
         summonTimer = 7;
 		animator = this.GetComponent<Animator>();
@@ -36,12 +37,12 @@ public class Summoner : AnimateEntity
 		{
 			summonTimer -= Time.deltaTime;
 			direction = target.transform.position - gameObject.transform.position;
-			circleColliderRadius = gameObject.GetComponent<CircleCollider2D> ().radius = direction.magnitude * 2;
+			circleColliderRadius = gameObject.GetComponent<CircleCollider2D> ().radius = direction.magnitude;
 
 
-			if (circleColliderRadius < 10)
+			if (circleColliderRadius < baseColliderRadius*0.25)
 				Move (-this.direction);
-			else if (circleColliderRadius > 30)
+			else if (circleColliderRadius > baseColliderRadius*0.75f)
 				Move (this.direction);
 			else 
 			{
