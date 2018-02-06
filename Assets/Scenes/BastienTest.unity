@@ -2189,45 +2189,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 212425270120971522, guid: dcbe432191d1543d6928631234c7e2e6,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 212425270120971522, guid: dcbe432191d1543d6928631234c7e2e6,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 212425270120971522, guid: dcbe432191d1543d6928631234c7e2e6,
-        type: 2}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 60794141475793882, guid: dcbe432191d1543d6928631234c7e2e6,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 60794141475793882, guid: dcbe432191d1543d6928631234c7e2e6,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 60794141475793882, guid: dcbe432191d1543d6928631234c7e2e6,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 60794141475793882, guid: dcbe432191d1543d6928631234c7e2e6,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1884072128244662, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
   m_IsPrefabParent: 0
@@ -6223,58 +6184,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
-    - target: {fileID: 212425270120971522, guid: 627a6ed270419475a9dce7adb449e1f5,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: 437912767
-      objectReference: {fileID: 0}
-    - target: {fileID: 212425270120971522, guid: 627a6ed270419475a9dce7adb449e1f5,
-        type: 2}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212425270120971522, guid: 627a6ed270419475a9dce7adb449e1f5,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 212425270120971522, guid: 627a6ed270419475a9dce7adb449e1f5,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 212425270120971522, guid: 627a6ed270419475a9dce7adb449e1f5,
-        type: 2}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 60794141475793882, guid: 627a6ed270419475a9dce7adb449e1f5,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 60794141475793882, guid: 627a6ed270419475a9dce7adb449e1f5,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 60794141475793882, guid: 627a6ed270419475a9dce7adb449e1f5,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 60794141475793882, guid: 627a6ed270419475a9dce7adb449e1f5,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 0.22
-      objectReference: {fileID: 0}
     - target: {fileID: 1884072128244662, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
       propertyPath: m_Name
       value: Sword (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1884072128244662, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
@@ -7079,10 +6991,6 @@ Prefab:
     - target: {fileID: 1884072128244662, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
       propertyPath: m_Name
       value: Stick (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1884072128244662, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
@@ -11444,7 +11352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f493e3b188b9d48819570650bf82f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalHealth: 2
+  globalHealth: 40
   globalHealthNumber: {fileID: 2132164587}
   panel: {fileID: 541206183}
   gameOver: {fileID: 1407735492}
