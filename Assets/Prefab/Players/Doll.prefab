@@ -264,15 +264,13 @@ MonoBehaviour:
   health: 10
   speed: 5
   attack: 2
-  dyingSound: {fileID: 0}
-  hitSound: {fileID: 0}
   stun: 0
   timeOfInvincibility: 1.5
   direction: {x: 0, y: 0, z: 0}
   sounds:
   - {fileID: 8300000, guid: 0d22f30248c4b4401a0cd9afbc42bffa, type: 3}
   - {fileID: 8300000, guid: 2b4b24a218eb28142a96a4523737149a, type: 3}
-  sprites: []
+  - {fileID: 8300000, guid: 3b0d18b42bdf7d142911619d46303886, type: 3}
   inventory: []
   UI: {fileID: 0}
 --- !u!212 &212037192771407950

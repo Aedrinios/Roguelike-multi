@@ -38,7 +38,6 @@ public class Character : AnimateEntity
         deathTime = 3;
         deathTimeCount = 0;
         startLife = health;
-        audioSource = gameObject.GetComponent<AudioSource>();
         deathAudioHasPlayed = false;
         opacityValue = 0.3f;
         blinkTime = 0.2f;
@@ -85,7 +84,7 @@ public class Character : AnimateEntity
             //joue le son de mort
             if (deathAudioHasPlayed == false)
             {
-                audioSource.PlayOneShot(getSound("goule2Mort2"));
+                audioSource.PlayOneShot(SoundManager.getSound("goule2Mort2"));
                 deathAudioHasPlayed = true;
             }
 
@@ -103,7 +102,7 @@ public class Character : AnimateEntity
                 health = startLife;
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
                 deathAudioHasPlayed = false;
-                audioSource.PlayOneShot(getSound("respawnSound"));
+                //audioSource.PlayOneShot(getSound("respawnSound"));
                 opacityValue = 0.3f;
                 UI.reactivateInventory();
             }
@@ -201,6 +200,7 @@ public class Character : AnimateEntity
             inventory[slot] = (InanimateEntity)ground[0];
             inventory[slot].Equip(this);
             UI.ChangeWeapon(this, slot);
+            //audioSource.PlayOneShot(getSound("pickUpItem"));
         }   
     }
 
