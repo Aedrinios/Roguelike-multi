@@ -223,11 +223,10 @@ MonoBehaviour:
   stun: 0
   timeOfInvincibility: 0.1
   direction: {x: 0, y: 0, z: 0}
-  sounds:
-  - {fileID: 8300000, guid: 183bedd46d3534cd892f75c0b874a9b2, type: 3}
   targetChoice: {fileID: 58207627152475806}
   target: {fileID: 0}
   hasTarget: 0
+  audioSource2: {fileID: 82175331344940276}
 --- !u!212 &212504934331694216
 SpriteRenderer:
   m_ObjectHideFlags: 1

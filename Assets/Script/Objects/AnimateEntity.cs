@@ -23,7 +23,6 @@ public abstract class AnimateEntity : InanimateEntity
     [HideInInspector]
     public Vector3 direction;
     protected bool isDying = false;
-    public AudioClip[] sounds;
     protected AudioSource audioSource;
 
 
@@ -101,18 +100,6 @@ public abstract class AnimateEntity : InanimateEntity
     {
         Vector3 knockBackDirection = (transform.position - other.transform.position).normalized;
         transform.position += knockBackDirection * (int)knockbackDistances.low;
-    }
-
-    public AudioClip getSound(string name)
-    {
-        for (int i = 0; i < sounds.Length; i++)
-        {
-            if (sounds[i].name == name)
-            {
-                return sounds[i];
-            }
-        }
-        return new AudioClip();
     }
 
 }
