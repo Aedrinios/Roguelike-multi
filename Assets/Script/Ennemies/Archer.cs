@@ -18,14 +18,15 @@ public class Archer : AnimateEntity
 
 
     // Use this for initialization
-    void Start()
+    protected override void  Start()
     {
         speed = 10;
         attack = 2;
         health = 10;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
-		animator = this.GetComponent<Animator>();
+        invincibility = new Timer(timeOfInvincibility, true);
+        animator = this.GetComponent<Animator>();
         shootTimer = 1;
     }
 

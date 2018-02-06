@@ -15,13 +15,14 @@ public class Summoner : AnimateEntity
 
 
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
         speed = 3;
         attack = 1;
         health = 6;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
+        invincibility = new Timer(timeOfInvincibility, true);
         summonTimer = 7;
 		animator = this.GetComponent<Animator>();
     }
@@ -31,7 +32,6 @@ public class Summoner : AnimateEntity
     // Update is called once per frame
     void Update()
 	{
-
 		if (hasTarget) 
 		{
 			summonTimer -= Time.deltaTime;

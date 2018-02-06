@@ -28,12 +28,12 @@ public class Arrow : InanimateEntity {
                 case ("Player"):
                     if (collision.tag == "Player")
                     {
-                        //collision.gameObject.GetComponent<Character>().ReceiveHit();
+                        collision.gameObject.GetComponent<Character>().ReceiveHit(0, collision.gameObject);
                         Destroy(gameObject);
                     }
                     else if (collision.tag == "enemy")
                     {
-                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(5,null);
+                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(5,collision.gameObject);
                         Destroy(gameObject);
 
                     }
@@ -42,13 +42,13 @@ public class Arrow : InanimateEntity {
                 case ("enemy"):
                     if (collision.tag == "Player")
                     {
-                        collision.gameObject.GetComponent<Character>().ReceiveHit(3,null);
+                        collision.gameObject.GetComponent<Character>().ReceiveHit(3, collision.gameObject);
                         Destroy(gameObject);
 
                     }
                     else if (collision.tag == "enemy")
                     {
-                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(2,null);
+                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(2, collision.gameObject);
                         Destroy(gameObject);
 
                     }
