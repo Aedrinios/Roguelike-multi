@@ -13,7 +13,7 @@ public class Arrow : InanimateEntity {
 
     private void Update()
     {
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.sqrMagnitude <= 4)
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.sqrMagnitude <= .1)
         {
             Destroy(gameObject);
         }
@@ -33,26 +33,23 @@ public class Arrow : InanimateEntity {
                     }
                     else if (collision.tag == "enemy")
                     {
-                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(5,collision.gameObject);
+                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(5, collision.gameObject);
                         Destroy(gameObject);
-
                     }
-
                     break;
                 case ("enemy"):
                     if (collision.tag == "Player")
                     {
                         collision.gameObject.GetComponent<Character>().ReceiveHit(3, collision.gameObject);
                         Destroy(gameObject);
-
                     }
                     else if (collision.tag == "enemy")
                     {
                         collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(2, collision.gameObject);
                         Destroy(gameObject);
-
                     }
                     break;
+                default: break;
             }
         }
     }

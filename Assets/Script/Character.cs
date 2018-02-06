@@ -30,7 +30,6 @@ public class Character : AnimateEntity
     protected override void Start()
     {
         globalHealthManager = FindObjectOfType<GlobalHealthManager>();
-
         base.Start();
         inventory = new InanimateEntity[2];
         ground = new ArrayList();

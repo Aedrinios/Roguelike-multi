@@ -79,7 +79,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 30
+  m_Radius: 20
 --- !u!61 &61278040227745706
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -145,7 +145,6 @@ MonoBehaviour:
   timeOfInvincibility: 0
   direction: {x: 0, y: 0, z: 0}
   sounds: []
-  sprites: []
   targetChoice: {fileID: 58665862377207904}
   target: {fileID: 0}
   hasTarget: 0
@@ -153,6 +152,7 @@ MonoBehaviour:
   canShoot: 0
   shootTimer: 0
   circleColliderRadius: 0
+  baseColliderRadius: 0
 --- !u!212 &212013848022134306
 SpriteRenderer:
   m_ObjectHideFlags: 1
