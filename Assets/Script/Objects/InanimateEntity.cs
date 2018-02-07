@@ -17,7 +17,10 @@ public abstract class InanimateEntity : MonoBehaviour {
 	public virtual void Equip (Character user){
 		isEquipped = true;
         holder = user;
-		this.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        for (int i = 0; i < GetComponentsInChildren<SpriteRenderer>().Length; i++)
+        {
+            GetComponentsInChildren<SpriteRenderer>()[i].enabled = false;
+        }
         this.GetComponentInChildren<CircleCollider2D>().enabled = false;
         pickupCollider.enabled = false;
 		this.transform.parent = user.transform;

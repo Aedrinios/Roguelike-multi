@@ -7,6 +7,7 @@ public class Warrior : AnimateEntity {
     public CircleCollider2D targetChoice;
     public GameObject target;
     public bool hasTarget =false;
+    public AudioSource audioSource2;
 
 
 
@@ -35,7 +36,10 @@ public class Warrior : AnimateEntity {
         
         if(health<=0)
         {
-            Destroy(gameObject);
+            Debug.Log("warrior meurt");
+            //audioSource2.PlayOneShot(sounds[0]);
+            //audioSource2.PlayOneShot(getSound("guerrierMort1"));
+            //Destroy(gameObject);
         }
 	}
 
