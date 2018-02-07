@@ -13,7 +13,7 @@ public class Arrow : InanimateEntity {
 
     private void Update()
     {
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.sqrMagnitude <= .1)
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.sqrMagnitude <= 1)
         {
             Destroy(gameObject);
         }

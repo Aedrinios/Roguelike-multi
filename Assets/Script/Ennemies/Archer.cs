@@ -87,7 +87,6 @@ public class Archer : AnimateEntity
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Character>().StartCoroutine("ReceiveHit");
             collision.gameObject.GetComponent<Character>().ReceiveHit(attack,gameObject);
         }
     }
@@ -98,6 +97,6 @@ public class Archer : AnimateEntity
         GameObject go= Instantiate(arrow, gameObject.transform.position+toTarget, Quaternion.identity);
         go.GetComponent<Rigidbody2D>().velocity = toTarget*15;
         go.GetComponent<InanimateEntity>().Holder = gameObject.GetComponent<AnimateEntity>();
-        //go.transform.LookAt(target.transform);
+        go.transform.rotation=Quaternion.Euler(0,0,-90+Mathf.Acos(direction.x/direction.magnitude)*180/Mathf.PI);
     }
 }
