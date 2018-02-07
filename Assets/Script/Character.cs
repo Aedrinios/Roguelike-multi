@@ -181,6 +181,7 @@ public class Character : AnimateEntity
                 TryPickupItem(item);
             else
                 inventory[item].Use(this);
+            audioSource.PlayOneShot(SoundManager.getSound("armeEpeeVide"));
             Debug.Log("pressed");
         }
     }
