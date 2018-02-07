@@ -12,20 +12,22 @@ public class Archer : AnimateEntity
     public bool canShoot;
     public float shootTimer;
     public float circleColliderRadius;
+    public float baseColliderRadius;
 
 
 
 
 
     // Use this for initialization
-    void Start()
+    protected override void  Start()
     {
         speed = 10;
         attack = 2;
         health = 10;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
-        circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
-		animator = this.GetComponent<Animator>();
+        baseColliderRadius=circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
+        invincibility = new Timer(timeOfInvincibility, true);
+        animator = this.GetComponent<Animator>();
         shootTimer = 1;
     }
 
@@ -37,13 +39,17 @@ public class Archer : AnimateEntity
 		if (hasTarget) {
 			shootTimer -= Time.deltaTime;
 			direction = target.transform.position - gameObject.transform.position;
-			circleColliderRadius = gameObject.GetComponent<CircleCollider2D> ().radius = direction.magnitude * 2;
+			circleColliderRadius = gameObject.GetComponent<CircleCollider2D> ().radius = direction.magnitude;
 
-			if (circleColliderRadius < 10) {
+			if (circleColliderRadius < baseColliderRadius * 0.33f) {
 				Move (-this.direction);
-			} else if (circleColliderRadius > 30) {
+			}
+            else if (circleColliderRadius > baseColliderRadius * 0.67f) {
 				Move (this.direction);
-			} else {
+			}
+            else
+            {
+                rigidb.velocity = Vector2.zero;
 				//Idle ();
 				if (shootTimer <= 0) {
 					Idle ();

@@ -79,7 +79,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 30
+  m_Radius: 15
 --- !u!61 &61228527115648704
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -137,7 +137,6 @@ MonoBehaviour:
   thumbnail: {fileID: 0}
   holder: {fileID: 0}
   health: 10
-
   speed: 10
   attack: 2
   dyingSound: {fileID: 0}
@@ -146,16 +145,15 @@ MonoBehaviour:
   timeOfInvincibility: 0
   direction: {x: 0, y: 0, z: 0}
   sounds: []
-
-  sprites: []
   targetChoice: {fileID: 58912998951757616}
   target: {fileID: 0}
   hasTarget: 0
-  summonTimer: 0
+  summonTimer: 7
   summon:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1908416230367998, guid: e202a56281438a3419f713bba5fab600, type: 2}
+  - {fileID: 1525185932922534, guid: 057e20083630dbc4b8ad86de90878f49, type: 2}
   circleColliderRadius: 0
+  baseColliderRadius: 0
 --- !u!212 &212353004471918448
 SpriteRenderer:
   m_ObjectHideFlags: 1
