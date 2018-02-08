@@ -36,10 +36,8 @@ public class Warrior : AnimateEntity {
         
         if(health<=0)
         {
-            Debug.Log("warrior meurt");
-            //audioSource2.PlayOneShot(sounds[0]);
-            //audioSource2.PlayOneShot(getSound("guerrierMort1"));
-            //Destroy(gameObject);
+            audioSource.PlayOneShot(SoundManager.getSound("goule2Mort2"));
+            Destroy(gameObject);
         }
 	}
 

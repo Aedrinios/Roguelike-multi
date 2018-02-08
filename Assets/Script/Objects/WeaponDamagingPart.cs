@@ -24,7 +24,7 @@ public class WeaponDamagingPart : MonoBehaviour
                 if (hit != weaponPart.Holder.gameObject)
                 {
                     Debug.Log("hit");
-                    audioSource.PlayOneShot(audio[0], 1f);
+                    audioSource.PlayOneShot(SoundManager.getSound("goule2Mort2"), 1f);
                     other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), other.gameObject);
                 }
             }
