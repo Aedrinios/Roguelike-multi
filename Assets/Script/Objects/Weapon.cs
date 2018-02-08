@@ -35,14 +35,18 @@ public float pushPower;
 	private void LaunchAnimation () {
 		if (!animator.GetBool("attack")){
 			transform.localPosition = Vector3.zero;
-			GetComponentInChildren<SpriteRenderer>().enabled = true;
+            GetComponentInChildren<SpriteRenderer>().enabled = true;
+            
 			animator.SetBool("attack", true);
 			holder.stun = true;
 		}
 	}
 
 	public void EndAnim(){
-		GetComponentInChildren<SpriteRenderer>().enabled = false;
+        for (int i = 0; i < GetComponentsInChildren<SpriteRenderer>().Length; i++)
+        {
+            GetComponentsInChildren<SpriteRenderer>()[i].enabled = false;
+        }
 		holder.stun = false;
 		Debug.Log("wut");
 	}

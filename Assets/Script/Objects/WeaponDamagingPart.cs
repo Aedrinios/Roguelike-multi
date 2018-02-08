@@ -5,7 +5,6 @@ using UnityEngine;
 public class WeaponDamagingPart : MonoBehaviour
 {
     public Weapon weaponPart;
-    public AudioClip[] audio;
     private AudioSource audioSource;
 
     private void Start()
@@ -24,8 +23,12 @@ public class WeaponDamagingPart : MonoBehaviour
                 if (hit != weaponPart.Holder.gameObject)
                 {
                     Debug.Log("hit");
+<<<<<<< HEAD
                     audioSource.PlayOneShot(SoundManager.getSound("goule2Mort2"), 1f);
+=======
+>>>>>>> 1f20c040f480bd4e14b6d10e69f95d4becde95c4
                     other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), other.gameObject);
+                    audioSource.PlayOneShot(SoundManager.getSound("armeEpee"), 1f);
                 }
             }
     }
