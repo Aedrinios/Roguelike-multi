@@ -42,7 +42,6 @@ public class GlobalHealthManager : MonoBehaviour {
         {
             panel.gameObject.SetActive(true);
             gameOver.gameObject.SetActive(true);
-            audioSource.PlayOneShot(SoundManager.getSound("Game_Over"), 1f);
             quite.gameObject.SetActive(true);
             replay.gameObject.SetActive(true);
 
@@ -86,6 +85,15 @@ public class GlobalHealthManager : MonoBehaviour {
         {
             replay.GetComponent<UnityEngine.UI.Image>().overrideSprite = notSelectedReplay;
             quite.GetComponent<UnityEngine.UI.Image>().overrideSprite = selectedQuite;
+        }
+    }
+
+    public void decreaseGlobalHealth(int n)
+    {
+        globalHealth -= n;
+        if (globalHealth <= 0)
+        {
+            SoundManager.playSound("Game_Over");
         }
     }
 }

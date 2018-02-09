@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114017609760987554}
   - component: {fileID: 50948184178369876}
   m_Layer: 0
-  m_Name: Spear Sprite
+  m_Name: Sword Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

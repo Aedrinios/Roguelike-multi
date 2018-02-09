@@ -8724,6 +8724,10 @@ Prefab:
       propertyPath: m_Name
       value: Warrior (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1525185932922534, guid: 057e20083630dbc4b8ad86de90878f49, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 057e20083630dbc4b8ad86de90878f49, type: 2}
   m_IsPrefabParent: 0
@@ -9990,7 +9994,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3b0d18b42bdf7d142911619d46303886, type: 3}
   - {fileID: 8300000, guid: 2b4b24a218eb28142a96a4523737149a, type: 3}
   - {fileID: 8300000, guid: 183bedd46d3534cd892f75c0b874a9b2, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 0b5e03747f9a5f74fbfcb97dc6648b65, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -10435,6 +10439,10 @@ Prefab:
     - target: {fileID: 1341645169142426, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
       propertyPath: m_Name
       value: Archer (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341645169142426, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
@@ -12021,6 +12029,10 @@ Prefab:
     - target: {fileID: 1341645169142426, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
       propertyPath: m_Name
       value: Archer (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341645169142426, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}

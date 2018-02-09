@@ -68,16 +68,18 @@ public class Character : AnimateEntity
 
             if (isDead == false)
             {
+                Debug.Log("OOOOOOOOOOOOOOOOOOOOO");
                 gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                globalHealthManager.globalHealth--;
+                globalHealthManager.decreaseGlobalHealth(1);
                 animator.SetBool("isDead", true);
                 animator.SetFloat("directionY", -1);
                 animator.SetFloat("directionX", 0);
                 GetComponent<CharController>().enabled = false;
+
+                isDead = true;
+                canBeDamaged = false;
+                canAttack = false;
             }
-            isDead = true;
-            canBeDamaged = false;
-            canAttack = false;
             
             gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacityValue);
 
@@ -105,6 +107,7 @@ public class Character : AnimateEntity
                 SoundManager.playSound("respawnSound");
                 opacityValue = 0.3f;
                 UI.reactivateInventory();
+                UI.SetHealth(startLife);  //remplir coeurs
             }
             //clignotement avant de respawn
             else if (deathTimeCount >= deathTime * 0.66f)
