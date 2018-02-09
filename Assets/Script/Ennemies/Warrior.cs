@@ -39,7 +39,7 @@ public class Warrior : AnimateEntity {
             Debug.Log("warrior meurt");
             //audioSource2.PlayOneShot(sounds[0]);
             //audioSource2.PlayOneShot(getSound("guerrierMort1"));
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
 	}
 
