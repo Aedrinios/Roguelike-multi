@@ -95,8 +95,10 @@ public class Archer : AnimateEntity
     {
         Vector3 toTarget = direction.normalized;
         GameObject go= Instantiate(arrow, gameObject.transform.position+toTarget, Quaternion.identity);
-        go.GetComponent<Rigidbody2D>().velocity = toTarget*15;
         go.GetComponent<InanimateEntity>().Holder = gameObject.GetComponent<AnimateEntity>();
         go.transform.rotation=Quaternion.Euler(0,0,-90+Mathf.Acos(direction.x/direction.magnitude)*180/Mathf.PI);
+        go.GetComponent<Rigidbody2D>().velocity = toTarget*15;
+        go.GetComponent<InanimateEntity>().Holder = gameObject.GetComponent<AnimateEntity>();
+
     }
 }
