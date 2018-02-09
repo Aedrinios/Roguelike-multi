@@ -32,4 +32,14 @@ public class SoundManager : MonoBehaviour {
         }
         return new AudioClip();
     }
+
+    public static void playSound(string name) {
+        for (int i = 0; i < instance.sounds.Length; i++)
+        {
+            if (instance.sounds[i].name == name)
+            {
+                instance.GetComponent<AudioSource>().PlayOneShot(getSound(name));
+            }
+        }
+    }
 }

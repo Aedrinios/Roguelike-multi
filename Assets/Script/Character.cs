@@ -84,7 +84,7 @@ public class Character : AnimateEntity
             //joue le son de mort
             if (deathAudioHasPlayed == false)
             {
-                audioSource.PlayOneShot(SoundManager.getSound("goule2Mort2"));
+                SoundManager.playSound("goule2Mort2");
                 deathAudioHasPlayed = true;
             }
 
@@ -102,7 +102,7 @@ public class Character : AnimateEntity
                 health = startLife;
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
                 deathAudioHasPlayed = false;
-                //audioSource.PlayOneShot(getSound("respawnSound"));
+                SoundManager.playSound("respawnSound");
                 opacityValue = 0.3f;
                 UI.reactivateInventory();
             }
@@ -178,10 +178,30 @@ public class Character : AnimateEntity
         {
             int item = (int)args[0];
             if (inventory[item] == null)
+            {
                 TryPickupItem(item);
+            }
             else
+            {
                 inventory[item].Use(this);
-            audioSource.PlayOneShot(SoundManager.getSound("armeEpeeVide"));
+                switch (inventory[item].name)
+                {
+                    case ("Sword"):
+                        SoundManager.playSound("armeEpeeVide");
+                        break;
+
+                    case ("Stick"):
+                        SoundManager.playSound("armeEpeeVide"); //FINIR
+                        break;
+                    case ("Spear"):
+                        SoundManager.playSound("armeEpeeVide");//FINIR
+                        break;
+                    case ("Boomerang"):
+                        SoundManager.playSound("armeEpeeVide");//FINIR
+                        break;
+                }
+            }
+
             Debug.Log("pressed");
         }
     }
@@ -201,7 +221,7 @@ public class Character : AnimateEntity
             inventory[slot] = (InanimateEntity)ground[0];
             inventory[slot].Equip(this);
             UI.ChangeWeapon(this, slot);
-            //audioSource.PlayOneShot(getSound("pickUpItem"));
+            SoundManager.playSound("pickUpItem");
         }   
     }
 

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114017609760987554}
   - component: {fileID: 50948184178369876}
   m_Layer: 0
-  m_Name: Sword Sprite
+  m_Name: Spear Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPart: {fileID: 114973066194323584}
-  audio: []
 --- !u!114 &114973066194323584
 MonoBehaviour:
   m_ObjectHideFlags: 1

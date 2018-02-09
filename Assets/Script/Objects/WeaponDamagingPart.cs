@@ -5,7 +5,6 @@ using UnityEngine;
 public class WeaponDamagingPart : MonoBehaviour
 {
     public Weapon weaponPart;
-    public AudioClip[] audio;
     private AudioSource audioSource;
 
     private void Start()
@@ -22,9 +21,26 @@ public class WeaponDamagingPart : MonoBehaviour
                 GameObject hit = other.gameObject;
                 if (hit != weaponPart.Holder.gameObject)
                 {
-                    Debug.Log("hit");                  
+                    Debug.Log("hit");
                     other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), other.gameObject);
-                    audioSource.PlayOneShot(audio[0], 1f);
+                    switch (transform.parent.name)
+                    {
+                        case ("Sword"):
+                            SoundManager.playSound("armeEpee");
+                            break;
+
+                        case ("Spear Sprite"):
+                            SoundManager.playSound("armeEpee");
+                            break;
+
+                        case ("Stick"):
+                            SoundManager.playSound("armeEpee");
+                            break;
+
+                        case ("Boomerang Sprite"):
+                            SoundManager.playSound("armeEpee");
+                            break;
+                    }
                 }
             }
     }
