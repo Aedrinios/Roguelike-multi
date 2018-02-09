@@ -20,6 +20,7 @@ public class GlobalHealthManager : MonoBehaviour {
     public Sprite selectedReplay;
 
     private int numb;
+    private AudioSource audioSource;
 
     // Use this for initialization
     void Start () {
@@ -27,7 +28,7 @@ public class GlobalHealthManager : MonoBehaviour {
         gameOver.gameObject.SetActive(false);
         quite.gameObject.SetActive(false);
         replay.gameObject.SetActive(false);
-
+        audioSource = GetComponent<AudioSource>();
         numb = 0;
     }
 	
@@ -41,6 +42,7 @@ public class GlobalHealthManager : MonoBehaviour {
         {
             panel.gameObject.SetActive(true);
             gameOver.gameObject.SetActive(true);
+            audioSource.PlayOneShot(SoundManager.getSound("Game_Over"), 1f);
             quite.gameObject.SetActive(true);
             replay.gameObject.SetActive(true);
 
