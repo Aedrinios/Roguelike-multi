@@ -94,11 +94,10 @@ public class Archer : AnimateEntity
     private void Shoot()
     {
         Vector3 toTarget = direction.normalized;
-        GameObject go= Instantiate(arrow, gameObject.transform.position+toTarget, Quaternion.identity);
-        go.GetComponent<InanimateEntity>().Holder = gameObject.GetComponent<AnimateEntity>();
-        go.transform.rotation=Quaternion.Euler(0,0,-90+Mathf.Acos(direction.x/direction.magnitude)*180/Mathf.PI);
+        GameObject go= Instantiate(arrow, gameObject.transform.position+toTarget, Quaternion.identity,transform);
+        go.GetComponent<Arrow>().user = gameObject.GetComponent<AnimateEntity>();
+        float sign = (direction.y < Vector3.right.y) ? 1.0f : -1.0f;
+        go.transform.rotation=Quaternion.Euler(0,0,270-Vector3.Angle(Vector3.right,direction)*sign/*90+(Mathf.Acos((direction.x/direction.magnitude))*180/Mathf.PI*/);
         go.GetComponent<Rigidbody2D>().velocity = toTarget*15;
-        go.GetComponent<InanimateEntity>().Holder = gameObject.GetComponent<AnimateEntity>();
-
     }
 }

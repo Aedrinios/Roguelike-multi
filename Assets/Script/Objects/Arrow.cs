@@ -8,7 +8,7 @@ public class Arrow : InanimateEntity {
 
     private void Start()
     {
-        user = gameObject.GetComponent<InanimateEntity>().Holder;
+        user = transform.parent.GetComponent<AnimateEntity>();
     }
 
     private void Update()
@@ -21,9 +21,9 @@ public class Arrow : InanimateEntity {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<InanimateEntity>() != user)
+        if (collision.gameObject.GetComponent<InanimateEntity>() != user && !collision.isTrigger)
         {
-            switch (holder.tag)
+            switch (user.tag)
             {
                 case ("Player"):
                     if (collision.tag == "Player")
