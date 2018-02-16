@@ -64,6 +64,23 @@ public abstract class AnimateEntity : InanimateEntity
         //dyingSound.Play();
     }
 
+    public void setCanBeDamaged(bool b)
+    {
+        canBeDamaged = b;
+
+        if (!canBeDamaged)
+        {
+            //sprite change de couleur indiquant impossibilité d'être frappé, bouclier posé
+            GetComponent<SpriteRenderer>().color = Color.yellow;
+            Debug.Log("Je change de couleur");
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = new Color(252f, 255f, 255f, 255f);
+        }
+    }
+
+
     public bool getCanBeDamaged()
     {
         return canBeDamaged;
@@ -85,6 +102,7 @@ public abstract class AnimateEntity : InanimateEntity
             health -= value;
             KnockBack(other);
         }
+        
         if (health <= 0)
         {
             Die();
