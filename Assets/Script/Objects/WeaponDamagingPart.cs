@@ -21,15 +21,16 @@ public class WeaponDamagingPart : MonoBehaviour
                 GameObject hit = other.gameObject;
                 if (hit != weaponPart.Holder.gameObject)
                 {
-                    Debug.Log("hit");
+                    Debug.Log(gameObject.name +" : hit for " +weaponPart.Holder.GetAttack() * weaponPart.GetDamage());
                     other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), other.gameObject);
+
                     switch (transform.parent.name)
                     {
                         case ("Sword"):
                             SoundManager.playSound("armeEpee");
                             break;
 
-                        case ("Spear Sprite"):
+                        case ("Spear"):
                             SoundManager.playSound("armeEpee");
                             break;
 
@@ -37,7 +38,7 @@ public class WeaponDamagingPart : MonoBehaviour
                             SoundManager.playSound("armeEpee");
                             break;
 
-                        case ("Boomerang Sprite"):
+                        case ("Boomerang"):
                             SoundManager.playSound("armeEpee");
                             break;
                     }

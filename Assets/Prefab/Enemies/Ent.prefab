@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61428795581418098}
   m_Layer: 0
   m_Name: Ent
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   attack: 5
   protectionShield: {fileID: 0}
   stun: 0
-  timeOfInvincibility: 1
+  timeOfInvincibility: 5
   direction: {x: 0, y: 0, z: 0}
 --- !u!212 &212796704332011024
 SpriteRenderer:

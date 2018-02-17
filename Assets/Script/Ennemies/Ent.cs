@@ -11,8 +11,8 @@ public class Ent : AnimateEntity {
 
     // Use this for initialization
     void Start () {
+        base.Start();
         startHealth = health;
-        setCanBeDamaged(false); 
     }
 	
 	// Update is called once per frame

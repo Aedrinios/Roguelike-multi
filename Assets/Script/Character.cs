@@ -93,8 +93,9 @@ public class Character : AnimateEntity
                 deathAudioHasPlayed = true;
             }
 
-            //temps d'invincibilité
+            //temps de mort
             deathTimeCount += Time.deltaTime;
+            //temps entre deux clignotement
             blinkTimeCount += Time.deltaTime;
 
             //RESPAWN
@@ -199,7 +200,7 @@ public class Character : AnimateEntity
                     case ("Stick"):
                         SoundManager.playSound("armeEpeeVide"); //FINIR
                         break;
-                    case ("Spear"):
+                    case ("Lance"):
                         SoundManager.playSound("armeEpeeVide");//FINIR
                         break;
                     case ("Boomerang"):
@@ -208,7 +209,7 @@ public class Character : AnimateEntity
                 }
             }
 
-            Debug.Log("pressed");
+            Debug.Log("Picked-up : " +inventory[item].name);
         }
     }
 
