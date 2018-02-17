@@ -12,6 +12,7 @@ public abstract class AnimateEntity : InanimateEntity
     public int health = 10;
     public float speed = 10;
     public int attack = 2;
+    public ProtectionShield protectionShield;
     protected bool canBeDamaged = true;
     protected bool canAttack = true;
     protected bool isDead = false;
@@ -71,8 +72,10 @@ public abstract class AnimateEntity : InanimateEntity
         if (!canBeDamaged)
         {
             //sprite change de couleur indiquant impossibilité d'être frappé, bouclier posé
-            GetComponent<SpriteRenderer>().color = Color.yellow;
-            Debug.Log("Je change de couleur");
+            ProtectionShield newShield = Instantiate(protectionShield, transform.position, Quaternion.identity, transform);
+            newShield.transform.localScale = new Vector3(transform.localScale.x + 0.3f, transform.localScale.y + 0.3f, 0);
+            SpriteRenderer bl = new SpriteRenderer();
+            Debug.Log("AnimateEntity : Shield de protection activé");
         }
         else
         {
@@ -92,7 +95,6 @@ public abstract class AnimateEntity : InanimateEntity
         {
             return;
         }
-        //hitSound.Play();
         invincibility.ResetPlay();
         
         if (canBeDamaged == true &&!isDead)

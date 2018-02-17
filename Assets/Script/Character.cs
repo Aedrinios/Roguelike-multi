@@ -52,7 +52,10 @@ public class Character : AnimateEntity
 
     public void Update() // déséquiper pour l'instant
     {
-        Debug.Log(health);
+        if (Input.GetKeyDown("3"))
+        {
+            setCanBeDamaged(false);
+        }
 
         if (Input.GetKeyDown("2"))
         {
