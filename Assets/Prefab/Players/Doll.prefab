@@ -270,6 +270,8 @@ MonoBehaviour:
   timeOfInvincibility: 1.5
   direction: {x: 0, y: 0, z: 0}
   inventory: []
+  attackSmash: {fileID: 1534496258200882, guid: 77018793da705b642a8d47e2bd0053d7,
+    type: 2}
   UI: {fileID: 0}
 --- !u!212 &212037192771407950
 SpriteRenderer:

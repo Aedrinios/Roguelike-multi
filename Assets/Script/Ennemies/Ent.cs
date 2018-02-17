@@ -24,19 +24,28 @@ public class Ent : AnimateEntity {
         if (health > startHealth/2) 
         {
             //vulnérable
+            setCanBeDamaged(true);
 
             //choisi une cible au hasard
+            chooseRandomTarget();
+            
 
             //fait une attaque au harsard sur la cible choisi au hasard
+                //-Joue l'animation 
+                //-Joue le son
         }
         //2ème phase : En dessous de 50%
         else if (health < startHealth /2 && health > 0)
         {
             //Invulnérable
 
+            //Les abrisseaux le soignent
+
             //choisi une cible au hasard
 
             //fait une attaque au harsard sur la cible choisi au hasard
+                //-Joue l'animation 
+                //-Joue le son
         }
         //3ème phase : Égale à 0
         else if (health <= 0)
@@ -53,10 +62,15 @@ public class Ent : AnimateEntity {
 
 
     //Cette fonction choisi une nouvelle cible parmis tous les joueurs instanciés de façon aléatoire et la met dans currentTarget.
-    void chooseNewTarget()
+    void chooseRandomTarget()
     {
         int rdm = Mathf.RoundToInt(Random.Range(0, GameManager.instance.players.Count));
         currentTarget = GameManager.instance.players[rdm];
         Debug.Log("Ent Target : " +currentTarget);
+    }
+
+    void chooseRandomSpell()
+    {
+
     }
 }

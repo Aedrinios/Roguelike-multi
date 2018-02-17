@@ -7,6 +7,7 @@ public class Character : AnimateEntity
 
     public InanimateEntity[] inventory;
     public ArrayList ground;
+    public GameObject attackSmash;
     [HideInInspector]
     public PlayerUI UI;
 
@@ -55,6 +56,12 @@ public class Character : AnimateEntity
         if (Input.GetKeyDown("3"))
         {
             setCanBeDamaged(false);
+        }
+
+        if (Input.GetKeyDown("4"))
+        {
+            Debug.Log("OOOOOO");
+            GameObject newAttackSmash = Instantiate(attackSmash, transform.position, Quaternion.identity);
         }
 
         if (Input.GetKeyDown("2"))
