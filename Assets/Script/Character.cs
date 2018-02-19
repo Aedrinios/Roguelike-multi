@@ -58,6 +58,11 @@ public class Character : AnimateEntity
             setCanBeDamaged(false);
         }
 
+        if (Input.GetKeyDown("5"))
+        {
+            setCanBeDamaged(true);
+        }
+
         if (Input.GetKeyDown("4"))
         {
             Debug.Log("OOOOOO");

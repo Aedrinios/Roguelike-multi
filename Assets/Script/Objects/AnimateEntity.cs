@@ -26,6 +26,8 @@ public abstract class AnimateEntity : InanimateEntity
     protected bool isDying = false;
     protected AudioSource audioSource;
 
+    private ProtectionShield currentShield=null;
+
 
     protected virtual void Start()
     {
@@ -60,6 +62,11 @@ public abstract class AnimateEntity : InanimateEntity
         return attack;
     }
 
+    public bool getIsDead()
+    {
+        return isDead;
+    }
+
     protected virtual void Die()
     {
         //dyingSound.Play();
@@ -71,15 +78,22 @@ public abstract class AnimateEntity : InanimateEntity
 
         if (!canBeDamaged)
         {
-            //sprite change de couleur indiquant impossibilité d'être frappé, bouclier posé
-            ProtectionShield newShield = Instantiate(protectionShield, transform.position, Quaternion.identity, transform);
-            newShield.transform.localScale = new Vector3(transform.localScale.x + 0.3f, transform.localScale.y + 0.3f, 0);
-            SpriteRenderer bl = new SpriteRenderer();
-            Debug.Log("AnimateEntity : Shield de protection activé");
+            if (currentShield == null)
+            {
+                //sprite change de couleur indiquant impossibilité d'être frappé, bouclier posé
+                currentShield = Instantiate(protectionShield, transform.position, Quaternion.identity, transform); ;
+                currentShield.transform.localScale = new Vector3(transform.localScale.x + 0.3f, transform.localScale.y + 0.3f, 0);
+                Debug.Log(this.name +" : Shield de protection activé");
+            }
         }
         else
         {
-            GetComponent<SpriteRenderer>().color = new Color(252f, 255f, 255f, 255f);
+            if (currentShield != null)
+            {
+                Destroy(currentShield.gameObject);
+                currentShield = null;
+                Debug.Log(this.name + " : Shield de protection désactivé");
+            }
         }
     }
 
@@ -100,7 +114,7 @@ public abstract class AnimateEntity : InanimateEntity
         if (canBeDamaged == true &&!isDead)
         {
 
-            Debug.Log(value);
+            Debug.Log("degats : " +value);
             health -= value;
             KnockBack(other);
         }
