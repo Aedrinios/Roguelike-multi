@@ -325,6 +325,7 @@ public class Character : AnimateEntity
             Ientity.transform.rotation = Quaternion.Euler(0, 0, 0);
             Ientity.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             carriedObject = Ientity;
+            UI.armorHealth(); // Armor Health
         }
         else if (Ientity == inventory[1] && !isCarrying)
         {
@@ -342,6 +343,7 @@ public class Character : AnimateEntity
             Ientity.transform.rotation = Quaternion.Euler(0, 0, 0);
             Ientity.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             carriedObject = Ientity;
+            UI.armorHealth(); // Armor Health
         }
         else if ((Ientity.tag == "Player" || Ientity.tag == "enemy") && !isCarrying)
         {

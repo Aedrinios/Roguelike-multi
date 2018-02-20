@@ -74,6 +74,13 @@ public class PlayerUI : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            for (int i = 0; i < 3; ++i)
+            {
+                secondaryWeaponHearts[i].sprite = blueHearts[2];
+            }
+        }
 
         if(player.inventory[0] != null) // Slot 1
         {
@@ -83,7 +90,7 @@ public class PlayerUI : MonoBehaviour
             {
                 for (int i = 0; i < 3; ++i)
                 {       
-                    primaryWeaponHearts[i].sprite = blueHearts[2];
+                    primaryWeaponHearts[i].sprite = greenHearts[2];
                 }
             }
             else
@@ -97,6 +104,13 @@ public class PlayerUI : MonoBehaviour
                     else                                         // Half heart
                         primaryWeaponHearts[i].sprite = greenHearts[1];
                 }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 3; ++i)
+            {
+                primaryWeaponHearts[i].sprite = greenHearts[2];
             }
         }
     }
