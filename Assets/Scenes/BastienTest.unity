@@ -526,10 +526,26 @@ MonoBehaviour:
   primaryWeaponEmpty: {fileID: 21300000, guid: b8892fd55b4334b6896940a5d85bafac, type: 3}
   secondaryWeaponEmpty: {fileID: 21300000, guid: 0b61e4a1a963446818a35543177e189d,
     type: 3}
+  primaryWeaponHearts:
+  - {fileID: 1445351660}
+  - {fileID: 910977818}
+  - {fileID: 334056090}
+  secondaryWeaponHearts:
+  - {fileID: 1606371328}
+  - {fileID: 935119215}
+  - {fileID: 1086730473}
   hearts:
   - {fileID: 21300000, guid: 0847851633c7343fb8ed1e308edfba38, type: 3}
   - {fileID: 21300000, guid: 021e35030ada648999293a4b765aba49, type: 3}
   - {fileID: 21300000, guid: 8d159ffa723c24549b54d644259ae280, type: 3}
+  greenHearts:
+  - {fileID: 21300000, guid: 91cf6dd8bbebf4e65a682fb6ea7f8f5b, type: 3}
+  - {fileID: 21300000, guid: d419d3e7832994102a1dbf121ae6bbe7, type: 3}
+  - {fileID: 21300000, guid: 284829e739f2d48cebc884e109d0e555, type: 3}
+  blueHearts:
+  - {fileID: 21300000, guid: b6933df2d2b94423cbbd0311c4f98473, type: 3}
+  - {fileID: 21300000, guid: a470e66d253aa4f58bb2255df48492db, type: 3}
+  - {fileID: 21300000, guid: f32d22f9baf0f4553ac865c893cf2b0d, type: 3}
 --- !u!1 &44975192
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,7 +672,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 91cf6dd8bbebf4e65a682fb6ea7f8f5b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 284829e739f2d48cebc884e109d0e555, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2382,7 +2398,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b6933df2d2b94423cbbd0311c4f98473, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f32d22f9baf0f4553ac865c893cf2b0d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2568,6 +2584,11 @@ Prefab:
     - target: {fileID: 1884072128244662, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114973066194323584, guid: dcbe432191d1543d6928631234c7e2e6,
+        type: 2}
+      propertyPath: armorPoints
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
@@ -3258,7 +3279,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f32d22f9baf0f4553ac865c893cf2b0d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 284829e739f2d48cebc884e109d0e555, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6695,7 +6716,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a470e66d253aa4f58bb2255df48492db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f32d22f9baf0f4553ac865c893cf2b0d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6800,6 +6821,11 @@ Prefab:
     - target: {fileID: 1884072128244662, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114973066194323584, guid: 627a6ed270419475a9dce7adb449e1f5,
+        type: 2}
+      propertyPath: armorPoints
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
@@ -6970,7 +6996,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d419d3e7832994102a1dbf121ae6bbe7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 284829e739f2d48cebc884e109d0e555, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7716,7 +7742,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 91cf6dd8bbebf4e65a682fb6ea7f8f5b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 284829e739f2d48cebc884e109d0e555, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9383,6 +9409,11 @@ Prefab:
       propertyPath: m_Name
       value: Lance (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114973066194323584, guid: f070efea44b894140a7f5fec5f818099,
+        type: 2}
+      propertyPath: armorPoints
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f070efea44b894140a7f5fec5f818099, type: 2}
   m_IsPrefabParent: 0
@@ -9594,10 +9625,26 @@ MonoBehaviour:
   primaryWeaponEmpty: {fileID: 21300000, guid: b8892fd55b4334b6896940a5d85bafac, type: 3}
   secondaryWeaponEmpty: {fileID: 21300000, guid: 0b61e4a1a963446818a35543177e189d,
     type: 3}
+  primaryWeaponHearts:
+  - {fileID: 2139966607}
+  - {fileID: 1795326911}
+  - {fileID: 2111316845}
+  secondaryWeaponHearts:
+  - {fileID: 612784473}
+  - {fileID: 1712110750}
+  - {fileID: 281262448}
   hearts:
   - {fileID: 21300000, guid: 0847851633c7343fb8ed1e308edfba38, type: 3}
   - {fileID: 21300000, guid: 021e35030ada648999293a4b765aba49, type: 3}
   - {fileID: 21300000, guid: 8d159ffa723c24549b54d644259ae280, type: 3}
+  greenHearts:
+  - {fileID: 21300000, guid: b6933df2d2b94423cbbd0311c4f98473, type: 3}
+  - {fileID: 21300000, guid: a470e66d253aa4f58bb2255df48492db, type: 3}
+  - {fileID: 21300000, guid: f32d22f9baf0f4553ac865c893cf2b0d, type: 3}
+  blueHearts:
+  - {fileID: 21300000, guid: 91cf6dd8bbebf4e65a682fb6ea7f8f5b, type: 3}
+  - {fileID: 21300000, guid: d419d3e7832994102a1dbf121ae6bbe7, type: 3}
+  - {fileID: 21300000, guid: 284829e739f2d48cebc884e109d0e555, type: 3}
 --- !u!1 &1382976511
 GameObject:
   m_ObjectHideFlags: 0
@@ -10768,6 +10815,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114973066194323584, guid: dcbe432191d1543d6928631234c7e2e6,
+        type: 2}
+      propertyPath: armorPoints
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
   m_IsPrefabParent: 0
@@ -10943,7 +10995,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b6933df2d2b94423cbbd0311c4f98473, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 284829e739f2d48cebc884e109d0e555, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11257,7 +11309,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d419d3e7832994102a1dbf121ae6bbe7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 284829e739f2d48cebc884e109d0e555, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13169,10 +13221,26 @@ MonoBehaviour:
   primaryWeaponEmpty: {fileID: 21300000, guid: b8892fd55b4334b6896940a5d85bafac, type: 3}
   secondaryWeaponEmpty: {fileID: 21300000, guid: 0b61e4a1a963446818a35543177e189d,
     type: 3}
+  primaryWeaponHearts:
+  - {fileID: 1709443170}
+  - {fileID: 1455531411}
+  - {fileID: 1724301620}
+  secondaryWeaponHearts:
+  - {fileID: 1652185524}
+  - {fileID: 1802105283}
+  - {fileID: 1334958727}
   hearts:
   - {fileID: 21300000, guid: 0847851633c7343fb8ed1e308edfba38, type: 3}
   - {fileID: 21300000, guid: 021e35030ada648999293a4b765aba49, type: 3}
   - {fileID: 21300000, guid: 8d159ffa723c24549b54d644259ae280, type: 3}
+  greenHearts:
+  - {fileID: 21300000, guid: 91cf6dd8bbebf4e65a682fb6ea7f8f5b, type: 3}
+  - {fileID: 21300000, guid: d419d3e7832994102a1dbf121ae6bbe7, type: 3}
+  - {fileID: 21300000, guid: 284829e739f2d48cebc884e109d0e555, type: 3}
+  blueHearts:
+  - {fileID: 21300000, guid: b6933df2d2b94423cbbd0311c4f98473, type: 3}
+  - {fileID: 21300000, guid: a470e66d253aa4f58bb2255df48492db, type: 3}
+  - {fileID: 21300000, guid: f32d22f9baf0f4553ac865c893cf2b0d, type: 3}
 --- !u!224 &1903779928
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14125,10 +14193,26 @@ MonoBehaviour:
   primaryWeaponEmpty: {fileID: 21300000, guid: b8892fd55b4334b6896940a5d85bafac, type: 3}
   secondaryWeaponEmpty: {fileID: 21300000, guid: 0b61e4a1a963446818a35543177e189d,
     type: 3}
+  primaryWeaponHearts:
+  - {fileID: 457039582}
+  - {fileID: 2114507148}
+  - {fileID: 1587145730}
+  secondaryWeaponHearts:
+  - {fileID: 1513051098}
+  - {fileID: 1605356931}
+  - {fileID: 95459081}
   hearts:
   - {fileID: 21300000, guid: 0847851633c7343fb8ed1e308edfba38, type: 3}
   - {fileID: 21300000, guid: 021e35030ada648999293a4b765aba49, type: 3}
   - {fileID: 21300000, guid: 8d159ffa723c24549b54d644259ae280, type: 3}
+  greenHearts:
+  - {fileID: 21300000, guid: 91cf6dd8bbebf4e65a682fb6ea7f8f5b, type: 3}
+  - {fileID: 21300000, guid: d419d3e7832994102a1dbf121ae6bbe7, type: 3}
+  - {fileID: 21300000, guid: 284829e739f2d48cebc884e109d0e555, type: 3}
+  blueHearts:
+  - {fileID: 21300000, guid: b6933df2d2b94423cbbd0311c4f98473, type: 3}
+  - {fileID: 21300000, guid: a470e66d253aa4f58bb2255df48492db, type: 3}
+  - {fileID: 21300000, guid: f32d22f9baf0f4553ac865c893cf2b0d, type: 3}
 --- !u!114 &2021948312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14386,7 +14470,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a470e66d253aa4f58bb2255df48492db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 284829e739f2d48cebc884e109d0e555, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -46,13 +46,33 @@ public class Character : AnimateEntity
 
     public override void ReceiveHit(int value, GameObject other)
     {
-        base.ReceiveHit(value, other);
-        UI.SetHealth(health);
+        Debug.Log("Recieve hit");
+        // Verif si l'arme du 2e slot à des coeurs sinon 1er slot sinon joueur
+        if (inventory[1]!=null && inventory[1].GetComponent<Weapon>().armorPoints > 0) // Slot 2 
+        {
+            Debug.Log("Recieve hit2");
+            inventory[1].GetComponent<Weapon>().armorPoints--;
+            Debug.Log("Recieve Hit2 bis " + inventory[1].GetComponent<Weapon>().armorPoints);
+            UI.armorHealth(inventory[1].GetComponent<Weapon>().armorPoints);
+        }
+        else if (inventory[0] != null && inventory[0].GetComponent<Weapon>().armorPoints > 0) // Slot 1
+        {
+            Debug.Log("Recieve Hit1");
+            inventory[0].GetComponent<Weapon>().armorPoints--;
+            Debug.Log("Recieve Hit1 bis " + inventory[0].GetComponent<Weapon>().armorPoints);
+            UI.armorHealth(inventory[0].GetComponent<Weapon>().armorPoints);
+        }
+        else // Joueur
+        {
+            Debug.Log("Recieve Hit Joueur !!!!");
+            base.ReceiveHit(value, other);
+            UI.SetHealth(health); // Player health
+        }
     }
 
     public void Update() // déséquiper pour l'instant
     {
-        Debug.Log(health);
+       // Debug.Log(health);
 
         if (Input.GetKeyDown("2"))
         {
