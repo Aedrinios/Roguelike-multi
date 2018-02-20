@@ -7,7 +7,6 @@ public class Character : AnimateEntity
 
     public InanimateEntity[] inventory;
     public ArrayList ground;
-    public GameObject attackSmash;
     [HideInInspector]
     public PlayerUI UI;
 
@@ -26,6 +25,7 @@ public class Character : AnimateEntity
     private float blinkTime;
     private float blinkTimeCount;
     private GlobalHealthManager globalHealthManager;
+    private string inputSetName;
 
 
     protected override void Start()
@@ -43,6 +43,7 @@ public class Character : AnimateEntity
         opacityValue = 0.3f;
         blinkTime = 0.2f;
         blinkTimeCount = 0;
+        inputSetName = gameObject.GetComponent<CharController>().GetInputs().GetName() + " ";
     }
 
     public override void ReceiveHit(int value, GameObject other)
@@ -53,23 +54,17 @@ public class Character : AnimateEntity
 
     public void Update() // déséquiper pour l'instant
     {
+        Debug.Log(inputSetName);
+        if (Input.GetKeyDown("2"))
+        {
+            ReceiveHit(startLife, gameObject);
+        }
+
         if (Input.GetKeyDown("3"))
         {
             setCanBeDamaged(false);
         }
-
-        if (Input.GetKeyDown("4"))
-        {
-            Debug.Log("OOOOOO");
-            GameObject newAttackSmash = Instantiate(attackSmash, transform.position, Quaternion.identity);
-        }
-
-        if (Input.GetKeyDown("2"))
-        {
-            ReceiveHit(startLife,gameObject);
-        }
-
-
+        
         if (health <= 0)
         {
             UI.emptyFullInventory();
@@ -90,7 +85,7 @@ public class Character : AnimateEntity
                 canBeDamaged = false;
                 canAttack = false;
             }
-            
+
             gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacityValue);
 
             //joue le son de mort
@@ -100,9 +95,8 @@ public class Character : AnimateEntity
                 deathAudioHasPlayed = true;
             }
 
-            //temps de mort
+            //temps d'invincibilité
             deathTimeCount += Time.deltaTime;
-            //temps entre deux clignotement
             blinkTimeCount += Time.deltaTime;
 
             //RESPAWN
@@ -146,33 +140,37 @@ public class Character : AnimateEntity
         }
 
         //ramassage puis lancer
-        if (Input.GetButtonDown("Keyboard 2 interact")/*|| Input.GetButtonDown("Keyboard 1 interact")*/)
+        if (Input.GetButtonDown(inputSetName + "interact"))
         {
             Debug.Log("gg");
             Interract();
         }
 
         //déséquipement arme 1
-        if (Input.GetButton("Keyboard 2 primary"))
+        if (Input.GetButton(inputSetName + "primary"))
         {
             Debug.Log("gg");
             primaryTimer += Time.deltaTime;
-            if (primaryTimer > 2 && inventory[0] != null)
+            if (primaryTimer > 2 && inventory[0] != null && !isCarrying)
                 Carry(inventory[0]);
         }
-        if (Input.GetButtonUp("Keyboard 2 primary"))
+        if (Input.GetButtonUp(inputSetName + "primary"))
+        {
             primaryTimer = 0;
+        }
 
         //desequipement arme 2
-        if (Input.GetButton("Keyboard 2 secondary"))
+        if (Input.GetButton(inputSetName + "secondary"))
         {
             Debug.Log("gg");
             secondaryTimer += Time.deltaTime;
             if (secondaryTimer > 2 && inventory[1] != null)
                 Carry(inventory[1]);
         }
-        if (Input.GetButtonUp("Keyboard 2 secondary"))
+        if (Input.GetButtonUp(inputSetName + "secondary"))
+        {
             secondaryTimer = 0;
+        }
     }
 
 
@@ -187,8 +185,8 @@ public class Character : AnimateEntity
     }
 
     public void InputAction(params object[] args)
-    {   
-        if(!isDead)
+    {
+        if (!isDead)
         {
             int item = (int)args[0];
             if (inventory[item] == null)
@@ -207,7 +205,7 @@ public class Character : AnimateEntity
                     case ("Stick"):
                         SoundManager.playSound("armeEpeeVide"); //FINIR
                         break;
-                    case ("Lance"):
+                    case ("Spear"):
                         SoundManager.playSound("armeEpeeVide");//FINIR
                         break;
                     case ("Boomerang"):
@@ -216,8 +214,9 @@ public class Character : AnimateEntity
                 }
             }
 
-            Debug.Log("Picked-up : " +inventory[item].name);
+            Debug.Log("pressed");
         }
+
     }
 
     public float GetRotation()
@@ -226,17 +225,6 @@ public class Character : AnimateEntity
         if (direction.x < 0)
             rotation *= -1;
         return rotation;
-    }
-
-    private void TryPickupItem(int slot)
-    {
-        if (ground.Count != 0)
-        {
-            inventory[slot] = (InanimateEntity)ground[0];
-            inventory[slot].Equip(this);
-            UI.ChangeWeapon(this, slot);
-            SoundManager.playSound("pickUpItem");
-        }   
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -261,13 +249,15 @@ public class Character : AnimateEntity
         UI.SetPlayer(this);
     }
 
-    private void TryCarry()
+    private void TryPickupItem(int slot)
     {
         if (ground.Count != 0)
         {
-            carriedObject = (InanimateEntity)ground[0];
-            Carry(carriedObject);
-        }   //No need to remove the item from the ground list, it's done in OnTriggerExit
+            inventory[slot] = (InanimateEntity)ground[0];
+            inventory[slot].Equip(this);
+            UI.ChangeWeapon(this, slot);
+            SoundManager.playSound("pickUpItem");
+        }
     }
 
     public void Interract()
@@ -283,31 +273,82 @@ public class Character : AnimateEntity
         }
     }
 
+    private void TryCarry()
+    {
+        if (ground.Count != 0 && !isCarrying)
+        {
+            carriedObject = (InanimateEntity)ground[0];
+            Carry(carriedObject);
+        }
+    }
+
     public void Carry(InanimateEntity Ientity)
     {
-        if (Ientity == inventory[0])
+        if (Ientity == inventory[0] && !isCarrying)
         {
             Ientity.Unequip(0);
             UI.emptySlotInventory(0);
+            isCarrying = true;
+            Ientity.GetComponentInChildren<CircleCollider2D>().enabled = false;
+            Ientity.pickupCollider.enabled = false;
+            foreach (SpriteRenderer sp in Ientity.GetComponentsInChildren<SpriteRenderer>())
+            {
+                sp.enabled = true;
+            }
+            Ientity.transform.parent = this.transform;
+            Ientity.transform.localPosition = Vector3.zero;
+            Ientity.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Ientity.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            carriedObject = Ientity;
         }
-        if (Ientity == inventory[1])
+        else if (Ientity == inventory[1] && !isCarrying)
         {
             Ientity.Unequip(1);
             UI.emptySlotInventory(1);
+            isCarrying = true;
+            Ientity.GetComponentInChildren<CircleCollider2D>().enabled = false;
+            Ientity.pickupCollider.enabled = false;
+            foreach (SpriteRenderer sp in Ientity.GetComponentsInChildren<SpriteRenderer>())
+            {
+                sp.enabled = true;
+            }
+            Ientity.transform.parent = this.transform;
+            Ientity.transform.localPosition = Vector3.zero;
+            Ientity.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Ientity.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            carriedObject = Ientity;
         }
-        if (Ientity.tag == "Player" || Ientity.tag == "enemy")
+        else if ((Ientity.tag == "Player" || Ientity.tag == "enemy") && !isCarrying)
         {
             Ientity.GetComponent<AnimateEntity>().stun = true;
+            isCarrying = true;
+            Ientity.GetComponentInChildren<CircleCollider2D>().enabled = false;
+            Ientity.pickupCollider.enabled = false;
+            foreach (SpriteRenderer sp in Ientity.GetComponentsInChildren<SpriteRenderer>())
+            {
+                sp.enabled = true;
+            }
+            Ientity.transform.parent = this.transform;
+            Ientity.transform.localPosition = Vector3.zero;
+            Ientity.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Ientity.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            carriedObject = Ientity;
         }
-        isCarrying = true;
-        Debug.Log("blub");
-        Ientity.GetComponentInChildren<CircleCollider2D>().enabled = false;
-        Ientity.pickupCollider.enabled = false;
-        Ientity.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        Ientity.transform.parent = this.transform;
-        Ientity.transform.localPosition = Vector3.zero;
-        Ientity.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        carriedObject = Ientity;
+        else if (!isCarrying)
+        {
+            isCarrying = true;
+            Ientity.GetComponentInChildren<CircleCollider2D>().enabled = false;
+            Ientity.pickupCollider.enabled = false;
+            foreach (SpriteRenderer sp in Ientity.GetComponentsInChildren<SpriteRenderer>())
+            {
+                sp.enabled = true;
+            }
+            Ientity.transform.parent = this.transform;
+            Ientity.transform.localPosition = Vector3.zero;
+            Ientity.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Ientity.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            carriedObject = Ientity;
+        }
     }
 
     public void Throw()
@@ -332,5 +373,8 @@ public class Character : AnimateEntity
         }
     }
 }
+
+
+
 
 

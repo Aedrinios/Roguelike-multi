@@ -50,13 +50,4 @@ public float pushPower;
 		holder.stun = false;
 		Debug.Log("wut");
 	}
-
-	public void OnCharacterHit(AnimateEntity other){
-        if(other!=gameObject)
-        {
-            //other.DecreaseHealth(holder.GetAttack() * damage);
-            //Vector2 push = (Vector2) (other.transform.position - holder.transform.position).normalized;
-            //other.GetComponent<Rigidbody2D>().AddForce( push * pushPower *200,ForceMode2D.Impulse);
-        }
-	}
 }
