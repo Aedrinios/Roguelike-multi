@@ -48,22 +48,47 @@ public class Character : AnimateEntity
 
     public override void ReceiveHit(int value, GameObject other)
     {
-        base.ReceiveHit(value, other);
-        UI.SetHealth(health);
+        if (inventory[1] != null && inventory[1].GetComponent<Weapon>().armorPoints > 0) // Slot 2 
+        {
+            var arm2 = inventory[1].GetComponent<Weapon>().armorPoints;
+            inventory[1].GetComponent<Weapon>().armorPoints = arm2 - value;
+            UI.armorHealth(); // Armor Health
+        }
+        else if (inventory[0] != null && inventory[0].GetComponent<Weapon>().armorPoints > 0) // Slot 1
+        {
+            var arm1 = inventory[0].GetComponent<Weapon>().armorPoints;
+            inventory[0].GetComponent<Weapon>().armorPoints = arm1 - value;
+            UI.armorHealth(); // Armor Health
+        }
+        else // Joueur
+        {
+            base.ReceiveHit(value, other);
+            UI.SetHealth(health); // Player health
+        }
     }
 
     public void Update() // déséquiper pour l'instant
     {
+
         Debug.Log(inputSetName);
         if (Input.GetKeyDown("2"))
-        {
-            ReceiveHit(startLife, gameObject);
-        }
 
+       // Debug.Log(health);
         if (Input.GetKeyDown("3"))
         {
             setCanBeDamaged(false);
         }
+
+        if (Input.GetKeyDown("5"))
+        {
+            setCanBeDamaged(true);
+        }
+
+        if (Input.GetKeyDown("4"))
+        {
+            ReceiveHit(startLife, gameObject);
+        }
+
         
         if (health <= 0)
         {
@@ -151,7 +176,7 @@ public class Character : AnimateEntity
         {
             Debug.Log("gg");
             primaryTimer += Time.deltaTime;
-            if (primaryTimer > 2 && inventory[0] != null && !isCarrying)
+            if (primaryTimer > 1 && inventory[0] != null && !isCarrying)
                 Carry(inventory[0]);
         }
         if (Input.GetButtonUp(inputSetName + "primary"))
@@ -164,7 +189,7 @@ public class Character : AnimateEntity
         {
             Debug.Log("gg");
             secondaryTimer += Time.deltaTime;
-            if (secondaryTimer > 2 && inventory[1] != null)
+            if (secondaryTimer > 1 && inventory[1] != null)
                 Carry(inventory[1]);
         }
         if (Input.GetButtonUp(inputSetName + "secondary"))

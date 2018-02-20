@@ -4,51 +4,77 @@ using UnityEngine;
 
 public class Ent : AnimateEntity {
 
+    public Shrub[] shrubs;
+    public GameObject[] spells;
+    public float timeBewteenSpells;
+
     private GameObject currentTarget;
     private List<GameObject> players;
-    private Shrub[] shrubs;
     private int startHealth;
+
+    //variables d'états
+    private bool isPhase1;
+    private bool isPhase2;
+    private bool isPhase3;
+
+
+    //utilitaires
+    private bool doOnce = false;
+    private float timeCounterSpells = 0;
 
     // Use this for initialization
     void Start () {
         base.Start();
         startHealth = health;
+        timeCounterSpells = timeBewteenSpells;
+
+        setActivePhase(1);
+
+        health = 90; // TESTS
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        //DEBUGS
         Debug.Log("Ent health : " + health);
-        
+        Debug.Log("Phase Active : " + getActivePhase());
+
+        //VARIABLE DE COMPTAGE DE TEMPS
+        timeCounterSpells += Time.deltaTime;
+
 
         //1ère phase : Au dessus de 50%
-        if (health > startHealth/2) 
+        if (isPhase1) 
         {
-            //vulnérable
-            setCanBeDamaged(true);
+            chooseRandomTarget();       //choisi une cible au hasard
+            castRandomSpell();          //fait une attaque au harsard sur la cible choisi au hasard
 
-            //choisi une cible au hasard
-            chooseRandomTarget();
-            
-
-            //fait une attaque au harsard sur la cible choisi au hasard
-                //-Joue l'animation 
-                //-Joue le son
+            //CHANGEMENT DE PHASE
+            if (health<=startHealth/2)
+            {
+                setActivePhase(2);
+            }
         }
         //2ème phase : En dessous de 50%
-        else if (health < startHealth /2 && health > 0)
+        else if (isPhase2)
         {
-            //Invulnérable
+            claimHealing();            //Les abrisseaux le soignent
+            chooseRandomTarget();      //choisi une cible au hasard
+            castRandomSpell();            //fait une attaque au harsard sur la cible choisi au hasard
 
-            //Les abrisseaux le soignent
-
-            //choisi une cible au hasard
-
-            //fait une attaque au harsard sur la cible choisi au hasard
-                //-Joue l'animation 
-                //-Joue le son
+            //CHANGEMENT DE PHASE
+            if (getNumberOfShrubsAlive() == 0 || health == 200)
+            {
+                setActivePhase(1);
+            }
+            else if (health ==0)
+            {
+                setActivePhase(3);
+            }
         }
         //3ème phase : Égale à 0
-        else if (health <= 0)
+        else if (isPhase3)
         {
             //Tombe à terre
 
@@ -69,8 +95,92 @@ public class Ent : AnimateEntity {
         Debug.Log("Ent Target : " +currentTarget);
     }
 
-    void chooseRandomSpell()
+    void castRandomSpell()
     {
+        if (timeCounterSpells >= 5)
+        {
+            int rdm = Mathf.RoundToInt(Random.Range(0, spells.Length));
+            Instantiate(spells[rdm], currentTarget.transform.position, Quaternion.identity);
 
+            timeCounterSpells = 0;
+        }
+    }
+
+    void setAllShrubsCanBeDamaged(bool b)
+    {
+        for (int i = 0; i < shrubs.Length; i++)
+        {
+            shrubs[i].setCanBeDamaged(b);
+        }
+    }
+
+    void claimHealing()
+    {
+        for (int i = 0; i < shrubs.Length; i++)
+        {
+            shrubs[i].healEnt();
+        }
+    }
+
+    int getNumberOfShrubsAlive()
+    {
+        int res = 0;
+
+        for (int i = 0; i < shrubs.Length; i++)
+        {
+            if (!shrubs[i].getIsDead())
+            {
+                res++;
+            }
+        }
+        return res;
+    }
+
+    void setActivePhase(int i)
+    {
+        switch (i)
+        {
+            case 1:
+                isPhase1 = true;
+                isPhase2 = false;
+                isPhase3 = false;
+
+                setCanBeDamaged(true);                //vulnérable
+                setAllShrubsCanBeDamaged(false);      //arbrisseaux invulnérables
+                break;
+            case 2:
+                isPhase1 = false;
+                isPhase2 = true;
+                isPhase3 = false;
+
+                setAllShrubsCanBeDamaged(true);        //Les arbrisseaux son vulnérable
+
+                if (getNumberOfShrubsAlive() > 0)
+                {
+                    setCanBeDamaged(false);                //Invulnérable
+                }
+                break;
+            case 3:
+                isPhase1 = false;
+                isPhase2 = false;
+                isPhase3 = true;
+                break;
+        }
+    }
+
+    int getActivePhase()
+    {
+        if (isPhase1)
+        {
+            return 1;
+        }
+        else if (isPhase2)
+        {
+            return 2;
+        }
+        else
+        {
+            return 3;
+        }
     }
 }

@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: walk left
+  m_Name: walk right tir
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,9 +19,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: b744c266a45e57046ba7dbe10621ce3e, type: 3}
+      value: {fileID: 21300000, guid: 499f5ffc5888e6241ba9fd39fc5ad54f, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: f12c7747eca824b40a8423dd8967e161, type: 3}
+      value: {fileID: 21300000, guid: 0be2e9ef54e345c4c9831de1f9a399b9, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -41,8 +41,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: b744c266a45e57046ba7dbe10621ce3e, type: 3}
-    - {fileID: 21300000, guid: f12c7747eca824b40a8423dd8967e161, type: 3}
+    - {fileID: 21300000, guid: 499f5ffc5888e6241ba9fd39fc5ad54f, type: 3}
+    - {fileID: 21300000, guid: 0be2e9ef54e345c4c9831de1f9a399b9, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
