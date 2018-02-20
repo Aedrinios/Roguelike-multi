@@ -264,14 +264,14 @@ MonoBehaviour:
   health: 10
   speed: 5
   attack: 2
+  protectionShield: {fileID: 114697878298898470, guid: c162242738a3c2746960075c097a19f1,
+    type: 2}
   stun: 0
   timeOfInvincibility: 1.5
   direction: {x: 0, y: 0, z: 0}
-  sounds:
-  - {fileID: 8300000, guid: 0d22f30248c4b4401a0cd9afbc42bffa, type: 3}
-  - {fileID: 8300000, guid: 2b4b24a218eb28142a96a4523737149a, type: 3}
-  - {fileID: 8300000, guid: 3b0d18b42bdf7d142911619d46303886, type: 3}
   inventory: []
+  attackSmash: {fileID: 1534496258200882, guid: 77018793da705b642a8d47e2bd0053d7,
+    type: 2}
   UI: {fileID: 0}
 --- !u!212 &212037192771407950
 SpriteRenderer:

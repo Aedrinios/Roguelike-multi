@@ -9,7 +9,7 @@ public class SelectCharState : GameState
     public PlayerUI[] playerUI;
     private Dictionary<InputSet, GameObject> dummiesToInputsDictionary = new Dictionary<InputSet, GameObject>();
     private ControllerDelivery controllerDelivery;
-    private ArrayList players = new ArrayList();
+    private List<GameObject> players = new List<GameObject>();
 
 
     void Update()
