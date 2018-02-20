@@ -13,9 +13,8 @@ public class Archer : AnimateEntity
     public float shootTimer;
     public float circleColliderRadius;
     public float baseColliderRadius;
-
-
-
+    public RuntimeAnimatorController animControl;
+    public RuntimeAnimatorController animControlArc;
 
 
     // Use this for initialization
@@ -54,7 +53,7 @@ public class Archer : AnimateEntity
 				if (shootTimer <= 0) {
 					Idle ();
 					shootTimer = 3;
-					Shoot ();
+                    StartCoroutine("Shoot");
 				}      
 			}
 		} else 
@@ -91,14 +90,16 @@ public class Archer : AnimateEntity
         }
     }
 
-    private void Shoot()
+    private IEnumerator Shoot()
     {
-        animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("Animations/Enemies/Archer/Tir/archer Animator Tir");
+        this.GetComponent<Animator>().runtimeAnimatorController = animControlArc as RuntimeAnimatorController;
         Vector3 toTarget = direction.normalized;
         GameObject go= Instantiate(arrow, gameObject.transform.position+toTarget, Quaternion.identity,transform);
         go.GetComponent<Arrow>().user = gameObject.GetComponent<AnimateEntity>();
         float sign = (direction.y < Vector3.right.y) ? 1.0f : -1.0f;
         go.transform.rotation=Quaternion.Euler(0,0,270-Vector3.Angle(Vector3.right,direction)*sign/*90+(Mathf.Acos((direction.x/direction.magnitude))*180/Mathf.PI*/);
         go.GetComponent<Rigidbody2D>().velocity = toTarget*15;
+        yield return new WaitForSeconds(0.75f);
+        this.GetComponent<Animator>().runtimeAnimatorController = animControl as RuntimeAnimatorController;
     }
 }
