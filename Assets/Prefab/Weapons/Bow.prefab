@@ -192,12 +192,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9e47ad8c28f054686d1d7cd118d929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupCollider: {fileID: 0}
+  pickupCollider: {fileID: 61275232078974706}
   thumbnail: {fileID: 0}
   holder: {fileID: 0}
   pushPower: 0
-  animator: {fileID: 0}
-  rigid: {fileID: 0}
+  animator: {fileID: 95701670670438762}
+  rigid: {fileID: 50394787175248980}
   armorPoints: 0
   arrow: {fileID: 1337828024229780, guid: 274bad6da46a6234183a71fe57c2efdc, type: 2}
 --- !u!212 &212421804283826422
