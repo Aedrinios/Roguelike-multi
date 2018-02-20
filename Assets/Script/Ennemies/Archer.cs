@@ -93,6 +93,7 @@ public class Archer : AnimateEntity
 
     private void Shoot()
     {
+        animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("Animations/Enemies/Archer/Tir/archer Animator Tir");
         Vector3 toTarget = direction.normalized;
         GameObject go= Instantiate(arrow, gameObject.transform.position+toTarget, Quaternion.identity,transform);
         go.GetComponent<Arrow>().user = gameObject.GetComponent<AnimateEntity>();
