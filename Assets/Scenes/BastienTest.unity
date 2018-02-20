@@ -1513,6 +1513,12 @@ Prefab:
       propertyPath: m_Name
       value: Archer (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 212528865563747964, guid: b400071fb7307cb42bf764a759e1dda3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
@@ -2129,6 +2135,12 @@ Prefab:
       propertyPath: m_Name
       value: Archer (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 212528865563747964, guid: b400071fb7307cb42bf764a759e1dda3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
@@ -4614,6 +4626,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212528865563747964, guid: b400071fb7307cb42bf764a759e1dda3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
@@ -8300,6 +8318,12 @@ Prefab:
       propertyPath: m_Name
       value: Archer (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 212528865563747964, guid: b400071fb7307cb42bf764a759e1dda3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
@@ -8392,6 +8416,12 @@ Prefab:
       propertyPath: m_Name
       value: Archer (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 212528865563747964, guid: b400071fb7307cb42bf764a759e1dda3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
@@ -8916,11 +8946,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4387092125030728, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.53995717
+      value: -5.9
       objectReference: {fileID: 0}
     - target: {fileID: 4387092125030728, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 22.975855
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4387092125030728, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -8950,6 +8980,18 @@ Prefab:
       propertyPath: m_Name
       value: Archer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 212528865563747964, guid: b400071fb7307cb42bf764a759e1dda3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5,
+        type: 3}
+    - target: {fileID: 95984809319941532, guid: b400071fb7307cb42bf764a759e1dda3,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: a7075e4a17c71a944998e93fe76a6ffd,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
@@ -10783,6 +10825,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212528865563747964, guid: b400071fb7307cb42bf764a759e1dda3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
@@ -12520,6 +12568,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212528865563747964, guid: b400071fb7307cb42bf764a759e1dda3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
@@ -13612,6 +13666,12 @@ Prefab:
       propertyPath: m_Name
       value: Archer (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 212528865563747964, guid: b400071fb7307cb42bf764a759e1dda3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
@@ -14780,6 +14840,12 @@ Prefab:
       propertyPath: m_Name
       value: Archer (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 212528865563747964, guid: b400071fb7307cb42bf764a759e1dda3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
