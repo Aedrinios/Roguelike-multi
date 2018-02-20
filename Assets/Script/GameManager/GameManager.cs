@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 	private GameState gameState;
 
 	[HideInInspector]
-	public ArrayList players;
+	public List<GameObject> players;
 
 
 	void Awake () {

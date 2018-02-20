@@ -86,13 +86,13 @@ public class Archer : AnimateEntity
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
-        {
+        { 
             collision.gameObject.GetComponent<Character>().ReceiveHit(attack,gameObject);
         }
     }
 
     private void Shoot()
-    {
+    {   
         Vector3 toTarget = direction.normalized;
         GameObject go= Instantiate(arrow, gameObject.transform.position+toTarget, Quaternion.identity,transform);
         go.GetComponent<Arrow>().user = gameObject.GetComponent<AnimateEntity>();

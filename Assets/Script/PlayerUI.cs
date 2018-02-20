@@ -48,31 +48,55 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    public void armorHealth(int health)
+    public void armorHealth()
     {
-        // Mettre une condition pour slot 2 puis slot 1 puis joueur
-        if (player.inventory[1] != null && player.inventory[1].GetComponent<Weapon>().armorPoints > 0) // Slot 2
+        if (player.inventory[1] != null) // Slot 2
         {
-            for (int i = 0; i < 3; ++i)
+            var health2 = player.inventory[1].GetComponent<Weapon>().armorPoints;
+
+            if (health2 == 0) // empty heart
             {
-                if (i * 2 <= health - 2)                    // Full heart
-                    secondaryWeaponHearts[i].sprite = blueHearts[0];
-                else if (i * 2 >= health + health % 2)        // empty heart
+                for (int i = 0; i < 3; ++i)
+                {       
                     secondaryWeaponHearts[i].sprite = blueHearts[2];
-                else                                         // Half heart
-                    secondaryWeaponHearts[i].sprite = blueHearts[1];
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 3; ++i)
+                {
+                    if (i * 2 <= health2 - 2)                    // Full heart
+                        secondaryWeaponHearts[i].sprite = blueHearts[0];
+                    else if (i * 2 >= health2 + health2 % 2)        // empty heart
+                        secondaryWeaponHearts[i].sprite = blueHearts[2];
+                    else                                         // Half heart
+                        secondaryWeaponHearts[i].sprite = blueHearts[1];
+                }
             }
         }
-        else if (player.inventory[0] != null && player.inventory[0].GetComponent<Weapon>().armorPoints > 0) // Slot 1
+
+        if(player.inventory[0] != null) // Slot 1
         {
-            for (int i = 0; i < 3; ++i)
+            var health1 = player.inventory[0].GetComponent<Weapon>().armorPoints;
+
+            if (health1 == 0) // empty heart
             {
-                if (i * 2 <= health - 2)                    // Full heart
-                    primaryWeaponHearts[i].sprite = greenHearts[0];
-                else if (i * 2 >= health + health % 2)        // empty heart
-                    primaryWeaponHearts[i].sprite = greenHearts[2];
-                else                                         // Half heart
-                    primaryWeaponHearts[i].sprite = greenHearts[1];
+                for (int i = 0; i < 3; ++i)
+                {       
+                    primaryWeaponHearts[i].sprite = blueHearts[2];
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 3; ++i)
+                {
+                    if (i * 2 <= health1 - 2)                    // Full heart
+                        primaryWeaponHearts[i].sprite = greenHearts[0];
+                    else if (i * 2 >= health1 + health1 % 2)        // empty heart
+                        primaryWeaponHearts[i].sprite = greenHearts[2];
+                    else                                         // Half heart
+                        primaryWeaponHearts[i].sprite = greenHearts[1];
+                }
             }
         }
     }
@@ -82,7 +106,7 @@ public class PlayerUI : MonoBehaviour
     {
         weaponSprites[slot].enabled = true;
         weaponSprites[slot].sprite = player.inventory[slot].GetComponent<Weapon>().thumbnail;
-        SetHealth(player.inventory[slot].GetComponent<Weapon>().armorPoints);
+        armorHealth();// player.inventory[slot].GetComponent<Weapon>().armorPoints);
     }
 
     public void emptyFullInventory()
