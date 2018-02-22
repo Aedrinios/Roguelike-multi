@@ -35,3 +35,7 @@ sysinfo.txt
 ProjectSettings/ProjectVersion.txt
 Packages/manifest.json.meta
 Assets/Sprite/Weapons/flèche.png.meta
+Assets/Scenes/BastienTest_REMOTE_2868.unity
+Assets/Scenes/BastienTest_LOCAL_2868.unity
+Assets/Scenes/BastienTest_BASE_2868.unity
+Assets/Scenes/BastienTest_BACKUP_2868.unity

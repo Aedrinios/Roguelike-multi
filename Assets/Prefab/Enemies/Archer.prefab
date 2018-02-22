@@ -169,6 +169,7 @@ MonoBehaviour:
   health: 10
   speed: 10
   attack: 2
+  protectionShield: {fileID: 0}
   stun: 0
   timeOfInvincibility: 0
   direction: {x: 0, y: 0, z: 0}
@@ -180,6 +181,8 @@ MonoBehaviour:
   shootTimer: 0
   circleColliderRadius: 0
   baseColliderRadius: 0
+  animControl: {fileID: 22100000, guid: a7075e4a17c71a944998e93fe76a6ffd, type: 2}
+  animControlArc: {fileID: 22100000, guid: 2f870df72f71ccb4b81a829e994e7642, type: 2}
 --- !u!212 &212342972492341442
 SpriteRenderer:
   m_ObjectHideFlags: 1

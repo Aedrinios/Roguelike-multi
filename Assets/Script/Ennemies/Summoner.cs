@@ -82,7 +82,6 @@ public class Summoner : AnimateEntity
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Character>().StartCoroutine("ReceiveHit");
             collision.gameObject.GetComponent<Character>().ReceiveHit(attack,gameObject);
         }
     }
