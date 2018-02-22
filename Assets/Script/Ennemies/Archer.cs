@@ -14,10 +14,6 @@ public class Archer : AnimateEntity
     public float circleColliderRadius;
     public float baseColliderRadius;
 
-
-
-
-
     // Use this for initialization
     protected override void  Start()
     {

@@ -28,7 +28,7 @@ public class Salvator : AnimateEntity {
 	
 	// Update is called once per frame
 	void Update () {
-
+        //animator.SetBool("isAttacking", false);
         if (hasTarget) // player in sight
         {
             
@@ -50,6 +50,7 @@ public class Salvator : AnimateEntity {
         if (hasAlly)
         {
             ally.GetComponent<AnimateEntity>().setCanBeDamaged(false);
+           
         }
 
         if (health <= 0)
@@ -77,6 +78,7 @@ public class Salvator : AnimateEntity {
                 }
                 ally = other.gameObject;
                 hasAlly = true;
+
                 Debug.Log("Je protège");
                 
             }
@@ -93,6 +95,7 @@ public class Salvator : AnimateEntity {
 
                 }
             }
+            animator.SetBool("isAttacking", true);
         }
       
 
