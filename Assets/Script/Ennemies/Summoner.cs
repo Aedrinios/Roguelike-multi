@@ -13,8 +13,6 @@ public class Summoner : AnimateEntity
     public float circleColliderRadius;
     public float baseColliderRadius;
 
-
-
     // Use this for initialization
     protected override void Start()
     {
@@ -48,9 +46,10 @@ public class Summoner : AnimateEntity
 			{
 				
 				if (summonTimer <= 0) {
-					Idle ();
-					summonTimer = 5;
-					Summon (target.transform.position - direction / 2);
+					
+					animator.SetBool ("isAttacking", true);
+
+
 				}
 			}
 			if (health <= 0) 
@@ -85,10 +84,13 @@ public class Summoner : AnimateEntity
             collision.gameObject.GetComponent<Character>().ReceiveHit(attack,gameObject);
         }
     }
-
-    private void Summon(Vector3 pos)
+		
+    public void Summon()
     {
-        int no = (int)Random.Range(0, summon.Length);
-        GameObject blub = Instantiate(summon[no], pos, Quaternion.identity);
-    }
+		
+		summonTimer = 5;
+		int no = (int)Random.Range(0, summon.Length);
+		GameObject blub = Instantiate(summon[no], target.transform.position - direction / 2, Quaternion.identity);
+		animator.SetBool ("isAttacking", false);
+	}
 }
