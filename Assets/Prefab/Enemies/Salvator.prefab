@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1308541038237242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6794882, y: -0.26453596, z: 0}
+  m_LocalPosition: {x: -7.8, y: -1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4592654224768766}
@@ -109,7 +109,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 10
 --- !u!61 &61415598181625934
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -144,7 +144,7 @@ Animator:
   m_GameObject: {fileID: 1308541038237242}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: a7075e4a17c71a944998e93fe76a6ffd, type: 2}
+  m_Controller: {fileID: 22100000, guid: 0619caac10c382e4c8547411197000b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
   health: 10
   speed: 10
   attack: 2
+  protectionShield: {fileID: 0}
   stun: 0
   timeOfInvincibility: 0
   direction: {x: 0, y: 0, z: 0}
@@ -212,7 +213,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 42d8e8484fdf54242a93fbd8ac2ca4c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6f7cc55bcce7f94b842df3daac0d862, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
