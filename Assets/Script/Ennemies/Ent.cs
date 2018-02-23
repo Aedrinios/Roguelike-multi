@@ -29,8 +29,6 @@ public class Ent : AnimateEntity {
         timeCounterSpells = timeBewteenSpells;
 
         setActivePhase(1);
-
-        //health = 90; // TESTS
     }
 	
 	// Update is called once per frame
@@ -64,7 +62,7 @@ public class Ent : AnimateEntity {
         else if (isPhase2)
         {
             castRandomSpellOnRandomTarget(2);            //fait une attaque au harsard sur la cible choisi au hasard
-                            claimHealing();            //Les abrisseaux le soignent
+            claimHealing();            //Les abrisseaux le soignent
 
             //CHANGEMENT DE PHASE
             if (getNumberOfShrubsAlive() == 0 || health == 200)
@@ -113,7 +111,7 @@ public class Ent : AnimateEntity {
     {
         GameObject previousTarget=null;
 
-        if (timeCounterSpells >= 5)
+        if (timeCounterSpells >= timeBewteenSpells)
         {
             for (int i = 0; i < n; i++)
             {
@@ -170,7 +168,6 @@ public class Ent : AnimateEntity {
                 isPhase2 = false;
                 isPhase3 = false;
 
-                spawnShrubs(false);              //Despawn les arbrisseaux
                 setCanBeDamaged(true);                //vulnérable
                 setAllShrubsCanBeDamaged(false);      //arbrisseaux invulnérables
                 break;
@@ -180,7 +177,6 @@ public class Ent : AnimateEntity {
                 isPhase3 = false;
 
                 setAllShrubsCanBeDamaged(true);        //Les arbrisseaux son vulnérable
-                spawnShrubs(true);              //Spawn les arbrisseaux
                 setCanBeDamaged(false);                //Invulnérable
 
                 /*if (getNumberOfShrubsAlive() > 0)

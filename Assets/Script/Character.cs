@@ -71,9 +71,6 @@ public class Character : AnimateEntity
     {
 
         Debug.Log(inputSetName);
-        if (Input.GetKeyDown("2"))
-
-       // Debug.Log(health);
         if (Input.GetKeyDown("3"))
         {
             setCanBeDamaged(false);
