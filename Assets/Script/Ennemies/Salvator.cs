@@ -47,11 +47,6 @@ public class Salvator : AnimateEntity {
         }
         else
             Idle();
-        
-        if (hasAlly)
-        {
-           
-        }
 
         if (health <= 0)
         {
