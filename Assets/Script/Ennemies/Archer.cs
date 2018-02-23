@@ -62,7 +62,7 @@ public class Archer : AnimateEntity
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+           Destroy(gameObject);
         }
     }
 

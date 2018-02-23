@@ -46,10 +46,7 @@ public class Summoner : AnimateEntity
 			{
 				
 				if (summonTimer <= 0) {
-					
 					animator.SetBool ("isAttacking", true);
-
-
 				}
 			}
 			if (health <= 0) 
