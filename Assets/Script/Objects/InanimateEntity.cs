@@ -20,9 +20,10 @@ public abstract class InanimateEntity : MonoBehaviour
     {
         isEquipped = true;
         holder = user;
-        for (int i = 0; i < GetComponentsInChildren<SpriteRenderer>().Length; i++)
+        foreach (SpriteRenderer sp in gameObject.GetComponentsInChildren<SpriteRenderer>())
         {
-            GetComponentsInChildren<SpriteRenderer>()[i].enabled = false;
+            sp.enabled = false;
+            Debug.Log(sp.gameObject.name);
         }
         this.GetComponentInChildren<CircleCollider2D>().enabled = false;
         pickupCollider.enabled = false;
@@ -34,14 +35,14 @@ public abstract class InanimateEntity : MonoBehaviour
     public virtual void Unequip(int no)
     {
         holder.GetComponent<Character>().inventory[no] = null;
-        this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        //this.GetComponentInChildren<CircleCollider2D>().enabled = true;
-        //GetComponent<Rigidbody2D>().AddForce(holder.direction.normalized*50, ForceMode2D.Impulse);
-        //pickupCollider.enabled = true;
-        //this.transform.parent = null;
+        foreach (SpriteRenderer sp in gameObject.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sp.enabled = true;
+        }
         transform.position = holder.transform.position;
         holder = null;
         isEquipped = false;
+        this.GetComponentInChildren<CircleCollider2D>().enabled = true;
     }
     public abstract void Use(Character user);
 

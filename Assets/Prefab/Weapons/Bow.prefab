@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4109672561277054}
   - component: {fileID: 212421804283826422}
   m_Layer: 0
-  m_Name: Boomerang Sprite
+  m_Name: Bow Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1174304334795686}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9029052, y: -4.303954, z: 0}
+  m_LocalPosition: {x: 1.4471545, y: -3.560625, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4109672561277054}
@@ -116,7 +116,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -130,10 +130,10 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1174304334795686}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -173,7 +173,7 @@ Animator:
   m_GameObject: {fileID: 1174304334795686}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ed9c1130fccdb4c4cb8626b14784000b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 86294c1858d1d314d9d10219250c3095, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1174304334795686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca9e47ad8c28f054686d1d7cd118d929, type: 3}
+  m_Script: {fileID: 11500000, guid: 0022f226eae8d6441aebc7a17862c59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pickupCollider: {fileID: 61275232078974706}
@@ -198,7 +198,7 @@ MonoBehaviour:
   pushPower: 0
   animator: {fileID: 95701670670438762}
   rigid: {fileID: 50394787175248980}
-  armorPoints: 0
+  armorPoints: 2
   arrow: {fileID: 1337828024229780, guid: 274bad6da46a6234183a71fe57c2efdc, type: 2}
 --- !u!212 &212421804283826422
 SpriteRenderer:
@@ -232,12 +232,12 @@ SpriteRenderer:
   m_SortingLayerID: 437912767
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e03197af54ea6464f846190bc943efd9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ccb43d9c91a0c447a0d0adecbdd7776, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.2, y: 1.2}
+  m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

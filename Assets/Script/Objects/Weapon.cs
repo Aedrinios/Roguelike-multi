@@ -35,8 +35,7 @@ public float pushPower;
 	private void LaunchAnimation () {
 		if (!animator.GetBool("attack")){
 			transform.localPosition = Vector3.zero;
-            GetComponentInChildren<SpriteRenderer>().enabled = true;
-            
+            GetComponentInChildren<SpriteRenderer>().enabled = true;           
 			animator.SetBool("attack", true);
 			holder.stun = true;
 		}
@@ -48,7 +47,5 @@ public float pushPower;
             GetComponentsInChildren<SpriteRenderer>()[i].enabled = false;
         }
 		holder.stun = false;
-		Debug.Log("wut");
 	}
-
 }
