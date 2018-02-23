@@ -11,14 +11,6 @@ public class Arrow : InanimateEntity {
         user = transform.parent.GetComponent<AnimateEntity>();
     }
 
-    private void Update()
-    {
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.sqrMagnitude <= 1)
-        {
-            Destroy(gameObject);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<InanimateEntity>() != user && !collision.isTrigger)
@@ -36,7 +28,11 @@ public class Arrow : InanimateEntity {
                         collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(5, collision.gameObject);
                         Destroy(gameObject);
                     }
-                    break;
+                    else if (collision.tag=="Wall")
+                    {
+                        Destroy(gameObject);
+                    }
+                        break;
                 case ("enemy"):
                     if (collision.tag == "Player")
                     {
@@ -46,6 +42,10 @@ public class Arrow : InanimateEntity {
                     else if (collision.tag == "enemy")
                     {
                         collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(2, collision.gameObject);
+                        Destroy(gameObject);
+                    }
+                    else if (collision.tag == "Wall")
+                    {
                         Destroy(gameObject);
                     }
                     break;
