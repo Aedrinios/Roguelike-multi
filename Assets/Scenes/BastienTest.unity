@@ -13534,7 +13534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f493e3b188b9d48819570650bf82f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalHealth: 10
+  globalHealth: 11
   globalHealthNumber: {fileID: 2132164587}
   panel: {fileID: 541206183}
   gameOver: {fileID: 1407735492}
