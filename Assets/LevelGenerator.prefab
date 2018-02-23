@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1167248920018774}
+  m_IsPrefabParent: 1
+--- !u!1 &1167248920018774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4304179786515194}
+  - component: {fileID: 114068055539874064}
+  m_Layer: 0
+  m_Name: LevelGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4304179786515194
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1167248920018774}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114068055539874064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1167248920018774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f288b11a4078a5040b0f6657b4b4e36f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: 0
+  down: 0
+  left: 0
+  right: 0
+  spUPrefab: {fileID: 1809914602617192, guid: ac1b14208c7f22f458298a9f2c5da451, type: 2}
+  spDPrefab: {fileID: 1706547412718080, guid: 15ea62583005be14b892ab465f1a2853, type: 2}
+  spRPrefab: {fileID: 1635569662516966, guid: 60d7d41ad4fd1ef48b5accf9a25817ed, type: 2}
+  spLPrefab: {fileID: 1296933435140136, guid: 01cc1428b22862c41b2277cadde76b96, type: 2}
+  spUDPrefab: {fileID: 1534559408905254, guid: b5b0b1eb12fbb3744938dfdb922bdadf, type: 2}
+  spRLPrefab: {fileID: 1754327071428896, guid: 8dbdd9b1ba3181c44ba71df0cc6bcdc0, type: 2}
+  spURPrefab: {fileID: 1466968529213418, guid: 4fa693174da2d834dbccd08f256e2cde, type: 2}
+  spULPrefab: {fileID: 1013011999341356, guid: ac4b9f35f28eacd408922bbcedc7a4c7, type: 2}
+  spDRPrefab: {fileID: 1193560554835092, guid: 94f9b4bec6a3bd442b3f0b765814b461, type: 2}
+  spDLPrefab: {fileID: 1345853235719284, guid: 3f4f777534a894945afab7b933ce8c0e, type: 2}
+  spULDPrefab: {fileID: 1458635470169070, guid: d40c44288844ead4c9ad000d4fa43f4b,
+    type: 2}
+  spRULPrefab: {fileID: 1847315296729474, guid: f789c97a116d82843a406a6e417c8159,
+    type: 2}
+  spDRUPrefab: {fileID: 1170679300419094, guid: 2ff557fd2c9d8b448a90194adc2857e6,
+    type: 2}
+  spLDRPrefab: {fileID: 1943094127324084, guid: ab44edd1368e95d4495ce3bfd0e5c84f,
+    type: 2}
+  spUDRLPrefab: {fileID: 1643767772531618, guid: 8592e25a526390e46bb157ae922ce710,
+    type: 2}
+  roomBossD: {fileID: 0}
+  roomBossU: {fileID: 0}
+  roomBossL: {fileID: 0}
+  roomBossR: {fileID: 0}
