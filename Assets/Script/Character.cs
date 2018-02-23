@@ -52,13 +52,22 @@ public class Character : AnimateEntity
         {
             var arm2 = inventory[1].GetComponent<Weapon>().armorPoints;
             inventory[1].GetComponent<Weapon>().armorPoints = arm2 - value;
+
             UI.armorHealth(); // Armor Health
+            if(arm2-value<0)
+            {
+                ReceiveHit(value - arm2,gameObject);
+            }
         }
         else if (inventory[0] != null && inventory[0].GetComponent<Weapon>().armorPoints > 0) // Slot 1
         {
             var arm1 = inventory[0].GetComponent<Weapon>().armorPoints;
             inventory[0].GetComponent<Weapon>().armorPoints = arm1 - value;
             UI.armorHealth(); // Armor Health
+            if (arm1 - value < 0)
+            {
+                ReceiveHit(value - arm1, gameObject);
+            }
         }
         else // Joueur
         {
@@ -167,14 +176,12 @@ public class Character : AnimateEntity
         //ramassage puis lancer
         if (Input.GetButtonDown(inputSetName + "interact"))
         {
-            Debug.Log("gg");
             Interract();
         }
 
         //déséquipement arme 1
         if (Input.GetButton(inputSetName + "primary"))
         {
-            Debug.Log("gg");
             primaryTimer += Time.deltaTime;
             if (primaryTimer > 1 && inventory[0] != null && !isCarrying)
                 Carry(inventory[0]);
@@ -187,7 +194,6 @@ public class Character : AnimateEntity
         //desequipement arme 2
         if (Input.GetButton(inputSetName + "secondary"))
         {
-            Debug.Log("gg");
             secondaryTimer += Time.deltaTime;
             if (secondaryTimer > 1 && inventory[1] != null)
                 Carry(inventory[1]);
@@ -238,10 +244,8 @@ public class Character : AnimateEntity
                         break;
                 }
             }
-
             Debug.Log("pressed");
         }
-
     }
 
     public float GetRotation()
@@ -282,6 +286,8 @@ public class Character : AnimateEntity
             inventory[slot].Equip(this);
             UI.ChangeWeapon(this, slot);
             SoundManager.playSound("pickUpItem");
+            inventory[slot].GetComponentInChildren<SpriteRenderer>();
+            Debug.Log(inventory[slot].GetComponentInChildren<SpriteRenderer>());
         }
     }
 

@@ -23,7 +23,7 @@ public class Boomerang : InanimateEntity {
         {
             isUsed = 1;
             dir = user.direction;
-            if (dir==Vector3.zero) // pour eviter d'avoir un boomerang qui tourne sur soi. aimplémenter dans le perso?
+            if (dir==Vector3.zero) // pour eviter d'avoir un boomerang qui tourne sur soi.
             {
                 dir = previousDir;
             }

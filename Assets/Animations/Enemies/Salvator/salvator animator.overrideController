@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: salvator animator
+  m_Controller: {fileID: 9100000, guid: 717828c0965323f43a33d2a525224a29, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 07f9923bf3134aa428e0c2e237e84148, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 07f9923bf3134aa428e0c2e237e84148, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 560845bc8b219df49bbcc366b77d8076, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 560845bc8b219df49bbcc366b77d8076, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 50c1e19f7e4f61c47920cc4cd15d5169, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 50c1e19f7e4f61c47920cc4cd15d5169, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cf2db63232405ce4c863069f8e1b692e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cf2db63232405ce4c863069f8e1b692e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0ecb60948f00085428b3f15ff44ac11c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0ecb60948f00085428b3f15ff44ac11c, type: 2}

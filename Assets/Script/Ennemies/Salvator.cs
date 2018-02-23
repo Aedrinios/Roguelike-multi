@@ -23,6 +23,7 @@ public class Salvator : AnimateEntity {
         baseColliderRadius = circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
         invincibility = new Timer(timeOfInvincibility, true);
         animator = this.GetComponent<Animator>();
+		//animator.SetBool ("isAttacking", false);
 
     }
 	
@@ -33,7 +34,7 @@ public class Salvator : AnimateEntity {
         {
             
             direction = target.transform.position - gameObject.transform.position;
-            circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius = direction.magnitude;
+			circleColliderRadius = gameObject.GetComponent<CircleCollider2D> ().radius = direction.magnitude;	
 
             if (circleColliderRadius < baseColliderRadius * 0.25f)
             {
@@ -46,12 +47,6 @@ public class Salvator : AnimateEntity {
         }
         else
             Idle();
-        
-        if (hasAlly)
-        {
-            ally.GetComponent<AnimateEntity>().setCanBeDamaged(false);
-           
-        }
 
         if (health <= 0)
         {
@@ -60,7 +55,7 @@ public class Salvator : AnimateEntity {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -68,7 +63,7 @@ public class Salvator : AnimateEntity {
             hasTarget = true;
         }
 
-        if(other.tag == "enemy" && !(other.gameObject.name.Contains("Salvator")))
+        if(other.gameObject.tag == "enemy" && !(other.gameObject.name.Contains("Salvator")))
         {
             if (!hasAlly)
             {
@@ -77,14 +72,11 @@ public class Salvator : AnimateEntity {
                     onSummoner = true;
                 }
                 ally = other.gameObject;
-                hasAlly = true;
-
-                Debug.Log("Je protège");
-                
+				hasAlly = true;                
             }
             else
             {
-                if ( onSummoner == false)
+                if (!onSummoner)
                 {
                     if (other.gameObject.name.Contains("Summoner")) //if its a summoner --> shield 
                     {
@@ -96,6 +88,9 @@ public class Salvator : AnimateEntity {
                 }
             }
             animator.SetBool("isAttacking", true);
+			yield return new WaitForSeconds (0.5f);
+			ally.GetComponent<AnimateEntity>().setCanBeDamaged(false);
+			animator.SetBool ("isAttacking", false);
         }
       
 
