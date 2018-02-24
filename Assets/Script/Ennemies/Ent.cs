@@ -25,6 +25,7 @@ public class Ent : AnimateEntity {
     // Use this for initialization
     void Start () {
         base.Start();
+        scaleMultiplier = 4;
         startHealth = health;
         timeCounterSpells = timeBewteenSpells;
 

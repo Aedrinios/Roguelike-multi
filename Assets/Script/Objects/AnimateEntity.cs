@@ -25,8 +25,10 @@ public abstract class AnimateEntity : InanimateEntity
     public Vector3 direction;
     protected bool isDying = false;
     protected AudioSource audioSource;
+    protected float scaleMultiplier;
 
     private ProtectionShield currentShield=null;
+
 
 
     protected virtual void Start()
@@ -35,6 +37,7 @@ public abstract class AnimateEntity : InanimateEntity
         invincibility = new Timer(timeOfInvincibility, true);
         rigidb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
+        scaleMultiplier = 1;
     }
 
     public virtual void Move(Vector2 directionRequired)
@@ -82,7 +85,7 @@ public abstract class AnimateEntity : InanimateEntity
             {
                 //sprite change de couleur indiquant impossibilité d'être frappé, bouclier posé
                 currentShield = Instantiate(protectionShield, transform.position, Quaternion.identity, transform); ;
-                currentShield.transform.localScale = new Vector3(transform.localScale.x + 0.3f, transform.localScale.y + 0.3f, 0);
+                currentShield.transform.localScale = new Vector3(transform.localScale.x + 0.3f * scaleMultiplier, transform.localScale.y + 0.3f * scaleMultiplier, 0);
                 Debug.Log(this.name +" : Shield de protection activé");
             }
         }

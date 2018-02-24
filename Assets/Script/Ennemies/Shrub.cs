@@ -18,6 +18,7 @@ public class Shrub : AnimateEntity {
     // Use this for initialization
     void Start () {
         base.Start();
+        scaleMultiplier = 2;
         startHealth = health;
         setActivePhase(1);
         animator = GetComponent<Animator>();
