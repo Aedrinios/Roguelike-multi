@@ -48,31 +48,34 @@ public class Character : AnimateEntity
 
     public override void ReceiveHit(int value, GameObject other)
     {
-        if (inventory[1] != null && inventory[1].GetComponent<Weapon>().armorPoints > 0) // Slot 2 
+        if (canBeDamaged)
         {
-            var arm2 = inventory[1].GetComponent<Weapon>().armorPoints;
-            inventory[1].GetComponent<Weapon>().armorPoints = arm2 - value;
+            if (inventory[1] != null && inventory[1].GetComponent<Weapon>().armorPoints > 0) // Slot 2 
+            {
+                var arm2 = inventory[1].GetComponent<Weapon>().armorPoints;
+                inventory[1].GetComponent<Weapon>().armorPoints = arm2 - value;
 
-            UI.armorHealth(); // Armor Health
-            if(arm2-value<0)
-            {
-                ReceiveHit(value - arm2,gameObject);
+                UI.armorHealth(); // Armor Health
+                if (arm2 - value < 0)
+                {
+                    ReceiveHit(value - arm2, gameObject);
+                }
             }
-        }
-        else if (inventory[0] != null && inventory[0].GetComponent<Weapon>().armorPoints > 0) // Slot 1
-        {
-            var arm1 = inventory[0].GetComponent<Weapon>().armorPoints;
-            inventory[0].GetComponent<Weapon>().armorPoints = arm1 - value;
-            UI.armorHealth(); // Armor Health
-            if (arm1 - value < 0)
+            else if (inventory[0] != null && inventory[0].GetComponent<Weapon>().armorPoints > 0) // Slot 1
             {
-                ReceiveHit(value - arm1, gameObject);
+                var arm1 = inventory[0].GetComponent<Weapon>().armorPoints;
+                inventory[0].GetComponent<Weapon>().armorPoints = arm1 - value;
+                UI.armorHealth(); // Armor Health
+                if (arm1 - value < 0)
+                {
+                    ReceiveHit(value - arm1, gameObject);
+                }
             }
-        }
-        else // Joueur
-        {
-            base.ReceiveHit(value, other);
-            UI.SetHealth(health); // Player health
+            else // Joueur
+            {
+                base.ReceiveHit(value, other);
+                UI.SetHealth(health); // Player health
+            }
         }
     }
 
