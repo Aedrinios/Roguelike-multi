@@ -85,7 +85,7 @@ public abstract class AnimateEntity : InanimateEntity
             {
                 //sprite change de couleur indiquant impossibilité d'être frappé, bouclier posé
                 currentShield = Instantiate(protectionShield, transform.position, Quaternion.identity, transform); ;
-                currentShield.transform.localScale = new Vector3(transform.localScale.x + 0.3f * scaleMultiplier, transform.localScale.y + 0.3f * scaleMultiplier, 0);
+                currentShield.transform.localScale = new Vector3((transform.localScale.x + 0.3f) * scaleMultiplier, (transform.localScale.y + 0.3f) * scaleMultiplier, 0);
                 Debug.Log(this.name +" : Shield de protection activé");
             }
         }
