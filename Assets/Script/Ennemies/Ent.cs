@@ -25,7 +25,7 @@ public class Ent : AnimateEntity {
     // Use this for initialization
     void Start () {
         base.Start();
-        scaleMultiplier = 7;
+        scaleMultiplier = 6;
         startHealth = health;
         timeCounterSpells = timeBewteenSpells;
 
@@ -215,5 +215,10 @@ public class Ent : AnimateEntity {
         {
             shrubs[i].gameObject.SetActive(b);
         }
+    }
+
+    public int getStartHealth()
+    {
+        return startHealth;
     }
 }

@@ -116,11 +116,30 @@ public abstract class AnimateEntity : InanimateEntity
         
         if (canBeDamaged == true &&!isDead)
         {
-            
-           // Debug.Log(value);
             Debug.Log("degats : " +value);
+
+            //reduce health
             health -= value;
             KnockBack(other);
+
+            Debug.Log(other.name);
+            //play hit sound
+            switch (other.name)
+            {
+                case ("Doll(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    break;
+                case ("Ghoul(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    break;
+                case ("Bouboule(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    break;
+                case ("Ordi(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    break;
+
+            }
         }
         
         if (health <= 0)

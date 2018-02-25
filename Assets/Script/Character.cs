@@ -101,76 +101,7 @@ public class Character : AnimateEntity
         
         if (health <= 0)
         {
-            UI.emptyFullInventory();
-            inventory[0] = null;
-            inventory[1] = null;
-
-            if (isDead == false)
-            {
-                Debug.Log("OOOOOOOOOOOOOOOOOOOOO");
-                gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                globalHealthManager.decreaseGlobalHealth(1);
-                animator.SetBool("isDead", true);
-                animator.SetFloat("directionY", -1);
-                animator.SetFloat("directionX", 0);
-                GetComponent<CharController>().enabled = false;
-
-                isDead = true;
-                canBeDamaged = false;
-                canAttack = false;
-            }
-
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacityValue);
-
-            //joue le son de mort
-            if (deathAudioHasPlayed == false)
-            {
-                SoundManager.playSound("goule2Mort2");
-                deathAudioHasPlayed = true;
-            }
-
-            //temps d'invincibilité
-            deathTimeCount += Time.deltaTime;
-            blinkTimeCount += Time.deltaTime;
-
-            //RESPAWN
-            if (deathTimeCount >= deathTime)
-            {
-                isDead = false;
-                canAttack = true;
-                canBeDamaged = true;
-                deathTimeCount = 0;
-                health = startLife;
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
-                deathAudioHasPlayed = false;
-                SoundManager.playSound("respawnSound");
-                opacityValue = 0.3f;
-                UI.reactivateInventory();
-                UI.SetHealth(startLife);  //remplir coeurs
-            }
-            //clignotement avant de respawn
-            else if (deathTimeCount >= deathTime * 0.66f)
-            {
-                if (blinkTimeCount >= blinkTime)
-                {
-                    if (opacityValue == 1f)
-                    {
-                        opacityValue = 0.3f;
-                        blinkTimeCount = 0;
-                    }
-                    else
-                    {
-                        opacityValue = 1f;
-                        blinkTimeCount = 0;
-                    }
-                }
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, opacityValue);
-            }
-            else if (deathTimeCount >= deathTime * 0.33f)
-            {
-                GetComponent<CharController>().enabled = true;
-                animator.SetBool("isDead", false);
-            }
+            Die();
         }
 
         //ramassage puis lancer
@@ -207,7 +138,75 @@ public class Character : AnimateEntity
 
     protected override void Die()
     {
-        animator.SetBool("isDead", true);
+        UI.emptyFullInventory();
+        inventory[0] = null;
+        inventory[1] = null;
+
+        if (isDead == false)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            globalHealthManager.decreaseGlobalHealth(1);
+            animator.SetBool("isDead", true);
+            animator.SetFloat("directionY", -1);
+            animator.SetFloat("directionX", 0);
+            GetComponent<CharController>().enabled = false;
+
+            isDead = true;
+            canBeDamaged = false;
+            canAttack = false;
+        }
+
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacityValue);
+
+        //joue le son de mort
+        if (deathAudioHasPlayed == false)
+        {
+            SoundManager.playSound("goule2Mort2");
+            deathAudioHasPlayed = true;
+        }
+
+        //temps d'invincibilité
+        deathTimeCount += Time.deltaTime;
+        blinkTimeCount += Time.deltaTime;
+
+        //RESPAWN
+        if (deathTimeCount >= deathTime)
+        {
+            isDead = false;
+            canAttack = true;
+            canBeDamaged = true;
+            deathTimeCount = 0;
+            health = startLife;
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
+            deathAudioHasPlayed = false;
+            SoundManager.playSound("respawnSound");
+            opacityValue = 0.3f;
+            UI.reactivateInventory();
+            UI.SetHealth(startLife);  //remplir coeurs
+        }
+        //clignotement avant de respawn
+        else if (deathTimeCount >= deathTime * 0.66f)
+        {
+            if (blinkTimeCount >= blinkTime)
+            {
+                if (opacityValue == 1f)
+                {
+                    opacityValue = 0.3f;
+                    blinkTimeCount = 0;
+                }
+                else
+                {
+                    opacityValue = 1f;
+                    blinkTimeCount = 0;
+                }
+            }
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, opacityValue);
+        }
+        else if (deathTimeCount >= deathTime * 0.33f)
+        {
+            GetComponent<CharController>().enabled = true;
+            animator.SetBool("isDead", false);
+        }
     }
 
     public void Revive()
