@@ -41,6 +41,7 @@ public class WeaponDamagingPart : MonoBehaviour
                         case ("Boomerang"):
                             SoundManager.playSound("armeEpee");
                             break;
+
                         case ("protectionShield"):
                             SoundManager.playSound("armeEpee"); //BRUIT DE BOUCLIER
                             break;
