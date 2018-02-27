@@ -2426,7 +2426,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1884072128244662, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
       propertyPath: m_Name
-      value: Sword (4)
+      value: Sword
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
@@ -3161,7 +3161,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1884072128244662, guid: f070efea44b894140a7f5fec5f818099, type: 2}
       propertyPath: m_Name
-      value: Lance (3)
+      value: Lance
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f070efea44b894140a7f5fec5f818099, type: 2}
@@ -5453,7 +5453,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1884072128244662, guid: f070efea44b894140a7f5fec5f818099, type: 2}
       propertyPath: m_Name
-      value: Lance (2)
+      value: Lance
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f070efea44b894140a7f5fec5f818099, type: 2}
@@ -5718,7 +5718,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1884072128244662, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
       propertyPath: m_Name
-      value: Sword (3)
+      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 4830019800369046, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
       propertyPath: m_LocalScale.x
@@ -6139,7 +6139,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1884072128244662, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
       propertyPath: m_Name
-      value: Sword (1)
+      value: Sword
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
@@ -7888,7 +7888,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1884072128244662, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
       propertyPath: m_Name
-      value: Stick (2)
+      value: Stick
       objectReference: {fileID: 0}
     - target: {fileID: 1884072128244662, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
       propertyPath: m_IsActive
@@ -9698,7 +9698,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4830019800369046, guid: f070efea44b894140a7f5fec5f818099, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.85
+      value: -1.91
       objectReference: {fileID: 0}
     - target: {fileID: 4830019800369046, guid: f070efea44b894140a7f5fec5f818099, type: 2}
       propertyPath: m_LocalPosition.y
@@ -10401,15 +10401,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - {fileID: 8300000, guid: 0d22f30248c4b4401a0cd9afbc42bffa, type: 3}
-  - {fileID: 8300000, guid: 2ce36b69ea0ce0a4ab954325c1fdf75f, type: 3}
+  - {fileID: 8300000, guid: 6b5476e556ac9f6428f4a6ec852ac41b, type: 3}
   - {fileID: 8300000, guid: 7e1cbb69c2ff622478065150f86e1485, type: 3}
   - {fileID: 8300000, guid: 3b0d18b42bdf7d142911619d46303886, type: 3}
   - {fileID: 8300000, guid: 2b4b24a218eb28142a96a4523737149a, type: 3}
   - {fileID: 8300000, guid: 183bedd46d3534cd892f75c0b874a9b2, type: 3}
   - {fileID: 8300000, guid: 0b5e03747f9a5f74fbfcb97dc6648b65, type: 3}
   - {fileID: 8300000, guid: c9ebc86838516489fbd744987d962d07, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 65f3a0cc9558da949bb3facc6bb5e4fb, type: 3}
+  - {fileID: 8300000, guid: 14b05f3787142554dbc25385e196f473, type: 3}
 --- !u!82 &1469559646
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11176,7 +11176,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1884072128244662, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
       propertyPath: m_Name
-      value: Stick (3)
+      value: Stick
       objectReference: {fileID: 0}
     - target: {fileID: 1884072128244662, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
       propertyPath: m_IsActive
@@ -11198,7 +11198,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4830019800369046, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.7100523
+      value: -5.3
       objectReference: {fileID: 0}
     - target: {fileID: 4830019800369046, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -11281,7 +11281,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1884072128244662, guid: f070efea44b894140a7f5fec5f818099, type: 2}
       propertyPath: m_Name
-      value: Lance (4)
+      value: Lance
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f070efea44b894140a7f5fec5f818099, type: 2}
