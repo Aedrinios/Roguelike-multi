@@ -25,20 +25,20 @@ public class Ent : AnimateEntity {
     // Use this for initialization
     void Start () {
         base.Start();
+        scaleMultiplier = 6;
         startHealth = health;
         timeCounterSpells = timeBewteenSpells;
 
         setActivePhase(1);
-
-        health = 90; // TESTS
     }
 	
 	// Update is called once per frame
 	void Update () {
 
         //DEBUGS
-        Debug.Log("Ent health : " + health);
-        Debug.Log("Phase Active : " + getActivePhase());
+        //Debug.Log("Ent health : " + health);
+        //Debug.Log("Phase Active : " + getActivePhase());
+        Debug.Log("shrubs alive : " + getNumberOfShrubsAlive());
 
         //VARIABLE DE COMPTAGE DE TEMPS
         timeCounterSpells += Time.deltaTime;
@@ -47,28 +47,30 @@ public class Ent : AnimateEntity {
         //1ère phase : Au dessus de 50%
         if (isPhase1) 
         {
-            chooseRandomTarget();       //choisi une cible au hasard
-            castRandomSpell();          //fait une attaque au harsard sur la cible choisi au hasard
+            castRandomSpellOnRandomTarget(1);          //fait une attaque au harsard sur la cible choisi au hasard
 
             //CHANGEMENT DE PHASE
-            if (health<=startHealth/2)
+            if (health<=startHealth/2 && getNumberOfShrubsAlive() > 0)
             {
                 setActivePhase(2);
+            }
+            else if (health <= 0)
+            {
+                setActivePhase(3);
             }
         }
         //2ème phase : En dessous de 50%
         else if (isPhase2)
         {
+            castRandomSpellOnRandomTarget(2);            //fait une attaque au harsard sur la cible choisi au hasard
             claimHealing();            //Les abrisseaux le soignent
-            chooseRandomTarget();      //choisi une cible au hasard
-            castRandomSpell();            //fait une attaque au harsard sur la cible choisi au hasard
 
             //CHANGEMENT DE PHASE
             if (getNumberOfShrubsAlive() == 0 || health == 200)
             {
                 setActivePhase(1);
             }
-            else if (health ==0)
+            else if (health == 0)
             {
                 setActivePhase(3);
             }
@@ -95,12 +97,34 @@ public class Ent : AnimateEntity {
         Debug.Log("Ent Target : " +currentTarget);
     }
 
-    void castRandomSpell()
+    /*void castRandomSpell()
     {
         if (timeCounterSpells >= 5)
         {
             int rdm = Mathf.RoundToInt(Random.Range(0, spells.Length));
             Instantiate(spells[rdm], currentTarget.transform.position, Quaternion.identity);
+
+            timeCounterSpells = 0;
+        }
+    }*/
+
+    void castRandomSpellOnRandomTarget(int n)
+    {
+        GameObject previousTarget=null;
+
+        if (timeCounterSpells >= timeBewteenSpells)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                do          //Ce Do while sert à choisir deux cible différentes lorsque le boss cast deux spells
+                {
+                    chooseRandomTarget();
+                } while (currentTarget == previousTarget);
+                previousTarget = currentTarget;
+
+                int rdm = Mathf.RoundToInt(Random.Range(0, spells.Length));
+                Instantiate(spells[rdm], currentTarget.transform.position, Quaternion.identity);
+            }
 
             timeCounterSpells = 0;
         }
@@ -154,11 +178,12 @@ public class Ent : AnimateEntity {
                 isPhase3 = false;
 
                 setAllShrubsCanBeDamaged(true);        //Les arbrisseaux son vulnérable
+                setCanBeDamaged(false);                //Invulnérable
 
-                if (getNumberOfShrubsAlive() > 0)
+                /*if (getNumberOfShrubsAlive() > 0)
                 {
                     setCanBeDamaged(false);                //Invulnérable
-                }
+                }*/
                 break;
             case 3:
                 isPhase1 = false;
@@ -182,5 +207,18 @@ public class Ent : AnimateEntity {
         {
             return 3;
         }
+    }
+
+    void spawnShrubs(bool b)
+    {
+        for (int i = 0; i < shrubs.Length; i++)
+        {
+            shrubs[i].gameObject.SetActive(b);
+        }
+    }
+
+    public int getStartHealth()
+    {
+        return startHealth;
     }
 }

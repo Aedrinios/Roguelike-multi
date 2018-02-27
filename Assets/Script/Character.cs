@@ -48,31 +48,34 @@ public class Character : AnimateEntity
 
     public override void ReceiveHit(int value, GameObject other)
     {
-        if (inventory[1] != null && inventory[1].GetComponent<Weapon>().armorPoints > 0) // Slot 2 
+        if (canBeDamaged)
         {
-            var arm2 = inventory[1].GetComponent<Weapon>().armorPoints;
-            inventory[1].GetComponent<Weapon>().armorPoints = arm2 - value;
+            if (inventory[1] != null && inventory[1].GetComponent<Weapon>().armorPoints > 0) // Slot 2 
+            {
+                var arm2 = inventory[1].GetComponent<Weapon>().armorPoints;
+                inventory[1].GetComponent<Weapon>().armorPoints = arm2 - value;
 
-            UI.armorHealth(); // Armor Health
-            if(arm2-value<0)
-            {
-                ReceiveHit(value - arm2,gameObject);
+                UI.armorHealth(); // Armor Health
+                if (arm2 - value < 0)
+                {
+                    ReceiveHit(value - arm2, gameObject);
+                }
             }
-        }
-        else if (inventory[0] != null && inventory[0].GetComponent<Weapon>().armorPoints > 0) // Slot 1
-        {
-            var arm1 = inventory[0].GetComponent<Weapon>().armorPoints;
-            inventory[0].GetComponent<Weapon>().armorPoints = arm1 - value;
-            UI.armorHealth(); // Armor Health
-            if (arm1 - value < 0)
+            else if (inventory[0] != null && inventory[0].GetComponent<Weapon>().armorPoints > 0) // Slot 1
             {
-                ReceiveHit(value - arm1, gameObject);
+                var arm1 = inventory[0].GetComponent<Weapon>().armorPoints;
+                inventory[0].GetComponent<Weapon>().armorPoints = arm1 - value;
+                UI.armorHealth(); // Armor Health
+                if (arm1 - value < 0)
+                {
+                    ReceiveHit(value - arm1, gameObject);
+                }
             }
-        }
-        else // Joueur
-        {
-            base.ReceiveHit(value, other);
-            UI.SetHealth(health); // Player health
+            else // Joueur
+            {
+                base.ReceiveHit(value, other);
+                UI.SetHealth(health); // Player health
+            }
         }
     }
 
@@ -80,9 +83,6 @@ public class Character : AnimateEntity
     {
 
         Debug.Log(inputSetName);
-        if (Input.GetKeyDown("2"))
-
-       // Debug.Log(health);
         if (Input.GetKeyDown("3"))
         {
             setCanBeDamaged(false);
@@ -101,76 +101,7 @@ public class Character : AnimateEntity
         
         if (health <= 0)
         {
-            UI.emptyFullInventory();
-            inventory[0] = null;
-            inventory[1] = null;
-
-            if (isDead == false)
-            {
-                Debug.Log("OOOOOOOOOOOOOOOOOOOOO");
-                gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                globalHealthManager.decreaseGlobalHealth(1);
-                animator.SetBool("isDead", true);
-                animator.SetFloat("directionY", -1);
-                animator.SetFloat("directionX", 0);
-                GetComponent<CharController>().enabled = false;
-
-                isDead = true;
-                canBeDamaged = false;
-                canAttack = false;
-            }
-
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacityValue);
-
-            //joue le son de mort
-            if (deathAudioHasPlayed == false)
-            {
-                SoundManager.playSound("goule2Mort2");
-                deathAudioHasPlayed = true;
-            }
-
-            //temps d'invincibilité
-            deathTimeCount += Time.deltaTime;
-            blinkTimeCount += Time.deltaTime;
-
-            //RESPAWN
-            if (deathTimeCount >= deathTime)
-            {
-                isDead = false;
-                canAttack = true;
-                canBeDamaged = true;
-                deathTimeCount = 0;
-                health = startLife;
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
-                deathAudioHasPlayed = false;
-                SoundManager.playSound("respawnSound");
-                opacityValue = 0.3f;
-                UI.reactivateInventory();
-                UI.SetHealth(startLife);  //remplir coeurs
-            }
-            //clignotement avant de respawn
-            else if (deathTimeCount >= deathTime * 0.66f)
-            {
-                if (blinkTimeCount >= blinkTime)
-                {
-                    if (opacityValue == 1f)
-                    {
-                        opacityValue = 0.3f;
-                        blinkTimeCount = 0;
-                    }
-                    else
-                    {
-                        opacityValue = 1f;
-                        blinkTimeCount = 0;
-                    }
-                }
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, opacityValue);
-            }
-            else if (deathTimeCount >= deathTime * 0.33f)
-            {
-                GetComponent<CharController>().enabled = true;
-                animator.SetBool("isDead", false);
-            }
+            Die();
         }
 
         //ramassage puis lancer
@@ -207,7 +138,75 @@ public class Character : AnimateEntity
 
     protected override void Die()
     {
-        animator.SetBool("isDead", true);
+        UI.emptyFullInventory();
+        inventory[0] = null;
+        inventory[1] = null;
+
+        if (isDead == false)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            globalHealthManager.decreaseGlobalHealth(1);
+            animator.SetBool("isDead", true);
+            animator.SetFloat("directionY", -1);
+            animator.SetFloat("directionX", 0);
+            GetComponent<CharController>().enabled = false;
+
+            isDead = true;
+            canBeDamaged = false;
+            canAttack = false;
+        }
+
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, opacityValue);
+
+        //joue le son de mort
+        if (deathAudioHasPlayed == false)
+        {
+            SoundManager.playSound("goule2Mort2");
+            deathAudioHasPlayed = true;
+        }
+
+        //temps d'invincibilité
+        deathTimeCount += Time.deltaTime;
+        blinkTimeCount += Time.deltaTime;
+
+        //RESPAWN
+        if (deathTimeCount >= deathTime)
+        {
+            isDead = false;
+            canAttack = true;
+            canBeDamaged = true;
+            deathTimeCount = 0;
+            health = startLife;
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
+            deathAudioHasPlayed = false;
+            SoundManager.playSound("respawnSound");
+            opacityValue = 0.3f;
+            UI.reactivateInventory();
+            UI.SetHealth(startLife);  //remplir coeurs
+        }
+        //clignotement avant de respawn
+        else if (deathTimeCount >= deathTime * 0.66f)
+        {
+            if (blinkTimeCount >= blinkTime)
+            {
+                if (opacityValue == 1f)
+                {
+                    opacityValue = 0.3f;
+                    blinkTimeCount = 0;
+                }
+                else
+                {
+                    opacityValue = 1f;
+                    blinkTimeCount = 0;
+                }
+            }
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, opacityValue);
+        }
+        else if (deathTimeCount >= deathTime * 0.33f)
+        {
+            GetComponent<CharController>().enabled = true;
+            animator.SetBool("isDead", false);
+        }
     }
 
     public void Revive()
