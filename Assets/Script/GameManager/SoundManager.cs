@@ -18,6 +18,10 @@ public class SoundManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown("f"))
+        {
+            instance.GetComponent<AudioSource>().Stop();
+        }
 		
 	}
 
