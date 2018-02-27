@@ -30,7 +30,7 @@ public class WeaponDamagingPart : MonoBehaviour
                             SoundManager.playSound("armeEpee");
                             break;
 
-                        case ("Spear"):
+                        case ("Lance"):
                             SoundManager.playSound("armeEpee");
                             break;
 
