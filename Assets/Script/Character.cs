@@ -243,9 +243,14 @@ public class Character : AnimateEntity
                     case ("Stick"):
                         SoundManager.playSound("armeEpeeVide"); //FINIR
                         break;
-                    case ("Spear"):
+                    case ("Lance"):
                         SoundManager.playSound("armeEpeeVide");//FINIR
                         break;
+
+                    case ("Bow"):
+                        SoundManager.playSound("arcSound");//FINIR
+                        break;
+
                     case ("Boomerang"):
                         SoundManager.playSound("armeEpeeVide");//FINIR
                         break;
