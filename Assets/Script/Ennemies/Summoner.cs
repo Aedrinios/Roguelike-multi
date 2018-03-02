@@ -16,6 +16,7 @@ public class Summoner : AnimateEntity
     // Use this for initialization
     protected override void Start()
     {
+		base.Start ();
         speed = 3;
         attack = 1;
         health = 6;

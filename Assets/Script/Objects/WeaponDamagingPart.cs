@@ -23,29 +23,34 @@ public class WeaponDamagingPart : MonoBehaviour
                 {
                     Debug.Log(gameObject.name +" : hit for " +weaponPart.Holder.GetAttack() * weaponPart.GetDamage());
                     other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), other.gameObject);
-
-                    switch (transform.parent.name)
+                    if(other.name== "protectionShield")
                     {
-                        case ("Sword"):
-                            SoundManager.playSound("epeeSound");
-                            break;
-
-                        case ("Lance"):
-                            SoundManager.playSound("lanceSound");
-                            break;
-
-                        case ("Stick"):
-                            SoundManager.playSound("stickSound");
-                            break;
-
-                        case ("Boomerang"):
-                            SoundManager.playSound("armeEpee");
-                            break;
-
-                        case ("protectionShield"):
-                            SoundManager.playSound("armeEpee"); //BRUIT DE BOUCLIER
-                            break;
+                       other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(0, other.gameObject); 
+                       SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER                  
                     }
+                    else
+                    {
+                        switch (transform.parent.name)
+                        {
+                            case ("Sword"):
+                                SoundManager.playSound("epeeSound"); // EPEE
+                                break;
+
+                            case ("Lance"):
+                                SoundManager.playSound("lanceSound"); // LANCE
+                                break;
+
+                            case ("Stick"):
+                                SoundManager.playSound("stickSound"); // BATON 
+                                break;
+
+                            case ("Boomerang"):
+                                SoundManager.playSound("armeEpee"); // BOOMERANG
+                                break;
+                        }
+
+                    }
+                   
                 }
             }
     }

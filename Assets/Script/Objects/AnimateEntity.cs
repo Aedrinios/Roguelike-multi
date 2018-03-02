@@ -129,18 +129,31 @@ public abstract class AnimateEntity : InanimateEntity
             {
                 case ("Doll(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
+                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Doll");
                     break;
                 case ("Ghoul(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
+                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ghoul");
                     break;
                 case ("Bouboule(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
+                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Bouboule");
                     break;
                 case ("Ordi(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
+                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ordi");
                     break;
 
             }
+        }
+        else if(currentShield!=null)
+        {
+            Debug.Log("je suis dans la boucle"); 
+            SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER     
         }
         
         if (health <= 0)
@@ -153,7 +166,6 @@ public abstract class AnimateEntity : InanimateEntity
     {
         Debug.Log("Animation degats");
         animator.SetTrigger("damaged");
-        animator.SetBool("isMoving", true);
         
     }
 
