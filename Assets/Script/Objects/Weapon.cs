@@ -38,7 +38,22 @@ public float pushPower;
             GetComponentInChildren<SpriteRenderer>().enabled = true;           
 			animator.SetBool("attack", true);
 			holder.stun = true;
-		}
+            switch (gameObject.name)
+            {
+                case ("Sword"):
+                    SoundManager.playSound("armeEpeeVide");
+                    break;
+                case ("Stick"):
+                    SoundManager.playSound("armeEpeeVide"); //FINIR
+                    break;
+                case ("Spear"):
+                    SoundManager.playSound("armeEpeeVide");//FINIR
+                    break;
+                case ("Boomerang"):
+                    SoundManager.playSound("armeEpeeVide");//FINIR
+                    break;
+            }
+        }
 	}
 
 	public void EndAnim(){

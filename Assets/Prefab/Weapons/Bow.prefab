@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupCollider: {fileID: 61275232078974706}
-  thumbnail: {fileID: 0}
+  thumbnail: {fileID: 21300000, guid: 3ccb43d9c91a0c447a0d0adecbdd7776, type: 3}
   holder: {fileID: 0}
   pushPower: 0
   animator: {fileID: 95701670670438762}
