@@ -21,6 +21,7 @@ public class Archer : AnimateEntity
     // Use this for initialization
     protected override void  Start()
     {
+        base.Start();
         speed = 10;
         attack = 2;
         health = 10;

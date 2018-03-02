@@ -16,6 +16,7 @@ public class Salvator : AnimateEntity {
 
     // Use this for initialization
     protected override void Start () {
+		base.Start ();
         speed = 11;
         health = 10;
         attack = 0;
