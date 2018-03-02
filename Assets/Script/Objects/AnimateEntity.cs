@@ -152,7 +152,6 @@ public abstract class AnimateEntity : InanimateEntity
     {
         Debug.Log("Animation degats");
         animator.SetTrigger("damaged");
-        animator.SetBool("isMoving", true);
         
     }
 
