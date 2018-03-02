@@ -141,6 +141,11 @@ public abstract class AnimateEntity : InanimateEntity
 
             }
         }
+        else if(currentShield!=null)
+        {
+            Debug.Log("je suis dans la boucle"); 
+            SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER     
+        }
         
         if (health <= 0)
         {

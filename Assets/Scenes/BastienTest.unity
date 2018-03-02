@@ -8931,11 +8931,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4387092125030728, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -21.84
+      value: -9.94
       objectReference: {fileID: 0}
     - target: {fileID: 4387092125030728, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.24
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4387092125030728, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -10411,6 +10411,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 65f3a0cc9558da949bb3facc6bb5e4fb, type: 3}
   - {fileID: 8300000, guid: 14b05f3787142554dbc25385e196f473, type: 3}
   - {fileID: 8300000, guid: 82917a06e9ae7e041b48be7a11215ecf, type: 3}
+  - {fileID: 8300000, guid: 8500f081b18acad47b657edc32c0d9e6, type: 3}
 --- !u!82 &1469559646
 AudioSource:
   m_ObjectHideFlags: 0
