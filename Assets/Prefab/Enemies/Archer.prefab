@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1341645169142426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.85, y: -32.39, z: 0}
+  m_LocalPosition: {x: -6.61, y: 2.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4791017346413808}
@@ -169,7 +169,8 @@ MonoBehaviour:
   health: 10
   speed: 10
   attack: 2
-  protectionShield: {fileID: 0}
+  protectionShield: {fileID: 114697878298898470, guid: c162242738a3c2746960075c097a19f1,
+    type: 2}
   stun: 0
   timeOfInvincibility: 0
   direction: {x: 0, y: 0, z: 0}
@@ -178,9 +179,9 @@ MonoBehaviour:
   hasTarget: 0
   arrow: {fileID: 1337828024229780, guid: 274bad6da46a6234183a71fe57c2efdc, type: 2}
   canShoot: 0
-  shootTimer: 0
-  circleColliderRadius: 0
-  baseColliderRadius: 0
+  shootTimer: 1
+  circleColliderRadius: 12
+  baseColliderRadius: 12
   animControl: {fileID: 22100000, guid: a7075e4a17c71a944998e93fe76a6ffd, type: 2}
   animControlArc: {fileID: 22100000, guid: 2f870df72f71ccb4b81a829e994e7642, type: 2}
 --- !u!212 &212342972492341442
@@ -257,7 +258,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 42d8e8484fdf54242a93fbd8ac2ca4c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -163,13 +163,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909e49e0c0f7e404cb58f43f24444ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupCollider: {fileID: 0}
+  pickupCollider: {fileID: 61415598181625934}
   thumbnail: {fileID: 0}
   holder: {fileID: 0}
   health: 10
   speed: 10
   attack: 2
-  protectionShield: {fileID: 0}
+  protectionShield: {fileID: 114697878298898470, guid: c162242738a3c2746960075c097a19f1,
+    type: 2}
   stun: 0
   timeOfInvincibility: 0
   direction: {x: 0, y: 0, z: 0}

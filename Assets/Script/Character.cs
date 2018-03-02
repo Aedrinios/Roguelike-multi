@@ -234,27 +234,6 @@ public class Character : AnimateEntity
             else
             {
                 inventory[item].Use(this);
-                switch (inventory[item].name)
-                {
-                    case ("Sword"):
-                        SoundManager.playSound("armeEpeeVide");
-                        break;
-
-                    case ("Stick"):
-                        SoundManager.playSound("armeEpeeVide"); //FINIR
-                        break;
-                    case ("Lance"):
-                        SoundManager.playSound("armeEpeeVide");//FINIR
-                        break;
-
-                    case ("Bow"):
-                        SoundManager.playSound("arcSound");//FINIR
-                        break;
-
-                    case ("Boomerang"):
-                        SoundManager.playSound("armeEpeeVide");//FINIR
-                        break;
-                }
             }
             Debug.Log("pressed");
         }
