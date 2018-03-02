@@ -8,6 +8,8 @@ public class Shrub : AnimateEntity {
 
     private int startHealth;
     private float timeCounter;
+    private AudioSource audioSource;
+    private bool done = false;
 
     //variables d'états
     private bool isPhase1;
@@ -22,6 +24,8 @@ public class Shrub : AnimateEntity {
         startHealth = health;
         setActivePhase(1);
         animator = GetComponent<Animator>();
+
+        audioSource = GetComponent<AudioSource>();
         
         timeCounter = timeBetweenHeals;
     }
@@ -72,8 +76,12 @@ public class Shrub : AnimateEntity {
 
     public void healEnt()
     {
-        //TODO : Faire l'animator du shrub en incluant un état "healing" et un paramètre booleen "isHealing"
-        //animator.SetBool("isHealing", true);
+        if (!done)
+        {
+            audioSource.Play();
+            done = true;
+        }
+
         if (timeCounter >= timeBetweenHeals && transform.parent.gameObject.GetComponent<Ent>().health < 200)
         {
             Debug.Log(name + " : Healing ent");
@@ -128,5 +136,11 @@ public class Shrub : AnimateEntity {
                 break;
 
         }
+    }
+
+    public void stopPlaySound()
+    {
+        audioSource.Stop();
+        done = false;
     }
 }

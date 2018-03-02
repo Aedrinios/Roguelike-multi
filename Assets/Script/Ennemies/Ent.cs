@@ -69,6 +69,7 @@ public class Ent : AnimateEntity {
             if (getNumberOfShrubsAlive() == 0 || health == 200)
             {
                 setActivePhase(1);
+                shrubStopPlaySound();
             }
             else if (health == 0)
             {
@@ -220,5 +221,13 @@ public class Ent : AnimateEntity {
     public int getStartHealth()
     {
         return startHealth;
+    }
+
+    void shrubStopPlaySound()
+    {
+        for (int i = 0; i < shrubs.Length; i++)
+        {
+            shrubs[i].stopPlaySound();
+        }
     }
 }
