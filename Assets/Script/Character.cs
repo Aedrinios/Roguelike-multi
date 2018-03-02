@@ -26,7 +26,9 @@ public class Character : AnimateEntity
     private float blinkTimeCount;
     private GlobalHealthManager globalHealthManager;
     private string inputSetName;
-
+    private Color[] tabcolor = { Color.blue, Color.yellow, Color.green, Color.red };
+    static int comptCouleur = 0;
+    public Sprite[] tabPlayerNumber; // J1, J2, ...
 
     protected override void Start()
     {
@@ -44,6 +46,12 @@ public class Character : AnimateEntity
         blinkTime = 0.2f;
         blinkTimeCount = 0;
         inputSetName = gameObject.GetComponent<CharController>().GetInputs().GetName() + " ";
+        Transform t = transform.Find("Ground circle");
+        t.GetComponent<SpriteRenderer>().color = tabcolor[comptCouleur];
+        Transform tbis = transform.Find("PlayerNumber");
+        tbis.GetComponent<SpriteRenderer>().sprite = tabPlayerNumber[comptCouleur];
+        tbis.GetComponent<SpriteRenderer>().color = tabcolor[comptCouleur];
+        comptCouleur++;
     }
 
     public override void ReceiveHit(int value, GameObject other)
@@ -226,22 +234,6 @@ public class Character : AnimateEntity
             else
             {
                 inventory[item].Use(this);
-                switch (inventory[item].name)
-                {
-                    case ("Sword"):
-                        SoundManager.playSound("armeEpeeVide");
-                        break;
-
-                    case ("Stick"):
-                        SoundManager.playSound("armeEpeeVide"); //FINIR
-                        break;
-                    case ("Spear"):
-                        SoundManager.playSound("armeEpeeVide");//FINIR
-                        break;
-                    case ("Boomerang"):
-                        SoundManager.playSound("armeEpeeVide");//FINIR
-                        break;
-                }
             }
             Debug.Log("pressed");
         }

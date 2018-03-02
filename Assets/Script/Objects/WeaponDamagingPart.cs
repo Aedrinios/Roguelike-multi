@@ -27,20 +27,21 @@ public class WeaponDamagingPart : MonoBehaviour
                     switch (transform.parent.name)
                     {
                         case ("Sword"):
-                            SoundManager.playSound("armeEpee");
+                            SoundManager.playSound("epeeSound");
                             break;
 
-                        case ("Spear"):
-                            SoundManager.playSound("armeEpee");
+                        case ("Lance"):
+                            SoundManager.playSound("lanceSound");
                             break;
 
                         case ("Stick"):
-                            SoundManager.playSound("armeEpee");
+                            SoundManager.playSound("stickSound");
                             break;
 
                         case ("Boomerang"):
                             SoundManager.playSound("armeEpee");
                             break;
+
                         case ("protectionShield"):
                             SoundManager.playSound("armeEpee"); //BRUIT DE BOUCLIER
                             break;

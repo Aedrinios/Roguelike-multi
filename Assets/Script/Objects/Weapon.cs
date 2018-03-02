@@ -33,26 +33,13 @@ public float pushPower;
 	}
 
 	private void LaunchAnimation () {
-		if (!animator.GetBool("attack")){
-			transform.localPosition = Vector3.zero;
-            GetComponentInChildren<SpriteRenderer>().enabled = true;           
-			animator.SetBool("attack", true);
-			holder.stun = true;
-            switch (gameObject.name)
-            {
-                case ("Sword"):
-                    SoundManager.playSound("armeEpeeVide");
-                    break;
-                case ("Stick"):
-                    SoundManager.playSound("armeEpeeVide"); //FINIR
-                    break;
-                case ("Spear"):
-                    SoundManager.playSound("armeEpeeVide");//FINIR
-                    break;
-                case ("Boomerang"):
-                    SoundManager.playSound("armeEpeeVide");//FINIR
-                    break;
-            }
+        if (!animator.GetBool("attack"))
+        {
+            transform.localPosition = Vector3.zero;
+            GetComponentInChildren<SpriteRenderer>().enabled = true;
+            animator.SetBool("attack", true);
+            holder.stun = true;
+            PlaySound();
         }
 	}
 
@@ -63,4 +50,29 @@ public float pushPower;
         }
 		holder.stun = false;
 	}
+
+    private void PlaySound()
+    {
+        switch (gameObject.name)
+        {
+            case ("Sword"):
+                SoundManager.playSound("armeEpeeVide");
+                break;
+
+            case ("Stick"):
+                SoundManager.playSound("armeEpeeVide"); //FINIR
+                break;
+            case ("Lance"):
+                SoundManager.playSound("armeEpeeVide");//FINIR
+                break;
+
+            case ("Bow"):
+                SoundManager.playSound("arcSound");//FINIR
+                break;
+
+            case ("Boomerang"):
+                SoundManager.playSound("armeEpeeVide");//FINIR
+                break;
+        }
+    }
 }

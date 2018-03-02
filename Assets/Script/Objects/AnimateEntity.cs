@@ -84,7 +84,7 @@ public abstract class AnimateEntity : InanimateEntity
             if (currentShield == null)
             {
                 //sprite change de couleur indiquant impossibilité d'être frappé, bouclier posé
-                currentShield = Instantiate(protectionShield, transform.position, Quaternion.identity, transform); ;
+                currentShield = Instantiate(protectionShield, transform.position, Quaternion.identity, transform); 
                 currentShield.transform.localScale = new Vector3((transform.localScale.x + 0.3f) * scaleMultiplier, (transform.localScale.y + 0.3f) * scaleMultiplier, 0);
                 Debug.Log(this.name +" : Shield de protection activé");
             }
@@ -117,7 +117,7 @@ public abstract class AnimateEntity : InanimateEntity
         if (canBeDamaged == true &&!isDead)
         {
             Debug.Log("degats : " +value);
-
+            isDamaged();
             //reduce health
             health -= value;
             KnockBack(other);
@@ -146,6 +146,14 @@ public abstract class AnimateEntity : InanimateEntity
         {
             Die();
         }
+    }
+
+    public virtual void isDamaged()
+    {
+        Debug.Log("Animation degats");
+        animator.SetTrigger("damaged");
+        animator.SetBool("isMoving", true);
+        
     }
 
     public bool IsDying()
