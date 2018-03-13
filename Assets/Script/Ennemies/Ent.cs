@@ -25,7 +25,7 @@ public class Ent : AnimateEntity {
     // Use this for initialization
     void Start () {
         base.Start();
-        scaleMultiplier = 6;
+        scaleMultiplier = 6f;
         startHealth = health;
         timeCounterSpells = timeBewteenSpells;
 
@@ -69,6 +69,7 @@ public class Ent : AnimateEntity {
             if (getNumberOfShrubsAlive() == 0 || health == 200)
             {
                 setActivePhase(1);
+                shrubStopPlaySound();
             }
             else if (health == 0)
             {
@@ -96,17 +97,6 @@ public class Ent : AnimateEntity {
         currentTarget = GameManager.instance.players[rdm];
         Debug.Log("Ent Target : " +currentTarget);
     }
-
-    /*void castRandomSpell()
-    {
-        if (timeCounterSpells >= 5)
-        {
-            int rdm = Mathf.RoundToInt(Random.Range(0, spells.Length));
-            Instantiate(spells[rdm], currentTarget.transform.position, Quaternion.identity);
-
-            timeCounterSpells = 0;
-        }
-    }*/
 
     void castRandomSpellOnRandomTarget(int n)
     {
@@ -220,5 +210,13 @@ public class Ent : AnimateEntity {
     public int getStartHealth()
     {
         return startHealth;
+    }
+
+    void shrubStopPlaySound()
+    {
+        for (int i = 0; i < shrubs.Length; i++)
+        {
+            shrubs[i].stopPlaySound();
+        }
     }
 }

@@ -16,8 +16,9 @@ public class Salvator : AnimateEntity {
 
     // Use this for initialization
     protected override void Start () {
+		base.Start ();
         speed = 11;
-        health = 10;
+        health = 100;
         attack = 0;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         baseColliderRadius = circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;

@@ -26,7 +26,10 @@ public abstract class AnimateEntity : InanimateEntity
     protected bool isDying = false;
     protected AudioSource audioSource;
     protected float scaleMultiplier;
+
     private ProtectionShield currentShield=null;
+
+
 
     protected virtual void Start()
     {
@@ -34,7 +37,7 @@ public abstract class AnimateEntity : InanimateEntity
         invincibility = new Timer(timeOfInvincibility, true);
         rigidb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
-        scaleMultiplier = 1;
+        scaleMultiplier = 1f;
     }
 
     public virtual void Move(Vector2 directionRequired)
@@ -50,6 +53,7 @@ public abstract class AnimateEntity : InanimateEntity
         animator.SetBool("isMoving", false);
         rigidb.velocity = Vector3.zero;
     }
+
 
     public override void Use(Character user)
     {
@@ -82,6 +86,7 @@ public abstract class AnimateEntity : InanimateEntity
                 //sprite change de couleur indiquant impossibilité d'être frappé, bouclier posé
                 currentShield = Instantiate(protectionShield, transform.position, Quaternion.identity, transform); 
                 currentShield.transform.localScale = new Vector3((transform.localScale.x + 0.3f) * scaleMultiplier, (transform.localScale.y + 0.3f) * scaleMultiplier, 0);
+                Debug.Log("Shield :" + this.name + "   " + scaleMultiplier);
                 Debug.Log(this.name +" : Shield de protection activé");
             }
         }
@@ -96,6 +101,7 @@ public abstract class AnimateEntity : InanimateEntity
         }
     }
 
+
     public bool getCanBeDamaged()
     {
         return canBeDamaged;
@@ -103,6 +109,7 @@ public abstract class AnimateEntity : InanimateEntity
 
     public virtual void ReceiveHit(int value, GameObject other)
     {
+        Debug.Log("je suis dans receive hit"); 
         if (!invincibility.IsFinished())
         {
             return;
@@ -123,18 +130,31 @@ public abstract class AnimateEntity : InanimateEntity
             {
                 case ("Doll(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
+                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Doll");
                     break;
                 case ("Ghoul(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
+                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ghoul");
                     break;
                 case ("Bouboule(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
+                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Bouboule");
                     break;
                 case ("Ordi(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
+                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ordi");
                     break;
 
             }
+        }
+        if(canBeDamaged == false && !isDead)
+        {
+            Debug.Log("je suis dans la boucle"); 
+            SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER     
         }
         
         if (health <= 0)
@@ -147,7 +167,6 @@ public abstract class AnimateEntity : InanimateEntity
     {
         Debug.Log("Animation degats");
         animator.SetTrigger("damaged");
-        animator.SetBool("isMoving", true);
         
     }
 
@@ -161,6 +180,12 @@ public abstract class AnimateEntity : InanimateEntity
         Vector3 knockBackDirection = (transform.position - other.transform.position).normalized;
         transform.position += knockBackDirection * (int)knockbackDistances.low;
     }
+
+    public ProtectionShield getCurrentShield()
+    {
+        return currentShield; 
+    }
+
 }
 
 public enum knockbackDistances
@@ -169,4 +194,6 @@ public enum knockbackDistances
     medium = 2,
     high = 4
 }
+
+
 

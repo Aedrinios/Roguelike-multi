@@ -13,6 +13,7 @@ public class Warrior : AnimateEntity {
 
 	// Use this for initialization
 	protected override void  Start () {
+		base.Start ();
         speed = 6;
         attack = 4;
         health = 10;
