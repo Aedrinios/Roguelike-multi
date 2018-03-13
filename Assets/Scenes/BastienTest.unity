@@ -3308,11 +3308,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &423475643 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1240170180213434, guid: fa4b1dea5b4524269b87b66a7e7f2358,
-    type: 2}
-  m_PrefabInternal: {fileID: 231463982}
 --- !u!1 &427325375
 GameObject:
   m_ObjectHideFlags: 0
@@ -8965,22 +8960,6 @@ Prefab:
       propertyPath: m_Name
       value: Archer (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 212528865563747964, guid: b400071fb7307cb42bf764a759e1dda3,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2e23c8d184e82ae4889e1e04ec1b48f5,
-        type: 3}
-    - target: {fileID: 95984809319941532, guid: b400071fb7307cb42bf764a759e1dda3,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: a7075e4a17c71a944998e93fe76a6ffd,
-        type: 2}
-    - target: {fileID: 1341645169142426, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
@@ -13406,7 +13385,6 @@ MonoBehaviour:
   - {fileID: 2141895161}
   - {fileID: 1671841798}
   - {fileID: 1911216006}
-  resetZone: {fileID: 423475643}
   playerUI:
   - {fileID: 2021948311}
   - {fileID: 33616064}

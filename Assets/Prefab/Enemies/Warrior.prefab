@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525185932922534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5402117, y: -39.787, z: 0}
+  m_LocalPosition: {x: 54.258286, y: -0.68586063, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4546817834151460}
@@ -248,8 +248,8 @@ MonoBehaviour:
   thumbnail: {fileID: 0}
   holder: {fileID: 0}
   health: 10
-  speed: 5
-  attack: 2
+  speed: 6
+  attack: 4
   protectionShield: {fileID: 114697878298898470, guid: c162242738a3c2746960075c097a19f1,
     type: 2}
   stun: 0
