@@ -32,7 +32,12 @@ public class Summoner : AnimateEntity
     // Update is called once per frame
     void Update()
 	{
-		if (hasTarget) 
+        if (Input.GetKeyDown("6"))
+        {
+            this.GetComponent<AnimateEntity>().ReceiveHit(2, gameObject);
+        }
+
+        if (hasTarget) 
 		{
 			summonTimer -= Time.deltaTime;
 			direction = target.transform.position - gameObject.transform.position;
