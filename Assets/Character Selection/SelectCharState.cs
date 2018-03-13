@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectCharState : GameState
 {
     public GameObject[] dummies;
-    public GameObject resetZone;
+    //public GameObject resetZone;
     public PlayerUI[] playerUI;
     private Dictionary<InputSet, GameObject> dummiesToInputsDictionary = new Dictionary<InputSet, GameObject>();
     private ControllerDelivery controllerDelivery;
@@ -14,6 +14,8 @@ public class SelectCharState : GameState
 
     void Update()
     {
+        
+
         if (ValidationPlatform.validatedPlatforms == players.Count && players.Count > 1)
         {
             GameManager.instance.SetGameState(this.GetComponent<PlayState>());
@@ -21,7 +23,9 @@ public class SelectCharState : GameState
     }
     public override void Begin()
     {
+      
         base.Begin();
+        SetDummies();
         foreach (GameObject dummy in dummies)
         dummy.SetActive(true);
         SetupControllerDelivery();
@@ -40,13 +44,15 @@ public class SelectCharState : GameState
         foreach (GameObject dummy in dummies)
             dummy.SetActive(false);
         controllerDelivery.enabled = false;
-        resetZone.GetComponent<PlayerSelectionResetZone>().Deactivate();
+        //resetZone.GetComponent<PlayerSelectionResetZone>().Deactivate();
         ValidationPlatform.DoorsOpened();
         GameManager.instance.players = players;
     }
 
     void StartPressed(InputSet inputSet)
     {
+        
+
         if (dummiesToInputsDictionary.ContainsKey(inputSet))
             AddPlayer(inputSet);
         else if (dummiesToInputsDictionary.Count == dummies.Length)
@@ -147,5 +153,17 @@ public class SelectCharState : GameState
         players.Remove(player);
         Destroy(player);
         AddSelectionDummy(inputSet);
+    }
+
+    public void SetDummies()
+    {
+        var a = GameObject.Find("Player Selection dummy");
+        var b = GameObject.Find("Player Selection dummy (1)");
+        var c = GameObject.Find("Player Selection dummy (2)");
+        var d = GameObject.Find("Player Selection dummy (3)");
+        dummies[0] = a;
+        dummies[1] = b;
+        dummies[2] = c;
+        dummies[3] = d;
     }
 }

@@ -30,7 +30,11 @@ public class Salvator : AnimateEntity {
 	
 	// Update is called once per frame
 	void Update () {
-        //animator.SetBool("isAttacking", false);
+        if (Input.GetKeyDown("9"))
+        {
+            this.GetComponent<AnimateEntity>().ReceiveHit(2, gameObject);
+        }
+        
         if (hasTarget) // player in sight
         {
             

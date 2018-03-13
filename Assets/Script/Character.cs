@@ -58,6 +58,29 @@ public class Character : AnimateEntity
     {
         if (canBeDamaged)
         {
+            //play hit sound
+            switch (other.name)
+            {
+                case ("Doll(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Doll");
+                    break;
+                case ("Ghoul(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ghoul");
+                    break;
+                case ("Bouboule(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Bouboule");
+                    break;
+                case ("Ordi(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ordi");
+                    break;
+
+            }
+
+            animator.SetTrigger("damaged");
             if (inventory[1] != null && inventory[1].GetComponent<Weapon>().armorPoints > 0) // Slot 2 
             {
                 var arm2 = inventory[1].GetComponent<Weapon>().armorPoints;

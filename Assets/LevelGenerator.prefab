@@ -25,7 +25,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4304179786515194
 Transform:
@@ -55,6 +55,7 @@ MonoBehaviour:
   down: 0
   left: 0
   right: 0
+  gamemanager: {fileID: 0}
   spUPrefab: {fileID: 1809914602617192, guid: ac1b14208c7f22f458298a9f2c5da451, type: 2}
   spDPrefab: {fileID: 1706547412718080, guid: 15ea62583005be14b892ab465f1a2853, type: 2}
   spRPrefab: {fileID: 1635569662516966, guid: 60d7d41ad4fd1ef48b5accf9a25817ed, type: 2}
@@ -75,7 +76,33 @@ MonoBehaviour:
     type: 2}
   spUDRLPrefab: {fileID: 1643767772531618, guid: 8592e25a526390e46bb157ae922ce710,
     type: 2}
-  roomBossD: {fileID: 0}
-  roomBossU: {fileID: 0}
-  roomBossL: {fileID: 0}
-  roomBossR: {fileID: 0}
+  spUDRLFirstRoom: {fileID: 1338034347097856, guid: 8f0a314808f319248ba914dc37def8ea,
+    type: 2}
+  spUFirstRoom: {fileID: 1252174366533668, guid: c1d4830413a309e4a817908d0d931d3c,
+    type: 2}
+  spDFirstRoom: {fileID: 1774927346859908, guid: 54eca3e6b1d25a0469f57ca001cc763b,
+    type: 2}
+  spRFirstRoom: {fileID: 1400619769504618, guid: 6196f7f109cd6b0419a4fd9476f59bf0,
+    type: 2}
+  spLFirstRoom: {fileID: 1573675251462790, guid: 8bc315d116d65bd4fbe558412381145f,
+    type: 2}
+  spUDFirstRoom: {fileID: 1785218406171810, guid: 9e00b7e8880b67042998d02b1e529182,
+    type: 2}
+  spRLFirstRoom: {fileID: 1368265957598942, guid: ce8db6c781d04a34daeaf7e05f614ec3,
+    type: 2}
+  spURFirstRoom: {fileID: 1665926299319136, guid: 26c8a15281161284ea20d5e305cfa731,
+    type: 2}
+  spULFirstRoom: {fileID: 1860311654270332, guid: 3bb454325e7331746aec5db84d58b15f,
+    type: 2}
+  spDRFirstRoom: {fileID: 1913756648076734, guid: 3f502f3fbfcd71d49a52477d9b4e95e9,
+    type: 2}
+  spDLFirstRoom: {fileID: 1539716275226616, guid: 0b49fa0b9bd573e429027f90a7e4d7c6,
+    type: 2}
+  spULDFirstRoom: {fileID: 1890685986763622, guid: af58187914bd1fc4aa722b6736a39b46,
+    type: 2}
+  spRULFirstRoom: {fileID: 1673286539485376, guid: bd6ea74ea5d466d4ca0f261e8d6dafd1,
+    type: 2}
+  spDRUFirstRoom: {fileID: 1269423928076216, guid: cf86307ed6325af4eb87c4c736f6421b,
+    type: 2}
+  spLDRFirstRoom: {fileID: 1390462280605392, guid: 4ed2fb2d46391424a8912daca1ae711d,
+    type: 2}

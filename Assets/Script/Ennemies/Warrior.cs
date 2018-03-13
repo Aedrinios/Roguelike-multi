@@ -26,7 +26,12 @@ public class Warrior : AnimateEntity {
 
 	// Update is called once per frame
 	void Update () {
-        if(hasTarget)
+        if (Input.GetKeyDown("7"))
+        {
+            this.GetComponent<AnimateEntity>().ReceiveHit(2, gameObject);
+        }
+
+        if (hasTarget)
         {
             direction = target.transform.position - gameObject.transform.position;
             gameObject.GetComponent<CircleCollider2D>().radius= direction.magnitude;
