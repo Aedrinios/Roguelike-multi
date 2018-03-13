@@ -55,10 +55,10 @@ public class Summoner : AnimateEntity
 					animator.SetBool ("isAttacking", true);
 				}
 			}
-			if (health <= 0) 
+			/*if (health <= 0) 
 			{
 				Destroy (gameObject);
-			}
+			}*/
 		} else
 			Idle ();
     }

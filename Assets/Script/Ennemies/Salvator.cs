@@ -56,7 +56,6 @@ public class Salvator : AnimateEntity {
         if (health <= 0)
         {
             ally.GetComponent<AnimateEntity>().setCanBeDamaged(true);
-            Destroy(gameObject);
         }
     }
 
