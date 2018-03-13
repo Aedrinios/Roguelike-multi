@@ -67,7 +67,7 @@ public float pushPower;
                 break;
 
             case ("Bow"):
-                SoundManager.playSound("arcSound");//FINIR
+                SoundManager.playSound("armeEpeeVide");//FINIR
                 break;
 
             case ("Boomerang"):

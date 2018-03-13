@@ -11,17 +11,17 @@ public class WeaponDamagingPart : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
-    
-    
+        
     void OnTriggerEnter2D(Collider2D other)
-    {       
+    {
         if (!other.isTrigger)
+        {
             if (other.tag.Equals("enemy"))
             {
                 GameObject hit = other.gameObject;
                 if (hit != weaponPart.Holder.gameObject)
                 {
-                    Debug.Log(gameObject.name +" : hit for " +weaponPart.Holder.GetAttack() * weaponPart.GetDamage());
+                    Debug.Log(gameObject.name + " : hit for " + weaponPart.Holder.GetAttack() * weaponPart.GetDamage());
                     other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), other.gameObject);
                     if (other.gameObject.GetComponent<AnimateEntity>().getCurrentShield()!=null)
                     {
@@ -54,6 +54,7 @@ public class WeaponDamagingPart : MonoBehaviour
                    
                 }
             }
+        }
     }
 }
 

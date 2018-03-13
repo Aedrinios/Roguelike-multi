@@ -89,7 +89,6 @@ public class Character : AnimateEntity
 
     public void Update() // déséquiper pour l'instant
     {
-
         Debug.Log(inputSetName);
         if (Input.GetKeyDown("3"))
         {
@@ -105,7 +104,6 @@ public class Character : AnimateEntity
         {
             ReceiveHit(startLife, gameObject);
         }
-
         
         if (health <= 0)
         {
@@ -142,7 +140,6 @@ public class Character : AnimateEntity
             secondaryTimer = 0;
         }
     }
-
 
     protected override void Die()
     {
@@ -278,7 +275,6 @@ public class Character : AnimateEntity
             UI.ChangeWeapon(this, slot);
             SoundManager.playSound("pickUpItem");
             inventory[slot].GetComponentInChildren<SpriteRenderer>();
-            Debug.Log(inventory[slot].GetComponentInChildren<SpriteRenderer>());
         }
     }
 
