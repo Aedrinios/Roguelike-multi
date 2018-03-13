@@ -16,6 +16,7 @@ public abstract class InanimateEntity : MonoBehaviour
         get { return holder; }
         set { holder = value; }
     }
+
     public virtual void Equip(Character user)
     {
         isEquipped = true;
@@ -44,6 +45,7 @@ public abstract class InanimateEntity : MonoBehaviour
         isEquipped = false;
         this.GetComponentInChildren<CircleCollider2D>().enabled = true;
     }
+
     public abstract void Use(Character user);
 
     public virtual int GetDamage()

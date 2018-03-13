@@ -21,8 +21,7 @@ public class SoundManager : MonoBehaviour {
         if (Input.GetKeyDown("f"))
         {
             instance.GetComponent<AudioSource>().Stop();
-        }
-		
+        }		
 	}
 
     public static AudioClip getSound(string name)

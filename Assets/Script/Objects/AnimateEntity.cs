@@ -26,10 +26,7 @@ public abstract class AnimateEntity : InanimateEntity
     protected bool isDying = false;
     protected AudioSource audioSource;
     protected float scaleMultiplier;
-
     private ProtectionShield currentShield=null;
-
-
 
     protected virtual void Start()
     {
@@ -53,7 +50,6 @@ public abstract class AnimateEntity : InanimateEntity
         animator.SetBool("isMoving", false);
         rigidb.velocity = Vector3.zero;
     }
-
 
     public override void Use(Character user)
     {
@@ -99,7 +95,6 @@ public abstract class AnimateEntity : InanimateEntity
             }
         }
     }
-
 
     public bool getCanBeDamaged()
     {
@@ -166,7 +161,6 @@ public abstract class AnimateEntity : InanimateEntity
         Vector3 knockBackDirection = (transform.position - other.transform.position).normalized;
         transform.position += knockBackDirection * (int)knockbackDistances.low;
     }
-
 }
 
 public enum knockbackDistances
