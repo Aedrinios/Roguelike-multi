@@ -17,7 +17,9 @@ public class EntHealthBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        hp.transform.localScale = new Vector2(startScaleX / (ent.getStartHealth() / (float) ent.health), hp.transform.localScale.y);
-        Debug.Log(startScaleX / (ent.getStartHealth() / (float) 150));
+        if (ent.health > 0)
+        {
+            hp.transform.localScale = new Vector2(startScaleX / (ent.getStartHealth() / (float)ent.health), hp.transform.localScale.y);
+        }
     }
 }

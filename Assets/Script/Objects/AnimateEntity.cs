@@ -109,6 +109,7 @@ public abstract class AnimateEntity : InanimateEntity
 
     public virtual void ReceiveHit(int value, GameObject other)
     {
+        Debug.Log("je suis dans receive hit"); 
         if (!invincibility.IsFinished())
         {
             return;
@@ -150,7 +151,7 @@ public abstract class AnimateEntity : InanimateEntity
 
             }
         }
-        else if(currentShield!=null)
+        if(canBeDamaged == false && !isDead)
         {
             Debug.Log("je suis dans la boucle"); 
             SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER     
@@ -180,6 +181,11 @@ public abstract class AnimateEntity : InanimateEntity
         transform.position += knockBackDirection * (int)knockbackDistances.low;
     }
 
+    public ProtectionShield getCurrentShield()
+    {
+        return currentShield; 
+    }
+
 }
 
 public enum knockbackDistances
@@ -188,4 +194,6 @@ public enum knockbackDistances
     medium = 2,
     high = 4
 }
+
+
 
