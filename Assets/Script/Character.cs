@@ -79,6 +79,8 @@ public class Character : AnimateEntity
                     break;
 
             }
+
+            animator.SetTrigger("damaged");
             if (inventory[1] != null && inventory[1].GetComponent<Weapon>().armorPoints > 0) // Slot 2 
             {
                 var arm2 = inventory[1].GetComponent<Weapon>().armorPoints;
