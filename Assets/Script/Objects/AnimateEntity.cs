@@ -130,22 +130,18 @@ public abstract class AnimateEntity : InanimateEntity
             {
                 case ("Doll(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
-                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
                     Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Doll");
                     break;
                 case ("Ghoul(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
-                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
                     Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ghoul");
                     break;
                 case ("Bouboule(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
-                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
                     Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Bouboule");
                     break;
                 case ("Ordi(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
-                    other.GetComponent<AnimateEntity>().animator.SetBool("isBeingDammage", true);
                     Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ordi");
                     break;
 
