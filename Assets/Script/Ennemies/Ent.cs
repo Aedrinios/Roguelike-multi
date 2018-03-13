@@ -98,17 +98,6 @@ public class Ent : AnimateEntity {
         Debug.Log("Ent Target : " +currentTarget);
     }
 
-    /*void castRandomSpell()
-    {
-        if (timeCounterSpells >= 5)
-        {
-            int rdm = Mathf.RoundToInt(Random.Range(0, spells.Length));
-            Instantiate(spells[rdm], currentTarget.transform.position, Quaternion.identity);
-
-            timeCounterSpells = 0;
-        }
-    }*/
-
     void castRandomSpellOnRandomTarget(int n)
     {
         GameObject previousTarget=null;
