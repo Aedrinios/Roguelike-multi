@@ -58,6 +58,29 @@ public class Character : AnimateEntity
     {
         if (canBeDamaged)
         {
+            //play hit sound
+            switch (other.name)
+            {
+                case ("Doll(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Doll");
+                    break;
+                case ("Ghoul(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ghoul");
+                    break;
+                case ("Bouboule(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Bouboule");
+                    break;
+                case ("Ordi(Clone)"):
+                    SoundManager.playSound("ghoulDegat1");
+                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ordi");
+                    break;
+
+            }
+
+            animator.SetTrigger("damaged");
             if (inventory[1] != null && inventory[1].GetComponent<Weapon>().armorPoints > 0) // Slot 2 
             {
                 var arm2 = inventory[1].GetComponent<Weapon>().armorPoints;
@@ -89,7 +112,6 @@ public class Character : AnimateEntity
 
     public void Update() // déséquiper pour l'instant
     {
-
         Debug.Log(inputSetName);
         if (Input.GetKeyDown("3"))
         {
@@ -105,7 +127,6 @@ public class Character : AnimateEntity
         {
             ReceiveHit(startLife, gameObject);
         }
-
         
         if (health <= 0)
         {
@@ -142,7 +163,6 @@ public class Character : AnimateEntity
             secondaryTimer = 0;
         }
     }
-
 
     protected override void Die()
     {
@@ -278,7 +298,6 @@ public class Character : AnimateEntity
             UI.ChangeWeapon(this, slot);
             SoundManager.playSound("pickUpItem");
             inventory[slot].GetComponentInChildren<SpriteRenderer>();
-            Debug.Log(inventory[slot].GetComponentInChildren<SpriteRenderer>());
         }
     }
 

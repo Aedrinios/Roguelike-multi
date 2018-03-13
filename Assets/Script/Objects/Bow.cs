@@ -29,6 +29,5 @@ public class Bow : Weapon {
     {
         yield return new WaitForSeconds(0.5f);
         canShoot = true;
-        //animator.SetBool("attack",false);
     }
 }

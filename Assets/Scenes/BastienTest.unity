@@ -3924,7 +3924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &517973355
 Animator:
   serializedVersion: 3
@@ -10410,7 +10410,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c9ebc86838516489fbd744987d962d07, type: 3}
   - {fileID: 8300000, guid: 65f3a0cc9558da949bb3facc6bb5e4fb, type: 3}
   - {fileID: 8300000, guid: 14b05f3787142554dbc25385e196f473, type: 3}
-  - {fileID: 8300000, guid: 2b325a157263dc14499cf008ae436316, type: 3}
+  - {fileID: 8300000, guid: 8500f081b18acad47b657edc32c0d9e6, type: 3}
 --- !u!82 &1469559646
 AudioSource:
   m_ObjectHideFlags: 0
