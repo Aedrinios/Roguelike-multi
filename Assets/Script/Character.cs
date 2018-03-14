@@ -189,7 +189,23 @@ public class Character : AnimateEntity
         //joue le son de mort
         if (deathAudioHasPlayed == false)
         {
-            SoundManager.playSound("goule2Mort2");
+            //play hit sound
+            switch (this.name)
+            {
+                case ("Doll(Clone)"):
+                    SoundManager.playSound("goule2Mort2");
+                    break;
+                case ("Ghoul(Clone)"):
+                    SoundManager.playSound("goule2Mort1");
+                    break;
+                case ("Bouboule(Clone)"):
+                    SoundManager.playSound("DeathBouboule");
+                    break;
+                case ("Ordi(Clone)"):
+                    SoundManager.playSound("damageOrdi");
+                    break;
+
+            }
             deathAudioHasPlayed = true;
         }
 
