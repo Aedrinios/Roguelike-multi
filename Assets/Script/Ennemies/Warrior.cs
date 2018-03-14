@@ -40,9 +40,9 @@ public class Warrior : AnimateEntity {
 			Idle ();
         
         
-        if(health<=0)
+       if(health<=0)
         {
-            Destroy(gameObject);
+           // Destroy(gameObject);
             Debug.Log("warrior meurt");
             SoundManager.playSound("guerrierMort1"); 
         }

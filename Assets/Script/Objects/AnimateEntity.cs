@@ -72,6 +72,7 @@ public abstract class AnimateEntity : InanimateEntity
 
     protected virtual void Die()
     {
+        Destroy(this.gameObject);
         //dyingSound.Play();
     }
 
@@ -134,7 +135,7 @@ public abstract class AnimateEntity : InanimateEntity
         
         if (health <= 0)
         {
-            Die();
+            animator.SetBool("isDead", true);
         }
     }
 

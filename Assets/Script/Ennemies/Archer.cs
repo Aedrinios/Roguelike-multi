@@ -66,10 +66,10 @@ public class Archer : AnimateEntity
 		} else 
 			Idle ();
 
-        if (health <= 0)
+       /* if (health <= 0)
         {
-           Destroy(gameObject);
-        }
+            Destroy(gameObject);
+        }*/
     }
 
     public override void Move(Vector2 direction)
