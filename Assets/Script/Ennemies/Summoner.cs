@@ -115,13 +115,7 @@ public class Summoner : AnimateEntity
         if (deathAudioHasPlayed == false)
         {
             //play hit sound
-            switch (this.name)
-            {
-                case ("Summoner (6)"):
-                    SoundManager.playSound("mageMort2");
-                    break;
-
-            }
+            SoundManager.playSound("mageMort2");
             deathAudioHasPlayed = true;
         }
         Destroy(this.gameObject);

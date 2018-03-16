@@ -116,7 +116,7 @@ public abstract class AnimateEntity : InanimateEntity
             return;
         }
         invincibility.ResetPlay();
-        
+
         if (canBeDamaged == true &&!isDead)
         {
             Debug.Log("degats : " +value);
