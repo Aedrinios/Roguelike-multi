@@ -10395,6 +10395,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a4e63012bb5fe5241a44d110bc3f35c2, type: 3}
   - {fileID: 8300000, guid: b7cf7670e844b4843ad969bce8161417, type: 3}
   - {fileID: 8300000, guid: 44f30b52e4b304851a555b45441ed9b9, type: 3}
+  - {fileID: 8300000, guid: 9f0942ea978c144ddadd1031791ae91f, type: 3}
 --- !u!82 &1469559646
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12779,6 +12780,10 @@ Prefab:
       propertyPath: health
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1341645169142426, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   m_IsPrefabParent: 0
@@ -14881,6 +14886,10 @@ Prefab:
         type: 2}
       propertyPath: health
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654859900532554, guid: 325af58195f66a54bac26ccf5aabdac9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 325af58195f66a54bac26ccf5aabdac9, type: 2}

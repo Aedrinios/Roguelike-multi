@@ -127,7 +127,6 @@ public class Summoner : AnimateEntity
         if (damageAudioHasPlayed == false)
         {
             //play hit sound
-            Debug.Log("JE SUIS DANS L4HERITIER DE RECEIVE HIT DE SUMMONER");
             SoundManager.playSound("ghoulDegat1");
             damageAudioHasPlayed = true;
         }
