@@ -42,7 +42,6 @@ public class Summoner : AnimateEntity
         //joue le son de mort
         if (deathAudioHasPlayed == false)
         {
-            SoundManager.playSound("mageMort2");
             deathAudioHasPlayed = true;
         }
 
