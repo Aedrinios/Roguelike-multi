@@ -74,7 +74,7 @@ public class Warrior : AnimateEntity {
         if (damageAudioHasPlayed == false)
         {
             //play hit sound
-            SoundManager.playSound("guerrierDegat4");
+            SoundManager.playSound("warriorDamageSound");
             damageAudioHasPlayed = true;
         }
         base.ReceiveHit(value, other);
