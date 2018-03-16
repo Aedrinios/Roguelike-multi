@@ -13,6 +13,7 @@ public class Summoner : AnimateEntity
     public float circleColliderRadius;
     public float baseColliderRadius;
     public bool deathAudioHasPlayed;
+    public bool damageAudioHasPlayed;
 
     // Use this for initialization
     protected override void Start()
@@ -27,9 +28,8 @@ public class Summoner : AnimateEntity
         summonTimer = 7;
 		animator = this.GetComponent<Animator>();
         deathAudioHasPlayed = false;
+        damageAudioHasPlayed = false;
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -118,6 +118,19 @@ public class Summoner : AnimateEntity
             SoundManager.playSound("mageMort2");
             deathAudioHasPlayed = true;
         }
-        Destroy(this.gameObject);
+        base.Die();
+    }
+
+    public override void ReceiveHit(int value, GameObject other)
+    {
+        //joue le son de dégats
+        if (damageAudioHasPlayed == false)
+        {
+            //play hit sound
+            Debug.Log("JE SUIS DANS L4HERITIER DE RECEIVE HIT DE SUMMONER");
+            SoundManager.playSound("ghoulDegat1");
+            damageAudioHasPlayed = true;
+        }
+        base.ReceiveHit(value, other);
     }
 }
