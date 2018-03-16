@@ -38,12 +38,14 @@ public class Summoner : AnimateEntity
         {
             this.GetComponent<AnimateEntity>().ReceiveHit(2, gameObject);
         }
-
-        //joue le son de mort
-        if (deathAudioHasPlayed == false)
+        if (this.IsDying())
         {
-            SoundManager.playSound("mageMort2");
-            deathAudioHasPlayed = true;
+            //joue le son de mort
+            if (deathAudioHasPlayed == false)
+            {
+                SoundManager.playSound("mageMort2");
+                deathAudioHasPlayed = true;
+            }
         }
 
         if (hasTarget) 
@@ -105,4 +107,22 @@ public class Summoner : AnimateEntity
 		GameObject blub = Instantiate(summon[no], target.transform.position - direction / 2, Quaternion.identity);
 		animator.SetBool ("isAttacking", false);
 	}
+
+    protected override void Die()
+    {
+        //joue le son de mort
+        if (deathAudioHasPlayed == false)
+        {
+            //play hit sound
+            switch (this.name)
+            {
+                case ("Summoner (6)"):
+                    SoundManager.playSound("mageMort2");
+                    break;
+
+            }
+            deathAudioHasPlayed = true;
+        }
+        Destroy(this.gameObject);
+    }
 }
