@@ -12,6 +12,7 @@ public class Summoner : AnimateEntity
     public GameObject[] summon;
     public float circleColliderRadius;
     public float baseColliderRadius;
+    public bool deathAudioHasPlayed;
 
     // Use this for initialization
     protected override void Start()
@@ -25,6 +26,7 @@ public class Summoner : AnimateEntity
         invincibility = new Timer(timeOfInvincibility, true);
         summonTimer = 7;
 		animator = this.GetComponent<Animator>();
+        deathAudioHasPlayed = false;
     }
 
 
@@ -35,6 +37,13 @@ public class Summoner : AnimateEntity
         if (Input.GetKeyDown("6"))
         {
             this.GetComponent<AnimateEntity>().ReceiveHit(2, gameObject);
+        }
+
+        //joue le son de mort
+        if (deathAudioHasPlayed == false)
+        {
+            SoundManager.playSound("mageMort2");
+            deathAudioHasPlayed = true;
         }
 
         if (hasTarget) 
