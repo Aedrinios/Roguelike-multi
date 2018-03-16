@@ -10393,6 +10393,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9e455fe632147aa42b1f84aad35c4972, type: 3}
   - {fileID: 8300000, guid: fe1e0eafd827a40ec995ecf4a81ef126, type: 3}
   - {fileID: 8300000, guid: a4e63012bb5fe5241a44d110bc3f35c2, type: 3}
+  - {fileID: 8300000, guid: b7cf7670e844b4843ad969bce8161417, type: 3}
   - {fileID: 8300000, guid: 44f30b52e4b304851a555b45441ed9b9, type: 3}
 --- !u!82 &1469559646
 AudioSource:
@@ -12777,10 +12778,6 @@ Prefab:
         type: 2}
       propertyPath: health
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341645169142426, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
