@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SelectCharState : GameState
 {
+
     public GameObject[] dummies;
     //public GameObject resetZone;
     public PlayerUI[] playerUI;
@@ -23,7 +24,7 @@ public class SelectCharState : GameState
     }
     public override void Begin()
     {
-      
+        
         base.Begin();
         SetDummies();
         foreach (GameObject dummy in dummies)

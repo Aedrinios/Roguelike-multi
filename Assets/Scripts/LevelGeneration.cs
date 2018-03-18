@@ -74,7 +74,6 @@ public class LevelGeneration : MonoBehaviour {
                 rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, 0);
                 takenPositions.Insert(0, checkPos);
                 AddBeginRoom = false;
-                Debug.Log((int)checkPos.x + gridSizeX + " X " + (int)checkPos.y + gridSizeY + " Y " + " FIRST ROOM ");
                 xFirstRoom = (int)checkPos.x + gridSizeX;
                 yFirstRoom = (int)checkPos.y + gridSizeY;
             }
@@ -201,7 +200,11 @@ public class LevelGeneration : MonoBehaviour {
                             rendPrefab = spUDRLFirstRoom;
                             var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                            clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                            Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                            for (var j = 0; j < yolo.Length; j++)
+                            {
+                                yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                            }
                             clone.name = "FirstRoom";
                         }
                         else
@@ -209,7 +212,12 @@ public class LevelGeneration : MonoBehaviour {
                             rendPrefab = spUDRLPrefab;
                             var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                            clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                            Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                            for (var j = 0; j < yolo.Length; j++)
+                            {
+                                yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                            }
+                            clone.name = "FirstRoom";
                             clone.name = i.ToString();
                         }
                     }
@@ -220,14 +228,24 @@ public class LevelGeneration : MonoBehaviour {
                             rendPrefab = spDRUFirstRoom;
                             var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                            clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                            //clone.GetComponentsInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                            Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                            for (var j = 0; j < yolo.Length; j++)
+                            {
+                                yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                            }
                             clone.name = "FirstRoom";
                         }
                         else
                         {
                             rendPrefab = spDRUPrefab;
                             var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                            clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                            Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                            for (var j = 0; j < yolo.Length; j++)
+                            {
+                                yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                            }
+                            clone.name = "FirstRoom";
                             clone.name = i.ToString();
                         }
                     }
@@ -239,14 +257,22 @@ public class LevelGeneration : MonoBehaviour {
                         rendPrefab = spULDFirstRoom;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         clone.name = "FirstRoom";
                     }
                     else
                     {
                         rendPrefab = spULDPrefab;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         clone.name = i.ToString();
                     }
                 }
@@ -257,14 +283,22 @@ public class LevelGeneration : MonoBehaviour {
                         rendPrefab = spUDFirstRoom;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         clone.name = "FirstRoom";
                     }
                     else
                     {
                         rendPrefab = spUDPrefab;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         clone.name = i.ToString();
                     }
                 }
@@ -280,14 +314,22 @@ public class LevelGeneration : MonoBehaviour {
                             rendPrefab = spRULFirstRoom;
                             var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                            clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                            Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                            for (var j = 0; j < yolo.Length; j++)
+                            {
+                                yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                            }
                             clone.name = "FirstRoom";
                         }
                         else
                         {
                             rendPrefab = spRULPrefab;
                             var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                            clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                            Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                            for (var j = 0; j < yolo.Length; j++)
+                            {
+                                yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                            }
                             clone.name = i.ToString();
                         }
                     }
@@ -298,14 +340,22 @@ public class LevelGeneration : MonoBehaviour {
                             rendPrefab = spURFirstRoom;
                             var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                            clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                            Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                            for (var j = 0; j < yolo.Length; j++)
+                            {
+                                yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                            }
                             clone.name = "FirstRoom";
                         }
                         else
                         {
                             rendPrefab = spURPrefab;
                             var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                            clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                            Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                            for (var j = 0; j < yolo.Length; j++)
+                            {
+                                yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                            }
                             clone.name = i.ToString();
                         }
                     }
@@ -317,14 +367,22 @@ public class LevelGeneration : MonoBehaviour {
                         rendPrefab = spULFirstRoom;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         clone.name = "FirstRoom";
                     }
                     else
                     {
                         rendPrefab = spULPrefab;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         //clone.GetComponentInChildren
                         clone.name = i.ToString();
                     }
@@ -336,14 +394,22 @@ public class LevelGeneration : MonoBehaviour {
                         rendPrefab = spUFirstRoom;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         clone.name = "FirstRoom";
                     }
                     else
                     {
                         rendPrefab = spUPrefab;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         clone.name = i.ToString();
                     }
                 }
@@ -361,14 +427,22 @@ public class LevelGeneration : MonoBehaviour {
                         rendPrefab = spLDRFirstRoom;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         clone.name = "FirstRoom";
                     }
                     else
                     {
                         rendPrefab = spLDRPrefab;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         clone.name = i.ToString();
                     }
 
@@ -380,14 +454,22 @@ public class LevelGeneration : MonoBehaviour {
                         rendPrefab = spDRFirstRoom;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         clone.name = "FirstRoom";
                     }
                     else
                     {
                         rendPrefab = spDRPrefab;
                         var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                        clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
+                        {
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                        }
                         clone.name = i.ToString();
                     }
                 }
@@ -399,14 +481,22 @@ public class LevelGeneration : MonoBehaviour {
                     rendPrefab = spDLFirstRoom;
                     var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                    clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                    Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                    for (var j = 0; j < yolo.Length; j++)
+                    {
+                        yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                    }
                     clone.name = "FirstRoom";
                 }
                 else
                 {
                     rendPrefab = spDLPrefab;
                     var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                    clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                    Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                    for (var j = 0; j < yolo.Length; j++)
+                    {
+                        yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                    }
                     clone.name = i.ToString();
                 }
             }
@@ -417,14 +507,22 @@ public class LevelGeneration : MonoBehaviour {
                     rendPrefab = spDFirstRoom;
                     var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                    clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                    Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                    for (var j = 0; j < yolo.Length; j++)
+                    {
+                        yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                    }
                     clone.name = "FirstRoom";
                 }
                 else
                 {
                     rendPrefab = spDPrefab;
                     var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                    clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                    Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                    for (var j = 0; j < yolo.Length; j++)
+                    {
+                        yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                    }
                     clone.name = i.ToString();
                 }
             }
@@ -439,14 +537,22 @@ public class LevelGeneration : MonoBehaviour {
                     rendPrefab = spRFirstRoom;
                     var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                    clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                    Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                    for (var j = 0; j < yolo.Length; j++)
+                    {
+                        yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                    }
                     clone.name = "FirstRoom";
                 }
                 else
                 {
                     rendPrefab = spRLPrefab;
                     var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                    clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                    Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                    for (var j = 0; j < yolo.Length; j++)
+                    {
+                        yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                    }
                     clone.name = i.ToString();
                 }
             }
@@ -457,14 +563,22 @@ public class LevelGeneration : MonoBehaviour {
                     rendPrefab = spRFirstRoom;
                     var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                    clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                    Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                    for (var j = 0; j < yolo.Length; j++)
+                    {
+                        yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                    }
                     clone.name = "FirstRoom";
                 }
                 else
                 {
                     rendPrefab = spRPrefab;
                     var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                    clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                    Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                    for (var j = 0; j < yolo.Length; j++)
+                    {
+                        yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                    }
                     clone.name = i.ToString();
                 }
             }
@@ -476,7 +590,11 @@ public class LevelGeneration : MonoBehaviour {
                 rendPrefab = spLFirstRoom;
                 var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
 
-                clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                for (var j = 0; j < yolo.Length; j++)
+                {
+                    yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                }
                 clone.name = "FirstRoom";
             }
             else
@@ -484,7 +602,11 @@ public class LevelGeneration : MonoBehaviour {
                 //rend.sprite = spL;
                 rendPrefab = spLPrefab;
                 var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                clone.GetComponentInChildren<RoomTransition>().SetPosRoom(PosRoom);
+                Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                for (var j = 0; j < yolo.Length; j++)
+                {
+                    yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
+                }
                 clone.name = i.ToString();
             }
         }
@@ -501,7 +623,7 @@ public class LevelGeneration : MonoBehaviour {
 
             Vector2 drawPos = room.gridPos;
             drawPos.x *= 30f;
-            drawPos.y *= 18f;          //create map obj and assign its variables
+            drawPos.y *= 18.5f;          //create map obj and assign its variables
 
            // Debug.Log(room.GetHashCode());
             up = room.doorTop;
@@ -522,8 +644,9 @@ public class LevelGeneration : MonoBehaviour {
 		}
 
         gamemanager.GetComponent<SelectCharState>().Begin();
-       // gamemanager.GetComponent<ControllerDelivery>().Update();
-	}
+        Camera.main.transform.position = GameObject.Find("FirstRoom").transform.position;
+        Camera.main.transform.position += new Vector3(0, 0, -1);
+    }
 
 
 	void SetRoomDoors(){

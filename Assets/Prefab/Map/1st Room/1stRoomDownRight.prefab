@@ -208,9 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4412208190292588}
   - component: {fileID: 61867661408921634}
-  - component: {fileID: 61934248581849090}
   - component: {fileID: 61393027176017634}
-  - component: {fileID: 61554195764775082}
   - component: {fileID: 61815265261046280}
   - component: {fileID: 61682516334199068}
   m_Layer: 0
@@ -333,7 +331,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1913756648076734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.417918, y: 1.2742664, z: 0}
+  m_LocalPosition: {x: -122.67395, y: -43.317795, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4075272502800862}
@@ -403,7 +401,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666878547157536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -7.95, z: 0}
+  m_LocalPosition: {x: -2.5, y: -7.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4412208190292588}
@@ -485,7 +483,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.013017654, y: -0.76684666}
+  m_Offset: {x: 0.013017654, y: -0.9534416}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -496,7 +494,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.2311134, y: 0.56789875}
+  m_Size: {x: 6.2311134, y: 0.567894}
   m_EdgeRadius: 0
 --- !u!61 &61341692424383222
 BoxCollider2D:
@@ -535,7 +533,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 13.484113, y: -6.001629}
+  m_Offset: {x: 13.484113, y: 0.03159046}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -546,32 +544,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0790501, y: 6.01363}
-  m_EdgeRadius: 0
---- !u!61 &61554195764775082
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1913756648076734}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 6.8921957, y: -8.616232}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 12.2576885, y: 0.8375187}
+  m_Size: {x: 1.0790501, y: 18.080069}
   m_EdgeRadius: 0
 --- !u!61 &61682516334199068
 BoxCollider2D:
@@ -660,7 +633,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -9.866903, y: -8.47338}
+  m_Offset: {x: 0.55125046, y: -9.064264}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -671,7 +644,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.988331, y: 0.9698734}
+  m_Size: {x: 26.824638, y: 0.5344887}
   m_EdgeRadius: 0
 --- !u!61 &61867661408921634
 BoxCollider2D:
@@ -697,31 +670,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 27.869118, y: 0.6953869}
-  m_EdgeRadius: 0
---- !u!61 &61934248581849090
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1913756648076734}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 13.471046, y: 5.5631623}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.1026917, y: 6.7459574}
   m_EdgeRadius: 0
 --- !u!61 &61954207169571300
 BoxCollider2D:

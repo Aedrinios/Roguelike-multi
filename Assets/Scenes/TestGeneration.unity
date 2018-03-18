@@ -411,6 +411,16 @@ Prefab:
       propertyPath: dummies.Array.data[19]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114904601175751918, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: walls
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: cameraPos
+      value: 
+      objectReference: {fileID: 2033798915}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b297650e456969449af51212ca266be, type: 2}
   m_IsPrefabParent: 0
@@ -570,6 +580,101 @@ Prefab:
       propertyPath: gamemanager
       value: 
       objectReference: {fileID: 494219525}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spDFirstRoom
+      value: 
+      objectReference: {fileID: 1774927346859908, guid: dbbe440eac6245a468c9a83b50c727d2,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spDLFirstRoom
+      value: 
+      objectReference: {fileID: 1539716275226616, guid: cfcb358bbe4a2d544be1e91ebb332948,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spLDRFirstRoom
+      value: 
+      objectReference: {fileID: 1390462280605392, guid: aeda1b1384d20e44b839d93673807844,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spDRFirstRoom
+      value: 
+      objectReference: {fileID: 1913756648076734, guid: 8eed229096df8184a8abac91e94766cd,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spUDFirstRoom
+      value: 
+      objectReference: {fileID: 1785218406171810, guid: 4d266bb0b2317104397e8c86f93cb5a0,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spLFirstRoom
+      value: 
+      objectReference: {fileID: 1573675251462790, guid: eadd90892d605fe4396bd22dabd8af32,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spULFirstRoom
+      value: 
+      objectReference: {fileID: 1860311654270332, guid: 59e6460c49ddeee4a863417750161391,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spRFirstRoom
+      value: 
+      objectReference: {fileID: 1400619769504618, guid: f869b14cc5324d14296ec1cc7a2f69b3,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spUFirstRoom
+      value: 
+      objectReference: {fileID: 1252174366533668, guid: d9ccc58813e298943b40ea3e683a0441,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spULDFirstRoom
+      value: 
+      objectReference: {fileID: 1890685986763622, guid: d29fbdbde4b0afc4497878e33c87b46a,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spDRUFirstRoom
+      value: 
+      objectReference: {fileID: 1269423928076216, guid: c9029c18234f2dc4c9cd4285c279466d,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spUDRLFirstRoom
+      value: 
+      objectReference: {fileID: 1338034347097856, guid: 2c517f2e648405747bebd11118301412,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spRULFirstRoom
+      value: 
+      objectReference: {fileID: 1673286539485376, guid: d3301aed7e2c89c4b8d014e138c0e63f,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spURFirstRoom
+      value: 
+      objectReference: {fileID: 1665926299319136, guid: 168f9cb9dfc5f8648822149a2ba86aad,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: spRLFirstRoom
+      value: 
+      objectReference: {fileID: 1368265957598942, guid: a0fcbc353646e4e418734a85bc04c9a9,
+        type: 2}
+    - target: {fileID: 114068055539874064, guid: 5df3580349d83c7488ed985b7e8d09dd,
+        type: 2}
+      propertyPath: cameraPos
+      value: 
+      objectReference: {fileID: 2033798915}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5df3580349d83c7488ed985b7e8d09dd, type: 2}
   m_IsPrefabParent: 0
@@ -633,7 +738,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -656,7 +761,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2033798915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8, y: 1.65, z: -10}
+  m_LocalPosition: {x: -1.8, y: 1.65, z: -32.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
