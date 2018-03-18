@@ -20,7 +20,6 @@ public class Shrub : AnimateEntity {
     // Use this for initialization
     void Start () {
         base.Start();
-        scaleMultiplier = 2f;
         startHealth = health;
         setActivePhase(1);
         animator = GetComponent<Animator>();
@@ -29,9 +28,14 @@ public class Shrub : AnimateEntity {
         
         timeCounter = timeBetweenHeals;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Awake()
+    {
+        scaleMultiplier = 2f;
+    }
+
+    // Update is called once per frame
+    void Update () {
         timeCounter += Time.deltaTime;
 
 

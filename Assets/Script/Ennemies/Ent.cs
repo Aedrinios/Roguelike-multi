@@ -101,6 +101,8 @@ public class Ent : AnimateEntity {
     void castRandomSpellOnRandomTarget(int n)
     {
         GameObject previousTarget=null;
+        GameObject spell = null;
+        Vector3 pos = new Vector3(0, 0, 0);
 
         if (timeCounterSpells >= timeBewteenSpells)
         {
@@ -113,7 +115,19 @@ public class Ent : AnimateEntity {
                 previousTarget = currentTarget;
 
                 int rdm = Mathf.RoundToInt(Random.Range(0, spells.Length));
-                Instantiate(spells[rdm], currentTarget.transform.position, Quaternion.identity);
+
+                spell = spells[rdm];
+                switch (spell.name)
+                {
+                    case "SmashAttack":
+                        pos = currentTarget.transform.position + new Vector3(1, 0, 0);
+                        break;
+                    case "SwingAttack":
+                        pos = currentTarget.transform.position + new Vector3(2, 0, 0); ;
+                        break;
+                }
+
+                Instantiate(spell, pos, Quaternion.identity);
             }
 
             timeCounterSpells = 0;

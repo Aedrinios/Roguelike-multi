@@ -3919,7 +3919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &517973355
 Animator:
   serializedVersion: 3
@@ -3994,6 +3994,7 @@ MonoBehaviour:
   - {fileID: 2057233401}
   spells:
   - {fileID: 1534496258200882, guid: 77018793da705b642a8d47e2bd0053d7, type: 2}
+  - {fileID: 1534496258200882, guid: 0ac510ddb5b4a5f41b7022924cba40fb, type: 2}
   timeBewteenSpells: 5
 --- !u!50 &517973358
 Rigidbody2D:
@@ -12951,6 +12952,46 @@ Prefab:
     - target: {fileID: 4830019800369046, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
       propertyPath: m_RootOrder
       value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 60794141475793882, guid: 627a6ed270419475a9dce7adb449e1f5,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 60794141475793882, guid: 627a6ed270419475a9dce7adb449e1f5,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212425270120971522, guid: 627a6ed270419475a9dce7adb449e1f5,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 60794141475793882, guid: 627a6ed270419475a9dce7adb449e1f5,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 60794141475793882, guid: 627a6ed270419475a9dce7adb449e1f5,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212425270120971522, guid: 627a6ed270419475a9dce7adb449e1f5,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212425270120971522, guid: 627a6ed270419475a9dce7adb449e1f5,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 58072786369633810, guid: 627a6ed270419475a9dce7adb449e1f5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
