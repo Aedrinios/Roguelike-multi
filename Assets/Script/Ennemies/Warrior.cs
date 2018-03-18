@@ -8,11 +8,12 @@ public class Warrior : AnimateEntity {
     public GameObject target;
     public bool hasTarget =false;
     public AudioSource audioSource2;
+    public bool damageAudioHasPlayed;
+    public bool deathAudioHasPlayed;
 
 
-
-	// Use this for initialization
-	protected override void  Start () {
+    // Use this for initialization
+    protected override void  Start () {
 		base.Start ();
         speed = 6;
         attack = 4;
@@ -20,6 +21,8 @@ public class Warrior : AnimateEntity {
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
         invincibility = new Timer(timeOfInvincibility, true);
+        damageAudioHasPlayed = false;
+        deathAudioHasPlayed = false;
     }
 	
 
@@ -38,14 +41,6 @@ public class Warrior : AnimateEntity {
 			Move (this.direction);
 		} else
 			Idle ();
-        
-        
-       if(health<=0)
-        {
-           // Destroy(gameObject);
-            Debug.Log("warrior meurt");
-            SoundManager.playSound("guerrierMort1"); 
-        }
 	}
 
     public override void Move(Vector2 direction)
@@ -71,5 +66,29 @@ public class Warrior : AnimateEntity {
         {
 			collision.gameObject.GetComponent<Character>().ReceiveHit(attack,gameObject);
         }
+    }
+
+    public override void ReceiveHit(int value, GameObject other)
+    {
+        //joue le son de dégats
+        if (damageAudioHasPlayed == false)
+        {
+            //play hit sound
+            SoundManager.playSound("warriorDamageSound");
+            damageAudioHasPlayed = true;
+        }
+        base.ReceiveHit(value, other);
+    }
+
+    protected override void Die()
+    {
+        //joue le son de mort
+        if (deathAudioHasPlayed == false)
+        {
+            //play hit sound
+            SoundManager.playSound("mageMort2");
+            deathAudioHasPlayed = true;
+        }
+        base.Die();
     }
 }

@@ -16,6 +16,8 @@ public class Archer : AnimateEntity
 
     public RuntimeAnimatorController animControl;
     public RuntimeAnimatorController animControlArc;
+	public bool damageAudioHasPlayed;
+	public bool deathAudioHasPlayed;
 
 
     // Use this for initialization
@@ -66,10 +68,14 @@ public class Archer : AnimateEntity
 		} else 
 			Idle ();
 
-       /* if (health <= 0)
+        if (health <= 0)
         {
-            Destroy(gameObject);
-        }*/
+			if (deathAudioHasPlayed == false)
+			{
+				SoundManager.playSound("archerDying");
+				deathAudioHasPlayed = true;
+			}
+        }
     }
 
     public override void Move(Vector2 direction)
@@ -99,6 +105,7 @@ public class Archer : AnimateEntity
 
     private IEnumerator Shoot()
     {
+		SoundManager.playSound ("archerArrow");
         this.GetComponent<Animator>().runtimeAnimatorController = animControlArc as RuntimeAnimatorController;
         Vector3 toTarget = direction.normalized;
         GameObject go= Instantiate(arrow, gameObject.transform.position+toTarget, Quaternion.identity,transform);
@@ -109,4 +116,16 @@ public class Archer : AnimateEntity
         yield return new WaitForSeconds(0.75f);
         this.GetComponent<Animator>().runtimeAnimatorController = animControl as RuntimeAnimatorController;
     }
+
+	public override void ReceiveHit(int value, GameObject other)
+	{
+		//joue le son de dégats
+		if (damageAudioHasPlayed == false)
+		{
+			//play hit sound
+			SoundManager.playSound("archerDamage");
+			damageAudioHasPlayed = true;
+		}
+		base.ReceiveHit(value, other);
+	}
 }

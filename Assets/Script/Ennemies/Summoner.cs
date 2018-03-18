@@ -12,6 +12,8 @@ public class Summoner : AnimateEntity
     public GameObject[] summon;
     public float circleColliderRadius;
     public float baseColliderRadius;
+    public bool deathAudioHasPlayed;
+    public bool damageAudioHasPlayed;
 
     // Use this for initialization
     protected override void Start()
@@ -25,9 +27,9 @@ public class Summoner : AnimateEntity
         invincibility = new Timer(timeOfInvincibility, true);
         summonTimer = 7;
 		animator = this.GetComponent<Animator>();
+        deathAudioHasPlayed = false;
+        damageAudioHasPlayed = false;
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -35,6 +37,15 @@ public class Summoner : AnimateEntity
         if (Input.GetKeyDown("6"))
         {
             this.GetComponent<AnimateEntity>().ReceiveHit(2, gameObject);
+        }
+        if (this.IsDying())
+        {
+            //joue le son de mort
+            if (deathAudioHasPlayed == false)
+            {
+                SoundManager.playSound("mageMort2");
+                deathAudioHasPlayed = true;
+            }
         }
 
         if (hasTarget) 
@@ -93,7 +104,32 @@ public class Summoner : AnimateEntity
 		
 		summonTimer = 5;
 		int no = (int)Random.Range(0, summon.Length);
-		GameObject blub = Instantiate(summon[no], target.transform.position - direction / 2, Quaternion.identity);
+        SoundManager.playSound("mageInvocation4");
+        GameObject blub = Instantiate(summon[no], target.transform.position - direction / 2, Quaternion.identity);
 		animator.SetBool ("isAttacking", false);
 	}
+
+    protected override void Die()
+    {
+        //joue le son de mort
+        if (deathAudioHasPlayed == false)
+        {
+            //play hit sound
+            SoundManager.playSound("mageMort2");
+            deathAudioHasPlayed = true;
+        }
+        base.Die();
+    }
+
+    public override void ReceiveHit(int value, GameObject other)
+    {
+        //joue le son de dégats
+        if (damageAudioHasPlayed == false)
+        {
+            //play hit sound
+            SoundManager.playSound("ghoulDegat1");
+            damageAudioHasPlayed = true;
+        }
+        base.ReceiveHit(value, other);
+    }
 }
