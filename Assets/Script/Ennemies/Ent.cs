@@ -37,8 +37,8 @@ public class Ent : AnimateEntity {
 
         //DEBUGS
         //Debug.Log("Ent health : " + health);
-        //Debug.Log("Phase Active : " + getActivePhase());
-        Debug.Log("shrubs alive : " + getNumberOfShrubsAlive());
+        Debug.Log("Phase Active : " + getActivePhase());
+        //Debug.Log("shrubs alive : " + getNumberOfShrubsAlive());
 
         //VARIABLE DE COMPTAGE DE TEMPS
         timeCounterSpells += Time.deltaTime;
@@ -66,17 +66,17 @@ public class Ent : AnimateEntity {
             claimHealing();            //Les abrisseaux le soignent
 
             //CHANGEMENT DE PHASE
-            if (getNumberOfShrubsAlive() == 0 || health == 200)
+            if (health == 200)
             {
                 setActivePhase(1);
                 shrubStopPlaySound();
             }
-            else if (health == 0)
+            else if (getNumberOfShrubsAlive() == 0)
             {
                 setActivePhase(3);
             }
         }
-        //3ème phase : Égale à 0
+        //3ème phase : Les shrubs sont morts
         else if (isPhase3)
         {
             //Tombe à terre
@@ -95,7 +95,7 @@ public class Ent : AnimateEntity {
     {
         int rdm = Mathf.RoundToInt(Random.Range(0, GameManager.instance.players.Count));
         currentTarget = GameManager.instance.players[rdm];
-        Debug.Log("Ent Target : " +currentTarget);
+        //Debug.Log("Ent Target : " +currentTarget);
     }
 
     void castRandomSpellOnRandomTarget(int n)
@@ -172,6 +172,7 @@ public class Ent : AnimateEntity {
                 isPhase1 = true;
                 isPhase2 = false;
                 isPhase3 = false;
+                animator.SetBool("isphase2", false);
 
                 setCanBeDamaged(true);                //vulnérable
                 setAllShrubsCanBeDamaged(false);      //arbrisseaux invulnérables
@@ -180,6 +181,7 @@ public class Ent : AnimateEntity {
                 isPhase1 = false;
                 isPhase2 = true;
                 isPhase3 = false;
+                animator.SetBool("isphase2", true);
 
                 setAllShrubsCanBeDamaged(true);        //Les arbrisseaux son vulnérable
                 setCanBeDamaged(false);                //Invulnérable
