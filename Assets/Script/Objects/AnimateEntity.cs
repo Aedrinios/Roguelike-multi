@@ -25,7 +25,7 @@ public abstract class AnimateEntity : InanimateEntity
     public Vector3 direction;
     protected bool isDying = false;
     protected AudioSource audioSource;
-    protected float scaleMultiplier;
+    protected float scaleMultiplier = 1f;
 
     private ProtectionShield currentShield=null;
 
@@ -37,7 +37,6 @@ public abstract class AnimateEntity : InanimateEntity
         invincibility = new Timer(timeOfInvincibility, true);
         rigidb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
-        scaleMultiplier = 1f;
     }
 
     public virtual void Move(Vector2 directionRequired)
@@ -72,6 +71,7 @@ public abstract class AnimateEntity : InanimateEntity
 
     protected virtual void Die()
     {
+        Destroy(this.gameObject);
         //dyingSound.Play();
     }
 
@@ -115,7 +115,7 @@ public abstract class AnimateEntity : InanimateEntity
             return;
         }
         invincibility.ResetPlay();
-        
+
         if (canBeDamaged == true &&!isDead)
         {
             Debug.Log("degats : " +value);
@@ -134,7 +134,7 @@ public abstract class AnimateEntity : InanimateEntity
         
         if (health <= 0)
         {
-            Die();
+            animator.SetBool("isDead", true);
         }
     }
 

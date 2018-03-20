@@ -12,10 +12,11 @@ public class RoomTransition : MonoBehaviour {
     public Vector2 PositionRoomPlayer;
     private List<GameObject> player;
     private string nameTrigger;
+    private ArrayList players = new ArrayList();
 
     //public GameObject TestPositionInstance;
 
-	void Start () {
+    void Start () {
        
     }
 	
@@ -60,14 +61,14 @@ public class RoomTransition : MonoBehaviour {
         if (other.tag == "Player")
         {
             FindGoodTrigger();
-            
+            players.Add(other.gameObject);
 
             RoomTransition [] room = GameObject.FindObjectsOfType<RoomTransition>();
 
             foreach (RoomTransition roomtransition in room)
             {
                 //Debug.Log(nameTrigger);
-                if (roomtransition.GetPosRoom() == PositionRoomPlayer )
+                if (roomtransition.GetPosRoom() == PositionRoomPlayer && players.Count == GameManager.instance.players.Count )
                 {
 
                     
@@ -76,8 +77,10 @@ public class RoomTransition : MonoBehaviour {
                     PositionRoomPlayer.x = this.GetPosRoom().x + (float)directionX;
                     PositionRoomPlayer.y = this.GetPosRoom().y + (float)directionY;
 
-                    
-                    other.gameObject.transform.position = roomtransition.transform.position;
+
+                    foreach (GameObject player in players) {
+                        player.gameObject.transform.position = roomtransition.transform.position;
+                    }
                     var kk = roomtransition.transform.parent.gameObject;
                     Camera.main.transform.position = new Vector3( kk.transform.position.x, kk.transform.position.y,- 1.0f);
 

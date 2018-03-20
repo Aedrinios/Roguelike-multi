@@ -52,7 +52,7 @@ public class Cursor : MonoBehaviour {
         if(numb == 0 && (butSelect || butStart || butA)) // Selection de play
         {
             // Changer de scene
-            SceneManager.LoadScene("BastienTest");
+            SceneManager.LoadScene("TestGeneration");
 
         }
         if (numb == 1 && (butSelect || butStart || butA)) // Selection de quite

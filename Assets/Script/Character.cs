@@ -63,19 +63,15 @@ public class Character : AnimateEntity
             {
                 case ("Doll(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
-                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Doll");
                     break;
                 case ("Ghoul(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
-                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ghoul");
                     break;
                 case ("Bouboule(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
-                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Bouboule");
                     break;
                 case ("Ordi(Clone)"):
                     SoundManager.playSound("ghoulDegat1");
-                    Debug.Log("DEBUG LOG ANIMATION DAMMAGE !!!!!!!! - Ordi");
                     break;
 
             }
@@ -189,7 +185,23 @@ public class Character : AnimateEntity
         //joue le son de mort
         if (deathAudioHasPlayed == false)
         {
-            SoundManager.playSound("goule2Mort2");
+            //play hit sound
+            switch (this.name)
+            {
+                case ("Doll(Clone)"):
+                    SoundManager.playSound("goule2Mort2");
+                    break;
+                case ("Ghoul(Clone)"):
+                    SoundManager.playSound("goule2Mort1");
+                    break;
+                case ("Bouboule(Clone)"):
+                    SoundManager.playSound("DeathBouboule");
+                    break;
+                case ("Ordi(Clone)"):
+                    SoundManager.playSound("damageOrdi");
+                    break;
+
+            }
             deathAudioHasPlayed = true;
         }
 

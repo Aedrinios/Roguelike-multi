@@ -12,13 +12,15 @@ public class Salvator : AnimateEntity {
     public bool onSummoner = false;
     public float circleColliderRadius;
     public float baseColliderRadius;
-   
+    public bool damageAudioHasPlayed;
+    public bool deathAudioHasPlayed;
+
 
     // Use this for initialization
     protected override void Start () {
 		base.Start ();
         speed = 11;
-        health = 100;
+        health = 20;
         attack = 0;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         baseColliderRadius = circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
@@ -30,6 +32,7 @@ public class Salvator : AnimateEntity {
 	
 	// Update is called once per frame
 	void Update () {
+
         if (Input.GetKeyDown("9"))
         {
             this.GetComponent<AnimateEntity>().ReceiveHit(2, gameObject);
@@ -53,10 +56,17 @@ public class Salvator : AnimateEntity {
         else
             Idle();
 
+        
+
         if (health <= 0)
         {
+            //joue le son de mort
+            if (deathAudioHasPlayed == false)
+            {
+                SoundManager.playSound("salvatorDying");
+                deathAudioHasPlayed = true;
+            }
             ally.GetComponent<AnimateEntity>().setCanBeDamaged(true);
-            Destroy(gameObject);
         }
     }
 
@@ -92,10 +102,14 @@ public class Salvator : AnimateEntity {
 
                 }
             }
-            animator.SetBool("isAttacking", true);
-			yield return new WaitForSeconds (0.5f);
-			ally.GetComponent<AnimateEntity>().setCanBeDamaged(false);
-			animator.SetBool ("isAttacking", false);
+
+            if (ally.GetComponent<AnimateEntity>().getCanBeDamaged()) { 
+                SoundManager.playSound("putShield");
+                animator.SetBool("isAttacking", true);
+		        yield return new WaitForSeconds (0.5f);
+		        ally.GetComponent<AnimateEntity>().setCanBeDamaged(false);
+		        animator.SetBool ("isAttacking", false);
+            }
         }
       
 
@@ -107,6 +121,18 @@ public class Salvator : AnimateEntity {
         animator.SetFloat("directionX", direction.x);
         animator.SetFloat("directionY", direction.y);
         animator.SetBool("isMoving", true);
+    }
+
+    public override void ReceiveHit(int value, GameObject other)
+    {
+        //joue le son de dégats
+        if (damageAudioHasPlayed == false)
+        {
+            //play hit sound
+            SoundManager.playSound("salvatorDamage");
+            damageAudioHasPlayed = true;
+        }
+        base.ReceiveHit(value, other);
     }
 
 }
