@@ -108,7 +108,7 @@ public class Character : AnimateEntity
 
     public void Update() // déséquiper pour l'instant
     {
-        Debug.Log(inputSetName);
+        //Debug.Log(inputSetName);
         if (Input.GetKeyDown("3"))
         {
             setCanBeDamaged(false);
@@ -267,7 +267,7 @@ public class Character : AnimateEntity
             {
                 inventory[item].Use(this);
             }
-            Debug.Log("pressed");
+            //Debug.Log("pressed");
         }
     }
 

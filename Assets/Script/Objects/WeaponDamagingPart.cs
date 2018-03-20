@@ -21,11 +21,11 @@ public class WeaponDamagingPart : MonoBehaviour
                 GameObject hit = other.gameObject;
                 if (hit != weaponPart.Holder.gameObject)
                 {
-                    Debug.Log(gameObject.name + " : hit for " + weaponPart.Holder.GetAttack() * weaponPart.GetDamage());
+                    //Debug.Log(gameObject.name + " : hit for " + weaponPart.Holder.GetAttack() * weaponPart.GetDamage());
                     other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), other.gameObject);
                     if (other.gameObject.GetComponent<AnimateEntity>().getCurrentShield()!=null)
                     {
-                       Debug.Log("je suis dans le if"); 
+                       //Debug.Log("je suis dans le if"); 
                        other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(0, other.gameObject); 
                        SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER                  
                     }
