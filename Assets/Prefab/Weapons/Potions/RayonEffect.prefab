@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4128904056764350}
   - component: {fileID: 58203184055743746}
   - component: {fileID: 212651219060500938}
-  - component: {fileID: 58989815482124422}
-  - component: {fileID: 58141170256857808}
+  - component: {fileID: 114472562640565996}
   m_Layer: 0
   m_Name: RayonEffect
   m_TagString: Untagged
@@ -37,27 +36,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1308055534277362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.7487001, y: -1.4961295, z: 0}
+  m_LocalPosition: {x: 8.560097, y: 7.5127354, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58141170256857808
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1308055534277362}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 90
 --- !u!58 &58203184055743746
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -67,27 +51,24 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 80
---- !u!58 &58989815482124422
-CircleCollider2D:
+--- !u!114 &114472562640565996
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1308055534277362}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 90
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24264dd4ee758eb4f84c8d1e7e597c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 
 --- !u!212 &212651219060500938
 SpriteRenderer:
   m_ObjectHideFlags: 1

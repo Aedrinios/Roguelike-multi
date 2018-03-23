@@ -55,21 +55,12 @@ public class Potions : Weapon {
         //Character.ReceiveHit(2, user);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        // Appel du pouvoir selectionner
-    }
-
     public IEnumerator creationOfEffectZone()
     {
         yield return new WaitForSeconds(2);
-        Debug.Log("BLABLABLA AVANT LE CONTENU DE LA COROUTINE");
         // Recuperer la position et creation de la zone collider à cette position
         var position = this.transform.position;
-        Instantiate(rayon);
-        rayon.transform.position = position;
-        CircleCollider2D sc = rayon.AddComponent(typeof(CircleCollider2D)) as CircleCollider2D;
-        Debug.Log("BLABLABLA AVANT LE DESTROY DE LA POTION");
+        Instantiate(rayon, position, new Quaternion());
         Destroy(this.gameObject);
     }
 

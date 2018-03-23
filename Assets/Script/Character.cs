@@ -423,7 +423,7 @@ public class Character : AnimateEntity
             //carriedObject.transform.localPosition = Vector3.zero;
             //carriedObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             carriedObject.GetComponent<CircleCollider2D>().enabled = true;
-            if (carriedObject.name == "Potion Bleu")
+            if (carriedObject.GetComponent<Potions>() != null)
             {
                 carriedObject.GetComponent<Potions>().StartCoroutine("creationOfEffectZone");
             }
