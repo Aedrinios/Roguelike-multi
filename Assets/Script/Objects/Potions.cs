@@ -7,11 +7,11 @@ public class Potions : Weapon {
     private bool canBeUse;
     private string[] powersTab = { "Stun", "Degats", "Heal"};
     public string power;
+    public GameObject rayon;
 
 	// Use this for initialization
 	void Start () {
         canBeUse = true;
-        damage = 1;
 	}
 	
 	// Update is called once per frame
@@ -22,7 +22,6 @@ public class Potions : Weapon {
     public override void Use(Character user) // peut etre utilise 1 fois on la bois initialise le pouvoir de la potion
     {
         base.Use(user);
-        canBeUse = false;
         power = powersTab[Random.Range(1,3)]; // Selectionne un pouvoir random;
 
         switch (power)
@@ -37,6 +36,8 @@ public class Potions : Weapon {
                 powerHeal(user);
                 break;
         }
+
+        canBeUse = false;
     }
 
     void powerStun(Character user)
@@ -54,6 +55,17 @@ public class Potions : Weapon {
         //Character.ReceiveHit(2, user);
     }
 
-    // peut etre jeter 1 fois et elle créer une zone quand elle touche le soll (colider) tous ceux qui sont dedans sont touché par le pouvoir
+    public IEnumerator creationOfEffectZone()
+    {
+        yield return new WaitForSeconds(2);
+        // Recuperer la position et creation de la zone collider à cette position
+        var position = this.transform.position;
+        Instantiate(rayon);
+        rayon.transform.position = position;
+        CircleCollider2D sc = rayon.AddComponent(typeof(CircleCollider2D)) as CircleCollider2D;
+        Debug.Log("BLABLABLA AVANT LE DESTROY DE LA POTION");
+        Destroy(this.gameObject);
+    }
+
 
 }

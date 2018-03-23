@@ -15,7 +15,7 @@ public class Character : AnimateEntity
     private Animator animator;
     private float primaryTimer;
     private float secondaryTimer;
-    public bool isCarrying = false;
+    private bool isCarrying = false;
     private InanimateEntity carriedObject;
     private float deathTime;
     private float deathTimeCount;
@@ -108,7 +108,7 @@ public class Character : AnimateEntity
 
     public void Update() // déséquiper pour l'instant
     {
-        //Debug.Log(inputSetName);
+        Debug.Log(inputSetName);
         if (Input.GetKeyDown("3"))
         {
             setCanBeDamaged(false);
@@ -267,7 +267,7 @@ public class Character : AnimateEntity
             {
                 inventory[item].Use(this);
             }
-            //Debug.Log("pressed");
+            Debug.Log("pressed");
         }
     }
 
@@ -416,26 +416,20 @@ public class Character : AnimateEntity
             {
                 carriedObject.GetComponent<AnimateEntity>().stun = false;
             }
-            else if (carriedObject.tag == "Potion")
+            carriedObject.GetComponent<Rigidbody2D>().AddForce(direction.normalized * 50, ForceMode2D.Impulse);
+            //carriedObject.GetComponentInChildren<CircleCollider2D>().enabled = true;
+            carriedObject.pickupCollider.enabled = true;
+            carriedObject.transform.parent = null;
+            //carriedObject.transform.localPosition = Vector3.zero;
+            //carriedObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            carriedObject.GetComponent<CircleCollider2D>().enabled = true;
+            carriedObject = null;
+            isCarrying = false;
+
+            if (carriedObject.name == "Potion Bleu")
             {
-                carriedObject.GetComponent<Rigidbody2D>().AddForce(direction.normalized * 50, ForceMode2D.Impulse);
-                carriedObject.pickupCollider.enabled = true;
-                carriedObject.transform.parent = null;
-                carriedObject.GetComponent<CircleCollider2D>().enabled = true;
-                carriedObject = null;
-                isCarrying = false;
-            }
-            else
-            {
-                carriedObject.GetComponent<Rigidbody2D>().AddForce(direction.normalized * 50, ForceMode2D.Impulse);
-                //carriedObject.GetComponentInChildren<CircleCollider2D>().enabled = true;
-                carriedObject.pickupCollider.enabled = true;
-                carriedObject.transform.parent = null;
-                //carriedObject.transform.localPosition = Vector3.zero;
-                //carriedObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                carriedObject.GetComponent<CircleCollider2D>().enabled = true;
-                carriedObject = null;
-                isCarrying = false;
+                carriedObject.GetComponent<Potions>();
+                StartCoroutine("creationOfEffectZone");
             }
         }
     }
