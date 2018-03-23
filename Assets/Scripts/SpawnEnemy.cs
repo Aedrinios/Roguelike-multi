@@ -54,8 +54,10 @@ public class SpawnEnemy : MonoBehaviour {
                 position.y = SpawnerEntities[i].transform.position.y;
                 position.z = -0.2f;
 
-
-                Instantiate(Entities[(int)randomPickEntities], position, Quaternion.identity);
+                GameObject go = Instantiate(Entities[(int)randomPickEntities], position, Quaternion.identity);
+                go.transform.parent = gameObject.transform;
+                go.name= Entities[(int)randomPickEntities].name;
+                go.GetComponent<InanimateEntity>().currentRoom = transform.GetComponentInChildren<RoomTransition>().PositionRoom;
             }
 
 

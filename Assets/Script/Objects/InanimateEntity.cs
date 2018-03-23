@@ -10,6 +10,7 @@ public abstract class InanimateEntity : MonoBehaviour
     public Sprite thumbnail;
     [SerializeField] protected AnimateEntity holder;
     protected int damage;
+    public Vector2 currentRoom;
 
     public AnimateEntity Holder
     {

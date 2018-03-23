@@ -68,18 +68,17 @@ public class LevelGeneration : MonoBehaviour {
 				if (iterations >= 50)
 					print("error: could not create with fewer neighbors than : " + NumberOfNeighbors(checkPos, takenPositions));
 			}
-
+           
             if (AddBeginRoom)
             {
-                rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, 0);
-                takenPositions.Insert(0, checkPos);
-                AddBeginRoom = false;
-                xFirstRoom = (int)checkPos.x + gridSizeX;
-                yFirstRoom = (int)checkPos.y + gridSizeY;
+                    rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, 0);
+                    takenPositions.Insert(0, checkPos);
+                    AddBeginRoom = false;
+                    xFirstRoom = (int)checkPos.x + gridSizeX;
+                    yFirstRoom = (int)checkPos.y + gridSizeY;                
             }
             else
             {
-
                 rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, 0);
                 takenPositions.Insert(0, checkPos);
                // Debug.Log((int)checkPos.x + gridSizeX + " X " + (int)checkPos.y + gridSizeY + " Y ");
@@ -616,6 +615,9 @@ public class LevelGeneration : MonoBehaviour {
 	void DrawMap(){
         int i = 1; //variable pour renommer les salles    
         bool firstroom = true;
+        //int blub = (int)Random.Range(0, 5);
+        //Debug.Log(blub);
+
         foreach (Room room in rooms){
 			if (room == null){
 				continue; //skip where there is no room
@@ -631,8 +633,8 @@ public class LevelGeneration : MonoBehaviour {
             right = room.doorRight;
             left = room.doorLeft;
 
-            if (firstroom)
-            {            
+            if (firstroom /*&& blub<3*/)
+            {     
                 SelectPrefab(drawPos, up, down, right, left, i, true,room.GetRoom());
                 firstroom = false;
             }
