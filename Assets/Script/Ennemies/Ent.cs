@@ -150,6 +150,14 @@ public class Ent : AnimateEntity {
         }
     }
 
+    void stopHealing()
+    {
+        for (int i = 0; i < shrubs.Length; i++)
+        {
+            shrubs[i].stopHealing();
+        }
+    }
+
     int getNumberOfShrubsAlive()
     {
         int res = 0;
@@ -176,6 +184,7 @@ public class Ent : AnimateEntity {
 
                 setCanBeDamaged(true);                //vulnérable
                 setAllShrubsCanBeDamaged(false);      //arbrisseaux invulnérables
+                stopHealing();
                 break;
             case 2:
                 isPhase1 = false;
@@ -185,16 +194,15 @@ public class Ent : AnimateEntity {
 
                 setAllShrubsCanBeDamaged(true);        //Les arbrisseaux son vulnérable
                 setCanBeDamaged(false);                //Invulnérable
-
-                /*if (getNumberOfShrubsAlive() > 0)
-                {
-                    setCanBeDamaged(false);                //Invulnérable
-                }*/
                 break;
             case 3:
                 isPhase1 = false;
                 isPhase2 = false;
                 isPhase3 = true;
+
+                animator.SetBool("isphase3", true);
+
+                setCanBeDamaged(true);                //Invulnérable
                 break;
         }
     }
