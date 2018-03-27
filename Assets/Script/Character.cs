@@ -54,6 +54,15 @@ public class Character : AnimateEntity
         comptCouleur++;
     }
 
+    public void ReceiveHealt(int value, GameObject other)
+    {
+        if (/*Vie pas au max */true)
+        {
+            health += value;
+            UI.SetHealth(health); // Player health
+        }
+    }
+
     public override void ReceiveHit(int value, GameObject other)
     {
         if (canBeDamaged)

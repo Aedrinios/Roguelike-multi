@@ -220,7 +220,7 @@ MonoBehaviour:
   rigid: {fileID: 50528708000775678}
   armorPoints: 0
   powerSelected: 
-  rayon: {fileID: 1308055534277362, guid: 47d616ffc3aae8b41bf1a1cbc1b08f8d, type: 2}
+  rayon: {fileID: 1343393137801658, guid: d770e7d6574e83e4589415eff3897c4e, type: 2}
   potionColorId: 0
 --- !u!212 &212906174269560286
 SpriteRenderer:
