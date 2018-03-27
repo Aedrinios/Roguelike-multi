@@ -49,15 +49,14 @@ public class Potions : Weapon {
 
     public void randomPotion()
     {
-        var random = Random.Range(0, 2);
+        var random = Random.Range(0, 3);
         powerSelected = powersTab[random]; // Selectionne un pouvoir random;
 
         // Supprime le power attribué
         var list = new List<string>(powersTab);
         list.Remove(powersTab[random]);
         powersTab = list.ToArray();
-
-        Debug.Log(powersTab.Length);
+        
         // Transfere le pouvoir associer à la couleur de la potion
         switch (potionColorId)
         {

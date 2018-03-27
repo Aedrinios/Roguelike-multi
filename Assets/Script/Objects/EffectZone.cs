@@ -45,7 +45,7 @@ public class EffectZone : MonoBehaviour {
 
     void powerStun(Character user)
     {
-        user.stun = true;
+        user.stun = false;
         var coroutine = endStun(user);
         StartCoroutine(coroutine);
         Debug.Log("stun fait");
@@ -54,6 +54,7 @@ public class EffectZone : MonoBehaviour {
     void powerHeal(Character user)
     {
         Debug.Log("heal fait");
+        user.ReceiveHealt(1, user.gameObject);
         //user.health += 2;
     }
 
@@ -65,7 +66,7 @@ public class EffectZone : MonoBehaviour {
 
     public IEnumerator die()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(6);
         Destroy(this.gameObject);
     }
 
