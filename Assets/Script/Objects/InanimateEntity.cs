@@ -24,7 +24,7 @@ public abstract class InanimateEntity : MonoBehaviour
         foreach (SpriteRenderer sp in gameObject.GetComponentsInChildren<SpriteRenderer>())
         {
             sp.enabled = false;
-            Debug.Log(sp.gameObject.name);
+            //Debug.Log(sp.gameObject.name);
         }
         this.GetComponentInChildren<CircleCollider2D>().enabled = false;
         pickupCollider.enabled = false;

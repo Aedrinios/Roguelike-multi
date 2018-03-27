@@ -86,8 +86,8 @@ public abstract class AnimateEntity : InanimateEntity
                 //sprite change de couleur indiquant impossibilité d'être frappé, bouclier posé
                 currentShield = Instantiate(protectionShield, transform.position, Quaternion.identity, transform); 
                 currentShield.transform.localScale = new Vector3((transform.localScale.x + 0.3f) * scaleMultiplier, (transform.localScale.y + 0.3f) * scaleMultiplier, 0);
-                Debug.Log("Shield :" + this.name + "   " + scaleMultiplier);
-                Debug.Log(this.name +" : Shield de protection activé");
+                //Debug.Log("Shield :" + this.name + "   " + scaleMultiplier);
+                //Debug.Log(this.name +" : Shield de protection activé");
             }
         }
         else
@@ -96,7 +96,7 @@ public abstract class AnimateEntity : InanimateEntity
             {
                 Destroy(currentShield.gameObject);
                 currentShield = null;
-                Debug.Log(this.name + " : Shield de protection désactivé");
+                //Debug.Log(this.name + " : Shield de protection désactivé");
             }
         }
     }
@@ -109,7 +109,7 @@ public abstract class AnimateEntity : InanimateEntity
 
     public virtual void ReceiveHit(int value, GameObject other)
     {
-        Debug.Log("je suis dans receive hit"); 
+        //Debug.Log("je suis dans receive hit"); 
         if (!invincibility.IsFinished())
         {
             return;
@@ -118,17 +118,17 @@ public abstract class AnimateEntity : InanimateEntity
 
         if (canBeDamaged == true &&!isDead)
         {
-            Debug.Log("degats : " +value);
+            //Debug.Log("degats : " +value);
             isDamaged();
             //reduce health
             health -= value;
             KnockBack(other);
 
-            Debug.Log(other.name);
+            //Debug.Log(other.name);
         }
         if(canBeDamaged == false && !isDead)
         {
-            Debug.Log("je suis dans la boucle"); 
+            //Debug.Log("je suis dans la boucle"); 
             SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER     
         }
         
@@ -140,7 +140,7 @@ public abstract class AnimateEntity : InanimateEntity
 
     public virtual void isDamaged()
     {
-        Debug.Log("Animation degats");
+        //Debug.Log("Animation degats");
         animator.SetTrigger("damaged");
         
     }

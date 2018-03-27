@@ -10,6 +10,7 @@ public class Shrub : AnimateEntity {
     private float timeCounter;
     private AudioSource audioSource;
     private bool done = false;
+    private ParticleSystem particleSystem;
 
     //variables d'états
     private bool isPhase1;
@@ -23,6 +24,7 @@ public class Shrub : AnimateEntity {
         startHealth = health;
         setActivePhase(1);
         animator = GetComponent<Animator>();
+        particleSystem = GetComponent<ParticleSystem>();
 
         audioSource = GetComponent<AudioSource>();
         
@@ -82,17 +84,23 @@ public class Shrub : AnimateEntity {
     {
         if (!done)
         {
+            particleSystem.Play();
             audioSource.Play();
             done = true;
         }
 
         if (timeCounter >= timeBetweenHeals && transform.parent.gameObject.GetComponent<Ent>().health < 200)
         {
-            Debug.Log(name + " : Healing ent");
+            //Debug.Log(name + " : Healing ent");
             transform.parent.gameObject.GetComponent<Ent>().health += 1;
 
             timeCounter = 0;
         }
+    }
+
+    public void stopHealing()
+    {
+        particleSystem.Stop();
     }
 
     void Die()

@@ -26,7 +26,7 @@ public class Character : AnimateEntity
     private float blinkTimeCount;
     private GlobalHealthManager globalHealthManager;
     private string inputSetName;
-    private Color[] tabcolor = { Color.blue, Color.yellow, Color.green, Color.red };
+    private Color[] tabcolor = { Color.cyan, Color.yellow, Color.green, Color.blue };
     static int comptCouleur = 0;
     public Sprite[] tabPlayerNumber; // J1, J2, ...
 
@@ -109,6 +109,12 @@ public class Character : AnimateEntity
     public void Update() // déséquiper pour l'instant
     {
         Debug.Log(inputSetName);
+
+        if (Input.GetKeyDown("8"))
+        {
+            isTarget(); 
+        }
+
         if (Input.GetKeyDown("3"))
         {
             setCanBeDamaged(false);
@@ -423,10 +429,32 @@ public class Character : AnimateEntity
             //carriedObject.transform.localPosition = Vector3.zero;
             //carriedObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             carriedObject.GetComponent<CircleCollider2D>().enabled = true;
+            if (carriedObject.GetComponent<Potions>() != null)
+            {
+                carriedObject.GetComponent<Potions>().StartCoroutine("creationOfEffectZone");
+            }
             carriedObject = null;
             isCarrying = false;
+
+
         }
     }
+
+    public IEnumerator targetColor()
+    {
+        Transform t = transform.Find("Ground circle");
+        var colorPlayer = t.GetComponent<SpriteRenderer>().color;
+        t.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        t.GetComponent<SpriteRenderer>().color = colorPlayer;
+    }
+
+    public void isTarget()
+    {
+        //NomObjet.GetComponent<NomScript>().StartCoroutine("targetColor");
+        StartCoroutine("targetColor");
+    }
+
 }
 
 
