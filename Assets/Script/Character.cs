@@ -109,6 +109,12 @@ public class Character : AnimateEntity
     public void Update() // déséquiper pour l'instant
     {
         Debug.Log(inputSetName);
+
+        if (Input.GetKeyDown("8"))
+        {
+            isTarget(); 
+        }
+
         if (Input.GetKeyDown("3"))
         {
             setCanBeDamaged(false);
@@ -433,6 +439,22 @@ public class Character : AnimateEntity
 
         }
     }
+
+    public IEnumerator targetColor()
+    {
+        Transform t = transform.Find("Ground circle");
+        var colorPlayer = t.GetComponent<SpriteRenderer>().color;
+        t.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        t.GetComponent<SpriteRenderer>().color = colorPlayer;
+    }
+
+    public void isTarget()
+    {
+        //NomObjet.GetComponent<NomScript>().StartCoroutine("targetColor");
+        StartCoroutine("targetColor");
+    }
+
 }
 
 
