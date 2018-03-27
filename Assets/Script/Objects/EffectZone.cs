@@ -22,22 +22,38 @@ public class EffectZone : MonoBehaviour {
         if(other.tag == "enemy" || other.tag == "Player")
         {
             Debug.Log("JE SUIS DANS LE TRIGGER DE EFFECT et de type player or ennemy");
+            Debug.Log("THIS IS MY POWER : " + power);
+
+            switch (power)
+            {
+                case ("Stun"):
+                    powerStun();
+                    break;
+                case ("Degats"):
+                    powerDegats();
+                    break;
+                case ("Heal"):
+                    powerHeal();
+                    break;
+            }
         }
         // Appel du pouvoir selectionner
     }
 
-    void powerStun(Character user)
+    void powerStun()
     {
-
+        Debug.Log("JE SUIS DANS POWER STUN");
     }
 
-    void powerHeal(Character user)
+    void powerHeal()
     {
-        user.health += 2;
+        Debug.Log("JE SUIS DANS POWER HEAL");
+        //user.health += 2;
     }
 
-    void powerDegats(Character user)
+    void powerDegats()
     {
+        Debug.Log("JE SUIS DANS POWER DEGATS");
         //Character.ReceiveHit(2, user);
     }
 

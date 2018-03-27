@@ -151,7 +151,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   rigid: {fileID: 0}
   armorPoints: 0
-  power: 
+  powerSelected: 
   rayon: {fileID: 1308055534277362, guid: 47d616ffc3aae8b41bf1a1cbc1b08f8d, type: 2}
 --- !u!212 &212906174269560286
 SpriteRenderer:

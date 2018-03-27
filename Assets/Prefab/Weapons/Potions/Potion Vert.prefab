@@ -88,7 +88,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   rigid: {fileID: 0}
   armorPoints: 0
-  power: 
+  powerSelected: 
+  rayon: {fileID: 0}
 --- !u!212 &212820887064310596
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -6,13 +6,15 @@ public class Potions : Weapon {
 
     private bool canBeUse;
     private string[] powersTab = { "Stun", "Degats", "Heal"};
-    public string power;
+    public string powerSelected;
     public GameObject rayon;
 
 	// Use this for initialization
 	void Start () {
         canBeUse = true;
-	}
+        powerSelected = "Stun";
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,9 +24,9 @@ public class Potions : Weapon {
     public override void Use(Character user) // peut etre utilise 1 fois on la bois initialise le pouvoir de la potion
     {
         base.Use(user);
-        power = powersTab[Random.Range(1,3)]; // Selectionne un pouvoir random;
+        powerSelected = powersTab[Random.Range(1,3)]; // Selectionne un pouvoir random;
 
-        switch (power)
+        switch (powerSelected)
         {
             case ("Stun"):
                 powerStun(user);
@@ -60,6 +62,7 @@ public class Potions : Weapon {
         yield return new WaitForSeconds(2);
         // Recuperer la position et creation de la zone collider à cette position
         var position = this.transform.position;
+        rayon.GetComponent<EffectZone>().power = powerSelected; // Transfere le pouvoir selectionner
         Instantiate(rayon, position, new Quaternion());
         Destroy(this.gameObject);
     }
