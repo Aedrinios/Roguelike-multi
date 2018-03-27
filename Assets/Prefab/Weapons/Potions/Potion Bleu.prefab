@@ -145,14 +145,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupCollider: {fileID: 61406146681036772}
-  thumbnail: {fileID: 0}
+  thumbnail: {fileID: 21300000, guid: e8f2e122fe5cc78499e61cd89e73022a, type: 3}
   holder: {fileID: 0}
   pushPower: 0
   animator: {fileID: 0}
-  rigid: {fileID: 0}
+  rigid: {fileID: 50528708000775678}
   armorPoints: 0
   powerSelected: 
   rayon: {fileID: 1308055534277362, guid: 47d616ffc3aae8b41bf1a1cbc1b08f8d, type: 2}
+  potionColorId: 0
 --- !u!212 &212906174269560286
 SpriteRenderer:
   m_ObjectHideFlags: 1
