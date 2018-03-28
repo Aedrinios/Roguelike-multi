@@ -29,8 +29,6 @@ public class Potions : Weapon {
 
     public override void Use(Character user) // peut etre utilise 1 fois on la bois initialise le pouvoir de la potion
     {
-        Debug.Log("Vie de base : " + user.health);
-        Debug.Log("Couleur potion : " + potionColorId);
         Debug.Log("Pouvoir de la potion : " + powerSelected);
         base.Use(user);
         powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
@@ -46,9 +44,9 @@ public class Potions : Weapon {
                 powerHeal(user);
                 break;
         }
-       /* Pour unequip apres l'avoir use mais il manque les animations ce qui releve une erreur
+        //Pour unequip apres l'avoir use mais il manque les animations ce qui releve une erreur
         if (this == user.inventory[0].GetComponent<Potions>()) Unequip(0);
-        else Unequip(1);*/
+        else Unequip(1);
         canBeUse = false;
     }
 

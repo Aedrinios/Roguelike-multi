@@ -56,6 +56,11 @@ public class Character : AnimateEntity
 
     public void ReceiveHealt(int value, GameObject other)
     {
+        /*
+         *Fair une condition qui verfie si la vie n'est pas au max
+         *  Si oui ne rien faire
+         *  Si non augmenter la vie de +value et mettre à jour l'UI
+         */
         if (/*Vie pas au max */true)
         {
             health += value;

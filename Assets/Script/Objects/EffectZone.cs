@@ -26,8 +26,7 @@ public class EffectZone : MonoBehaviour {
         power= potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
         if (other.tag == "enemy" || other.tag == "Player")
         {
-            Debug.Log("JE SUIS DANS LE TRIGGER DE EFFECT et de type player or ennemy");
-            Debug.Log("THIS IS MY POWER : " + power);
+            Debug.Log("In Zone this is my power : " + power);
             var user = other.GetComponent<Character>();
             switch (power)
             {
@@ -47,17 +46,14 @@ public class EffectZone : MonoBehaviour {
 
     void powerStun(Character user)
     {
-        user.stun = false;
         var coroutine = endStun(user);
         StartCoroutine(coroutine);
-        Debug.Log("stun fait");
     }
 
     void powerHeal(Character user)
     {
         Debug.Log("heal fait");
-        user.ReceiveHealt(1, user.gameObject);
-        //user.health += 2;
+        user.ReceiveHealt(1, user.gameObject);    // TO DO
     }
 
     void powerDegats(Character user)
@@ -68,13 +64,15 @@ public class EffectZone : MonoBehaviour {
 
     public IEnumerator die()
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(2.1f);
         Destroy(this.gameObject);
     }
 
     public IEnumerator endStun(Character user)
     {
-        yield return new WaitForSeconds(2);
         user.stun = true;
+        yield return new WaitForSeconds(2);
+        user.stun = false;
+        Debug.Log("stun fait");
     }
 }
