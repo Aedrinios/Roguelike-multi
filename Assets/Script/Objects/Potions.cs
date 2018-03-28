@@ -5,23 +5,27 @@ using UnityEngine;
 public class Potions : Weapon {
 
     private bool canBeUse;
-    private static string[] powersTab = {"Stun", "Degats", "Heal"};
     public string powerSelected;
     public GameObject rayon;
     public int potionColorId;
     private int degat;
-
+    private PotionManager potionManager;
+    
     // Use this for initialization
     void Start () {
         canBeUse = true;
-        randomPotion();
+        potionManager = FindObjectOfType<PotionManager>();
         degat = 2;
     }
 	
 	// Update is called once per frame
 	void Update () {
 		if (!canBeUse) Destroy(this.gameObject); // est détruit si ne peut plus etre utilisé
-	}
+        if (powerSelected == "")
+        {
+            powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
+        }
+    }
 
     public override void Use(Character user) // peut etre utilise 1 fois on la bois initialise le pouvoir de la potion
     {
@@ -29,6 +33,7 @@ public class Potions : Weapon {
         Debug.Log("Couleur potion : " + potionColorId);
         Debug.Log("Pouvoir de la potion : " + powerSelected);
         base.Use(user);
+        powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
         switch (powerSelected)
         {
             case ("Stun"):
@@ -45,31 +50,6 @@ public class Potions : Weapon {
         if (this == user.inventory[0].GetComponent<Potions>()) Unequip(0);
         else Unequip(1);*/
         canBeUse = false;
-    }
-
-    public void randomPotion()
-    {
-        var random = Random.Range(0, 3);
-        powerSelected = powersTab[random]; // Selectionne un pouvoir random;
-
-        // Supprime le power attribué
-        var list = new List<string>(powersTab);
-        list.Remove(powersTab[random]);
-        powersTab = list.ToArray();
-        
-        // Transfere le pouvoir associer à la couleur de la potion
-        switch (potionColorId)
-        {
-            case (0):
-                rayon.GetComponent<EffectZone>().potionPowers[potionColorId] = powerSelected;
-                break;
-            case (1):
-                rayon.GetComponent<EffectZone>().potionPowers[potionColorId] = powerSelected;
-                break;
-            case (2):
-                rayon.GetComponent<EffectZone>().potionPowers[potionColorId] = powerSelected;
-                break;
-        }
     }
 
     void powerStun(Character user)
@@ -95,7 +75,7 @@ public class Potions : Weapon {
         yield return new WaitForSeconds(2);
         // Recuperer la position et creation de la zone collider à cette position
         var position = this.transform.position;
-        rayon.GetComponent<EffectZone>().power = powerSelected; // Transfere le pouvoir selectionner
+        rayon.GetComponent<EffectZone>().potionColorId = potionColorId; // Transfere l'id de la potion
         Instantiate(rayon, position, new Quaternion());
         Destroy(this.gameObject);
     }

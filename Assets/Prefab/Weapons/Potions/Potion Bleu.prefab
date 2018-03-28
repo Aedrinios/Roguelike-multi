@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4985483524520596}
-  - component: {fileID: 95732449109871520}
   - component: {fileID: 114584153566170642}
+  - component: {fileID: 95732449109871520}
   - component: {fileID: 61406146681036772}
   - component: {fileID: 50528708000775678}
   - component: {fileID: 58004297042648312}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 60598903824320548}
   - component: {fileID: 50414550375797608}
   m_Layer: 0
-  m_Name: Potion Sprite
+  m_Name: Sword Sprite
   m_TagString: Potion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,8 +55,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472276958348778}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 1.24, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0036860704, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4985483524520596}
@@ -137,7 +137,7 @@ PolygonCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472276958348778}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -222,6 +222,7 @@ MonoBehaviour:
   powerSelected: 
   rayon: {fileID: 1343393137801658, guid: d770e7d6574e83e4589415eff3897c4e, type: 2}
   potionColorId: 0
+  potionManager: {fileID: 0}
 --- !u!212 &212906174269560286
 SpriteRenderer:
   m_ObjectHideFlags: 1

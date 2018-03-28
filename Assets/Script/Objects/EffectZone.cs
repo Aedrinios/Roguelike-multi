@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectZone : MonoBehaviour {
-
-    public string[] potionPowers; // stocke dans l'ordre Bleu, Rouge, Vert
-    private string[] powersTab = { "Stun", "Degats", "Heal" };
+    
     public string power;
     private int degat;
+    private PotionManager potionManager;
+    public int potionColorId;
 
     // Use this for initialization
     void Start () {
         StartCoroutine("die");
         degat = 1;
+        potionManager = FindObjectOfType<PotionManager>();
     }
 	
 	// Update is called once per frame
@@ -22,7 +23,8 @@ public class EffectZone : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "enemy" || other.tag == "Player")
+        power= potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
+        if (other.tag == "enemy" || other.tag == "Player")
         {
             Debug.Log("JE SUIS DANS LE TRIGGER DE EFFECT et de type player or ennemy");
             Debug.Log("THIS IS MY POWER : " + power);

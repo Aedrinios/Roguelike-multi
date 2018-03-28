@@ -154,6 +154,7 @@ MonoBehaviour:
   powerSelected: 
   rayon: {fileID: 1343393137801658, guid: d770e7d6574e83e4589415eff3897c4e, type: 2}
   potionColorId: 1
+  potionManager: {fileID: 0}
 --- !u!212 &212906174269560286
 SpriteRenderer:
   m_ObjectHideFlags: 1
