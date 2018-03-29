@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61406146681036772}
   - component: {fileID: 50528708000775678}
   - component: {fileID: 58004297042648312}
+  - component: {fileID: 95232815824052474}
   m_Layer: 0
   m_Name: Potion Rouge
   m_TagString: item
@@ -65,7 +66,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1451904316058778}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.66, y: -6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -133,6 +134,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.27282, y: 1.7714224}
   m_EdgeRadius: 0
+--- !u!95 &95232815824052474
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1451904316058778}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c348f72964271164dadbc67e7283d5ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114584153566170642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,13 +166,12 @@ MonoBehaviour:
   thumbnail: {fileID: 21300000, guid: 9be34578958a9d64cbc9a085faae88f1, type: 3}
   holder: {fileID: 0}
   pushPower: 0
-  animator: {fileID: 0}
+  animator: {fileID: 95232815824052474}
   rigid: {fileID: 50528708000775678}
   armorPoints: 0
   powerSelected: 
   rayon: {fileID: 1343393137801658, guid: d770e7d6574e83e4589415eff3897c4e, type: 2}
   potionColorId: 1
-  potionManager: {fileID: 0}
 --- !u!212 &212906174269560286
 SpriteRenderer:
   m_ObjectHideFlags: 1

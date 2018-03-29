@@ -20,7 +20,7 @@ public class Potions : Weapon {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!canBeUse) Destroy(this.gameObject); // est détruit si ne peut plus etre utilisé
+		if (!canBeUse) StartCoroutine("die");
         if (powerSelected == "")
         {
             powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
@@ -59,7 +59,8 @@ public class Potions : Weapon {
 
     void powerHeal(Character user)
     {
-        user.health += 2;
+        user.ReceiveHealt(1, user.gameObject);    // TO DO
+        Debug.Log("heal fait");
     }
 
     void powerDegats(Character user)
@@ -82,5 +83,12 @@ public class Potions : Weapon {
     {
         yield return new WaitForSeconds(2);
         user.stun = true;
+    }
+
+    public IEnumerator die()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(2);
+        Destroy(this.gameObject);
     }
 }

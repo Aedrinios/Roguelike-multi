@@ -216,13 +216,12 @@ MonoBehaviour:
   thumbnail: {fileID: 21300000, guid: e8f2e122fe5cc78499e61cd89e73022a, type: 3}
   holder: {fileID: 0}
   pushPower: 0
-  animator: {fileID: 0}
+  animator: {fileID: 95732449109871520}
   rigid: {fileID: 50528708000775678}
   armorPoints: 0
   powerSelected: 
   rayon: {fileID: 1343393137801658, guid: d770e7d6574e83e4589415eff3897c4e, type: 2}
   potionColorId: 0
-  potionManager: {fileID: 0}
 --- !u!212 &212906174269560286
 SpriteRenderer:
   m_ObjectHideFlags: 1
