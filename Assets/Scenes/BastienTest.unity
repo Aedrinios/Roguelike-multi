@@ -673,6 +673,10 @@ Prefab:
       propertyPath: animator
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1472276958348778, guid: 0d864c1f24c7dac4da0610a610252a5a, type: 2}
+      propertyPath: m_Name
+      value: Sword Sprite
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d864c1f24c7dac4da0610a610252a5a, type: 2}
   m_IsPrefabParent: 0
@@ -8408,6 +8412,31 @@ MonoBehaviour:
   directionX: 32
   directionY: 0
   linkedTerrain: {fileID: 556140531}
+--- !u!1 &586764004 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1472276958348778, guid: 0d864c1f24c7dac4da0610a610252a5a,
+    type: 2}
+  m_PrefabInternal: {fileID: 59401217}
+--- !u!50 &586764005
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 586764004}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &590169685
 GameObject:
   m_ObjectHideFlags: 0
@@ -9619,6 +9648,31 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &750185133 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1472276958348778, guid: 73805749547e4fc469fa6507a12687b4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1532938865}
+--- !u!50 &750185134
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 750185133}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &751466357
 Prefab:
   m_ObjectHideFlags: 0
@@ -24344,6 +24398,10 @@ Prefab:
     - target: {fileID: 4985483524520596, guid: 73805749547e4fc469fa6507a12687b4, type: 2}
       propertyPath: m_RootOrder
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472276958348778, guid: 73805749547e4fc469fa6507a12687b4, type: 2}
+      propertyPath: m_Name
+      value: Sword Sprite
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 73805749547e4fc469fa6507a12687b4, type: 2}
