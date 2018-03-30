@@ -119,7 +119,7 @@ public abstract class AnimateEntity : InanimateEntity
         }
         invincibility.ResetPlay();
 
-        if (canBeDamaged == true &&!isDead)
+        if (canBeDamaged &&!isDead)
         {
             //Debug.Log("degats : " +value);
             isDamaged();
@@ -129,7 +129,7 @@ public abstract class AnimateEntity : InanimateEntity
 
             //Debug.Log(other.name);
         }
-        if(canBeDamaged == false && !isDead)
+        if(!canBeDamaged && !isDead)
         {
             //Debug.Log("je suis dans la boucle"); 
             SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER     
