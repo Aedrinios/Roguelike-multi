@@ -26,6 +26,7 @@ public abstract class AnimateEntity : InanimateEntity
     protected bool isDying = false;
     protected AudioSource audioSource;
     protected float scaleMultiplier = 1f;
+    protected SpriteRenderer spriteRenderer;
 
     private ProtectionShield currentShield=null;
 
@@ -37,6 +38,7 @@ public abstract class AnimateEntity : InanimateEntity
         invincibility = new Timer(timeOfInvincibility, true);
         rigidb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public virtual void Move(Vector2 directionRequired)

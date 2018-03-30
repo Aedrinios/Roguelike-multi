@@ -7,10 +7,14 @@ public class Ent : AnimateEntity {
     public Shrub[] shrubs;
     public GameObject[] spells;
     public float timeBewteenSpells;
+    public GameObject portal;
 
     private GameObject currentTarget;
     private List<GameObject> players;
     private int startHealth;
+    private float opacity = 255;
+    private bool done = false;
+    private BoxCollider2D boxCollider;
 
     //variables d'états
     private bool isPhase1;
@@ -21,6 +25,7 @@ public class Ent : AnimateEntity {
     //utilitaires
     private bool doOnce = false;
     private float timeCounterSpells = 0;
+    private float timeCounter = 0;
 
     // Use this for initialization
     void Start () {
@@ -28,6 +33,7 @@ public class Ent : AnimateEntity {
         scaleMultiplier = 6f;
         startHealth = health;
         timeCounterSpells = timeBewteenSpells;
+        boxCollider = GetComponent<BoxCollider2D>();
 
         setActivePhase(1);
     }
@@ -79,13 +85,24 @@ public class Ent : AnimateEntity {
         //3ème phase : Les shrubs sont morts
         else if (isPhase3)
         {
-            //Tombe à terre
+            castRandomSpellOnRandomTarget(2);
 
-            //Si il est touché, meurt
+            if (health<=0)
+            {
+                boxCollider.enabled = false;
+                animator.SetBool("isDead", true);
 
-            //Sinon se relève
+                timeCounter += Time.deltaTime;
+                if (timeCounter >= 2)
+                {
+                    if (!done)
+                    {
+                        Instantiate(portal, transform.position, Quaternion.identity);
 
-            //fait apparaitre une porte pour le prochain niveau
+                        done = true;
+                    }
+                }
+            }
         }
 	}
 

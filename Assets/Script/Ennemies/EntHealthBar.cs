@@ -21,5 +21,9 @@ public class EntHealthBar : MonoBehaviour {
         {
             hp.transform.localScale = new Vector2(startScaleX / (ent.getStartHealth() / (float)ent.health), hp.transform.localScale.y);
         }
+        else
+        {
+            hp.transform.localScale = new Vector2(0, 0);
+        }
     }
 }

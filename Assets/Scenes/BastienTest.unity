@@ -695,6 +695,11 @@ Prefab:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114327334864939098, guid: 9af4dff9e1987d949b931f690cc9d5db,
+        type: 2}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9af4dff9e1987d949b931f690cc9d5db, type: 2}
   m_IsPrefabParent: 0
@@ -1392,6 +1397,11 @@ Prefab:
         type: 2}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114327334864939098, guid: 9af4dff9e1987d949b931f690cc9d5db,
+        type: 2}
+      propertyPath: health
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9af4dff9e1987d949b931f690cc9d5db, type: 2}
@@ -7299,7 +7309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &517973355
 Animator:
   serializedVersion: 3
@@ -7376,6 +7386,7 @@ MonoBehaviour:
   - {fileID: 1534496258200882, guid: 77018793da705b642a8d47e2bd0053d7, type: 2}
   - {fileID: 1534496258200882, guid: 0ac510ddb5b4a5f41b7022924cba40fb, type: 2}
   timeBewteenSpells: 5
+  portal: {fileID: 1886714632342442, guid: 175e8e057bf7e7d4092e1c12f368f0aa, type: 2}
 --- !u!50 &517973358
 Rigidbody2D:
   serializedVersion: 4
@@ -18335,6 +18346,11 @@ Prefab:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114327334864939098, guid: 9af4dff9e1987d949b931f690cc9d5db,
+        type: 2}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9af4dff9e1987d949b931f690cc9d5db, type: 2}
   m_IsPrefabParent: 0
@@ -25271,6 +25287,11 @@ Prefab:
         type: 2}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114327334864939098, guid: 9af4dff9e1987d949b931f690cc9d5db,
+        type: 2}
+      propertyPath: health
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9af4dff9e1987d949b931f690cc9d5db, type: 2}
