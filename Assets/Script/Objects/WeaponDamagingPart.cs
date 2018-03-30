@@ -22,7 +22,7 @@ public class WeaponDamagingPart : MonoBehaviour
                 if (hit != weaponPart.Holder.gameObject)
                 {
                     Debug.Log(gameObject.name + " : hit for " + weaponPart.Holder.GetAttack() * weaponPart.GetDamage());
-                    other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), other.gameObject);
+                    other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), weaponPart.Holder.gameObject);
                     if (other.gameObject.GetComponent<AnimateEntity>().getCurrentShield()!=null)
                     {
                        Debug.Log("je suis dans le if"); 
