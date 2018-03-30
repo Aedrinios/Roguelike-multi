@@ -43,11 +43,14 @@ public abstract class AnimateEntity : InanimateEntity
 
     public virtual void Move(Vector2 directionRequired)
     {
-        this.direction = directionRequired.normalized;
-        rigidb.velocity = direction * speed;
-        animator.SetFloat("directionX", direction.x);
-        animator.SetFloat("directionY", direction.y);
-        animator.SetBool("isMoving", true);
+        if (!stun)
+        {
+            this.direction = directionRequired.normalized;
+            rigidb.velocity = direction * speed;
+            animator.SetFloat("directionX", direction.x);
+            animator.SetFloat("directionY", direction.y);
+            animator.SetBool("isMoving", true);
+        }
     }
     public virtual void Idle()
     {

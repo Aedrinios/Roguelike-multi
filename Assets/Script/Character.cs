@@ -54,6 +54,20 @@ public class Character : AnimateEntity
         comptCouleur++;
     }
 
+    public void ReceiveHealt(int value, GameObject other)
+    {
+        /*
+         *Fair une condition qui verfie si la vie n'est pas au max
+         *  Si oui ne rien faire
+         *  Si non augmenter la vie de +value et mettre à jour l'UI
+         */
+        if (/*Vie pas au max */true)
+        {
+            health += value;
+            UI.SetHealth(health); // Player health
+        }
+    }
+
     public override void ReceiveHit(int value, GameObject other)
     {
         if (canBeDamaged)
@@ -110,59 +124,62 @@ public class Character : AnimateEntity
     {
         Debug.Log(inputSetName);
 
-        if (Input.GetKeyDown("8"))
-        {
-            isTarget(); 
-        }
-
-        if (Input.GetKeyDown("3"))
-        {
-            setCanBeDamaged(false);
-        }
-
-        if (Input.GetKeyDown("5"))
-        {
-            setCanBeDamaged(true);
-        }
-
-        if (Input.GetKeyDown("4"))
-        {
-            ReceiveHit(startLife, gameObject);
-        }
-        
         if (health <= 0)
         {
             Die();
         }
 
-        //ramassage puis lancer
-        if (Input.GetButtonDown(inputSetName + "interact"))
+        if (!stun)
         {
-            Interract();
-        }
+            if (Input.GetKeyDown("8"))
+            {
+                isTarget();
+            }
 
-        //déséquipement arme 1
-        if (Input.GetButton(inputSetName + "primary"))
-        {
-            primaryTimer += Time.deltaTime;
-            if (primaryTimer > 1 && inventory[0] != null && !isCarrying)
-                Carry(inventory[0]);
-        }
-        if (Input.GetButtonUp(inputSetName + "primary"))
-        {
-            primaryTimer = 0;
-        }
+            if (Input.GetKeyDown("3"))
+            {
+                setCanBeDamaged(false);
+            }
 
-        //desequipement arme 2
-        if (Input.GetButton(inputSetName + "secondary"))
-        {
-            secondaryTimer += Time.deltaTime;
-            if (secondaryTimer > 1 && inventory[1] != null)
-                Carry(inventory[1]);
-        }
-        if (Input.GetButtonUp(inputSetName + "secondary"))
-        {
-            secondaryTimer = 0;
+            if (Input.GetKeyDown("5"))
+            {
+                setCanBeDamaged(true);
+            }
+
+            if (Input.GetKeyDown("4"))
+            {
+                ReceiveHit(startLife, gameObject);
+            }
+
+            //ramassage puis lancer
+            if (Input.GetButtonDown(inputSetName + "interact"))
+            {
+                Interract();
+            }
+
+            //déséquipement arme 1
+            if (Input.GetButton(inputSetName + "primary"))
+            {
+                primaryTimer += Time.deltaTime;
+                if (primaryTimer > 1 && inventory[0] != null && !isCarrying)
+                    Carry(inventory[0]);
+            }
+            if (Input.GetButtonUp(inputSetName + "primary"))
+            {
+                primaryTimer = 0;
+            }
+
+            //desequipement arme 2
+            if (Input.GetButton(inputSetName + "secondary"))
+            {
+                secondaryTimer += Time.deltaTime;
+                if (secondaryTimer > 1 && inventory[1] != null)
+                    Carry(inventory[1]);
+            }
+            if (Input.GetButtonUp(inputSetName + "secondary"))
+            {
+                secondaryTimer = 0;
+            }
         }
     }
 
