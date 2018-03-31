@@ -10464,6 +10464,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114798239883889756, guid: 5e6c00e28ad33584dbd49fd102b50a68,
+        type: 2}
+      propertyPath: sounds.Array.size
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 4683890088635304, guid: 5e6c00e28ad33584dbd49fd102b50a68, type: 2}
       propertyPath: m_LocalPosition.x
       value: 12.093336
@@ -10496,6 +10501,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114798239883889756, guid: 5e6c00e28ad33584dbd49fd102b50a68,
+        type: 2}
+      propertyPath: sounds.Array.data[20]
+      value: 
+      objectReference: {fileID: 8300000, guid: af6ccfa6d8e845243a862824095843cc, type: 3}
+    - target: {fileID: 114798239883889756, guid: 5e6c00e28ad33584dbd49fd102b50a68,
+        type: 2}
+      propertyPath: sounds.Array.data[21]
+      value: 
+      objectReference: {fileID: 8300000, guid: 12de45b776c13da48b372a77abc647d9, type: 3}
+    - target: {fileID: 114798239883889756, guid: 5e6c00e28ad33584dbd49fd102b50a68,
+        type: 2}
+      propertyPath: sounds.Array.data[22]
+      value: 
+      objectReference: {fileID: 8300000, guid: 50790c19a35d2ec45b94216ad04efd3d, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e6c00e28ad33584dbd49fd102b50a68, type: 2}
   m_IsPrefabParent: 0

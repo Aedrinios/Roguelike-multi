@@ -15,6 +15,8 @@ public class Keeper : AnimateEntity {
     public float baseColliderRadius;
     public bool deathAudioHasPlayed;
     public bool damageAudioHasPlayed;
+    public bool targetAudioHasPlayed;
+    public bool animationHasPlayed; 
 
 
     // Use this for initialization
@@ -40,25 +42,47 @@ public class Keeper : AnimateEntity {
             Debug.Log("update:"+target);
             direction = target.transform.position - gameObject.transform.position;
             gameObject.GetComponent<CircleCollider2D>().radius = direction.magnitude;
-            
             Move(this.direction);
           
         }
         else
         {
             Idle();
+            
+
         }
-        
+        if (Input.GetKeyDown("6"))
+        {
+            ReceiveHit(5,gameObject);
+        }
+
+        if (Input.GetKeyDown("7"))
+        {
+            Die(); 
+        }
+
 
     }
 
     public override void Move(Vector2 direction)
     {
-        
+       if (animationHasPlayed == false)
+       {
+            target.GetComponent<Character>().StartCoroutine("targetColor");
+            animationHasPlayed = true;
+        }
+       
+        if (targetAudioHasPlayed == false)
+        {
+            SoundManager.playSound("TargetSound");
+            targetAudioHasPlayed = true;
+        }
+       
         rigidb.velocity = direction.normalized * speed;
         animator.SetFloat("directionX", direction.x);
         animator.SetFloat("directionY", direction.y);
         animator.SetBool("isMoving", true);
+
 
         shield.offset = new Vector2(direction.normalized.x, direction.normalized.y);
         if (direction.normalized.x < (-0.5) || direction.normalized.x > 0.5)
@@ -119,8 +143,15 @@ public class Keeper : AnimateEntity {
     public override void ReceiveHit(int value, GameObject other)
     {
         
-        if(secondTarget!=null && target != other)
+        if (secondTarget!=null && target != other)
         {
+            //joue le son de dégats
+            if (damageAudioHasPlayed == false)
+            {
+                //play hit sound
+                SoundManager.playSound("keeperDamage");
+                damageAudioHasPlayed = true;
+            }
             base.ReceiveHit(value, other);
             target = secondTarget;
             secondTarget = null;
@@ -137,6 +168,7 @@ public class Keeper : AnimateEntity {
         //joue le son de mort
         if (deathAudioHasPlayed == false)
         {
+            SoundManager.playSound("keeperMort");
             deathAudioHasPlayed = true;
         }
         base.Die();
