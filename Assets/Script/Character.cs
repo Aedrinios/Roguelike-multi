@@ -462,13 +462,12 @@ public class Character : AnimateEntity
         Transform t = transform.Find("Ground circle");
         var colorPlayer = t.GetComponent<SpriteRenderer>().color;
         t.GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         t.GetComponent<SpriteRenderer>().color = colorPlayer;
     }
 
     public void isTarget()
     {
-        //NomObjet.GetComponent<NomScript>().StartCoroutine("targetColor");
         StartCoroutine("targetColor");
     }
 

@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 50401830042442282}
   - component: {fileID: 61477353086797932}
   - component: {fileID: 95110143415058238}
-  - component: {fileID: 114171045192043650}
   - component: {fileID: 58853856450038402}
   - component: {fileID: 82116474428965906}
+  - component: {fileID: 114765934994937158}
   m_Layer: 0
   m_Name: Keeper
   m_TagString: enemy
@@ -233,7 +233,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114171045192043650
+--- !u!114 &114765934994937158
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -241,23 +241,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1067508144882252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1ab693cc9d0ce64d9b7a8e94f34a80b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b2e00a09702b0f42bfae5d4c0421355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupCollider: {fileID: 61477353086797932}
+  pickupCollider: {fileID: 0}
   thumbnail: {fileID: 0}
   holder: {fileID: 0}
   health: 10
-  speed: 5
+  speed: 10
   attack: 2
   protectionShield: {fileID: 0}
   stun: 0
-  timeOfInvincibility: 0.1
+  timeOfInvincibility: 0
   direction: {x: 0, y: 0, z: 0}
-  targetChoice: {fileID: 58853856450038402}
+  targetChoice: {fileID: 0}
   target: {fileID: 0}
   hasTarget: 0
-  audioSource2: {fileID: 82116474428965906}
 --- !u!212 &212013573540812844
 SpriteRenderer:
   m_ObjectHideFlags: 1
