@@ -10,6 +10,7 @@ public class AttackSwing : MonoBehaviour {
     // Use this for initialization
     void Start () {
         animator = GetComponent<Animator>();
+		SoundManager.playSound("attackSwingSound");
     }
 	
 	// Update is called once per frame

@@ -4,260 +4,272 @@ using UnityEngine;
 
 public class Ent : AnimateEntity {
 
-    public Shrub[] shrubs;
-    public GameObject[] spells;
-    public float timeBewteenSpells;
-    public GameObject portal;
+	public Shrub[] shrubs;
+	public GameObject[] spells;
+	public float timeBewteenSpells;
+	public GameObject portal;
 
-    private GameObject currentTarget;
-    private List<GameObject> players;
-    private int startHealth;
-    private float opacity = 255;
-    private bool done = false;
-    private BoxCollider2D boxCollider;
+	private GameObject currentTarget;
+	private List<GameObject> players;
+	private int startHealth;
+	private float opacity = 255;
+	private bool done = false;
+	private BoxCollider2D boxCollider;
 
-    //variables d'états
-    private bool isPhase1;
-    private bool isPhase2;
-    private bool isPhase3;
+	//variables d'états
+	private bool isPhase1;
+	private bool isPhase2;
+	private bool isPhase3;
 
 
-    //utilitaires
-    private bool doOnce = false;
-    private float timeCounterSpells = 0;
-    private float timeCounter = 0;
+	//utilitaires
+	private bool doOnce = false;
+	private float timeCounterSpells = 0;
+	private float timeCounter = 0;
 
-    // Use this for initialization
-    void Start () {
-        base.Start();
-        scaleMultiplier = 6f;
-        startHealth = health;
-        timeCounterSpells = timeBewteenSpells;
-        boxCollider = GetComponent<BoxCollider2D>();
+	// Use this for initialization
+	void Start () {
+		base.Start();
+		scaleMultiplier = 6f;
+		startHealth = health;
+		timeCounterSpells = timeBewteenSpells;
+		boxCollider = GetComponent<BoxCollider2D>();
 
-        setActivePhase(1);
-    }
-	
+		setActivePhase(1);
+	}
+
 	// Update is called once per frame
 	void Update () {
 
-        //DEBUGS
-        //Debug.Log("Ent health : " + health);
-        Debug.Log("Phase Active : " + getActivePhase());
-        //Debug.Log("shrubs alive : " + getNumberOfShrubsAlive());
+		//Cheat Code
+		if (Input.GetKeyDown("b"))
+		{
+			this.GetComponent<AnimateEntity>().ReceiveHit(500,gameObject);
+		}
 
-        //VARIABLE DE COMPTAGE DE TEMPS
-        timeCounterSpells += Time.deltaTime;
+		if (Input.GetKeyDown("n"))
+		{
+			this.GetComponent<AnimateEntity>().ReceiveHit(20,gameObject);
+		}	
+
+		//DEBUGS
+		//Debug.Log("Ent health : " + health);
+		Debug.Log("Phase Active : " + getActivePhase());
+		//Debug.Log("shrubs alive : " + getNumberOfShrubsAlive());
+
+		//VARIABLE DE COMPTAGE DE TEMPS
+		timeCounterSpells += Time.deltaTime;
 
 
-        //1ère phase : Au dessus de 50%
-        if (isPhase1) 
-        {
-            castRandomSpellOnRandomTarget(1);          //fait une attaque au harsard sur la cible choisi au hasard
+		//1ère phase : Au dessus de 50%
+		if (isPhase1) 
+		{
+			castRandomSpellOnRandomTarget(1);          //fait une attaque au harsard sur la cible choisi au hasard
 
-            //CHANGEMENT DE PHASE
-            if (health<=startHealth/2 && getNumberOfShrubsAlive() > 0)
-            {
-                setActivePhase(2);
-            }
-            else if (health <= 0)
-            {
-                setActivePhase(3);
-            }
-        }
-        //2ème phase : En dessous de 50%
-        else if (isPhase2)
-        {
-            castRandomSpellOnRandomTarget(2);            //fait une attaque au harsard sur la cible choisi au hasard
-            claimHealing();            //Les abrisseaux le soignent
+			//CHANGEMENT DE PHASE
+			if (health<=startHealth/2 && getNumberOfShrubsAlive() > 0)
+			{
+				setActivePhase(2);
+			}
+			else if (health <= 0)
+			{
+				SoundManager.playSound ("bossDeath");
+				setActivePhase(3);
+			}
+		}
+		//2ème phase : En dessous de 50%
+		else if (isPhase2)
+		{
+			castRandomSpellOnRandomTarget(2);            //fait une attaque au harsard sur la cible choisi au hasard
+			claimHealing();            //Les abrisseaux le soignent
 
-            //CHANGEMENT DE PHASE
-            if (health == 200)
-            {
-                setActivePhase(1);
-                shrubStopPlaySound();
-            }
-            else if (getNumberOfShrubsAlive() == 0)
-            {
-                setActivePhase(3);
-            }
-        }
-        //3ème phase : Les shrubs sont morts
-        else if (isPhase3)
-        {
-            castRandomSpellOnRandomTarget(2);
+			//CHANGEMENT DE PHASE
+			if (health == 200)
+			{
+				setActivePhase(1);
+				shrubStopPlaySound();
+			}
+			else if (getNumberOfShrubsAlive() == 0)
+			{
+				setActivePhase(3);
+			}
+		}
+		//3ème phase : Les shrubs sont morts
+		else if (isPhase3)
+		{
+			castRandomSpellOnRandomTarget(2);
 
-            if (health<=0)
-            {
-                boxCollider.enabled = false;
-                animator.SetBool("isDead", true);
+			if (health<=0)
+			{
+				boxCollider.enabled = false;
+				animator.SetBool("isDead", true);
+				SoundManager.playSound ("bossDeath");
+				timeCounter += Time.deltaTime;
+				if (timeCounter >= 2)
+				{
+					if (!done)
+					{
+						Instantiate(portal, transform.position, Quaternion.identity);
 
-                timeCounter += Time.deltaTime;
-                if (timeCounter >= 2)
-                {
-                    if (!done)
-                    {
-                        Instantiate(portal, transform.position, Quaternion.identity);
-
-                        done = true;
-                    }
-                }
-            }
-        }
+						done = true;
+					}
+				}
+			}
+		}
 	}
 
 
-    //Cette fonction choisi une nouvelle cible parmis tous les joueurs instanciés de façon aléatoire et la met dans currentTarget.
-    void chooseRandomTarget()
-    {
-        int rdm = Mathf.RoundToInt(Random.Range(0, GameManager.instance.players.Count));
-        currentTarget = GameManager.instance.players[rdm];
-        //Debug.Log("Ent Target : " +currentTarget);
-    }
+	//Cette fonction choisi une nouvelle cible parmis tous les joueurs instanciés de façon aléatoire et la met dans currentTarget.
+	void chooseRandomTarget()
+	{
+		int rdm = Mathf.RoundToInt(Random.Range(0, GameManager.instance.players.Count));
+		currentTarget = GameManager.instance.players[rdm];
+		//Debug.Log("Ent Target : " +currentTarget);
+	}
 
-    void castRandomSpellOnRandomTarget(int n)
-    {
-        GameObject previousTarget=null;
-        GameObject spell = null;
-        Vector3 pos = new Vector3(0, 0, 0);
+	void castRandomSpellOnRandomTarget(int n)
+	{
+		GameObject previousTarget=null;
+		GameObject spell = null;
+		Vector3 pos = new Vector3(0, 0, 0);
 
-        if (timeCounterSpells >= timeBewteenSpells)
-        {
-            for (int i = 0; i < n; i++)
-            {
-                do          //Ce Do while sert à choisir deux cible différentes lorsque le boss cast deux spells
-                {
-                    chooseRandomTarget();
-                } while (currentTarget == previousTarget);
-                previousTarget = currentTarget;
+		if (timeCounterSpells >= timeBewteenSpells)
+		{
+			for (int i = 0; i < n; i++)
+			{
+				do          //Ce Do while sert à choisir deux cible différentes lorsque le boss cast deux spells
+				{
+					chooseRandomTarget();
+				} while (currentTarget == previousTarget);
+				previousTarget = currentTarget;
 
-                int rdm = Mathf.RoundToInt(Random.Range(0, spells.Length));
+				int rdm = Mathf.RoundToInt(Random.Range(0, spells.Length));
 
-                spell = spells[rdm];
-                switch (spell.name)
-                {
-                    case "SmashAttack":
-                        pos = currentTarget.transform.position + new Vector3(1, 0, 0);
-                        break;
-                    case "SwingAttack":
-                        pos = currentTarget.transform.position + new Vector3(2, 0, 0); ;
-                        break;
-                }
+				spell = spells[rdm];
+				switch (spell.name)
+				{
+				case "SmashAttack":
+					pos = currentTarget.transform.position + new Vector3(1, 0, 0);
+					break;
+				case "SwingAttack":
+					pos = currentTarget.transform.position + new Vector3(2, 0, 0); ;
+					break;
+				}
 
-                Instantiate(spell, pos, Quaternion.identity);
-            }
+				Instantiate(spell, pos, Quaternion.identity);
+			}
 
-            timeCounterSpells = 0;
-        }
-    }
+			timeCounterSpells = 0;
+		}
+	}
 
-    void setAllShrubsCanBeDamaged(bool b)
-    {
-        for (int i = 0; i < shrubs.Length; i++)
-        {
-            shrubs[i].setCanBeDamaged(b);
-        }
-    }
+	void setAllShrubsCanBeDamaged(bool b)
+	{
+		for (int i = 0; i < shrubs.Length; i++)
+		{
+			shrubs[i].setCanBeDamaged(b);
+		}
+	}
 
-    void claimHealing()
-    {
-        for (int i = 0; i < shrubs.Length; i++)
-        {
-            shrubs[i].healEnt();
-        }
-    }
+	void claimHealing()
+	{
+		for (int i = 0; i < shrubs.Length; i++)
+		{
+			shrubs[i].healEnt();
+		}
+	}
 
-    void stopHealing()
-    {
-        for (int i = 0; i < shrubs.Length; i++)
-        {
-            shrubs[i].stopHealing();
-        }
-    }
+	void stopHealing()
+	{
+		for (int i = 0; i < shrubs.Length; i++)
+		{
+			shrubs[i].stopHealing();
+		}
+	}
 
-    int getNumberOfShrubsAlive()
-    {
-        int res = 0;
+	int getNumberOfShrubsAlive()
+	{
+		int res = 0;
 
-        for (int i = 0; i < shrubs.Length; i++)
-        {
-            if (!shrubs[i].getIsDead())
-            {
-                res++;
-            }
-        }
-        return res;
-    }
+		for (int i = 0; i < shrubs.Length; i++)
+		{
+			if (!shrubs[i].getIsDead())
+			{
+				res++;
+			}
+		}
+		return res;
+	}
 
-    void setActivePhase(int i)
-    {
-        switch (i)
-        {
-            case 1:
-                isPhase1 = true;
-                isPhase2 = false;
-                isPhase3 = false;
-                animator.SetBool("isphase2", false);
+	void setActivePhase(int i)
+	{
+		switch (i)
+		{
+		case 1:
+			isPhase1 = true;
+			isPhase2 = false;
+			isPhase3 = false;
+			animator.SetBool("isphase2", false);
 
-                setCanBeDamaged(true);                //vulnérable
-                setAllShrubsCanBeDamaged(false);      //arbrisseaux invulnérables
-                stopHealing();
-                break;
-            case 2:
-                isPhase1 = false;
-                isPhase2 = true;
-                isPhase3 = false;
-                animator.SetBool("isphase2", true);
+			setCanBeDamaged(true);                //vulnérable
+			setAllShrubsCanBeDamaged(false);      //arbrisseaux invulnérables
+			stopHealing();
+			break;
+		case 2:
+			isPhase1 = false;
+			isPhase2 = true;
+			isPhase3 = false;
+			animator.SetBool("isphase2", true);
 
-                setAllShrubsCanBeDamaged(true);        //Les arbrisseaux son vulnérable
-                setCanBeDamaged(false);                //Invulnérable
-                break;
-            case 3:
-                isPhase1 = false;
-                isPhase2 = false;
-                isPhase3 = true;
+			setAllShrubsCanBeDamaged(true);        //Les arbrisseaux son vulnérable
+			setCanBeDamaged(false);                //Invulnérable
+			break;
+		case 3:
+			isPhase1 = false;
+			isPhase2 = false;
+			isPhase3 = true;
 
-                animator.SetBool("isphase3", true);
+			animator.SetBool("isphase3", true);
 
-                setCanBeDamaged(true);                //Invulnérable
-                break;
-        }
-    }
+			setCanBeDamaged(true);                //Invulnérable
+			break;
+		}
+	}
 
-    int getActivePhase()
-    {
-        if (isPhase1)
-        {
-            return 1;
-        }
-        else if (isPhase2)
-        {
-            return 2;
-        }
-        else
-        {
-            return 3;
-        }
-    }
+	int getActivePhase()
+	{
+		if (isPhase1)
+		{
+			return 1;
+		}
+		else if (isPhase2)
+		{
+			return 2;
+		}
+		else
+		{
+			return 3;
+		}
+	}
 
-    void spawnShrubs(bool b)
-    {
-        for (int i = 0; i < shrubs.Length; i++)
-        {
-            shrubs[i].gameObject.SetActive(b);
-        }
-    }
+	void spawnShrubs(bool b)
+	{
+		for (int i = 0; i < shrubs.Length; i++)
+		{
+			shrubs[i].gameObject.SetActive(b);
+		}
+	}
 
-    public int getStartHealth()
-    {
-        return startHealth;
-    }
+	public int getStartHealth()
+	{
+		return startHealth;
+	}
 
-    void shrubStopPlaySound()
-    {
-        for (int i = 0; i < shrubs.Length; i++)
-        {
-            shrubs[i].stopPlaySound();
-        }
-    }
+	void shrubStopPlaySound()
+	{
+		for (int i = 0; i < shrubs.Length; i++)
+		{
+			shrubs[i].stopPlaySound();
+		}
+	}
 }
