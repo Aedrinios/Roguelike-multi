@@ -63,8 +63,9 @@ public abstract class AnimateEntity : InanimateEntity
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         stun = true;
-
+        Debug.Log("stuuuuuuuuuuuuuuuuuuuuuun");
         yield return new WaitForSeconds(time);
+        Debug.Log("plus stuuuuuuuuuuuuuuuuuuun");
         stun = false;
     }
 

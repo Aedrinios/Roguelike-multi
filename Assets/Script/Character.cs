@@ -158,7 +158,10 @@ public class Character : AnimateEntity
                 primaryTimer += Time.deltaTime;
                 if (primaryTimer > 1 && inventory[0] != null && !isCarrying)
                     Carry(inventory[0]);
+                //if (inventory[0].GetComponent<Potions>() != null && Input.GetButtonUp(inputSetName + "primary") && primaryTimer < 0.4f)
+                //    inventory[0].Use(this);
             }
+
             if (Input.GetButtonUp(inputSetName + "primary"))
             {
                 primaryTimer = 0;
@@ -175,6 +178,7 @@ public class Character : AnimateEntity
             {
                 secondaryTimer = 0;
             }
+
         }
     }
 
@@ -283,9 +287,9 @@ public class Character : AnimateEntity
             }
             else
             {
+                if(inventory[item].GetComponent<Potions>()==null)
                 inventory[item].Use(this);
             }
-            Debug.Log("pressed");
         }
     }
 
