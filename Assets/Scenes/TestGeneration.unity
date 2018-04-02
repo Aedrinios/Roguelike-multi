@@ -220,6 +220,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4954169733552792, guid: 7b297650e456969449af51212ca266be, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -250,38 +255,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4954169733552792, guid: 7b297650e456969449af51212ca266be, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114904601175751918, guid: 7b297650e456969449af51212ca266be,
+    - target: {fileID: 1352471319121800, guid: 7b297650e456969449af51212ca266be, type: 2}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
         type: 2}
-      propertyPath: captureCamera
+      propertyPath: dummies.Array.data[0]
       value: 
-      objectReference: {fileID: 2033798915}
-    - target: {fileID: 114850273825553040, guid: 7b297650e456969449af51212ca266be,
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
         type: 2}
-      propertyPath: globalHealthNumber
+      propertyPath: dummies.Array.data[1]
       value: 
-      objectReference: {fileID: 758265127}
-    - target: {fileID: 114850273825553040, guid: 7b297650e456969449af51212ca266be,
-        type: 2}
-      propertyPath: panel
-      value: 
-      objectReference: {fileID: 664022711}
-    - target: {fileID: 114850273825553040, guid: 7b297650e456969449af51212ca266be,
-        type: 2}
-      propertyPath: gameOver
-      value: 
-      objectReference: {fileID: 87767653}
-    - target: {fileID: 114850273825553040, guid: 7b297650e456969449af51212ca266be,
-        type: 2}
-      propertyPath: quite
-      value: 
-      objectReference: {fileID: 1239899327}
-    - target: {fileID: 114850273825553040, guid: 7b297650e456969449af51212ca266be,
-        type: 2}
-      propertyPath: replay
-      value: 
-      objectReference: {fileID: 711020139}
+      objectReference: {fileID: 0}
     - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
         type: 2}
       propertyPath: playerUI.Array.data[0]
@@ -302,6 +291,136 @@ Prefab:
       propertyPath: playerUI.Array.data[3]
       value: 
       objectReference: {fileID: 488967459}
+    - target: {fileID: 114850273825553040, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 664022711}
+    - target: {fileID: 114850273825553040, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: gameOver
+      value: 
+      objectReference: {fileID: 87767653}
+    - target: {fileID: 114850273825553040, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: quite
+      value: 
+      objectReference: {fileID: 1239899327}
+    - target: {fileID: 114850273825553040, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: replay
+      value: 
+      objectReference: {fileID: 711020139}
+    - target: {fileID: 114850273825553040, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: globalHealthNumber
+      value: 
+      objectReference: {fileID: 758265127}
+    - target: {fileID: 114904601175751918, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: captureCamera
+      value: 
+      objectReference: {fileID: 2033798915}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[6]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[8]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[9]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[10]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[11]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[12]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[13]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[14]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[15]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[16]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[17]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[18]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: dummies.Array.data[19]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114904601175751918, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: walls
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909314917647614, guid: 7b297650e456969449af51212ca266be,
+        type: 2}
+      propertyPath: cameraPos
+      value: 
+      objectReference: {fileID: 2033798915}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b297650e456969449af51212ca266be, type: 2}
   m_IsPrefabParent: 0
@@ -451,7 +570,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1701521493 stripped
 MonoBehaviour:

@@ -9,15 +9,16 @@ public class RoomTransition : MonoBehaviour {
 
     public Vector2 PositionRoom = new Vector2();
     //public Vector2 PositionADroite = new Vector2(1,0);
-    public Vector2 PositionRoomPlayer;
+    public Vector2 PositionRoomConnected;
+    public Vector2 roomLol;
     private List<GameObject> player;
     private string nameTrigger;
     private ArrayList players = new ArrayList();
+    public InanimateEntity[] ennemies;
 
     //public GameObject TestPositionInstance;
 
     void Start () {
-       
     }
 	
 	// Update is called once per frame
@@ -67,29 +68,45 @@ public class RoomTransition : MonoBehaviour {
 
             foreach (RoomTransition roomtransition in room)
             {
-                //Debug.Log(nameTrigger);
-                if (roomtransition.GetPosRoom() == PositionRoomPlayer && players.Count == GameManager.instance.players.Count )
+                roomLol.x = roomtransition.GetPosRoom().x;
+                roomLol.y = roomtransition.GetPosRoom().y;
+
+                PositionRoomConnected.x = this.GetPosRoom().x + (float)directionX;
+                PositionRoomConnected.y = this.GetPosRoom().y + (float)directionY;
+
+                if (roomLol == PositionRoomConnected && players.Count == GameManager.instance.players.Count && roomtransition.name == nameTrigger )
                 {
-
-                    
-                    PositionRoomPlayer = this.GetPosRoom();
-
-                    PositionRoomPlayer.x = this.GetPosRoom().x + (float)directionX;
-                    PositionRoomPlayer.y = this.GetPosRoom().y + (float)directionY;
-
-
                     foreach (GameObject player in players) {
-                        player.gameObject.transform.position = roomtransition.transform.position;
+                        player.GetComponent<Character>().currentRoom = roomtransition.PositionRoom;
+                        player.transform.position = roomtransition.transform.position;
                     }
                     var kk = roomtransition.transform.parent.gameObject;
+                    roomtransition.ennemies = roomtransition.transform.parent.GetComponentsInChildren<InanimateEntity>();
+
+                    foreach (InanimateEntity ae in roomtransition.ennemies)
+                    {
+                        ae.enabled=true;
+                    }
                     Camera.main.transform.position = new Vector3( kk.transform.position.x, kk.transform.position.y,- 1.0f);
-
+                    
                 }
+            }
+        }
+    }
 
-                if (roomtransition.name == "Left") Debug.Log("LOL cetait Left");
-                if (roomtransition.name == "Right") Debug.Log("LOL cetait Right");
-                if (roomtransition.name == "Down") Debug.Log("LOL cetait Down");
-                if (roomtransition.name == "Up") Debug.Log("LOL cetait Up");
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            players.Remove(collision.gameObject);
+            if (collision.gameObject.GetComponent<InanimateEntity>().currentRoom != PositionRoom)
+            {
+                ennemies = transform.parent.gameObject.GetComponentsInChildren<InanimateEntity>();
+
+                foreach (InanimateEntity ae in ennemies)
+                {
+                    ae.enabled=false;
+                }
             }
         }
     }

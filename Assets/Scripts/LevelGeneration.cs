@@ -204,7 +204,7 @@ public class LevelGeneration : MonoBehaviour {
                             {
                                 yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                             }
-                            clone.name = "FirstRoom";
+                            clone.name =i.ToString();
                         }
                         else
                         {
@@ -216,7 +216,6 @@ public class LevelGeneration : MonoBehaviour {
                             {
                                 yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                             }
-                            clone.name = "FirstRoom";
                             clone.name = i.ToString();
                         }
                     }
@@ -233,7 +232,7 @@ public class LevelGeneration : MonoBehaviour {
                             {
                                 yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                             }
-                            clone.name = "FirstRoom";
+                            clone.name =i.ToString();
                         }
                         else
                         {
@@ -244,7 +243,6 @@ public class LevelGeneration : MonoBehaviour {
                             {
                                 yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                             }
-                            clone.name = "FirstRoom";
                             clone.name = i.ToString();
                         }
                     }
@@ -261,7 +259,7 @@ public class LevelGeneration : MonoBehaviour {
                         {
                             yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                         }
-                        clone.name = "FirstRoom";
+                        clone.name =i.ToString();
                     }
                     else
                     {
@@ -287,7 +285,7 @@ public class LevelGeneration : MonoBehaviour {
                         {
                             yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                         }
-                        clone.name = "FirstRoom";
+                        clone.name =i.ToString();
                     }
                     else
                     {
@@ -318,7 +316,7 @@ public class LevelGeneration : MonoBehaviour {
                             {
                                 yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                             }
-                            clone.name = "FirstRoom";
+                            clone.name =i.ToString();
                         }
                         else
                         {
@@ -344,7 +342,7 @@ public class LevelGeneration : MonoBehaviour {
                             {
                                 yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                             }
-                            clone.name = "FirstRoom";
+                            clone.name =i.ToString();
                         }
                         else
                         {
@@ -371,7 +369,7 @@ public class LevelGeneration : MonoBehaviour {
                         {
                             yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                         }
-                        clone.name = "FirstRoom";
+                        clone.name =i.ToString();
                     }
                     else
                     {
@@ -398,7 +396,7 @@ public class LevelGeneration : MonoBehaviour {
                         {
                             yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                         }
-                        clone.name = "FirstRoom";
+                        clone.name =i.ToString();
                     }
                     else
                     {
@@ -431,7 +429,7 @@ public class LevelGeneration : MonoBehaviour {
                         {
                             yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                         }
-                        clone.name = "FirstRoom";
+                        clone.name =i.ToString();
                     }
                     else
                     {
@@ -458,7 +456,7 @@ public class LevelGeneration : MonoBehaviour {
                         {
                             yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                         }
-                        clone.name = "FirstRoom";
+                        clone.name =i.ToString();
                     }
                     else
                     {
@@ -485,7 +483,7 @@ public class LevelGeneration : MonoBehaviour {
                     {
                         yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                     }
-                    clone.name = "FirstRoom";
+                    clone.name =i.ToString();
                 }
                 else
                 {
@@ -511,7 +509,7 @@ public class LevelGeneration : MonoBehaviour {
                     {
                         yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                     }
-                    clone.name = "FirstRoom";
+                    clone.name =i.ToString();
                 }
                 else
                 {
@@ -541,7 +539,7 @@ public class LevelGeneration : MonoBehaviour {
                     {
                         yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                     }
-                    clone.name = "FirstRoom";
+                    clone.name =i.ToString();
                 }
                 else
                 {
@@ -567,7 +565,7 @@ public class LevelGeneration : MonoBehaviour {
                     {
                         yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                     }
-                    clone.name = "FirstRoom";
+                    clone.name =i.ToString();
                 }
                 else
                 {
@@ -594,7 +592,7 @@ public class LevelGeneration : MonoBehaviour {
                 {
                     yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                 }
-                clone.name = "FirstRoom";
+                clone.name =i.ToString();
             }
             else
             {
@@ -646,7 +644,7 @@ public class LevelGeneration : MonoBehaviour {
 		}
 
         gamemanager.GetComponent<SelectCharState>().Begin();
-        Camera.main.transform.position = GameObject.Find("FirstRoom").transform.position;
+        Camera.main.transform.position = GameObject.Find("1").transform.position;
         Camera.main.transform.position += new Vector3(0, 0, -1);
     }
 
