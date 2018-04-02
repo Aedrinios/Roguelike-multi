@@ -26,6 +26,7 @@ public abstract class AnimateEntity : InanimateEntity
     protected bool isDying = false;
     protected AudioSource audioSource;
     protected float scaleMultiplier = 1f;
+    protected SpriteRenderer spriteRenderer;
 
     private ProtectionShield currentShield=null;
 
@@ -37,15 +38,19 @@ public abstract class AnimateEntity : InanimateEntity
         invincibility = new Timer(timeOfInvincibility, true);
         rigidb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public virtual void Move(Vector2 directionRequired)
     {
-        this.direction = directionRequired.normalized;
-        rigidb.velocity = direction * speed;
-        animator.SetFloat("directionX", direction.x);
-        animator.SetFloat("directionY", direction.y);
-        animator.SetBool("isMoving", true);
+        if (!stun)
+        {
+            this.direction = directionRequired.normalized;
+            rigidb.velocity = direction * speed;
+            animator.SetFloat("directionX", direction.x);
+            animator.SetFloat("directionY", direction.y);
+            animator.SetBool("isMoving", true);
+        }
     }
     public virtual void Idle()
     {
@@ -116,7 +121,7 @@ public abstract class AnimateEntity : InanimateEntity
         }
         invincibility.ResetPlay();
 
-        if (canBeDamaged == true &&!isDead)
+        if (canBeDamaged &&!isDead)
         {
             //Debug.Log("degats : " +value);
             isDamaged();
@@ -126,7 +131,7 @@ public abstract class AnimateEntity : InanimateEntity
 
             //Debug.Log(other.name);
         }
-        if(canBeDamaged == false && !isDead)
+        if(!canBeDamaged && !isDead)
         {
             //Debug.Log("je suis dans la boucle"); 
             SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER     

@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectZone : MonoBehaviour {
-
-    private string[] powersTab = { "Stun", "Degats", "Heal" };
+    
     public string power;
+    private int degat;
+    private PotionManager potionManager;
+    public int potionColorId;
 
     // Use this for initialization
     void Start () {
         StartCoroutine("die");
-	}
+        degat = 1;
+        potionManager = FindObjectOfType<PotionManager>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -19,31 +23,56 @@ public class EffectZone : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "enemy" || other.tag == "Player")
+        power= potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
+        if (other.tag == "enemy" || other.tag == "Player")
         {
-            Debug.Log("JE SUIS DANS LE TRIGGER DE EFFECT et de type player or ennemy");
+            Debug.Log("In Zone this is my power : " + power);
+            var user = other.GetComponent<Character>();
+            switch (power)
+            {
+                case ("Stun"):
+                    powerStun(user);
+                    break;
+                case ("Degats"):
+                    powerDegats(user);
+                    break;
+                case ("Heal"):
+                    powerHeal(user);
+                    break;
+            }
         }
         // Appel du pouvoir selectionner
     }
 
     void powerStun(Character user)
     {
-
+        var coroutine = endStun(user);
+        StartCoroutine(coroutine);
     }
 
     void powerHeal(Character user)
     {
-        user.health += 2;
+        Debug.Log("heal fait");
+        user.ReceiveHealt(1, user.gameObject);    // TO DO
     }
 
     void powerDegats(Character user)
     {
-        //Character.ReceiveHit(2, user);
+        user.ReceiveHit(degat, user.gameObject);
+        Debug.Log("degat fait");
     }
 
     public IEnumerator die()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2.1f);
         Destroy(this.gameObject);
+    }
+
+    public IEnumerator endStun(Character user)
+    {
+        user.stun = true;
+        yield return new WaitForSeconds(2);
+        user.stun = false;
+        Debug.Log("stun fait");
     }
 }
