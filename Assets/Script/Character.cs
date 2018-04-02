@@ -54,19 +54,14 @@ public class Character : AnimateEntity
         comptCouleur++;
     }
 
-    public void ReceiveHealt(int value, GameObject other)
+    public override void ReceiveHealt(int value, GameObject other)
     {
-        /*
-         *Fair une condition qui verfie si la vie n'est pas au max
-         *  Si oui ne rien faire
-         *  Si non augmenter la vie de +value et mettre à jour l'UI
-         */
-        if (/*Vie pas au max */true)
-        {
-            health += value;
-            UI.SetHealth(health); // Player health
-        }
+
+        base.ReceiveHealt(value, other);
+        UI.SetHealth(health); // Player health
+
     }
+
 
     public override void ReceiveHit(int value, GameObject other)
     {

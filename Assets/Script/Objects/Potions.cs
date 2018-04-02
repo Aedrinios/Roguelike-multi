@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Potions : Weapon {
 
-    private bool canBeUse;
     public string powerSelected;
     public GameObject rayon;
     public int potionColorId;
@@ -13,14 +12,12 @@ public class Potions : Weapon {
     
     // Use this for initialization
     void Start () {
-        canBeUse = true;
         potionManager = FindObjectOfType<PotionManager>();
         degat = 2;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if (!canBeUse) StartCoroutine("die");
         if (powerSelected == "")
         {
             powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
@@ -32,6 +29,17 @@ public class Potions : Weapon {
         Debug.Log("Pouvoir de la potion : " + powerSelected);
         base.Use(user);
         powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
+
+        if (user.inventory[0]!=null)
+        {
+            if(this== user.inventory[0].GetComponent<Potions>() )
+            Unequip(0);
+        }
+        else if (user.inventory[1]!= null)
+        {
+            if (this == user.inventory[1].GetComponent<Potions>())
+                Unequip(1);
+        }
         switch (powerSelected)
         {
             case ("Stun"):
@@ -44,22 +52,18 @@ public class Potions : Weapon {
                 powerHeal(user);
                 break;
         }
-        //Pour unequip apres l'avoir use mais il manque les animations ce qui releve une erreur
-        if (this == user.inventory[0].GetComponent<Potions>()) Unequip(0);
-        else Unequip(1);
-        canBeUse = false;
+        StartCoroutine("die");
     }
 
     void powerStun(Character user)
     {
-        user.stun = true;
-        var coroutine = endStun(user);
+        var coroutine = user.Stun(1.0f);
         StartCoroutine(coroutine);
     }
 
     void powerHeal(Character user)
     {
-        user.ReceiveHealt(1, user.gameObject);    // TO DO
+        user.ReceiveHealt(4, user.gameObject);   
         Debug.Log("heal fait");
     }
 
@@ -79,16 +83,14 @@ public class Potions : Weapon {
         Destroy(this.gameObject);
     }
 
-    public IEnumerator endStun(Character user)
-    {
-        yield return new WaitForSeconds(2);
-        user.stun = true;
-    }
-
     public IEnumerator die()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(2);
+        foreach(SpriteRenderer sr in gameObject.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.enabled = false;
+        }
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("trkl");
         Destroy(this.gameObject);
     }
 }

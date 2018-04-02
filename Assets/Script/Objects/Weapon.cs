@@ -38,7 +38,7 @@ public float pushPower;
             transform.localPosition = Vector3.zero;
             GetComponentInChildren<SpriteRenderer>().enabled = true;
             animator.SetBool("attack", true);
-            holder.stun = true;
+            //holder.stun = true;
             PlaySound();
         }
 	}
