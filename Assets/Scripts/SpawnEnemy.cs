@@ -32,6 +32,9 @@ public class SpawnEnemy : MonoBehaviour {
 
     void Random()
     {
+        /*randomx = UnityEngine.Random.Range(-1f,1f);
+        randomy = UnityEngine.Random.Range(-0.8f, 0.8f);*/
+
         randomPickEntities = UnityEngine.Random.Range(0f, Entities.Length);
         randomPickInanimateEntities = UnityEngine.Random.Range(0f, InanimateEntities.Length);
     }
@@ -44,16 +47,19 @@ public class SpawnEnemy : MonoBehaviour {
 
 
        
-            for (int i = 0; i < SpawnerEntities.Length; i++)
-            {
-                Random();
-                position.x = SpawnerEntities[i].transform.position.x;
-                position.y = SpawnerEntities[i].transform.position.y;
-                position.z = -0.2f;
+        for (int i = 0; i < SpawnerEntities.Length; i++)
+        {
+            Random();
+            position.x = SpawnerEntities[i].transform.position.x;
+            position.y = SpawnerEntities[i].transform.position.y;
+            position.z = -0.2f;
 
-                var lel = Instantiate(Entities[(int)randomPickEntities], position, Quaternion.identity);
-                lel.SetActive(false);
-            }
+            GameObject go = Instantiate(Entities[(int)randomPickEntities], position, Quaternion.identity);
+            go.transform.parent = gameObject.transform;
+            go.name= Entities[(int)randomPickEntities].name;
+            go.GetComponent<InanimateEntity>().currentRoom = transform.GetComponentInChildren<RoomTransition>().PositionRoom;
+            go.GetComponent<InanimateEntity>().enabled = false;
+        }
 
 
         for (int i = 0; i < SpawnerInanimateEntities.Length; i++)
@@ -63,7 +69,12 @@ public class SpawnEnemy : MonoBehaviour {
             position.y = SpawnerInanimateEntities[i].transform.position.y;
             position.z = -0.2f;
 
-            Instantiate(Entities[(int)randomPickInanimateEntities], position, Quaternion.identity);
+            GameObject go = Instantiate(Entities[(int)randomPickInanimateEntities], position, Quaternion.identity);
+            go.transform.parent = gameObject.transform;
+            go.name = Entities[(int)randomPickEntities].name;
+            go.GetComponent<InanimateEntity>().currentRoom = transform.GetComponentInChildren<RoomTransition>().PositionRoom;
+            go.GetComponent<AnimateEntity>().enabled = false;
+            //go.SetActive(false);
         }
     }
 }

@@ -17,15 +17,10 @@ public class PotionManager : MonoBehaviour
         monArray.Add("Heal");
         for(var i = 0; i < 3; i++)
         {
-            var rand = Random.Range(0, monArray.Count);
+            int rand = Random.Range(0, monArray.Count);
             tabPowerPotions[i] = monArray[rand];
             monArray.RemoveAt(rand);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+            Debug.Log(tabPowerPotions[i]);
+        }    
     }
 }

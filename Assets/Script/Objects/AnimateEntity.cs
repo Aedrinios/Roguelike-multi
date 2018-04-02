@@ -10,6 +10,7 @@ public abstract class AnimateEntity : InanimateEntity
 
     protected Timer invincibility;
     public int health = 10;
+    public int maxHP=10;
     public float speed = 10;
     public int attack = 2;
     public ProtectionShield protectionShield;
@@ -58,6 +59,14 @@ public abstract class AnimateEntity : InanimateEntity
         rigidb.velocity = Vector3.zero;
     }
 
+    public virtual IEnumerator Stun(float time)
+    {
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        stun = true;
+
+        yield return new WaitForSeconds(time);
+        stun = false;
+    }
 
     public override void Use(Character user)
     {
@@ -140,6 +149,17 @@ public abstract class AnimateEntity : InanimateEntity
         if (health <= 0)
         {
             animator.SetBool("isDead", true);
+        }
+    }
+
+    public virtual void ReceiveHealt(int value, GameObject other)
+    {
+        for (int i = 0; i < value; i++)
+        {
+            if (health < maxHP)
+            {
+                health++;
+            }
         }
     }
 

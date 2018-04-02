@@ -14,11 +14,11 @@ public class RoomTransition : MonoBehaviour {
     private List<GameObject> player;
     private string nameTrigger;
     private ArrayList players = new ArrayList();
+    public InanimateEntity[] ennemies;
 
     //public GameObject TestPositionInstance;
 
     void Start () {
-       
     }
 	
 	// Update is called once per frame
@@ -68,24 +68,27 @@ public class RoomTransition : MonoBehaviour {
 
             foreach (RoomTransition roomtransition in room)
             {
-
-
-                roomLol.x = roomtransition.GetPosRoom().x;// + (float)directionX;
-                roomLol.y = roomtransition.GetPosRoom().y;// + (float)directionY;
+                roomLol.x = roomtransition.GetPosRoom().x;
+                roomLol.y = roomtransition.GetPosRoom().y;
 
                 PositionRoomConnected.x = this.GetPosRoom().x + (float)directionX;
                 PositionRoomConnected.y = this.GetPosRoom().y + (float)directionY;
 
-                //Debug.Log(nameTrigger);
                 if (roomLol == PositionRoomConnected && players.Count == GameManager.instance.players.Count && roomtransition.name == nameTrigger )
                 {
-                    
                     foreach (GameObject player in players) {
-                        player.gameObject.transform.position = roomtransition.transform.position;
+                        player.GetComponent<Character>().currentRoom = roomtransition.PositionRoom;
+                        player.transform.position = roomtransition.transform.position;
                     }
                     var kk = roomtransition.transform.parent.gameObject;
-                    Camera.main.transform.position = new Vector3( kk.transform.position.x, kk.transform.position.y,- 1.0f);
+                    roomtransition.ennemies = roomtransition.transform.parent.GetComponentsInChildren<InanimateEntity>();
 
+                    foreach (InanimateEntity ae in roomtransition.ennemies)
+                    {
+                        ae.enabled=true;
+                    }
+                    Camera.main.transform.position = new Vector3( kk.transform.position.x, kk.transform.position.y,- 1.0f);
+                    
                 }
             }
         }
@@ -96,6 +99,15 @@ public class RoomTransition : MonoBehaviour {
         if (collision.tag == "Player")
         {
             players.Remove(collision.gameObject);
+            if (collision.gameObject.GetComponent<InanimateEntity>().currentRoom != PositionRoom)
+            {
+                ennemies = transform.parent.gameObject.GetComponentsInChildren<InanimateEntity>();
+
+                foreach (InanimateEntity ae in ennemies)
+                {
+                    ae.enabled=false;
+                }
+            }
         }
     }
 

@@ -46,7 +46,7 @@ public class EffectZone : MonoBehaviour {
 
     void powerStun(Character user)
     {
-        var coroutine = endStun(user);
+        var coroutine = user.Stun(1.0f);
         StartCoroutine(coroutine);
     }
 
@@ -66,13 +66,5 @@ public class EffectZone : MonoBehaviour {
     {
         yield return new WaitForSeconds(2.1f);
         Destroy(this.gameObject);
-    }
-
-    public IEnumerator endStun(Character user)
-    {
-        user.stun = true;
-        yield return new WaitForSeconds(2);
-        user.stun = false;
-        Debug.Log("stun fait");
     }
 }
