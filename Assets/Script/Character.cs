@@ -427,6 +427,7 @@ public class Character : AnimateEntity
     public void Throw()
     {
         Debug.Log("bloub");
+        
         if (isCarrying)
         {
             Debug.Log("blib");
@@ -443,6 +444,7 @@ public class Character : AnimateEntity
             carriedObject.GetComponent<CircleCollider2D>().enabled = true;
             if (carriedObject.GetComponent<Potions>() != null)
             {
+                SoundManager.playSound("ThrowingPotion");
                 carriedObject.GetComponent<Potions>().StartCoroutine("creationOfEffectZone");
             }
             carriedObject = null;

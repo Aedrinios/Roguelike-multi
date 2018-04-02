@@ -27,6 +27,7 @@ public class Potions : Weapon {
     public override void Use(Character user) // peut etre utilise 1 fois on la bois initialise le pouvoir de la potion
     {
         Debug.Log("Pouvoir de la potion : " + powerSelected);
+        SoundManager.playSound("DrinkingPotion");
         base.Use(user);
         powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
 
@@ -76,6 +77,7 @@ public class Potions : Weapon {
     public IEnumerator creationOfEffectZone()
     {
         yield return new WaitForSeconds(2);
+        SoundManager.playSound("BreakingPotion");
         // Recuperer la position et creation de la zone collider à cette position
         var position = this.transform.position;
         rayon.GetComponent<EffectZone>().potionColorId = potionColorId; // Transfere l'id de la potion
