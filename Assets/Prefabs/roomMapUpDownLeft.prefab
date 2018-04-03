@@ -233,7 +233,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458635470169070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -58.499527, y: 55.502083, z: 0}
+  m_LocalPosition: {x: -74.023605, y: -84.422935, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4855499977484788}
@@ -502,7 +502,9 @@ MonoBehaviour:
   directionX: 0
   directionY: 1
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114427179115314380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -517,7 +519,9 @@ MonoBehaviour:
   directionX: 0
   directionY: -1
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114529710979161114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,7 +536,9 @@ MonoBehaviour:
   directionX: -1
   directionY: 0
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114992386626128132
 MonoBehaviour:
   m_ObjectHideFlags: 1

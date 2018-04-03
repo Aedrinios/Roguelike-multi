@@ -533,7 +533,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1252174366533668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.18366, y: 16.388624, z: 0}
+  m_LocalPosition: {x: -50.332718, y: -51.78872, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4667182186765464}
@@ -802,6 +802,8 @@ MonoBehaviour:
   - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
   - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
   - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
+  - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!114 &114174064933328716
 MonoBehaviour:
@@ -819,6 +821,8 @@ MonoBehaviour:
   - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
   - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
   - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
+  - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!114 &114293611906934572
 MonoBehaviour:
@@ -837,6 +841,9 @@ MonoBehaviour:
   - {fileID: 1884072128244662, guid: f070efea44b894140a7f5fec5f818099, type: 2}
   - {fileID: 1884072128244662, guid: dcbe432191d1543d6928631234c7e2e6, type: 2}
   - {fileID: 1884072128244662, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
+  - {fileID: 1451904316058778, guid: 3b630c8d50a47e64e8d1de8af3a6bc39, type: 2}
+  - {fileID: 1955541600448346, guid: 0d864c1f24c7dac4da0610a610252a5a, type: 2}
+  - {fileID: 1826716598717628, guid: 73805749547e4fc469fa6507a12687b4, type: 2}
   InanimateEntities: []
   SpawnerEntities:
   - {fileID: 1575536828273722}
@@ -874,7 +881,9 @@ MonoBehaviour:
   directionX: 0
   directionY: 1
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114573201514154862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -891,6 +900,8 @@ MonoBehaviour:
   - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
   - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
   - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
+  - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!114 &114734105221459740
 MonoBehaviour:
@@ -953,6 +964,8 @@ MonoBehaviour:
   - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
   - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
   - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
+  - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!212 &212066927715628116
 SpriteRenderer:

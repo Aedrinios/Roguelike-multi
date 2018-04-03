@@ -218,7 +218,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1193560554835092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -86.61744, y: -6.56225, z: 0}
+  m_LocalPosition: {x: -16.46606, y: -36.355938, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4960486120889002}
@@ -477,6 +477,7 @@ MonoBehaviour:
   PositionRoom: {x: 0, y: 0}
   PositionRoomConnected: {x: 0, y: 0}
   roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114203284493077420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -493,6 +494,7 @@ MonoBehaviour:
   PositionRoom: {x: 0, y: 0}
   PositionRoomConnected: {x: 0, y: 0}
   roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114669527304423462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -510,6 +512,7 @@ MonoBehaviour:
   - {fileID: 1525185932922534, guid: 057e20083630dbc4b8ad86de90878f49, type: 2}
   - {fileID: 1341645169142426, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   - {fileID: 1884072128244662, guid: 627a6ed270419475a9dce7adb449e1f5, type: 2}
+  - {fileID: 1826716598717628, guid: 73805749547e4fc469fa6507a12687b4, type: 2}
   InanimateEntities: []
   SpawnerEntities:
   - {fileID: 1865275021644532}

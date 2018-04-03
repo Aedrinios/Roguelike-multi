@@ -177,7 +177,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1170679300419094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -49.005966, y: 55.803463, z: 0}
+  m_LocalPosition: {x: -34.48871, y: -82.7457, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4206953200245252}
@@ -444,6 +444,7 @@ MonoBehaviour:
   Entities:
   - {fileID: 1341645169142426, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
   - {fileID: 1525185932922534, guid: 057e20083630dbc4b8ad86de90878f49, type: 2}
+  - {fileID: 1955541600448346, guid: 0d864c1f24c7dac4da0610a610252a5a, type: 2}
   InanimateEntities: []
   SpawnerEntities:
   - {fileID: 1768805860531376}
@@ -463,7 +464,9 @@ MonoBehaviour:
   directionX: 0
   directionY: 1
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114524996945578552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -478,7 +481,9 @@ MonoBehaviour:
   directionX: 0
   directionY: -1
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114611356729396414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -493,7 +498,9 @@ MonoBehaviour:
   directionX: 1
   directionY: 0
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!212 &212160338523712748
 SpriteRenderer:
   m_ObjectHideFlags: 1
