@@ -18,12 +18,12 @@ public class Shrub : AnimateEntity {
     private bool isPhase3;
     private bool isPhase4;
 
+
     // Use this for initialization
     void Start () {
         base.Start();
         startHealth = health;
         setActivePhase(1);
-        animator = GetComponent<Animator>();
         particleSystem = GetComponent<ParticleSystem>();
 
         audioSource = GetComponent<AudioSource>();
@@ -34,10 +34,16 @@ public class Shrub : AnimateEntity {
     private void Awake()
     {
         scaleMultiplier = 2f;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update () {
+        if (Input.GetKeyDown("9"))
+        {
+            this.GetComponent<AnimateEntity>().ReceiveHit(20, gameObject);
+        }
+
         timeCounter += Time.deltaTime;
 
 
