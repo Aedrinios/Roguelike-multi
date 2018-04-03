@@ -9,7 +9,6 @@ public class Keeper : AnimateEntity {
     public BoxCollider2D damageTaken;
     public GameObject target;
     public GameObject secondTarget;
-    public bool targetIsDead;
     public bool hasTarget = false;
     public float circleColliderRadius;
     public float baseColliderRadius;
@@ -101,17 +100,20 @@ public class Keeper : AnimateEntity {
         if (!hasTarget && other.tag == "Player")
         {   
             target = other.gameObject;
-            targetIsDead = false;
             hasTarget = true;
         }
         if (other.gameObject != target && other.tag == "Player")
         {
             secondTarget = other.gameObject;
         }
-        if (other.gameObject == target && targetIsDead)
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (!hasTarget && other.tag == "Player" && !other.gameObject.GetComponent<Character>().getIsDead())
         {
-            target = null;        
-            hasTarget = false;
+            hasTarget = true;
+            target = other.gameObject;
         }
     }
 
@@ -124,18 +126,7 @@ public class Keeper : AnimateEntity {
         }
         if (collision.gameObject.GetComponent<Character>().getIsDead())
         {
-            targetIsDead = true;
-            if (secondTarget != null)
-            {
-                target = secondTarget;
-                secondTarget = null;
-                targetIsDead = false;
-            }
-            else
-            {
-                hasTarget = false;
-            }
-
+            hasTarget = false;
             gameObject.GetComponent<CircleCollider2D>().radius = 10;
         }
 
