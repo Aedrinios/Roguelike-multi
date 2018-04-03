@@ -440,23 +440,15 @@ public class LevelGeneration : MonoBehaviour
                     }
                     else
                     {
-                        if (roomboss)
+                        rendPrefab = spUPrefab;
+                        var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
+                        Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
+                        for (var j = 0; j < yolo.Length; j++)
                         {
-                            selectRoomBoss(roomBossU, pos, PosRoom);
-                            roomboss = false;
+                            yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
                         }
-                        else
-                        {
+                        clone.name = i.ToString();
 
-                            rendPrefab = spUPrefab;
-                            var clone = Object.Instantiate(rendPrefab, pos, Quaternion.identity);
-                            Component[] yolo = clone.GetComponentsInChildren(typeof(RoomTransition));
-                            for (var j = 0; j < yolo.Length; j++)
-                            {
-                                yolo[j].GetComponent<RoomTransition>().SetPosRoom(PosRoom);
-                            }
-                            clone.name = i.ToString();
-                        }
                     }
                 }
             }
