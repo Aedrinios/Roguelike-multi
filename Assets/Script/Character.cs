@@ -465,7 +465,7 @@ public class Character : AnimateEntity
             carriedObject.GetComponent<CircleCollider2D>().enabled = true;
             if (carriedObject.GetComponent<Potions>() != null)
             {
-                SoundManager.playSound("ThrowingPotion");
+                SoundManager.playSound("ThrowingPotion2");
                 carriedObject.GetComponent<Potions>().StartCoroutine("creationOfEffectZone");
             }
             carriedObject = null;
