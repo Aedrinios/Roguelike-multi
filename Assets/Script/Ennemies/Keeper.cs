@@ -81,7 +81,7 @@ public class Keeper : AnimateEntity {
         animator.SetFloat("directionX", direction.x);
         animator.SetFloat("directionY", direction.y);
         animator.SetBool("isMoving", true);
-
+        Debug.Log(animator.GetBool("isMoving"));
 
         shield.offset = new Vector2(direction.normalized.x, direction.normalized.y);
         if (direction.normalized.x < (-0.5) || direction.normalized.x > 0.5)
