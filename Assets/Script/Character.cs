@@ -164,6 +164,15 @@ public class Character : AnimateEntity
 
             if (Input.GetButtonUp(inputSetName + "primary"))
             {
+                
+                if (primaryTimer < 0.15 && inventory[0].GetComponent<Potions>() != null)
+                {
+                    inventory[0].Use(this);
+                }
+                    //else if (primaryTimer > 2.0 && inventory[0].GetComponent<Potions>() != null)
+                    //{
+                    //    Carry(inventory[0]);
+                    //}
                 primaryTimer = 0;
             }
 
@@ -176,9 +185,16 @@ public class Character : AnimateEntity
             }
             if (Input.GetButtonUp(inputSetName + "secondary"))
             {
+                if(secondaryTimer < 0.15 && inventory[1].GetComponent<Potions>()!=null)
+                {
+                    inventory[1].Use(this);
+                }
+                //else if (secondaryTimer > 2.0 && inventory[1].GetComponent<Potions>() != null)
+                //{
+                //    Carry(inventory[1]);
+                //}
                 secondaryTimer = 0;
             }
-
         }
     }
 

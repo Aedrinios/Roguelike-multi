@@ -25,7 +25,7 @@ public class CharController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (direction.magnitude > 0.1) {
+		if (direction.magnitude > 0.1 && !player.stun) {
 			if (direction.magnitude > 1)
 				direction.Normalize ();
 			player.Move (direction);
