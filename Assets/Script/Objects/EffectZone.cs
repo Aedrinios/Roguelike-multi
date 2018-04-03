@@ -46,7 +46,7 @@ public class EffectZone : MonoBehaviour {
 
     void powerStun(Character user)
     {
-        var coroutine = user.Stun(1.0f);
+        var coroutine = user.Stun(0.75f);
         StartCoroutine(coroutine);
     }
 

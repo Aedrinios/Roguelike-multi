@@ -18,6 +18,8 @@ public class Potions : Weapon {
 	
 	// Update is called once per frame
 	void Update () {
+
+
         if (powerSelected == "")
         {
             powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
@@ -31,15 +33,22 @@ public class Potions : Weapon {
         base.Use(user);
         powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
 
-        if (user.inventory[0]!=null)
+        if (user.inventory[0] != null)
         {
-            if(this== user.inventory[0].GetComponent<Potions>() )
-            Unequip(0);
+            if (this == user.inventory[0].GetComponent<Potions>())
+            {
+                user.UI.emptySlotInventory(0);
+                Unequip(0);
+            }
+
         }
-        else if (user.inventory[1]!= null)
+        else if (user.inventory[1] != null)
         {
             if (this == user.inventory[1].GetComponent<Potions>())
+            {
+                user.UI.emptySlotInventory(1);
                 Unequip(1);
+            }
         }
         switch (powerSelected)
         {
@@ -58,7 +67,7 @@ public class Potions : Weapon {
 
     void powerStun(Character user)
     {
-        var coroutine = user.Stun(1.0f);
+        var coroutine = user.Stun(1.5f);
         StartCoroutine(coroutine);
     }
 
@@ -91,8 +100,10 @@ public class Potions : Weapon {
         {
             sr.enabled = false;
         }
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1.6f);
         Debug.Log("trkl");
+        
         Destroy(this.gameObject);
+
     }
 }
