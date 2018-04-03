@@ -22,6 +22,7 @@ public class Potions : Weapon {
 
         if (powerSelected == "")
         {
+            Debug.Log(potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId]);
             powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
         }
     }

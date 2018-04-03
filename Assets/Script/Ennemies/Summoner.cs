@@ -106,6 +106,7 @@ public class Summoner : AnimateEntity
 		int no = (int)Random.Range(0, summon.Length);
         SoundManager.playSound("mageInvocation4");
         GameObject blub = Instantiate(summon[no], target.transform.position - direction / 2, Quaternion.identity);
+        blub.transform.position = new Vector3(blub.transform.position.x, blub.transform.position.y, 0);
 		animator.SetBool ("isAttacking", false);
 	}
 
