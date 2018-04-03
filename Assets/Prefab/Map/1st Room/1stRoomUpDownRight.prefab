@@ -451,7 +451,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1269423928076216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -115.00197, y: 44.09, z: 0}
+  m_LocalPosition: {x: -68.531906, y: 28.15087, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4231475929206780}
@@ -856,6 +856,8 @@ MonoBehaviour:
   - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
   - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
   - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
+  - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!114 &114090265238204760
 MonoBehaviour:
@@ -871,7 +873,9 @@ MonoBehaviour:
   directionX: 1
   directionY: 0
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114323932428860856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -888,6 +892,8 @@ MonoBehaviour:
   - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
   - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
   - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
+  - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!114 &114350741172129598
 MonoBehaviour:
@@ -903,7 +909,9 @@ MonoBehaviour:
   directionX: 0
   directionY: -1
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114379068359715750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -920,6 +928,8 @@ MonoBehaviour:
   - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
   - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
   - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
+  - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!114 &114409239380891830
 MonoBehaviour:
@@ -960,6 +970,8 @@ MonoBehaviour:
   - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
   - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
   - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
+  - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!114 &114597110470706908
 MonoBehaviour:
@@ -1020,7 +1032,9 @@ MonoBehaviour:
   directionX: 0
   directionY: 1
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114933903983130530
 MonoBehaviour:
   m_ObjectHideFlags: 1

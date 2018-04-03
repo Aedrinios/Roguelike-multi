@@ -15,7 +15,7 @@ public class Warrior : AnimateEntity {
     // Use this for initialization
     protected override void  Start () {
 		base.Start ();
-        speed = 6;
+        speed = 4;
         attack = 4;
         health = 10;
         rigidb = gameObject.GetComponent<Rigidbody2D>();

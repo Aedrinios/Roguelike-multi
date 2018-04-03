@@ -102,6 +102,7 @@ public class Ent : AnimateEntity {
 			if (health<=0)
 			{
 				boxCollider.enabled = false;
+                
 				animator.SetBool("isDead", true);
 				SoundManager.playSound ("bossDeath");
 				timeCounter += Time.deltaTime;
@@ -110,10 +111,12 @@ public class Ent : AnimateEntity {
 					if (!done)
 					{
 						Instantiate(portal, transform.position, Quaternion.identity);
-
+                        
 						done = true;
+                        this.enabled = false;
 					}
 				}
+
 			}
 		}
 	}

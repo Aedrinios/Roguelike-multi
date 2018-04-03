@@ -200,9 +200,9 @@ public class Character : AnimateEntity
 
     protected override void Die()
     {
-        UI.emptyFullInventory();
-        inventory[0] = null;
-        inventory[1] = null;
+       // UI.emptyFullInventory();
+        //inventory[0] = null;
+       // inventory[1] = null;
 
         if (isDead == false)
         {
@@ -346,6 +346,7 @@ public class Character : AnimateEntity
             inventory[slot] = (InanimateEntity)ground[0];
             inventory[slot].Equip(this);
             UI.ChangeWeapon(this, slot);
+            inventory[slot].GetComponent<Weapon>().enabled = true;
             SoundManager.playSound("pickUpItem");
             inventory[slot].GetComponentInChildren<SpriteRenderer>();
         }

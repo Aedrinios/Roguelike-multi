@@ -60,7 +60,7 @@ public class GlobalHealthManager : MonoBehaviour {
 
             if (numb == 0 && butSelect) // Selection de play
             {
-                SceneManager.LoadScene("BastienTest");
+                SceneManager.LoadScene("TestGeneration");
                 Time.timeScale = 1.0f;
 
             }
