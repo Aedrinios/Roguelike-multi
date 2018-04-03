@@ -24,8 +24,11 @@ public float pushPower;
     }
 
     public override void Use(Character user) {
-		CopyUserRotation(user);
-		LaunchAnimation();
+        if (!user.stun)
+        {
+            CopyUserRotation(user);
+            LaunchAnimation();
+        }
 	}
 
 	private void CopyUserRotation (Character user) { 	//Useless pour le moment

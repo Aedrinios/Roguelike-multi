@@ -150,13 +150,21 @@ public class Ent : AnimateEntity {
 				{
 				case "SmashAttack":
 					pos = currentTarget.transform.position + new Vector3(1, 0, 0);
-					break;
+                    Instantiate(spell, pos, Quaternion.identity);
+                    break;
 				case "SwingAttack":
 					pos = currentTarget.transform.position + new Vector3(2, 0, 0); ;
-					break;
+                    Instantiate(spell, pos, Quaternion.identity);
+                    break;
+                case "throwSeed":
+                    pos = transform.position + new Vector3(3, -3, 0);
+                    GameObject attack = Instantiate(spell, pos, Quaternion.identity);
+                    attack.gameObject.GetComponent<AttackThrow>().setTarget(currentTarget);
+                    break;
 				}
+                
 
-				Instantiate(spell, pos, Quaternion.identity);
+				
 			}
 
 			timeCounterSpells = 0;
