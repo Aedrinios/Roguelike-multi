@@ -109,6 +109,11 @@ public class Shrub : AnimateEntity {
         particleSystem.Stop();
     }
 
+    protected override void KnockBack(GameObject other)
+    {
+        
+    }
+
     void Die()
     {
         isDead = true;
