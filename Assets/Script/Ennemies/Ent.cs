@@ -263,7 +263,12 @@ public class Ent : AnimateEntity {
 		}
 	}
 
-	void spawnShrubs(bool b)
+    protected override void KnockBack(GameObject other)
+    {
+        //Elle ne fait rien pour désactiver le knockback sur le boss
+    }
+
+    void spawnShrubs(bool b)
 	{
 		for (int i = 0; i < shrubs.Length; i++)
 		{
