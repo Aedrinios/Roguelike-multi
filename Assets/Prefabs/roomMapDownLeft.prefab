@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1494866364572272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.41, y: -0.43, z: 0}
+  m_LocalPosition: {x: -10.46, y: -0.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4902093949033556}
@@ -186,7 +186,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1081335139221174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.68, y: -6.76, z: 0}
+  m_LocalPosition: {x: 2.68, y: -6.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4902093949033556}
@@ -199,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1345853235719284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.93777, y: 53.693783, z: 0}
+  m_LocalPosition: {x: -77.302536, y: -73.55239, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4747055638172222}
@@ -261,7 +261,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3080902, y: -1.7633152}
+  m_Offset: {x: 0.3080902, y: -2.38}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -286,7 +286,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.2072906, y: -0.22084069}
+  m_Offset: {x: -2.1, y: -0.22084069}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -390,6 +390,7 @@ MonoBehaviour:
   - {fileID: 1654859900532554, guid: 325af58195f66a54bac26ccf5aabdac9, type: 2}
   - {fileID: 1525185932922534, guid: 057e20083630dbc4b8ad86de90878f49, type: 2}
   - {fileID: 1341645169142426, guid: b400071fb7307cb42bf764a759e1dda3, type: 2}
+  - {fileID: 1955541600448346, guid: 0d864c1f24c7dac4da0610a610252a5a, type: 2}
   InanimateEntities: []
   SpawnerEntities:
   - {fileID: 1527810108877156}
@@ -409,7 +410,9 @@ MonoBehaviour:
   directionX: -1
   directionY: 0
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!114 &114969783120037366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -424,7 +427,9 @@ MonoBehaviour:
   directionX: 0
   directionY: -1
   PositionRoom: {x: 0, y: 0}
-  PositionRoomPlayer: {x: 0, y: 0}
+  PositionRoomConnected: {x: 0, y: 0}
+  roomLol: {x: 0, y: 0}
+  ennemies: []
 --- !u!212 &212082876082501760
 SpriteRenderer:
   m_ObjectHideFlags: 1

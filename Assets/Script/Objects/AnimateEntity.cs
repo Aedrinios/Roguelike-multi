@@ -132,10 +132,11 @@ public abstract class AnimateEntity : InanimateEntity
         if (canBeDamaged &&!isDead)
         {
             //Debug.Log("degats : " +value);
-            isDamaged();
+            if (value != 0)
+                isDamaged();
             //reduce health
             health -= value;
-            KnockBack(other);
+           // KnockBack(other);
 
             //Debug.Log(other.name);
         }

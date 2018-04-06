@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - GroundCircle
   - shield
+  - Potion
   layers:
   - Default
   - TransparentFX
@@ -57,4 +58,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 4119750099
+    locked: 0
+  - name: Ent
+    uniqueID: 3877015583
     locked: 0

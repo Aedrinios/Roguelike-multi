@@ -27,7 +27,7 @@ public class Character : AnimateEntity
     private GlobalHealthManager globalHealthManager;
     private string inputSetName;
     private Color[] tabcolor = { Color.cyan, Color.yellow, Color.green, Color.blue };
-    static int comptCouleur = 0;
+    public static int comptCouleur = 0;
     public Sprite[] tabPlayerNumber; // J1, J2, ...
 
     protected override void Start()
@@ -200,9 +200,9 @@ public class Character : AnimateEntity
 
     protected override void Die()
     {
-        UI.emptyFullInventory();
-        inventory[0] = null;
-        inventory[1] = null;
+       // UI.emptyFullInventory();
+        //inventory[0] = null;
+       // inventory[1] = null;
 
         if (isDead == false)
         {
@@ -346,6 +346,7 @@ public class Character : AnimateEntity
             inventory[slot] = (InanimateEntity)ground[0];
             inventory[slot].Equip(this);
             UI.ChangeWeapon(this, slot);
+            inventory[slot].GetComponent<Weapon>().enabled = true;
             SoundManager.playSound("pickUpItem");
             inventory[slot].GetComponentInChildren<SpriteRenderer>();
         }
@@ -464,7 +465,7 @@ public class Character : AnimateEntity
             carriedObject.GetComponent<CircleCollider2D>().enabled = true;
             if (carriedObject.GetComponent<Potions>() != null)
             {
-                SoundManager.playSound("ThrowingPotion");
+                SoundManager.playSound("ThrowingPotion2");
                 carriedObject.GetComponent<Potions>().StartCoroutine("creationOfEffectZone");
             }
             carriedObject = null;

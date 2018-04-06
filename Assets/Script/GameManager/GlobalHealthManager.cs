@@ -60,12 +60,16 @@ public class GlobalHealthManager : MonoBehaviour {
 
             if (numb == 0 && butSelect) // Selection de play
             {
-                SceneManager.LoadScene("BastienTest");
+                Character.comptCouleur = 0;
+
+                SceneManager.LoadScene("TestGeneration");
                 Time.timeScale = 1.0f;
 
             }
             if (numb == 1 && butSelect) // Selection de quite
             {
+                Character.comptCouleur = 0;
+
                 SceneManager.LoadScene("Menu");
                 Time.timeScale = 1.0f;
             }
