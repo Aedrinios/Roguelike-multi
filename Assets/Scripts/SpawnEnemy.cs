@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour {
 
-   
+
     public GameObject[] Entities = new GameObject[0];
     public GameObject[] InanimateEntities = new GameObject[0];
 
@@ -19,16 +19,18 @@ public class SpawnEnemy : MonoBehaviour {
     private float PosRoomx;
     private float PosRoomy;
 
-	// Use this for initialization
-	void Start () {
+    private bool keeper = true;
+
+    // Use this for initialization
+    void Start() {
         Spawn();
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    }
+
+    // Update is called once per frame
+    void Update() {
+
+    }
 
     void Random()
     {
@@ -46,19 +48,31 @@ public class SpawnEnemy : MonoBehaviour {
         PosRoomy = this.transform.position.y;
 
 
-       
+
         for (int i = 0; i < SpawnerEntities.Length; i++)
         {
             Random();
+
+            if (!keeper && Entities[(int)randomPickEntities].name == "Keeper")
+            {
+                Random();
+            }
+
             position.x = SpawnerEntities[i].transform.position.x;
             position.y = SpawnerEntities[i].transform.position.y;
             position.z = -0.2f;
 
             GameObject go = Instantiate(Entities[(int)randomPickEntities], position, Quaternion.identity);
             go.transform.parent = gameObject.transform;
-            go.name= Entities[(int)randomPickEntities].name;
+            go.name = Entities[(int)randomPickEntities].name;
             go.GetComponent<InanimateEntity>().currentRoom = transform.GetComponentInChildren<RoomTransition>().PositionRoom;
             go.GetComponent<InanimateEntity>().enabled = false;
+
+            if (Entities[(int)randomPickEntities].name == "Keeper")
+            {
+                keeper = false;
+            }
+
         }
 
 
