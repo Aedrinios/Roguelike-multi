@@ -73,7 +73,7 @@ public class Keeper : AnimateEntity {
        
         if (targetAudioHasPlayed == false)
         {
-            SoundManager.playSound("TargetSound");
+            SoundManager.playSound("targetArmor");
             targetAudioHasPlayed = true;
         }
        

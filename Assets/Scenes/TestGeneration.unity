@@ -485,16 +485,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 82803083112575506, guid: 5e6c00e28ad33584dbd49fd102b50a68,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.218
-      objectReference: {fileID: 0}
-    - target: {fileID: 114798239883889756, guid: 5e6c00e28ad33584dbd49fd102b50a68,
-        type: 2}
-      propertyPath: sounds.Array.data[25]
-      value: 
-      objectReference: {fileID: 8300000, guid: 3c1b4d105fd2c394d97a648d0805c747, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e6c00e28ad33584dbd49fd102b50a68, type: 2}
   m_IsPrefabParent: 0
