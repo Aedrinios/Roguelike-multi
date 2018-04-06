@@ -34,6 +34,7 @@ public class portalManager : MonoBehaviour {
 
             if (players.Count == GameManager.instance.players.Count)
             {
+                Character.comptCouleur = 0;
                 SceneManager.LoadScene("Menu");
             }
         }
