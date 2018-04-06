@@ -36,7 +36,7 @@ public class SoundManager : MonoBehaviour {
         return new AudioClip();
     }
 
-    public static void playSound(string name) {
+    public static void playSound(string name) { 
         instance.GetComponent<AudioSource>().PlayOneShot(getSound(name));
     }
 }

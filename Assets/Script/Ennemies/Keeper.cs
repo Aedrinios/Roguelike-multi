@@ -35,6 +35,11 @@ public class Keeper : AnimateEntity {
     // Update is called once per frame
     void Update()
     {
+        if (health <= 0)
+        {
+            hasTarget = false;
+            rigidb.velocity = direction.normalized * 0;
+        }
 
         if (hasTarget)
         {
@@ -42,7 +47,7 @@ public class Keeper : AnimateEntity {
             direction = target.transform.position - gameObject.transform.position;
             gameObject.GetComponent<CircleCollider2D>().radius = direction.magnitude;
             Move(this.direction);
-          
+
         }
         else
         {
@@ -50,6 +55,7 @@ public class Keeper : AnimateEntity {
             
 
         }
+
         if (Input.GetKeyDown("6"))
         {
             ReceiveHit(5,gameObject);
@@ -67,7 +73,6 @@ public class Keeper : AnimateEntity {
     {
        if (animationHasPlayed == false)
        {
-            target.GetComponent<Character>().StartCoroutine("targetColor");
             animationHasPlayed = true;
         }
        
@@ -82,6 +87,7 @@ public class Keeper : AnimateEntity {
         animator.SetFloat("directionY", direction.y);
         animator.SetBool("isMoving", true);
         Debug.Log(animator.GetBool("isMoving"));
+
 
         shield.offset = new Vector2(direction.normalized.x, direction.normalized.y);
         if (direction.normalized.x < (-0.5) || direction.normalized.x > 0.5)
@@ -98,9 +104,10 @@ public class Keeper : AnimateEntity {
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!hasTarget && other.tag == "Player")
-        {   
+        {
             target = other.gameObject;
             hasTarget = true;
+            target.GetComponent<Character>().StartCoroutine("targetColor");
         }
         if (other.gameObject != target && other.tag == "Player")
         {
@@ -114,6 +121,7 @@ public class Keeper : AnimateEntity {
         {
             hasTarget = true;
             target = other.gameObject;
+            target.GetComponent<Character>().StartCoroutine("targetColor");
         }
     }
 
@@ -145,6 +153,7 @@ public class Keeper : AnimateEntity {
             }
             base.ReceiveHit(value, other);
             target = secondTarget;
+            target.GetComponent<Character>().StartCoroutine("targetColor");
             secondTarget = null;
         }
         else
