@@ -26,8 +26,8 @@ public class Character : AnimateEntity
     private float blinkTimeCount;
     private GlobalHealthManager globalHealthManager;
     private string inputSetName;
-    private Color[] tabcolor = { Color.cyan, Color.yellow, Color.green, Color.blue };
-    static int comptCouleur = 0;
+    private Color[] tabcolor = { Color.red, Color.yellow, Color.green, Color.blue };
+    public static int comptCouleur = 0;
     public Sprite[] tabPlayerNumber; // J1, J2, ...
 
     protected override void Start()
@@ -52,6 +52,8 @@ public class Character : AnimateEntity
         tbis.GetComponent<SpriteRenderer>().sprite = tabPlayerNumber[comptCouleur];
         tbis.GetComponent<SpriteRenderer>().color = tabcolor[comptCouleur];
         comptCouleur++;
+        Transform tcible = transform.Find("Cible");
+        tcible.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public override void ReceiveHealt(int value, GameObject other)
@@ -465,7 +467,7 @@ public class Character : AnimateEntity
             carriedObject.GetComponent<CircleCollider2D>().enabled = true;
             if (carriedObject.GetComponent<Potions>() != null)
             {
-                SoundManager.playSound("ThrowingPotion");
+                SoundManager.playSound("ThrowingPotion2");
                 carriedObject.GetComponent<Potions>().StartCoroutine("creationOfEffectZone");
             }
             carriedObject = null;
@@ -477,11 +479,11 @@ public class Character : AnimateEntity
 
     public IEnumerator targetColor()
     {
-        Transform t = transform.Find("Ground circle");
-        var colorPlayer = t.GetComponent<SpriteRenderer>().color;
-        t.GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(0.5f);
-        t.GetComponent<SpriteRenderer>().color = colorPlayer;
+        Transform t = transform.Find("Cible");
+        t.GetComponent<SpriteRenderer>().enabled = true;
+        Debug.Log("je suis dans target color"); 
+        yield return new WaitForSeconds(2f);
+        t.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void isTarget()

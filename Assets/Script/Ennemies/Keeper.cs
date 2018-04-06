@@ -9,7 +9,6 @@ public class Keeper : AnimateEntity {
     public BoxCollider2D damageTaken;
     public GameObject target;
     public GameObject secondTarget;
-    public bool targetIsDead;
     public bool hasTarget = false;
     public float circleColliderRadius;
     public float baseColliderRadius;
@@ -36,6 +35,11 @@ public class Keeper : AnimateEntity {
     // Update is called once per frame
     void Update()
     {
+        if (health <= 0)
+        {
+            hasTarget = false;
+            rigidb.velocity = direction.normalized * 0;
+        }
 
         if (hasTarget)
         {
@@ -43,7 +47,7 @@ public class Keeper : AnimateEntity {
             direction = target.transform.position - gameObject.transform.position;
             gameObject.GetComponent<CircleCollider2D>().radius = direction.magnitude;
             Move(this.direction);
-          
+
         }
         else
         {
@@ -51,6 +55,7 @@ public class Keeper : AnimateEntity {
             
 
         }
+
         if (Input.GetKeyDown("6"))
         {
             ReceiveHit(5,gameObject);
@@ -68,13 +73,12 @@ public class Keeper : AnimateEntity {
     {
        if (animationHasPlayed == false)
        {
-            target.GetComponent<Character>().StartCoroutine("targetColor");
             animationHasPlayed = true;
         }
        
         if (targetAudioHasPlayed == false)
         {
-            SoundManager.playSound("TargetSound");
+            SoundManager.playSound("targetArmor");
             targetAudioHasPlayed = true;
         }
        
@@ -82,6 +86,7 @@ public class Keeper : AnimateEntity {
         animator.SetFloat("directionX", direction.x);
         animator.SetFloat("directionY", direction.y);
         animator.SetBool("isMoving", true);
+        Debug.Log(animator.GetBool("isMoving"));
 
 
         shield.offset = new Vector2(direction.normalized.x, direction.normalized.y);
@@ -99,19 +104,24 @@ public class Keeper : AnimateEntity {
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!hasTarget && other.tag == "Player")
-        {   
+        {
             target = other.gameObject;
-            targetIsDead = false;
             hasTarget = true;
+            target.GetComponent<Character>().StartCoroutine("targetColor");
         }
         if (other.gameObject != target && other.tag == "Player")
         {
             secondTarget = other.gameObject;
         }
-        if (other.gameObject == target && targetIsDead)
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (!hasTarget && other.tag == "Player" && !other.gameObject.GetComponent<Character>().getIsDead())
         {
-            target = null;        
-            hasTarget = false;
+            hasTarget = true;
+            target = other.gameObject;
+            target.GetComponent<Character>().StartCoroutine("targetColor");
         }
     }
 
@@ -124,18 +134,7 @@ public class Keeper : AnimateEntity {
         }
         if (collision.gameObject.GetComponent<Character>().getIsDead())
         {
-            targetIsDead = true;
-            if (secondTarget != null)
-            {
-                target = secondTarget;
-                secondTarget = null;
-                targetIsDead = false;
-            }
-            else
-            {
-                hasTarget = false;
-            }
-
+            hasTarget = false;
             gameObject.GetComponent<CircleCollider2D>().radius = 10;
         }
 
@@ -154,6 +153,7 @@ public class Keeper : AnimateEntity {
             }
             base.ReceiveHit(value, other);
             target = secondTarget;
+            target.GetComponent<Character>().StartCoroutine("targetColor");
             secondTarget = null;
         }
         else

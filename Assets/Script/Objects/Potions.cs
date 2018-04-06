@@ -86,7 +86,7 @@ public class Potions : Weapon {
 
     public IEnumerator creationOfEffectZone()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SoundManager.playSound("BreakingPotion");
         // Recuperer la position et creation de la zone collider à cette position
         var position = this.transform.position;
