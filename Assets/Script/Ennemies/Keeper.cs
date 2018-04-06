@@ -35,6 +35,11 @@ public class Keeper : AnimateEntity {
     // Update is called once per frame
     void Update()
     {
+        if (health <= 0)
+        {
+            hasTarget = false;
+            rigidb.velocity = direction.normalized * 0;
+        }
 
         if (hasTarget)
         {
@@ -50,6 +55,7 @@ public class Keeper : AnimateEntity {
             
 
         }
+
         if (Input.GetKeyDown("6"))
         {
             ReceiveHit(5,gameObject);
