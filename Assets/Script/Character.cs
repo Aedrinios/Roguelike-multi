@@ -27,7 +27,7 @@ public class Character : AnimateEntity
     private GlobalHealthManager globalHealthManager;
     private string inputSetName;
     private Color[] tabcolor = { Color.cyan, Color.yellow, Color.green, Color.blue };
-    static int comptCouleur = 0;
+    public static int comptCouleur = 0;
     public Sprite[] tabPlayerNumber; // J1, J2, ...
 
     protected override void Start()

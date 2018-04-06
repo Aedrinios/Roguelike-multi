@@ -13,6 +13,7 @@ public class RootManager : AnimateEntity {
 	void Start () {
         base.Start();
         animator = GetComponent<Animator>();
+		SoundManager.playSound("attackRootSound");
 	}
 	
 	// Update is called once per frame
