@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 61521527550933414}
   - component: {fileID: 114992386626128132}
   m_Layer: 0
-  m_Name: roomMapUpDownLeft
+  m_Name: roomMapUpDownLeft 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
