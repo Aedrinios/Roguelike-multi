@@ -183,10 +183,14 @@ public class Character : AnimateEntity
             }
             if (Input.GetButtonUp(inputSetName + "secondary"))
             {
-                if(secondaryTimer < 0.15 && inventory[1].GetComponent<Potions>()!=null)
+                if (inventory[1] != null)
                 {
-                    inventory[1].Use(this);
+                    if (secondaryTimer < 0.15 && inventory[1].GetComponent<Potions>() != null)
+                    {
+                        inventory[1].Use(this);
+                    }
                 }
+
                 //else if (secondaryTimer > 2.0 && inventory[1].GetComponent<Potions>() != null)
                 //{
                 //    Carry(inventory[1]);

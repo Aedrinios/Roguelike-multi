@@ -31,7 +31,7 @@ public abstract class AnimateEntity : InanimateEntity
 
     private ProtectionShield currentShield=null;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         animator = this.GetComponent<Animator>();
     }

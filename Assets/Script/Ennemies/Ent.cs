@@ -29,6 +29,7 @@ public class Ent : AnimateEntity {
 
     private void Awake()
     {
+        base.Awake();
         startHealth = health;
     }
 
