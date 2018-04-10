@@ -30,8 +30,20 @@ public class Character : AnimateEntity
     public static int comptCouleur = 0;
     public Sprite[] tabPlayerNumber; // J1, J2, ...
 
+    // Menu Pause 
+    public GameObject panelPause;
+    public GameObject pause;
+    public GameObject quitePause;
+    public GameObject replayPause;
+
+    public Sprite notSelectedQuitePause;
+    public Sprite selectedQuitePause;
+    public Sprite notSelectedReplayPause;
+    public Sprite selectedReplayPause;
+
     protected override void Start()
     {
+        Debug.Log("je suis dans le start de Character");
         globalHealthManager = FindObjectOfType<GlobalHealthManager>();
         base.Start();
         inventory = new InanimateEntity[2];
@@ -54,6 +66,8 @@ public class Character : AnimateEntity
         comptCouleur++;
         Transform tcible = transform.Find("Cible");
         tcible.GetComponent<SpriteRenderer>().enabled = false;
+
+
     }
 
     public override void ReceiveHealt(int value, GameObject other)
@@ -147,6 +161,12 @@ public class Character : AnimateEntity
             {
                 ReceiveHit(startLife, gameObject);
             }
+
+            if (Input.GetKeyDown("6"))
+            {
+                menuPause(); 
+            }
+
 
             //ramassage puis lancer
             if (Input.GetButtonDown(inputSetName + "interact"))
@@ -489,6 +509,14 @@ public class Character : AnimateEntity
     public void isTarget()
     {
         StartCoroutine("targetColor");
+    }
+
+    public void menuPause()
+    {
+        panelPause.gameObject.SetActive(true);
+        pause.gameObject.SetActive(true);
+        quitePause.gameObject.SetActive(true);
+        replayPause.gameObject.SetActive(true);
     }
 
 }
