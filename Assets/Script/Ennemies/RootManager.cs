@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RootManager : AnimateEntity {
 
-    private Animator animator;
     private float timeCounter = 0;
     private GameObject target=null;
     private bool isGrow = false;
@@ -12,7 +11,6 @@ public class RootManager : AnimateEntity {
 	// Use this for initialization
 	void Start () {
         base.Start();
-        animator = GetComponent<Animator>();
 		SoundManager.playSound("attackRootSound");
 	}
 	

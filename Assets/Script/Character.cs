@@ -11,8 +11,6 @@ public class Character : AnimateEntity
     public PlayerUI UI;
 
 
-    private Rigidbody2D rigidb;
-    private Animator animator;
     private float primaryTimer;
     private float secondaryTimer;
     private bool isCarrying = false;
@@ -36,8 +34,6 @@ public class Character : AnimateEntity
         base.Start();
         inventory = new InanimateEntity[2];
         ground = new ArrayList();
-        rigidb = this.GetComponent<Rigidbody2D>();
-        animator = this.GetComponent<Animator>();
         deathTime = 3;
         deathTimeCount = 0;
         startLife = health;
