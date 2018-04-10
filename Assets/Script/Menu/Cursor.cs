@@ -9,17 +9,27 @@ public class Cursor : MonoBehaviour {
     // Position B -> Quite
     private GameObject insert;
     private GameObject quite;
+    private GameObject credit;
+    public GameObject panelCredit;
     public Sprite notSelectedInsert;
     public Sprite selectedInsert;
     public Sprite notSelectedQuite;
     public Sprite selectedQuite;
+    public Sprite notSelectedCredit;
+    public Sprite selectedCredit;
+    public bool isCredit;
 
     private int numb; // 0 -> play, 1 -> quite
+    private int numbBis; // 0 -> play, 1 -> quite
 
-	// Use this for initialization
-	void Start () {
+    public GameObject retour;
+
+    // Use this for initialization
+    void Start () {
         insert = GameObject.Find("Insert");
         quite = GameObject.Find("Quite");
+        credit = GameObject.Find("Credit");
+        panelCredit.gameObject.SetActive(false);
         numb = 0;
     }
 	
@@ -35,45 +45,83 @@ public class Cursor : MonoBehaviour {
         var butStart = UnityEngine.Input.GetButtonDown("Joystick 1 start"); // Bouton start manette
         var butA = UnityEngine.Input.GetButtonDown("Joystick 1 primary"); // Bouton A manette
 
-
-        if (keyboardY > 0 || keyboardX < 0 || joystick<0 || joystick2>0) // gauche / haut
+        /*
+         * Faire pour tout les clavier/manettes
+         */
+        var butHaut = UnityEngine.Input.GetKeyDown(KeyCode.Z); // Bouton haut 
+        var butBas = UnityEngine.Input.GetKeyDown(KeyCode.S); // Bouton Bas
+        
+        switch (isCredit)
         {
-            // Changer sprite
-            changeSprite(quite, 0);
-            numb = 0;
-        }
-        if (keyboardY < 0 || keyboardX > 0 || joystick>0 || joystick2<0) // droite / bas
-        {
-            // Changer Sprite
-            changeSprite(quite, 1);
-            numb = 1;
-        }
+            case (true):
+                Debug.Log("dans is credit");
+                Debug.Log(numb);
 
-        if(numb == 0 && (butSelect || butStart || butA)) // Selection de play
-        {
-            // Changer de scene
-            SceneManager.LoadScene("TestGeneration");
+                if ((butSelect || butStart || butA)) // quitte les credits
+                {
+                    panelCredit.gameObject.SetActive(false);
+                    isCredit=false;
+                }
+                break;
+            case (false):
+                if (butHaut /*keyboardY > 0 || keyboardX < 0 || joystick < 0 || joystick2 > 0*/) // haut
+                {
+                    // Changer sprite
+                    changeSprite(quite, numb);
+                    if (numb > 0)
+                    {
+                        numb--;
+                    }
+                }
+                if (butBas /*keyboardY < 0 || keyboardX > 0 || joystick > 0 || joystick2 < 0*/) // bas
+                {
+                    // Changer Sprite
+                    changeSprite(quite, numb);
+                    if (numb < 2)
+                    {
+                        numb++;
+                    }
+                }
+                if (numb == 0 && (butSelect || butStart || butA)) // Selection de play
+                {
+                    // Changer de scene
+                    SceneManager.LoadScene("TestGeneration");
 
+                }
+                if (numb == 1 && (butSelect || butStart || butA)) // Selection de quite
+                {
+                    Application.Quit();
+                }
+                if (numb == 2 && (butSelect || butStart || butA)) // Selection de quite
+                {
+                    panelCredit.gameObject.SetActive(true);
+                    isCredit=true;
+                }
+                break;
         }
-        if (numb == 1 && (butSelect || butStart || butA)) // Selection de quite
-        {
-            Application.Quit();
-        }
-
     }
 
     public void changeSprite(GameObject objt, int i)
     {
-        if (i == 0)
+        if (i == 0) // Play
         {
             quite.gameObject.GetComponent<SpriteRenderer>().sprite = notSelectedQuite;
             insert.gameObject.GetComponent<SpriteRenderer>().sprite = selectedInsert;
+            credit.gameObject.GetComponent<SpriteRenderer>().sprite = notSelectedCredit;
         }
 
-        if(i==1)
+        if(i==1) // Quit
         {
             quite.gameObject.GetComponent<SpriteRenderer>().sprite = selectedQuite;
             insert.gameObject.GetComponent<SpriteRenderer>().sprite = notSelectedInsert;
+            credit.gameObject.GetComponent<SpriteRenderer>().sprite = notSelectedCredit;
+        }
+
+        if (i == 2) // Credit
+        {
+            credit.gameObject.GetComponent<SpriteRenderer>().sprite = selectedCredit;
+            insert.gameObject.GetComponent<SpriteRenderer>().sprite = notSelectedInsert;
+            quite.gameObject.GetComponent<SpriteRenderer>().sprite = notSelectedQuite;
         }
     }
 }
