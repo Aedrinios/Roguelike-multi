@@ -11,8 +11,6 @@ public class Character : AnimateEntity
     public PlayerUI UI;
 
 
-    private Rigidbody2D rigidb;
-    private Animator animator;
     private float primaryTimer;
     private float secondaryTimer;
     private bool isCarrying = false;
@@ -36,8 +34,6 @@ public class Character : AnimateEntity
         base.Start();
         inventory = new InanimateEntity[2];
         ground = new ArrayList();
-        rigidb = this.GetComponent<Rigidbody2D>();
-        animator = this.GetComponent<Animator>();
         deathTime = 3;
         deathTimeCount = 0;
         startLife = health;
@@ -187,10 +183,14 @@ public class Character : AnimateEntity
             }
             if (Input.GetButtonUp(inputSetName + "secondary"))
             {
-                if(secondaryTimer < 0.15 && inventory[1].GetComponent<Potions>()!=null)
+                if (inventory[1] != null)
                 {
-                    inventory[1].Use(this);
+                    if (secondaryTimer < 0.15 && inventory[1].GetComponent<Potions>() != null)
+                    {
+                        inventory[1].Use(this);
+                    }
                 }
+
                 //else if (secondaryTimer > 2.0 && inventory[1].GetComponent<Potions>() != null)
                 //{
                 //    Carry(inventory[1]);

@@ -9,10 +9,11 @@ public class portalManager : MonoBehaviour {
 
     private Animator animator;
     private ArrayList players = new ArrayList();
-
+	private AudioSource audioSource;
 	// Use this for initialization
 	void Start () {
-        animator = GetComponent<Animator>();
+		animator = GetComponent<Animator>();
+		audioSource = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -20,7 +21,8 @@ public class portalManager : MonoBehaviour {
 
         if (hasSpawn == true)
         {
-            animator.SetBool("hasSpawn", true);
+			animator.SetBool("hasSpawn", true);
+			audioSource.Play();
         }
 		
 	}

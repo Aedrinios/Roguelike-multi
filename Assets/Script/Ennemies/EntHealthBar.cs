@@ -23,7 +23,7 @@ public class EntHealthBar : MonoBehaviour {
         }
         else
         {
-            hp.transform.localScale = new Vector2(0, 0);
+            Destroy(gameObject);
         }
     }
 }

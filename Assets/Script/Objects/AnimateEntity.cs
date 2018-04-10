@@ -31,11 +31,13 @@ public abstract class AnimateEntity : InanimateEntity
 
     private ProtectionShield currentShield=null;
 
-
+    protected virtual void Awake()
+    {
+        animator = this.GetComponent<Animator>();
+    }
 
     protected virtual void Start()
     {
-        animator = this.GetComponent<Animator>();
         invincibility = new Timer(timeOfInvincibility, true);
         rigidb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -165,7 +167,6 @@ public abstract class AnimateEntity : InanimateEntity
 
     public virtual void isDamaged()
     {
-        //Debug.Log("Animation degats");
         animator.SetTrigger("damaged");
         
     }
