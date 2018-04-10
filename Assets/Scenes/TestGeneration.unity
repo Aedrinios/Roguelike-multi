@@ -2473,7 +2473,7 @@ Prefab:
         type: 2}
       propertyPath: sounds.Array.data[28]
       value: 
-      objectReference: {fileID: 8300000, guid: 8f163319d9f6eb84987d63f73a946cb2, type: 3}
+      objectReference: {fileID: 8300000, guid: 7c2bd9f10c372694d8c0c3c2a294d320, type: 3}
     - target: {fileID: 114798239883889756, guid: 5e6c00e28ad33584dbd49fd102b50a68,
         type: 2}
       propertyPath: sounds.Array.data[29]
