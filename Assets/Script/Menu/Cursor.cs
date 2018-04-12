@@ -35,36 +35,49 @@ public class Cursor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        var keyboardY = UnityEngine.Input.GetAxis("Keyboard 2 Y axis"); // KeyBord haut/bas 
-        var keyboardX = UnityEngine.Input.GetAxis("Keyboard 2 X axis"); // KeyBord gauche/droit 
-        var butSelect = UnityEngine.Input.GetButtonDown("Keyboard 2 start"); // Bouton W pour selectionner
-
-        var joystick= UnityEngine.Input.GetAxis("Joystick 1 X axis"); // Joystick gauche/droite 
-        var joystick2 = UnityEngine.Input.GetAxis("Joystick 1 Y axis"); // Joystick haut/bas 
-        var butStart = UnityEngine.Input.GetButtonDown("Joystick 1 start"); // Bouton start manette
-        var butA = UnityEngine.Input.GetButtonDown("Joystick 1 primary"); // Bouton A manette
-
         /*
-         * Faire pour tout les clavier/manettes
+         * Je met le bouton start ou le bouton A pour les selection par manette ?
          */
-        var butHaut = UnityEngine.Input.GetKeyDown(KeyCode.Z); // Bouton haut 
-        var butBas = UnityEngine.Input.GetKeyDown(KeyCode.S); // Bouton Bas
+        var butA = UnityEngine.Input.GetButtonDown("Joystick 1 primary"); // Bouton A manette
         
+        // Bouton start
+        var butKeyboardStart1 = UnityEngine.Input.GetButtonDown("Keyboard 1 start"); // Bouton K pour selectionner
+        var butKeyboardStart2 = UnityEngine.Input.GetButtonDown("Keyboard 2 start"); // Bouton W pour selectionner
+        var butJoystickStart1 = UnityEngine.Input.GetButtonDown("Joystick 1 start"); // Bouton start manette
+        var butJoystickStart2 = UnityEngine.Input.GetButtonDown("Joystick 2 start"); // Bouton start manette
+        var butJoystickStart3 = UnityEngine.Input.GetButtonDown("Joystick 3 start"); // Bouton start manette
+        var butJoystickStart4 = UnityEngine.Input.GetButtonDown("Joystick 4 start"); // Bouton start manette
+
+        // Boutton déplacement (plus fluide)
+        var butHaut1 = UnityEngine.Input.GetKeyDown(KeyCode.UpArrow); // Bouton haut 
+        var butHaut2 = UnityEngine.Input.GetKeyDown(KeyCode.Z); // Bouton haut 
+        var butBas1 = UnityEngine.Input.GetKeyDown(KeyCode.DownArrow); // Bouton Bas
+        var butBas2 = UnityEngine.Input.GetKeyDown(KeyCode.S); // Bouton Bas
+
+        // Axe de déplacement
+        var keyboardAxisY1 = UnityEngine.Input.GetAxis("Keyboard 1 Y axis"); // KeyBord haut/bas 
+        var keyboardAxisY2 = UnityEngine.Input.GetAxis("Keyboard 2 Y axis"); // KeyBord haut/bas 
+        var JoystickAxisY1 = UnityEngine.Input.GetAxis("Joystick 1 Y axis"); // KeyBord haut/bas 
+        var JoystickAxisY2 = UnityEngine.Input.GetAxis("Joystick 2 Y axis"); // KeyBord haut/bas 
+        var JoystickAxisY3 = UnityEngine.Input.GetAxis("Joystick 3 Y axis"); // KeyBord haut/bas 
+        var JoystickAxisY4 = UnityEngine.Input.GetAxis("Joystick 4 Y axis"); // KeyBord haut/bas 
+
         switch (isCredit)
         {
             case (true):
                 Debug.Log("dans is credit");
                 Debug.Log(numb);
 
-                if ((butSelect || butStart || butA)) // quitte les credits
+                // quitte les credits
+                if ((butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4)) 
                 {
                     panelCredit.gameObject.SetActive(false);
                     isCredit=false;
                 }
                 break;
             case (false):
-                if (butHaut /*keyboardY > 0 || keyboardX < 0 || joystick < 0 || joystick2 > 0*/) // haut
+                //if (butHaut1 || butHaut2) // haut
+                if(keyboardAxisY1 > 0 || keyboardAxisY2 > 0 || JoystickAxisY1 > 0 || JoystickAxisY2 > 0 || JoystickAxisY3 > 0 || JoystickAxisY4 > 0)
                 {
                     // Changer sprite
                     changeSprite(quite, numb);
@@ -73,7 +86,7 @@ public class Cursor : MonoBehaviour {
                         numb--;
                     }
                 }
-                if (butBas /*keyboardY < 0 || keyboardX > 0 || joystick > 0 || joystick2 < 0*/) // bas
+                if (keyboardAxisY1 < 0 || keyboardAxisY2 < 0 || JoystickAxisY1 < 0 || JoystickAxisY2 < 0 || JoystickAxisY3 < 0 || JoystickAxisY4 < 0) // bas
                 {
                     // Changer Sprite
                     changeSprite(quite, numb);
@@ -82,17 +95,17 @@ public class Cursor : MonoBehaviour {
                         numb++;
                     }
                 }
-                if (numb == 0 && (butSelect || butStart || butA)) // Selection de play
+                if (numb == 0 && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4)) // Selection de play
                 {
                     // Changer de scene
                     SceneManager.LoadScene("TestGeneration");
 
                 }
-                if (numb == 1 && (butSelect || butStart || butA)) // Selection de quite
+                if (numb == 1 && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4)) // Selection de quite
                 {
                     Application.Quit();
                 }
-                if (numb == 2 && (butSelect || butStart || butA)) // Selection de quite
+                if (numb == 2 && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4)) // Selection de quite
                 {
                     panelCredit.gameObject.SetActive(true);
                     isCredit=true;
