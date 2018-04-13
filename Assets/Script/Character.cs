@@ -123,28 +123,28 @@ public class Character : AnimateEntity
         {
             Die();
         }
+        if (Input.GetKeyDown("8"))
+        {
+            isTarget();
+        }
 
+        if (Input.GetKeyDown("3"))
+        {
+            setCanBeDamaged(false);
+        }
+
+        if (Input.GetKeyDown("5"))
+        {
+            setCanBeDamaged(true);
+        }
+
+        if (Input.GetKeyDown("4"))
+        {
+            ReceiveHit(startLife, gameObject);
+        }
         if (!stun)
         {
-            if (Input.GetKeyDown("8"))
-            {
-                isTarget();
-            }
-
-            if (Input.GetKeyDown("3"))
-            {
-                setCanBeDamaged(false);
-            }
-
-            if (Input.GetKeyDown("5"))
-            {
-                setCanBeDamaged(true);
-            }
-
-            if (Input.GetKeyDown("4"))
-            {
-                ReceiveHit(startLife, gameObject);
-            }
+            
 
             //ramassage puis lancer
             if (Input.GetButtonDown(inputSetName + "interact"))
