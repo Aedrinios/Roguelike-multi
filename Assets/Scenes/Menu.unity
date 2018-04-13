@@ -465,7 +465,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5f5a7f9b221539249a783e5064d28312, type: 3}
     m_FontSize: 28
     m_FontStyle: 1
     m_BestFit: 0
@@ -476,8 +476,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.2
-  m_Text: "R\xE9alis\xE9 par :\nALMES Justine\nBOURGEOIS Hom\xE8re\nCARLIER Florine\nCLERC
+    m_LineSpacing: 1.5
+  m_Text: "R\xE9alis\xE9 par :\n\nALMES Justine\nBOURGEOIS Hom\xE8re\nCARLIER Florine\nCLERC
     Cl\xE9ment\nGAUTIER Corentin\nLACAPERE R\xE9my\nTANIER M\xE9lodie\nVEYSSIERE L\xE9o"
 --- !u!222 &734135070
 CanvasRenderer:
@@ -500,8 +500,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -47}
-  m_SizeDelta: {x: 378.2, y: 444.7}
+  m_AnchoredPosition: {x: -0.000045776003, y: -47}
+  m_SizeDelta: {x: 750.22, y: 444.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &967431109
 GameObject:
@@ -770,14 +770,14 @@ RectTransform:
   m_GameObject: {fileID: 1134221561}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -447.93726}
-  m_LocalScale: {x: 0.9998601, y: 0.9998601, z: 0.9998601}
+  m_LocalScale: {x: 1.4965097, y: 1.4674509, z: 0.9998601}
   m_Children: []
   m_Father: {fileID: 228501946}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 15.997731, y: -103}
+  m_AnchoredPosition: {x: 15.998, y: -103}
   m_SizeDelta: {x: 1.2700195, y: 0.7999878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1156239195
@@ -978,7 +978,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 109}
+  m_AnchoredPosition: {x: 0, y: 54}
   m_SizeDelta: {x: 1.2700195, y: 0.80000305}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1472274548
