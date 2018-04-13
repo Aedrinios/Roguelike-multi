@@ -60,7 +60,7 @@ public class Cursor : MonoBehaviour {
         {
             case (true):
                 Debug.Log("dans is credit");
-                Debug.Log(numb);
+              //  Debug.Log(numb);
 
                 // Quitte les crédit à la fin du jeu (ramene au menu)
                 if (endOfGame && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4))
@@ -76,6 +76,52 @@ public class Cursor : MonoBehaviour {
                 }
                 break;
             case (false):
+                if (numb == 0)
+                {
+                    // Bas
+                    if (bouge && (keyboardAxisY1 < 0 || keyboardAxisY2 < 0 || JoystickAxisY1 < 0 || JoystickAxisY2 < 0 || JoystickAxisY3 < 0 || JoystickAxisY4 < 0)) // bas
+                    {
+                        numb = 1;
+                        // Changer Sprite
+                        changeSprite(quite, numb);
+                        bouge = false;
+                        StartCoroutine("timer");
+                    }
+                }
+                if(numb == 1)
+                {
+                    // Haut
+                    if (bouge && (keyboardAxisY1 > 0 || keyboardAxisY2 > 0 || JoystickAxisY1 > 0 || JoystickAxisY2 > 0 || JoystickAxisY3 > 0 || JoystickAxisY4 > 0))
+                    {
+                        numb = 0;
+                        // Changer sprite
+                        changeSprite(quite, numb);
+                        bouge = false;
+                        StartCoroutine("timer");
+                    }
+                    // Bas
+                    if (bouge && (keyboardAxisY1 < 0 || keyboardAxisY2 < 0 || JoystickAxisY1 < 0 || JoystickAxisY2 < 0 || JoystickAxisY3 < 0 || JoystickAxisY4 < 0)) // bas
+                    {
+                        numb = 2;
+                        // Changer Sprite
+                        changeSprite(quite, numb);
+                        bouge = false;
+                        StartCoroutine("timer");
+                    }
+                }
+                if(numb == 2)
+                {
+                    // Haut
+                    if (bouge && (keyboardAxisY1 > 0 || keyboardAxisY2 > 0 || JoystickAxisY1 > 0 || JoystickAxisY2 > 0 || JoystickAxisY3 > 0 || JoystickAxisY4 > 0))
+                    {
+                        numb = 1;
+                        // Changer sprite
+                        changeSprite(quite, numb);
+                        bouge = false;
+                        StartCoroutine("timer");
+                    }
+                }
+                /*
                 // Haut
                 if(bouge && (keyboardAxisY1 > 0 || keyboardAxisY2 > 0 || JoystickAxisY1 > 0 || JoystickAxisY2 > 0 || JoystickAxisY3 > 0 || JoystickAxisY4 > 0))
                 {
@@ -99,15 +145,17 @@ public class Cursor : MonoBehaviour {
                     }
                     bouge = false;
                     StartCoroutine("timer");
-                }
+                }*/
                 if (numb == 0 && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4)) // Selection de play
                 {
                     // Changer de scene
                     SceneManager.LoadScene("TestGeneration");
 
                 }
+                Debug.Log(numb);
                 if (numb == 1 && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4)) // Selection de quite
                 {
+                    Debug.Log("Je vais quitter");
                     Application.Quit();
                 }
                 if (numb == 2 && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4)) // Selection de quite
@@ -145,7 +193,7 @@ public class Cursor : MonoBehaviour {
 
     public IEnumerator timer()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         bouge = true;
     }
 }
