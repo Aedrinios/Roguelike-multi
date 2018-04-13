@@ -13,6 +13,7 @@ public class AttackThrow : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
+		SoundManager.playSound("rootThrowSound");  
 	}
 	
 	// Update is called once per frame

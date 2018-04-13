@@ -50,10 +50,36 @@ public class WeaponDamagingPart : MonoBehaviour
                     }  
                 }
             }
-            if(other.tag == "Player")
+            if(other.tag == "Player" && weaponPart.Holder != other.gameObject.GetComponent<AnimateEntity>())
             {
-                var coroutine = other.GetComponent<Character>().Stun(1.0f);
-                StartCoroutine(coroutine);
+                if (other.gameObject.GetComponent<AnimateEntity>().getCurrentShield() != null)
+                {
+                    other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(0, other.gameObject);
+                    SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER        
+                }
+                else
+                {
+                    switch (transform.parent.name)
+                    {
+                        case ("Sword"):
+                            SoundManager.playSound("epeeSound"); // EPEE
+                            StartCoroutine(other.gameObject.GetComponent<AnimateEntity>().Slow(0.8f, 1));
+                            break;
+
+                        case ("Lance"):
+                            SoundManager.playSound("lanceSound"); // LANCE
+                            StartCoroutine(other.gameObject.GetComponent<AnimateEntity>().Stun(1));
+                            break;
+
+                        case ("Stick"):
+                            SoundManager.playSound("stickSound"); // BATON 
+                            break;
+
+                        case ("Boomerang"):
+                            SoundManager.playSound("armeEpee"); // BOOMERANG
+                            break;
+                    }
+                }
             }
         }
     }
