@@ -34,12 +34,16 @@ public class SpawnEnemy : MonoBehaviour {
 
     void Random()
     {
-        /*randomx = UnityEngine.Random.Range(-1f,1f);
-        randomy = UnityEngine.Random.Range(-0.8f, 0.8f);*/
 
         randomPickEntities = UnityEngine.Random.Range(0f, Entities.Length);
+        
+    }
+
+    void RandomInanimateEntities()
+    {
         randomPickInanimateEntities = UnityEngine.Random.Range(0f, InanimateEntities.Length);
     }
+
 
 
     void Spawn()
@@ -78,16 +82,16 @@ public class SpawnEnemy : MonoBehaviour {
 
         for (int i = 0; i < SpawnerInanimateEntities.Length; i++)
         {
-            Random();
+            RandomInanimateEntities();
             position.x = SpawnerInanimateEntities[i].transform.position.x;
             position.y = SpawnerInanimateEntities[i].transform.position.y;
             position.z = -0.2f;
 
-            GameObject go = Instantiate(Entities[(int)randomPickInanimateEntities], position, Quaternion.identity);
+            GameObject go = Instantiate(InanimateEntities[(int)randomPickInanimateEntities], position, Quaternion.identity);
             go.transform.parent = gameObject.transform;
-            go.name = Entities[(int)randomPickEntities].name;
-            go.GetComponent<InanimateEntity>().currentRoom = transform.GetComponentInChildren<RoomTransition>().PositionRoom;
-            go.GetComponent<AnimateEntity>().enabled = false;
+            go.name = InanimateEntities[(int)randomPickInanimateEntities].name;
+            //go.GetComponent<InanimateEntity>().currentRoom = transform.GetComponentInChildren<RoomTransition>().PositionRoom;
+            //go.GetComponent<AnimateEntity>().enabled = false;
             //go.SetActive(false);
         }
     }

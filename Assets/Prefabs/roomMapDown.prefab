@@ -28,6 +28,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1119105471598002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4784501942566058}
+  m_Layer: 5
+  m_Name: Spawndecor (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1196603970545332
 GameObject:
   m_ObjectHideFlags: 0
@@ -38,6 +53,21 @@ GameObject:
   - component: {fileID: 4276895386717396}
   m_Layer: 0
   m_Name: Spawn2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1627144518436150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4229867997818214}
+  m_Layer: 5
+  m_Name: Spawndecor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,6 +125,62 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1834296949044024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4033360133965110}
+  m_Layer: 5
+  m_Name: Spawndecor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1882602626416314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4661173372736604}
+  m_Layer: 5
+  m_Name: Spawndecor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4033360133965110
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834296949044024}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.9, y: 4.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4822439979186966}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4229867997818214
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627144518436150}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06, y: -1.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4822439979186966}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4276895386717396
 Transform:
   m_ObjectHideFlags: 1
@@ -134,6 +220,32 @@ Transform:
   m_Father: {fileID: 4822439979186966}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4661173372736604
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1882602626416314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.16, y: -3.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4822439979186966}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4784501942566058
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1119105471598002}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.08, y: -4.98, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4822439979186966}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4792550733440900
 Transform:
   m_ObjectHideFlags: 1
@@ -154,13 +266,17 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706547412718080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -112.59932, y: -35.826763, z: 0}
+  m_LocalPosition: {x: 24.494469, y: -72.11076, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4420184422481648}
   - {fileID: 4276895386717396}
   - {fileID: 4383896034352240}
   - {fileID: 4792550733440900}
+  - {fileID: 4033360133965110}
+  - {fileID: 4661173372736604}
+  - {fileID: 4229867997818214}
+  - {fileID: 4784501942566058}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -326,11 +442,27 @@ MonoBehaviour:
   - {fileID: 1955541600448346, guid: 0d864c1f24c7dac4da0610a610252a5a, type: 2}
   - {fileID: 1826716598717628, guid: 73805749547e4fc469fa6507a12687b4, type: 2}
   - {fileID: 1451904316058778, guid: 3b630c8d50a47e64e8d1de8af3a6bc39, type: 2}
-  InanimateEntities: []
+  InanimateEntities:
+  - {fileID: 1432451698567284, guid: bf44911808282d445b6eb285013c0bb4, type: 2}
+  - {fileID: 1205677174460226, guid: 78c588dbd42f6654cadf248d704b56a4, type: 2}
+  - {fileID: 1914959206399808, guid: 6722d1bd6a1e2af46b6d87718e236791, type: 2}
+  - {fileID: 1877951907578458, guid: 95b5c89682437944ca28808976ebd823, type: 2}
+  - {fileID: 1015456489619448, guid: 7545c91dc6175cc4183202868a5e111b, type: 2}
+  - {fileID: 1260646805427270, guid: 0bc46ce513ae36c4ab545a6fb263863c, type: 2}
+  - {fileID: 1504971713312584, guid: d819897f2e9956446b442da5564d09f8, type: 2}
+  - {fileID: 1804438152620752, guid: b61c472945d368b40b02ded36364d3c6, type: 2}
+  - {fileID: 1456962444355564, guid: 82cb325cd9add6d479084374a3c67f33, type: 2}
+  - {fileID: 1820319550849470, guid: 9851431107a11ed47a251047cca3ef60, type: 2}
+  - {fileID: 1666526057145174, guid: 0530cf2be872e9a45ab4a402f9d1f036, type: 2}
+  - {fileID: 1187200118745896, guid: 9655447315c1d20489394564910fb568, type: 2}
+  - {fileID: 1670216891024780, guid: 2484772c60afee24f97d5f1fbc32dced, type: 2}
+  - {fileID: 1759929446324768, guid: a7474c158cccb0741855e7a5d1aba4d9, type: 2}
   SpawnerEntities:
   - {fileID: 1699604790904742}
   - {fileID: 1196603970545332}
-  SpawnerInanimateEntities: []
+  SpawnerInanimateEntities:
+  - {fileID: 1834296949044024}
+  - {fileID: 1882602626416314}
 --- !u!212 &212483190519813690
 SpriteRenderer:
   m_ObjectHideFlags: 1
