@@ -25,6 +25,8 @@ public class Cursor : MonoBehaviour {
 
     public GameObject retour;
 
+    private bool bouge;
+
     // Use this for initialization
     void Start () {
         insert = GameObject.Find("Insert");
@@ -32,15 +34,12 @@ public class Cursor : MonoBehaviour {
         credit = GameObject.Find("Credit");
         panelCredit.gameObject.SetActive(endOfGame);
         numb = 0;
+        bouge = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        /*
-         * Je met le bouton start ou le bouton A pour les selection par manette ?
-         */
-        var butA = UnityEngine.Input.GetButtonDown("Joystick 1 primary"); // Bouton A manette
-        
+
         // Bouton start
         var butKeyboardStart1 = UnityEngine.Input.GetButtonDown("Keyboard 1 start"); // Bouton K pour selectionner
         var butKeyboardStart2 = UnityEngine.Input.GetButtonDown("Keyboard 2 start"); // Bouton W pour selectionner
@@ -48,12 +47,6 @@ public class Cursor : MonoBehaviour {
         var butJoystickStart2 = UnityEngine.Input.GetButtonDown("Joystick 2 start"); // Bouton start manette
         var butJoystickStart3 = UnityEngine.Input.GetButtonDown("Joystick 3 start"); // Bouton start manette
         var butJoystickStart4 = UnityEngine.Input.GetButtonDown("Joystick 4 start"); // Bouton start manette
-
-        // Boutton déplacement (plus fluide)
-        var butHaut1 = UnityEngine.Input.GetKeyDown(KeyCode.UpArrow); // Bouton haut 
-        var butHaut2 = UnityEngine.Input.GetKeyDown(KeyCode.Z); // Bouton haut 
-        var butBas1 = UnityEngine.Input.GetKeyDown(KeyCode.DownArrow); // Bouton Bas
-        var butBas2 = UnityEngine.Input.GetKeyDown(KeyCode.S); // Bouton Bas
 
         // Axe de déplacement
         var keyboardAxisY1 = UnityEngine.Input.GetAxis("Keyboard 1 Y axis"); // KeyBord haut/bas 
@@ -83,8 +76,8 @@ public class Cursor : MonoBehaviour {
                 }
                 break;
             case (false):
-                //if (butHaut1 || butHaut2) // haut
-                if(keyboardAxisY1 > 0 || keyboardAxisY2 > 0 || JoystickAxisY1 > 0 || JoystickAxisY2 > 0 || JoystickAxisY3 > 0 || JoystickAxisY4 > 0)
+                // Haut
+                if(bouge && (keyboardAxisY1 > 0 || keyboardAxisY2 > 0 || JoystickAxisY1 > 0 || JoystickAxisY2 > 0 || JoystickAxisY3 > 0 || JoystickAxisY4 > 0))
                 {
                     // Changer sprite
                     changeSprite(quite, numb);
@@ -92,8 +85,11 @@ public class Cursor : MonoBehaviour {
                     {
                         numb--;
                     }
+                    bouge = false;
+                    StartCoroutine("timer");
                 }
-                if (keyboardAxisY1 < 0 || keyboardAxisY2 < 0 || JoystickAxisY1 < 0 || JoystickAxisY2 < 0 || JoystickAxisY3 < 0 || JoystickAxisY4 < 0) // bas
+                // Bas
+                if (bouge && (keyboardAxisY1 < 0 || keyboardAxisY2 < 0 || JoystickAxisY1 < 0 || JoystickAxisY2 < 0 || JoystickAxisY3 < 0 || JoystickAxisY4 < 0)) // bas
                 {
                     // Changer Sprite
                     changeSprite(quite, numb);
@@ -101,6 +97,8 @@ public class Cursor : MonoBehaviour {
                     {
                         numb++;
                     }
+                    bouge = false;
+                    StartCoroutine("timer");
                 }
                 if (numb == 0 && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4)) // Selection de play
                 {
@@ -143,5 +141,11 @@ public class Cursor : MonoBehaviour {
             insert.gameObject.GetComponent<SpriteRenderer>().sprite = notSelectedInsert;
             quite.gameObject.GetComponent<SpriteRenderer>().sprite = notSelectedQuite;
         }
+    }
+
+    public IEnumerator timer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        bouge = true;
     }
 }
