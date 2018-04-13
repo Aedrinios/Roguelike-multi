@@ -118,8 +118,8 @@ public class Ent : AnimateEntity {
 					if (!done)
 					{
 						Instantiate(portal, transform.position, Quaternion.identity);
-                        
-						done = true;
+                        SoundManager.playSound("musique_victoire");
+                        done = true;
                         this.enabled = false;
 					}
 				}

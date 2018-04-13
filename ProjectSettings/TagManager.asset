@@ -10,6 +10,9 @@ TagManager:
   - GroundCircle
   - shield
   - Potion
+  - Quite
+  - Insert
+  - Canvas
   layers:
   - Default
   - TransparentFX
