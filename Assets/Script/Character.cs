@@ -183,7 +183,7 @@ public class Character : AnimateEntity
             if (Input.GetButtonUp(inputSetName + "primary"))
             {
                 
-                if (primaryTimer < 0.15 && inventory[0].GetComponent<Potions>() != null)
+                if ( inventory[0]!=null && primaryTimer < 0.15 && inventory[0].GetComponent<Potions>() != null )
                 {
                     inventory[0].Use(this);
                 }
@@ -198,7 +198,7 @@ public class Character : AnimateEntity
             if (Input.GetButton(inputSetName + "secondary"))
             {
                 secondaryTimer += Time.deltaTime;
-                if (secondaryTimer > 1 && inventory[1] != null)
+                if ( inventory[1] != null &&secondaryTimer > 1 && inventory[1] != null )
                     Carry(inventory[1]);
             }
             if (Input.GetButtonUp(inputSetName + "secondary"))
