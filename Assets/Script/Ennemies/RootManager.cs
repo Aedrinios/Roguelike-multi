@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class RootManager : AnimateEntity {
 
-    private Animator animator;
     private float timeCounter = 0;
     private GameObject target=null;
     private bool isGrow = false;
+    private Ent ent;
 
 	// Use this for initialization
 	void Start () {
         base.Start();
-        animator = GetComponent<Animator>();
+        ent = FindObjectOfType<Ent>();
+		SoundManager.playSound("attackRootSound");
 	}
 	
 	// Update is called once per frame
@@ -21,7 +22,7 @@ public class RootManager : AnimateEntity {
 
         timeCounter += Time.deltaTime;
 
-        if (health <= 0)
+        if (health <= 0 || ent.health <= 0)
         {
             target.gameObject.GetComponent<AnimateEntity>().stun = false;
             target.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;

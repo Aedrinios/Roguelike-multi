@@ -31,11 +31,13 @@ public abstract class AnimateEntity : InanimateEntity
 
     private ProtectionShield currentShield=null;
 
-
+    protected virtual void Awake()
+    {
+        animator = this.GetComponent<Animator>();
+    }
 
     protected virtual void Start()
     {
-        animator = this.GetComponent<Animator>();
         invincibility = new Timer(timeOfInvincibility, true);
         rigidb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -136,7 +138,7 @@ public abstract class AnimateEntity : InanimateEntity
                 isDamaged();
             //reduce health
             health -= value;
-           // KnockBack(other);
+            KnockBack(other);
 
             //Debug.Log(other.name);
         }
@@ -165,7 +167,6 @@ public abstract class AnimateEntity : InanimateEntity
 
     public virtual void isDamaged()
     {
-        //Debug.Log("Animation degats");
         animator.SetTrigger("damaged");
         
     }
@@ -175,10 +176,11 @@ public abstract class AnimateEntity : InanimateEntity
         return isDying;
     }
 
-    private void KnockBack(GameObject other)
+    protected virtual void KnockBack(GameObject other)
     {
         Vector3 knockBackDirection = (transform.position - other.transform.position).normalized;
         transform.position += knockBackDirection * (int)knockbackDistances.low;
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
     public ProtectionShield getCurrentShield()

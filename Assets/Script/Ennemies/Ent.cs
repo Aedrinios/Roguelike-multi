@@ -20,18 +20,23 @@ public class Ent : AnimateEntity {
 	private bool isPhase1;
 	private bool isPhase2;
 	private bool isPhase3;
-
+	private bool deadSound = false;
 
 	//utilitaires
 	private bool doOnce = false;
 	private float timeCounterSpells = 0;
 	private float timeCounter = 0;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        base.Awake();
+        startHealth = health;
+    }
+
+    // Use this for initialization
+    void Start () {
 		base.Start();
 		scaleMultiplier = 6f;
-		startHealth = health;
 		timeCounterSpells = timeBewteenSpells;
 		boxCollider = GetComponent<BoxCollider2D>();
 
@@ -73,7 +78,6 @@ public class Ent : AnimateEntity {
 			}
 			else if (health <= 0)
 			{
-				SoundManager.playSound ("bossDeath");
 				setActivePhase(3);
 			}
 		}
@@ -104,7 +108,10 @@ public class Ent : AnimateEntity {
 				boxCollider.enabled = false;
                 
 				animator.SetBool("isDead", true);
-				SoundManager.playSound ("bossDeath");
+				if (!deadSound) {
+					SoundManager.playSound ("bossDeath");
+					deadSound = true;
+				}
 				timeCounter += Time.deltaTime;
 				if (timeCounter >= 2)
 				{
@@ -263,7 +270,12 @@ public class Ent : AnimateEntity {
 		}
 	}
 
-	void spawnShrubs(bool b)
+    protected override void KnockBack(GameObject other)
+    {
+        //Elle ne fait rien pour désactiver le knockback sur le boss
+    }
+
+    void spawnShrubs(bool b)
 	{
 		for (int i = 0; i < shrubs.Length; i++)
 		{

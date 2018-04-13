@@ -16,13 +16,6 @@ public class SoundManager : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown("f"))
-        {
-            instance.GetComponent<AudioSource>().Stop();
-        }		
-	}
 
     public static AudioClip getSound(string name)
     {
@@ -36,7 +29,7 @@ public class SoundManager : MonoBehaviour {
         return new AudioClip();
     }
 
-    public static void playSound(string name) {
+    public static void playSound(string name) { 
         instance.GetComponent<AudioSource>().PlayOneShot(getSound(name));
     }
 }

@@ -21,19 +21,21 @@ public class GlobalHealthManager : MonoBehaviour {
 
     private int numb;
     private AudioSource audioSource;
-
+    
     // Use this for initialization
     void Start () {
+         
         panel.gameObject.SetActive(false);
         gameOver.gameObject.SetActive(false);
         quite.gameObject.SetActive(false);
         replay.gameObject.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         numb = 0;
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         globalHealthNumber.text = "x" +globalHealth;
         
         var butSelect = UnityEngine.Input.GetButtonDown("Keyboard 2 start"); // Bouton W pour selectionner

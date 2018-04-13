@@ -11,8 +11,6 @@ public class Character : AnimateEntity
     public PlayerUI UI;
 
 
-    private Rigidbody2D rigidb;
-    private Animator animator;
     private float primaryTimer;
     private float secondaryTimer;
     private bool isCarrying = false;
@@ -26,18 +24,28 @@ public class Character : AnimateEntity
     private float blinkTimeCount;
     private GlobalHealthManager globalHealthManager;
     private string inputSetName;
-    private Color[] tabcolor = { Color.cyan, Color.yellow, Color.green, Color.blue };
+    private Color[] tabcolor = { Color.red, Color.yellow, Color.green, Color.blue };
     public static int comptCouleur = 0;
     public Sprite[] tabPlayerNumber; // J1, J2, ...
 
+    // Menu Pause 
+    public GameObject panelPause;
+    public GameObject pause;
+    public GameObject quitePause;
+    public GameObject replayPause;
+
+    public Sprite notSelectedQuitePause;
+    public Sprite selectedQuitePause;
+    public Sprite notSelectedReplayPause;
+    public Sprite selectedReplayPause;
+
     protected override void Start()
     {
+        Debug.Log("je suis dans le start de Character");
         globalHealthManager = FindObjectOfType<GlobalHealthManager>();
         base.Start();
         inventory = new InanimateEntity[2];
         ground = new ArrayList();
-        rigidb = this.GetComponent<Rigidbody2D>();
-        animator = this.GetComponent<Animator>();
         deathTime = 3;
         deathTimeCount = 0;
         startLife = health;
@@ -52,6 +60,10 @@ public class Character : AnimateEntity
         tbis.GetComponent<SpriteRenderer>().sprite = tabPlayerNumber[comptCouleur];
         tbis.GetComponent<SpriteRenderer>().color = tabcolor[comptCouleur];
         comptCouleur++;
+        Transform tcible = transform.Find("Cible");
+        tcible.GetComponent<SpriteRenderer>().enabled = false;
+
+
     }
 
     public override void ReceiveHealt(int value, GameObject other)
@@ -146,6 +158,12 @@ public class Character : AnimateEntity
         {
             
 
+            if (Input.GetKeyDown("6"))
+            {
+                menuPause(); 
+            }
+
+
             //ramassage puis lancer
             if (Input.GetButtonDown(inputSetName + "interact"))
             {
@@ -185,10 +203,14 @@ public class Character : AnimateEntity
             }
             if (Input.GetButtonUp(inputSetName + "secondary"))
             {
-                if(secondaryTimer < 0.15 && inventory[1].GetComponent<Potions>()!=null)
+                if (inventory[1] != null)
                 {
-                    inventory[1].Use(this);
+                    if (secondaryTimer < 0.15 && inventory[1].GetComponent<Potions>() != null)
+                    {
+                        inventory[1].Use(this);
+                    }
                 }
+
                 //else if (secondaryTimer > 2.0 && inventory[1].GetComponent<Potions>() != null)
                 //{
                 //    Carry(inventory[1]);
@@ -477,16 +499,24 @@ public class Character : AnimateEntity
 
     public IEnumerator targetColor()
     {
-        Transform t = transform.Find("Ground circle");
-        var colorPlayer = t.GetComponent<SpriteRenderer>().color;
-        t.GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(0.5f);
-        t.GetComponent<SpriteRenderer>().color = colorPlayer;
+        Transform t = transform.Find("Cible");
+        t.GetComponent<SpriteRenderer>().enabled = true;
+        Debug.Log("je suis dans target color"); 
+        yield return new WaitForSeconds(2f);
+        t.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void isTarget()
     {
         StartCoroutine("targetColor");
+    }
+
+    public void menuPause()
+    {
+        panelPause.gameObject.SetActive(true);
+        pause.gameObject.SetActive(true);
+        quitePause.gameObject.SetActive(true);
+        replayPause.gameObject.SetActive(true);
     }
 
 }

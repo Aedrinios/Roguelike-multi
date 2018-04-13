@@ -8,7 +8,6 @@ public class Shrub : AnimateEntity {
 
     private int startHealth;
     private float timeCounter;
-    private AudioSource audioSource;
     private bool done = false;
     private ParticleSystem particleSystem;
 
@@ -26,7 +25,6 @@ public class Shrub : AnimateEntity {
         setActivePhase(1);
         particleSystem = GetComponent<ParticleSystem>();
 
-        audioSource = GetComponent<AudioSource>();
         
         timeCounter = timeBetweenHeals;
     }
@@ -107,6 +105,11 @@ public class Shrub : AnimateEntity {
     public void stopHealing()
     {
         particleSystem.Stop();
+    }
+
+    protected override void KnockBack(GameObject other)
+    {
+        
     }
 
     void Die()

@@ -28,7 +28,12 @@ public class SelectCharState : GameState
         base.Begin();
         SetDummies();
         foreach (GameObject dummy in dummies)
-        dummy.SetActive(true);
+        {
+            if (dummy != null)
+            {
+                dummy.SetActive(true);
+            }
+        }
         SetupControllerDelivery();
         controllerDelivery.enabled = true;
     }
