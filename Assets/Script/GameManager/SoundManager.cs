@@ -13,8 +13,9 @@ public class SoundManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-		
-	}
+       
+
+    }
 	
 
     public static AudioClip getSound(string name)
