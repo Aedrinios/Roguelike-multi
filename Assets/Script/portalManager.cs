@@ -40,10 +40,8 @@ public class portalManager : MonoBehaviour {
             if (players.Count == GameManager.instance.players.Count)
             {
                 Character.comptCouleur = 0;
-                Debug.Log(creditPrefab);
                 // Afficher le crédit 
                 GameObject panelCredit = Instantiate(creditPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-                //Instantiate(enemyPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                 panelCredit.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
                 
             }
