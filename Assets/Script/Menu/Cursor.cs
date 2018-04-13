@@ -18,6 +18,7 @@ public class Cursor : MonoBehaviour {
     public Sprite notSelectedCredit;
     public Sprite selectedCredit;
     public bool isCredit;
+    public bool endOfGame;
 
     private int numb; // 0 -> play, 1 -> quite
     private int numbBis; // 0 -> play, 1 -> quite
@@ -29,7 +30,7 @@ public class Cursor : MonoBehaviour {
         insert = GameObject.Find("Insert");
         quite = GameObject.Find("Quite");
         credit = GameObject.Find("Credit");
-        panelCredit.gameObject.SetActive(false);
+        panelCredit.gameObject.SetActive(endOfGame);
         numb = 0;
     }
 	
@@ -68,7 +69,13 @@ public class Cursor : MonoBehaviour {
                 Debug.Log("dans is credit");
                 Debug.Log(numb);
 
-                // quitte les credits
+                // Quitte les crédit à la fin du jeu (ramene au menu)
+                if (endOfGame && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4))
+                {
+                    SceneManager.LoadScene("Menu");
+                }
+
+                // quitte les credits dans le menu 
                 if ((butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4)) 
                 {
                     panelCredit.gameObject.SetActive(false);

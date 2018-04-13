@@ -16,8 +16,11 @@ public class PauseManager : MonoBehaviour {
     public Sprite selectedReplayPause;
 
     private int numb;
-    private bool isActif; 
+    private bool isActif;
 
+    // TEST JUSTINE
+    public GameObject credit;
+    // FIN TEST
 
     // Use this for initialization
     void Start () {
@@ -26,7 +29,6 @@ public class PauseManager : MonoBehaviour {
         pause.gameObject.SetActive(false);
         quitePause.gameObject.SetActive(false);
         replayPause.gameObject.SetActive(false);
-
     }
 	
 	// Update is called once per frame
@@ -37,10 +39,10 @@ public class PauseManager : MonoBehaviour {
         var butSelect3Manette = UnityEngine.Input.GetButtonDown("Joystick 3 select"); // Bouton select manette
         var butSelectManette = UnityEngine.Input.GetButtonDown("Joystick 4 select"); // Bouton select manette
 
-        var butStart1Manette = UnityEngine.Input.GetButtonDown("Joystick 1 select"); // Bouton start manette
-        var butStart2Manette = UnityEngine.Input.GetButtonDown("Joystick 2 select"); // Bouton start manette
-        var butStart3Manette = UnityEngine.Input.GetButtonDown("Joystick 3 select"); // Bouton start manette
-        var butStart4Manette = UnityEngine.Input.GetButtonDown("Joystick 4 select"); // Bouton start manette
+        var butStart1Manette = UnityEngine.Input.GetButtonDown("Joystick 1 start"); // Bouton start manette
+        var butStart2Manette = UnityEngine.Input.GetButtonDown("Joystick 2 start"); // Bouton start manette
+        var butStart3Manette = UnityEngine.Input.GetButtonDown("Joystick 3 start"); // Bouton start manette
+        var butStart4Manette = UnityEngine.Input.GetButtonDown("Joystick 4 start"); // Bouton start manette
 
         var butSelectClavier1 = UnityEngine.Input.GetButtonDown("Keyboard 1 select"); // Space bar pour selectionner
         var butSelectClavier2 = UnityEngine.Input.GetButtonDown("Keyboard 2 select"); // Space bar pour selectionner
