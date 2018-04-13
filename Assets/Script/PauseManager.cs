@@ -44,11 +44,22 @@ public class PauseManager : MonoBehaviour {
         var butStart3Manette = UnityEngine.Input.GetButtonDown("Joystick 3 start"); // Bouton start manette
         var butStart4Manette = UnityEngine.Input.GetButtonDown("Joystick 4 start"); // Bouton start manette
 
-        var butSelectClavier1 = UnityEngine.Input.GetButtonDown("Keyboard 1 select"); // Space bar pour selectionner
-        var butSelectClavier2 = UnityEngine.Input.GetButtonDown("Keyboard 2 select"); // Space bar pour selectionner
+        var butSelectClavier1 = UnityEngine.Input.GetButtonDown("Keyboard 1 select"); // Space bar pour mettre en pause
+        var butSelectClavier2 = UnityEngine.Input.GetButtonDown("Keyboard 2 select"); // Space bar pour mettre en pauseS
 
         var butStartClavier1 = UnityEngine.Input.GetButtonDown("Keyboard 1 start"); // Space bar pour selectionner
         var butStartClavier2 = UnityEngine.Input.GetButtonDown("Keyboard 2 start"); // Space bar pour selectionner
+
+        // Boutton déplacement (plus fluide)
+        var butHaut1 = UnityEngine.Input.GetKeyDown(KeyCode.UpArrow); // Bouton haut 
+        var butHaut2 = UnityEngine.Input.GetKeyDown(KeyCode.Z); // Bouton haut 
+        var butBas1 = UnityEngine.Input.GetKeyDown(KeyCode.DownArrow); // Bouton Bas
+        var butBas2 = UnityEngine.Input.GetKeyDown(KeyCode.S); // Bouton Bas
+        // Axe de déplacement manette 
+        var JoystickAxisY1 = UnityEngine.Input.GetAxis("Joystick 1 Y axis"); // KeyBord haut/bas 
+        var JoystickAxisY2 = UnityEngine.Input.GetAxis("Joystick 2 Y axis"); // KeyBord haut/bas 
+        var JoystickAxisY3 = UnityEngine.Input.GetAxis("Joystick 3 Y axis"); // KeyBord haut/bas 
+        var JoystickAxisY4 = UnityEngine.Input.GetAxis("Joystick 4 Y axis"); // KeyBord haut/bas 
 
         if (butSelect1Manette || butSelect2Manette || butSelect3Manette || butSelectManette || butSelectClavier1 || butSelectClavier2)
         {
@@ -57,12 +68,14 @@ public class PauseManager : MonoBehaviour {
 
         if (isActif==true)
         {
-            if (Input.GetKeyDown(KeyCode.Z)) // haut
+            // haut
+            if (butHaut1 || butHaut2|| JoystickAxisY1 > 0 || JoystickAxisY2 > 0 || JoystickAxisY3 > 0 || JoystickAxisY4 > 0)
             {
                 numb = 0;
                 changeSprite(numb);
             }
-            if (Input.GetKeyDown(KeyCode.S)) // bas
+            // bas 
+            if (butBas1 || butBas2 || JoystickAxisY1 < 0 || JoystickAxisY2 < 0 || JoystickAxisY3 < 0 || JoystickAxisY4 < 0)
             {
                 numb = 1;
                 changeSprite(numb);

@@ -11,7 +11,7 @@ public class WeaponDamagingPart : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
-        
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.isTrigger)
@@ -21,11 +21,9 @@ public class WeaponDamagingPart : MonoBehaviour
                 GameObject hit = other.gameObject;
                 if (hit != weaponPart.Holder.gameObject)
                 {
-                    Debug.Log(gameObject.name + " : hit for " + weaponPart.Holder.GetAttack() * weaponPart.GetDamage());
                     other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), weaponPart.Holder.gameObject);
                     if (other.gameObject.GetComponent<AnimateEntity>().getCurrentShield()!=null)
                     {
-                       Debug.Log("je suis dans le if"); 
                        other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(0, other.gameObject); 
                        SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER                  
                     }
@@ -49,9 +47,38 @@ public class WeaponDamagingPart : MonoBehaviour
                                 SoundManager.playSound("armeEpee"); // BOOMERANG
                                 break;
                         }
+                    }  
+                }
+            }
+            if(other.tag == "Player" && weaponPart.Holder != other.gameObject.GetComponent<AnimateEntity>())
+            {
+                if (other.gameObject.GetComponent<AnimateEntity>().getCurrentShield() != null)
+                {
+                    other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(0, other.gameObject);
+                    SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER        
+                }
+                else
+                {
+                    switch (transform.parent.name)
+                    {
+                        case ("Sword"):
+                            SoundManager.playSound("epeeSound"); // EPEE
+                            StartCoroutine(other.gameObject.GetComponent<AnimateEntity>().Slow(0.8f, 1));
+                            break;
 
+                        case ("Lance"):
+                            SoundManager.playSound("lanceSound"); // LANCE
+                            StartCoroutine(other.gameObject.GetComponent<AnimateEntity>().Stun(1));
+                            break;
+
+                        case ("Stick"):
+                            SoundManager.playSound("stickSound"); // BATON 
+                            break;
+
+                        case ("Boomerang"):
+                            SoundManager.playSound("armeEpee"); // BOOMERANG
+                            break;
                     }
-                   
                 }
             }
         }

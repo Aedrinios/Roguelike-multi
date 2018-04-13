@@ -2,50 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boomerang : InanimateEntity {
+public class Boomerang : Weapon {
 
-    public float pushPower;
-    public Animator animator;
-    public CircleCollider2D rigid;
     public int isUsed; // 0 : pas utilisé / 1 : boomerang lancé / 2 : boomerang reviens;
     public Vector3 dir;
     public Vector3 previousDir;
-    public Character owner;
 
-    private void Start()
+    protected override void Update()
     {
-        damage = 3;
+        if (holder == null)
+            base.Update();
     }
 
     public override void Use(Character user)
     {
-        if(isUsed==0) // lance le boomerang
+        if (isUsed == 0) // lance le boomerang
         {
             isUsed = 1;
             dir = user.direction;
-            if (dir==Vector3.zero) // pour eviter d'avoir un boomerang qui tourne sur soi.
+            if (dir == Vector3.zero) // pour eviter d'avoir un boomerang qui tourne sur soi.
             {
                 dir = previousDir;
             }
             LaunchAnimation();
-           // holder.stun = true; // à commenter quand je changerai le mouvement du boomerang
-            gameObject.GetComponent<Rigidbody2D>().AddForce(dir*15, ForceMode2D.Impulse);
+            holder.stun = true;
+            gameObject.GetComponent<Rigidbody2D>().AddForce(dir * 50, ForceMode2D.Impulse);
             StartCoroutine(Wait(0.5f));
             previousDir = dir;
         }
     }
-
-    public override void Equip(Character user)
-    {
-        owner = user;
-        isEquipped = true;
-        this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        pickupCollider.enabled = false;
-        this.transform.parent = user.transform;
-        transform.localPosition = Vector3.zero;
-        holder = user;
-    }
-
 
     private void CopyUserRotation(Character user)
     {   //Useless pour le moment
@@ -57,25 +42,16 @@ public class Boomerang : InanimateEntity {
         if (!animator.GetBool("attack"))
         {
             GetComponentInChildren<SpriteRenderer>().enabled = true;
-            GetComponent<CircleCollider2D>().enabled = true;
             animator.SetBool("attack",true);
             transform.localPosition = Vector3.zero;
         }
     }
 
-    public void EndAnim()
+    public override void EndAnim()
     {
+        base.EndAnim();
         animator.SetBool("attack", false);
-        GetComponentInChildren<SpriteRenderer>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
-        //holder.stun = false;
-        Debug.Log("wut");
-    }
-
-    public void OnCharacterHit(Character other)
-    {
-        Vector2 push = (Vector2)(other.transform.position - holder.transform.position).normalized;
-        other.GetComponent<Rigidbody2D>().AddForce(push * pushPower);
     }
 
     IEnumerator Wait(float tps)
@@ -86,15 +62,14 @@ public class Boomerang : InanimateEntity {
             Debug.Log("blub");
             isUsed = 0;
             EndAnim();
-            //holder.stun = false;
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            Equip(holder.GetComponent<Character>());
+            //Equip(holder.GetComponent<Character>());
         }
         if (isUsed==1) // lance le retour du boomerang
         {
-            dir = (owner.transform.position - gameObject.transform.position).normalized;
+            dir = (holder.transform.position - gameObject.transform.position).normalized;
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(dir * 15f, ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(dir * 50f, ForceMode2D.Impulse);
             Debug.Log("blib");
             isUsed = 2;
             StartCoroutine(Wait(0.5f));

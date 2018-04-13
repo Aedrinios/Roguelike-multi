@@ -15,15 +15,17 @@ public float pushPower;
         damage = 5;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (gameObject.GetComponent<Rigidbody2D>().velocity.sqrMagnitude < 0.1)
         {
             this.GetComponent<CircleCollider2D>().enabled = false;
+            Debug.Log("gnééééééééééééééééé");
         }
     }
 
-    public override void Use(Character user) {
+    public override void Use(Character user)
+    {
         if (!user.stun)
         {
             CopyUserRotation(user);
@@ -46,7 +48,7 @@ public float pushPower;
         }
 	}
 
-	public void EndAnim(){
+	public virtual void EndAnim(){
         for (int i = 0; i < GetComponentsInChildren<SpriteRenderer>().Length; i++)
         {
             GetComponentsInChildren<SpriteRenderer>()[i].enabled = false;
