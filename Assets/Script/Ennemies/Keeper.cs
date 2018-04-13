@@ -5,7 +5,7 @@ using UnityEngine;
 public class Keeper : AnimateEntity {
 
     public CircleCollider2D targetChoice;
-    public BoxCollider2D shield;
+    //public BoxCollider2D shield;
     public BoxCollider2D damageTaken;
     public GameObject target;
     public GameObject secondTarget;
@@ -89,7 +89,7 @@ public class Keeper : AnimateEntity {
         Debug.Log(animator.GetBool("isMoving"));
 
 
-        shield.offset = new Vector2(direction.normalized.x, direction.normalized.y);
+        /*shield.offset = new Vector2(direction.normalized.x, direction.normalized.y);
         if (direction.normalized.x < (-0.5) || direction.normalized.x > 0.5)
         {
             shield.size = new Vector2(1, 3);
@@ -97,7 +97,7 @@ public class Keeper : AnimateEntity {
         else
         {
             shield.size = new Vector2(3, 1);
-        }
+        }*/
 
     }
 

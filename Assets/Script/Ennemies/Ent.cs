@@ -27,11 +27,16 @@ public class Ent : AnimateEntity {
 	private float timeCounterSpells = 0;
 	private float timeCounter = 0;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        base.Awake();
+        startHealth = health;
+    }
+
+    // Use this for initialization
+    void Start () {
 		base.Start();
 		scaleMultiplier = 6f;
-		startHealth = health;
 		timeCounterSpells = timeBewteenSpells;
 		boxCollider = GetComponent<BoxCollider2D>();
 

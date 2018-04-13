@@ -9,7 +9,7 @@ public abstract class InanimateEntity : MonoBehaviour
     public BoxCollider2D pickupCollider;
     public Sprite thumbnail;
     [SerializeField] protected AnimateEntity holder;
-    protected int damage;
+    [SerializeField] protected int damage;
     public Vector2 currentRoom;
 
     public AnimateEntity Holder
@@ -25,7 +25,6 @@ public abstract class InanimateEntity : MonoBehaviour
         foreach (SpriteRenderer sp in gameObject.GetComponentsInChildren<SpriteRenderer>())
         {
             sp.enabled = false;
-            //Debug.Log(sp.gameObject.name);
         }
         this.GetComponentInChildren<CircleCollider2D>().enabled = false;
         pickupCollider.enabled = false;

@@ -357,6 +357,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 275c5d9513a4e06428431431ebf094fe, type: 3}
   - {fileID: 21300000, guid: 0fe2fdefc9137ff498801f4b72dddfa5, type: 3}
   - {fileID: 21300000, guid: bab05a6a2f276e24fa67fc84cc13369c, type: 3}
+  panelPause: {fileID: 1761190044743040, guid: ca1281608bd8b27448299fb6477710da, type: 2}
+  pause: {fileID: 0}
+  quitePause: {fileID: 0}
+  replayPause: {fileID: 0}
+  notSelectedQuitePause: {fileID: 0}
+  selectedQuitePause: {fileID: 0}
+  notSelectedReplayPause: {fileID: 0}
+  selectedReplayPause: {fileID: 0}
 --- !u!114 &114599580217836460
 MonoBehaviour:
   m_ObjectHideFlags: 1

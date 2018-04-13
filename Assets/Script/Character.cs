@@ -11,8 +11,6 @@ public class Character : AnimateEntity
     public PlayerUI UI;
 
 
-    private Rigidbody2D rigidb;
-    private Animator animator;
     private float primaryTimer;
     private float secondaryTimer;
     private bool isCarrying = false;
@@ -30,14 +28,24 @@ public class Character : AnimateEntity
     public static int comptCouleur = 0;
     public Sprite[] tabPlayerNumber; // J1, J2, ...
 
+    // Menu Pause 
+    public GameObject panelPause;
+    public GameObject pause;
+    public GameObject quitePause;
+    public GameObject replayPause;
+
+    public Sprite notSelectedQuitePause;
+    public Sprite selectedQuitePause;
+    public Sprite notSelectedReplayPause;
+    public Sprite selectedReplayPause;
+
     protected override void Start()
     {
+        Debug.Log("je suis dans le start de Character");
         globalHealthManager = FindObjectOfType<GlobalHealthManager>();
         base.Start();
         inventory = new InanimateEntity[2];
         ground = new ArrayList();
-        rigidb = this.GetComponent<Rigidbody2D>();
-        animator = this.GetComponent<Animator>();
         deathTime = 3;
         deathTimeCount = 0;
         startLife = health;
@@ -54,6 +62,8 @@ public class Character : AnimateEntity
         comptCouleur++;
         Transform tcible = transform.Find("Cible");
         tcible.GetComponent<SpriteRenderer>().enabled = false;
+
+
     }
 
     public override void ReceiveHealt(int value, GameObject other)
@@ -125,28 +135,34 @@ public class Character : AnimateEntity
         {
             Die();
         }
+        if (Input.GetKeyDown("8"))
+        {
+            isTarget();
+        }
 
+        if (Input.GetKeyDown("3"))
+        {
+            setCanBeDamaged(false);
+        }
+
+        if (Input.GetKeyDown("5"))
+        {
+            setCanBeDamaged(true);
+        }
+
+        if (Input.GetKeyDown("4"))
+        {
+            ReceiveHit(startLife, gameObject);
+        }
         if (!stun)
         {
-            if (Input.GetKeyDown("8"))
+            
+
+            if (Input.GetKeyDown("6"))
             {
-                isTarget();
+                menuPause(); 
             }
 
-            if (Input.GetKeyDown("3"))
-            {
-                setCanBeDamaged(false);
-            }
-
-            if (Input.GetKeyDown("5"))
-            {
-                setCanBeDamaged(true);
-            }
-
-            if (Input.GetKeyDown("4"))
-            {
-                ReceiveHit(startLife, gameObject);
-            }
 
             //ramassage puis lancer
             if (Input.GetButtonDown(inputSetName + "interact"))
@@ -187,10 +203,14 @@ public class Character : AnimateEntity
             }
             if (Input.GetButtonUp(inputSetName + "secondary"))
             {
-                if(secondaryTimer < 0.15 && inventory[1].GetComponent<Potions>()!=null)
+                if (inventory[1] != null)
                 {
-                    inventory[1].Use(this);
+                    if (secondaryTimer < 0.15 && inventory[1].GetComponent<Potions>() != null)
+                    {
+                        inventory[1].Use(this);
+                    }
                 }
+
                 //else if (secondaryTimer > 2.0 && inventory[1].GetComponent<Potions>() != null)
                 //{
                 //    Carry(inventory[1]);
@@ -489,6 +509,14 @@ public class Character : AnimateEntity
     public void isTarget()
     {
         StartCoroutine("targetColor");
+    }
+
+    public void menuPause()
+    {
+        panelPause.gameObject.SetActive(true);
+        pause.gameObject.SetActive(true);
+        quitePause.gameObject.SetActive(true);
+        replayPause.gameObject.SetActive(true);
     }
 
 }
