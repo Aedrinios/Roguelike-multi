@@ -9,7 +9,7 @@ public class Bow : Weapon {
 
     public override void Use(Character user)
     {
-        if (canShoot)
+        if (canShoot && !user.stun)
         {
             base.Use(user);
             canShoot = false;
@@ -19,6 +19,7 @@ public class Bow : Weapon {
             go.GetComponent<Rigidbody2D>().AddForce(direction, ForceMode2D.Impulse);
             go.GetComponent<Arrow>().user = gameObject.GetComponent<AnimateEntity>();
             float sign = (direction.y < Vector3.right.y) ? 1.0f : -1.0f;
+            go.GetComponent<InanimateEntity>().Holder = user;
             go.transform.rotation = Quaternion.Euler(0, 0, 270 - Vector3.Angle(Vector3.right, direction) * sign);
             go.GetComponent<Rigidbody2D>().velocity = toTarget * 15;
             StartCoroutine("ResetTimer");

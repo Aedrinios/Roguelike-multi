@@ -11,13 +11,19 @@ public class RootManager : AnimateEntity {
 
 	// Use this for initialization
 	void Start () {
-        base.Start();
-        ent = FindObjectOfType<Ent>();
-		SoundManager.playSound("attackRootSound");
+         base.Start();
+         ent = FindObjectOfType<Ent>();
+		 SoundManager.playSound("attackRootSound");
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public override void ReceiveHit(int value, GameObject other)
+    {
+        if(other!= target)
+            base.ReceiveHit(value, other);
+    }
+
+    // Update is called once per frame
+    void Update () {
         Debug.Log("ROOT HEALTH : " + health);
 
         timeCounter += Time.deltaTime;

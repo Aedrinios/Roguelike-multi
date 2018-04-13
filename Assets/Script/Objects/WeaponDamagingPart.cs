@@ -24,7 +24,7 @@ public class WeaponDamagingPart : MonoBehaviour
                     other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(weaponPart.Holder.GetAttack() * weaponPart.GetDamage(), weaponPart.Holder.gameObject);
                     if (other.gameObject.GetComponent<AnimateEntity>().getCurrentShield()!=null)
                     {
-                       other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(0, other.gameObject); 
+                       other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(0, weaponPart.Holder.gameObject); 
                        SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER                  
                     }
                     else

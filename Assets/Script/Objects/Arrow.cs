@@ -20,12 +20,12 @@ public class Arrow : InanimateEntity {
                 case ("Player"):
                     if (collision.tag == "Player")
                     {
-                        collision.gameObject.GetComponent<Character>().ReceiveHit(0, collision.gameObject);
+                        collision.gameObject.GetComponent<Character>().ReceiveHit(0, Holder.gameObject);
                         Destroy(gameObject);
                     }
                     else if (collision.tag == "enemy")
                     {
-                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(5, collision.gameObject);
+                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(5, Holder.gameObject);
                         Destroy(gameObject);
                     }
                     else if (collision.tag=="Wall")
@@ -36,12 +36,12 @@ public class Arrow : InanimateEntity {
                 case ("enemy"):
                     if (collision.tag == "Player")
                     {
-                        collision.gameObject.GetComponent<Character>().ReceiveHit(3, collision.gameObject);
+                        collision.gameObject.GetComponent<Character>().ReceiveHit(3, Holder.gameObject);
                         Destroy(gameObject);
                     }
                     else if (collision.tag == "enemy")
                     {
-                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(2, collision.gameObject);
+                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(2, Holder.gameObject);
                         Destroy(gameObject);
                     }
                     else if (collision.tag == "Wall")

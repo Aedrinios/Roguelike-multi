@@ -47,8 +47,8 @@ public class Keeper : AnimateEntity {
             direction = target.transform.position - gameObject.transform.position;
             gameObject.GetComponent<CircleCollider2D>().radius = direction.magnitude;
             Move(this.direction);
-
         }
+
         else
         {
             Idle();
