@@ -15,9 +15,10 @@ public class Ent : AnimateEntity {
 	private float opacity = 255;
 	private bool done = false;
 	private BoxCollider2D boxCollider;
+    
 
-	//variables d'états
-	private bool isPhase1;
+    //variables d'états
+    private bool isPhase1;
 	private bool isPhase2;
 	private bool isPhase3;
 	private bool deadSound = false;
@@ -35,7 +36,9 @@ public class Ent : AnimateEntity {
 
     // Use this for initialization
     void Start () {
-		base.Start();
+        musiqueManager.stopSound("GloomyForestWav");
+        musiqueManager.playSound("bossTheme");
+        base.Start();
 		scaleMultiplier = 6f;
 		timeCounterSpells = timeBewteenSpells;
 		boxCollider = GetComponent<BoxCollider2D>();
@@ -118,6 +121,7 @@ public class Ent : AnimateEntity {
 					if (!done)
 					{
 						Instantiate(portal, transform.position, Quaternion.identity);
+                        musiqueManager.stopSound("bossTheme");
                         SoundManager.playSound("musique_victoire");
                         done = true;
                         this.enabled = false;

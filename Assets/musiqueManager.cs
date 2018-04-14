@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class musiqueManager : MonoBehaviour {
-
+    public AudioSource audioS; 
     public AudioClip[] sounds;
     public static musiqueManager instance;
     
     // Use this for initialization
     void Start () {
-        musiqueManager.playSound("GloomyForest");
+       playSound("GloomyForestWav");
     }
 
     void Awake()
@@ -31,6 +31,15 @@ public class musiqueManager : MonoBehaviour {
 
     public static void playSound(string name)
     {
+        AudioClip clip = getSound(name);
+        instance.GetComponent<AudioSource>().clip = clip;
         instance.GetComponent<AudioSource>().Play();
+    }
+
+    public static void stopSound(string name)
+    {
+        AudioClip clip = getSound(name);
+        instance.GetComponent<AudioSource>().clip = clip;
+        instance.GetComponent<AudioSource>().Stop();
     }
 }
