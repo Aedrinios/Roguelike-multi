@@ -72,7 +72,8 @@ public class WeaponDamagingPart : MonoBehaviour
                             break;
 
                         case ("Stick"):
-                            SoundManager.playSound("stickSound"); // BATON 
+                            SoundManager.playSound("stickSound"); // BATON
+							other.gameObject.GetComponent<AnimateEntity>().FriendlyKnockBack(weaponPart.gameObject);
                             break;
 
                         case ("Boomerang"):

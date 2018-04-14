@@ -195,6 +195,13 @@ public abstract class AnimateEntity : InanimateEntity
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
+	public virtual void FriendlyKnockBack(GameObject other)
+	{
+		Vector3 knockBackDirection = (transform.position - other.transform.position).normalized;
+		transform.position += knockBackDirection * (int)knockbackDistances.low;
+		transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+	}
+
     public ProtectionShield getCurrentShield()
     {
         return currentShield; 
