@@ -888,6 +888,9 @@ MonoBehaviour:
   - {fileID: 1336898009205526}
   - {fileID: 1554676346096164}
   SpawnerInanimateEntities: []
+  StrenghEnemies: 0500000005000000050000000500000005000000
+  maxPointsSpawn: 30
+  nbPoints: 0
 --- !u!114 &114391260416851218
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -579,6 +579,9 @@ MonoBehaviour:
   - {fileID: 1441331981185024}
   - {fileID: 1979173614382754}
   - {fileID: 1829371506927948}
+  StrenghEnemies: 05000000050000000500000005000000050000000500000005000000
+  maxPointsSpawn: 30
+  nbPoints: 0
 --- !u!114 &114666681914058986
 MonoBehaviour:
   m_ObjectHideFlags: 1

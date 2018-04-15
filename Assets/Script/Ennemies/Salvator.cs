@@ -104,7 +104,7 @@ public class Salvator : AnimateEntity {
             }
 
             if (ally.GetComponent<AnimateEntity>().getCanBeDamaged()) { 
-                SoundManager.playSound("putShield");
+                //SoundManager.playSound("putShield");
                 animator.SetBool("isAttacking", true);
 		        yield return new WaitForSeconds (0.5f);
 		        ally.GetComponent<AnimateEntity>().setCanBeDamaged(false);
