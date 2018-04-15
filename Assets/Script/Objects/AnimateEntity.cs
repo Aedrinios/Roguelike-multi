@@ -11,7 +11,7 @@ public abstract class AnimateEntity : InanimateEntity
     protected Timer invincibility;
     public int health = 10;
     public int maxHP=10;
-    public float speed = 10;
+    public float speed;
     public int attack = 2;
     public ProtectionShield protectionShield;
     protected bool canBeDamaged = true;
@@ -19,6 +19,7 @@ public abstract class AnimateEntity : InanimateEntity
     protected bool isDead = false;
     [HideInInspector]
     public bool stun = false;
+    public bool slow = false;
     public float timeOfInvincibility;
     protected Rigidbody2D rigidb;
     protected Animator animator;
@@ -65,8 +66,22 @@ public abstract class AnimateEntity : InanimateEntity
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         stun = true;
+        gameObject.GetComponent<AnimateEntity>().stun = true;
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         yield return new WaitForSeconds(time);
         stun = false;
+        gameObject.GetComponent<AnimateEntity>().stun = false;
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public virtual IEnumerator Slow(float pourcentage, float time)
+    {
+        Debug.Log("SLOW");
+        float baseSpeed = speed;
+        speed *= 1-pourcentage;
+        yield return new WaitForSeconds(time);
+        speed = baseSpeed;
     }
 
     public override void Use(Character user)
@@ -133,18 +148,15 @@ public abstract class AnimateEntity : InanimateEntity
 
         if (canBeDamaged &&!isDead)
         {
-            //Debug.Log("degats : " +value);
             if (value != 0)
                 isDamaged();
             //reduce health
             health -= value;
             KnockBack(other);
 
-            //Debug.Log(other.name);
         }
         if(!canBeDamaged && !isDead)
         {
-            //Debug.Log("je suis dans la boucle"); 
             SoundManager.playSound("shieldSound2"); //BRUIT DE BOUCLIER     
         }
         
