@@ -21,7 +21,7 @@ public class EffectZone : MonoBehaviour {
 		
 	}
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         power= potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
         if (other.tag == "enemy" || other.tag == "Player")
