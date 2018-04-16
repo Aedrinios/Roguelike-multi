@@ -31,6 +31,7 @@ public abstract class AnimateEntity : InanimateEntity
     protected SpriteRenderer spriteRenderer;
 
     private ProtectionShield currentShield=null;
+    private bool isNotSlowed = false;
 
     protected virtual void Awake()
     {
@@ -78,11 +79,16 @@ public abstract class AnimateEntity : InanimateEntity
 
     public virtual IEnumerator Slow(float pourcentage, float time)
     {
-        Debug.Log("SLOW");
-        float baseSpeed = speed;
-        speed *= 1-pourcentage;
-        yield return new WaitForSeconds(time);
-        speed = baseSpeed;
+        if (!isNotSlowed)
+        {
+            isNotSlowed = true;
+            Debug.Log("SLOW");
+            float baseSpeed = speed;
+            speed *= 1 - pourcentage;
+            yield return new WaitForSeconds(time);
+            speed = baseSpeed;
+            isNotSlowed = false;
+        }
     }
 
     public override void Use(Character user)
