@@ -1002,7 +1002,7 @@ MonoBehaviour:
     type: 2}
   stun: 0
   slow: 0
-  timeOfInvincibility: 0.3
+  timeOfInvincibility: 0.1
   direction: {x: 0, y: 0, z: 0}
   shrubs:
   - {fileID: 114648687017332178}

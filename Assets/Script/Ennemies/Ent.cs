@@ -104,7 +104,7 @@ public class Ent : AnimateEntity {
 		//3ème phase : Les shrubs sont morts
 		else if (isPhase3)
 		{
-			castRandomSpellOnRandomTarget(2);
+			castRandomSpellOnRandomTarget(3);
 
 			if (health<=0)
 			{
