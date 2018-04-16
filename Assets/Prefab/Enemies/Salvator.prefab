@@ -166,13 +166,17 @@ MonoBehaviour:
   pickupCollider: {fileID: 61415598181625934}
   thumbnail: {fileID: 0}
   holder: {fileID: 0}
+  damage: 0
+  currentRoom: {x: 0, y: 0}
   health: 10
-  speed: 10
+  maxHP: 10
+  speed: 5
   attack: 2
   protectionShield: {fileID: 114697878298898470, guid: c162242738a3c2746960075c097a19f1,
     type: 2}
   stun: 0
-  timeOfInvincibility: 0
+  slow: 0
+  timeOfInvincibility: 0.5
   direction: {x: 0, y: 0, z: 0}
   targetChoice: {fileID: 0}
   target: {fileID: 0}
@@ -182,6 +186,8 @@ MonoBehaviour:
   onSummoner: 0
   circleColliderRadius: 0
   baseColliderRadius: 0
+  damageAudioHasPlayed: 0
+  deathAudioHasPlayed: 0
 --- !u!212 &212333346034107434
 SpriteRenderer:
   m_ObjectHideFlags: 1

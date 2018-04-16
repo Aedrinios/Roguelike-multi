@@ -13,7 +13,7 @@ public class Potions : Weapon {
     // Use this for initialization
     void Start () {
         potionManager = FindObjectOfType<PotionManager>();
-        degat = 2;
+        degat = 4;
     }
 	
 	// Update is called once per frame
@@ -74,7 +74,7 @@ public class Potions : Weapon {
 
     void powerHeal(Character user)
     {
-        user.ReceiveHealt(4, user.gameObject);   
+        user.ReceiveHealt(6, user.gameObject);   
         Debug.Log("heal fait");
     }
 

@@ -62,8 +62,6 @@ public class Character : AnimateEntity
         comptCouleur++;
         Transform tcible = transform.Find("Cible");
         tcible.GetComponent<SpriteRenderer>().enabled = false;
-
-
     }
 
     public override void ReceiveHealt(int value, GameObject other)
@@ -170,7 +168,7 @@ public class Character : AnimateEntity
                 Interract();
             }
 
-            //déséquipement arme 1
+            //déséquipement arme 1secondaryTimer
             if (Input.GetButton(inputSetName + "primary"))
             {
                 primaryTimer += Time.deltaTime;

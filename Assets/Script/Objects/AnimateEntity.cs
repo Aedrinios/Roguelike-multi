@@ -9,10 +9,10 @@ public abstract class AnimateEntity : InanimateEntity
 {
 
     protected Timer invincibility;
-    public int health = 10;
-    public int maxHP=10;
+    public int health;
+    public int maxHP;
     public float speed;
-    public int attack = 2;
+    public int attack;
     public ProtectionShield protectionShield;
     protected bool canBeDamaged = true;
     protected bool canAttack = true;
@@ -39,6 +39,7 @@ public abstract class AnimateEntity : InanimateEntity
 
     protected virtual void Start()
     {
+        maxHP = health;
         invincibility = new Timer(timeOfInvincibility, true);
         rigidb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -194,6 +195,13 @@ public abstract class AnimateEntity : InanimateEntity
         transform.position += knockBackDirection * (int)knockbackDistances.low;
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
+
+	public virtual void FriendlyKnockBack(GameObject other)
+	{
+		Vector3 knockBackDirection = (transform.position - other.transform.position).normalized;
+		transform.position += knockBackDirection * (int)knockbackDistances.low;
+		transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+	}
 
     public ProtectionShield getCurrentShield()
     {

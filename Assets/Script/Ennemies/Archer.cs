@@ -24,9 +24,6 @@ public class Archer : AnimateEntity
     protected override void  Start()
     {
         base.Start();
-        speed = 10;
-        attack = 2;
-        health = 10;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         baseColliderRadius=circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
         invincibility = new Timer(timeOfInvincibility, true);
@@ -61,7 +58,7 @@ public class Archer : AnimateEntity
 				//Idle ();
 				if (shootTimer <= 0) {
 					Idle ();
-					shootTimer = 3;
+					shootTimer = 2;
                     StartCoroutine("Shoot");
 				}      
 			}
@@ -110,6 +107,7 @@ public class Archer : AnimateEntity
         Vector3 toTarget = direction.normalized;
         GameObject go= Instantiate(arrow, gameObject.transform.position+toTarget, Quaternion.identity,transform);
         go.GetComponent<Arrow>().user = gameObject.GetComponent<AnimateEntity>();
+        go.GetComponent<Arrow>().Holder = gameObject.GetComponent<AnimateEntity>();
         float sign = (direction.y < Vector3.right.y) ? 1.0f : -1.0f;
         go.transform.rotation=Quaternion.Euler(0,0,270-Vector3.Angle(Vector3.right,direction)*sign);
         go.GetComponent<Rigidbody2D>().velocity = toTarget*15;

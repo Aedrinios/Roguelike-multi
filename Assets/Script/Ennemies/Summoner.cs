@@ -19,13 +19,10 @@ public class Summoner : AnimateEntity
     protected override void Start()
     {
 		base.Start ();
-        speed = 3;
-        attack = 1;
-        health = 6;
+        summonTimer = 2;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         baseColliderRadius=circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
         invincibility = new Timer(timeOfInvincibility, true);
-        summonTimer = 7;
 		animator = this.GetComponent<Animator>();
         deathAudioHasPlayed = false;
         damageAudioHasPlayed = false;
@@ -102,7 +99,7 @@ public class Summoner : AnimateEntity
     public void Summon()
     {
 		
-		summonTimer = 5;
+		summonTimer = 4;
 		int no = (int)Random.Range(0, summon.Length);
         SoundManager.playSound("mageInvocation4");
         GameObject blub = Instantiate(summon[no], target.transform.position - direction / 2, Quaternion.identity);

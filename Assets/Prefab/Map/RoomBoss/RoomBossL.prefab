@@ -323,6 +323,9 @@ MonoBehaviour:
   SpawnerEntities:
   - {fileID: 1688879487007040}
   SpawnerInanimateEntities: []
+  StrenghEnemies: 01000000
+  maxPointsSpawn: 1
+  nbPoints: 0
 --- !u!212 &212311865528199442
 SpriteRenderer:
   m_ObjectHideFlags: 1

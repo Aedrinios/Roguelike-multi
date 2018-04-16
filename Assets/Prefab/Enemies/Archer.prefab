@@ -166,15 +166,17 @@ MonoBehaviour:
   pickupCollider: {fileID: 61345975012228174}
   thumbnail: {fileID: 0}
   holder: {fileID: 0}
+  damage: 0
   currentRoom: {x: 0, y: 0}
-  health: 10
-  maxHP: 10
-  speed: 10
+  health: 8
+  maxHP: 8
+  speed: 7
   attack: 2
   protectionShield: {fileID: 114697878298898470, guid: c162242738a3c2746960075c097a19f1,
     type: 2}
   stun: 0
-  timeOfInvincibility: 0
+  slow: 0
+  timeOfInvincibility: 0.7
   direction: {x: 0, y: 0, z: 0}
   targetChoice: {fileID: 58894198747420996}
   target: {fileID: 0}

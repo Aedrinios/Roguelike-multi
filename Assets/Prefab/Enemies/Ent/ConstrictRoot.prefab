@@ -120,13 +120,15 @@ MonoBehaviour:
   pickupCollider: {fileID: 0}
   thumbnail: {fileID: 0}
   holder: {fileID: 0}
+  damage: 0
   currentRoom: {x: 0, y: 0}
   health: 1
-  maxHP: 10
+  maxHP: 1
   speed: 10
   attack: 2
   protectionShield: {fileID: 0}
   stun: 0
+  slow: 0
   timeOfInvincibility: 0
   direction: {x: 0, y: 0, z: 0}
 --- !u!212 &212054841802369534

@@ -16,8 +16,11 @@ public class PauseManager : MonoBehaviour {
     public Sprite selectedReplayPause;
 
     private int numb;
-    private bool isActif; 
+    private bool isActif;
 
+    // TEST JUSTINE
+    public GameObject credit;
+    // FIN TEST
 
     // Use this for initialization
     void Start () {
@@ -26,7 +29,6 @@ public class PauseManager : MonoBehaviour {
         pause.gameObject.SetActive(false);
         quitePause.gameObject.SetActive(false);
         replayPause.gameObject.SetActive(false);
-
     }
 	
 	// Update is called once per frame

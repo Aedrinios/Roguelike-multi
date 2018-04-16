@@ -258,10 +258,12 @@ MonoBehaviour:
   pickupCollider: {fileID: 61562861659585958}
   thumbnail: {fileID: 21300000, guid: ab4921df0ee654f11ba39934b7534131, type: 3}
   holder: {fileID: 0}
+  damage: 3
+  currentRoom: {x: 0, y: 0}
   pushPower: 0
   animator: {fileID: 95539792337997306}
   rigid: {fileID: 50869987158023970}
-  armorPoints: 5
+  armorPoints: 3
 --- !u!212 &212425270120971522
 SpriteRenderer:
   m_ObjectHideFlags: 1

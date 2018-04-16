@@ -266,6 +266,7 @@ MonoBehaviour:
   notSelectedCredit: {fileID: 21300000, guid: 242159d8a46bbc940ba2e8f79610f07a, type: 3}
   selectedCredit: {fileID: 21300000, guid: 3a380d3a21675bd46bb8a7d1e8520fc3, type: 3}
   isCredit: 0
+  endOfGame: 0
   retour: {fileID: 1472274546}
 --- !u!1 &228501945
 GameObject:
@@ -283,7 +284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &228501946
 RectTransform:
   m_ObjectHideFlags: 0
@@ -464,7 +465,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5f5a7f9b221539249a783e5064d28312, type: 3}
     m_FontSize: 28
     m_FontStyle: 1
     m_BestFit: 0
@@ -475,8 +476,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.2
-  m_Text: "R\xE9alis\xE9 par :\nALMES Justine\nBOURGEOIS Hom\xE8re\nCARLIER Florine\nCLERC
+    m_LineSpacing: 1.5
+  m_Text: "R\xE9alis\xE9 par :\n\nALMES Justine\nBOURGEOIS Hom\xE8re\nCARLIER Florine\nCLERC
     Cl\xE9ment\nGAUTIER Corentin\nLACAPERE R\xE9my\nTANIER M\xE9lodie\nVEYSSIERE L\xE9o"
 --- !u!222 &734135070
 CanvasRenderer:
@@ -499,8 +500,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -47}
-  m_SizeDelta: {x: 378.2, y: 444.7}
+  m_AnchoredPosition: {x: -0.000045776003, y: -47}
+  m_SizeDelta: {x: 750.22, y: 444.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &967431109
 GameObject:
@@ -597,7 +598,7 @@ VideoPlayer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1073097931}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 4ce38ad0b40875a47b1e7b0357877a4d, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: ab12ab9900bbc28478a6bf001373e11b, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera: {fileID: 672142053}
   m_TargetTexture: {fileID: 0}
@@ -769,14 +770,14 @@ RectTransform:
   m_GameObject: {fileID: 1134221561}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -447.93726}
-  m_LocalScale: {x: 0.9998601, y: 0.9998601, z: 0.9998601}
+  m_LocalScale: {x: 1.4965097, y: 1.4674509, z: 0.9998601}
   m_Children: []
   m_Father: {fileID: 228501946}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 15.997731, y: -103}
+  m_AnchoredPosition: {x: 15.998, y: -103}
   m_SizeDelta: {x: 1.2700195, y: 0.7999878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1156239195
@@ -901,6 +902,7 @@ MonoBehaviour:
   notSelectedCredit: {fileID: 21300000, guid: 242159d8a46bbc940ba2e8f79610f07a, type: 3}
   selectedCredit: {fileID: 21300000, guid: 3a380d3a21675bd46bb8a7d1e8520fc3, type: 3}
   isCredit: 0
+  endOfGame: 0
   retour: {fileID: 1472274546}
 --- !u!212 &1427661701
 SpriteRenderer:
@@ -976,7 +978,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 109}
+  m_AnchoredPosition: {x: 0, y: 54}
   m_SizeDelta: {x: 1.2700195, y: 0.80000305}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1472274548
@@ -997,7 +999,8 @@ MonoBehaviour:
   selectedQuite: {fileID: 21300000, guid: c1808c29a44a07141bef5c64878a4a4f, type: 3}
   notSelectedCredit: {fileID: 21300000, guid: 242159d8a46bbc940ba2e8f79610f07a, type: 3}
   selectedCredit: {fileID: 21300000, guid: 3a380d3a21675bd46bb8a7d1e8520fc3, type: 3}
-  isCredit: 0
+  isCredit: 1
+  endOfGame: 0
   retour: {fileID: 1472274546}
 --- !u!212 &1472274549
 SpriteRenderer:
@@ -1248,4 +1251,5 @@ MonoBehaviour:
   notSelectedCredit: {fileID: 21300000, guid: 242159d8a46bbc940ba2e8f79610f07a, type: 3}
   selectedCredit: {fileID: 21300000, guid: 3a380d3a21675bd46bb8a7d1e8520fc3, type: 3}
   isCredit: 0
+  endOfGame: 0
   retour: {fileID: 1472274546}

@@ -561,7 +561,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1400619769504618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -75.06213, y: -73.63337, z: 0}
+  m_LocalPosition: {x: -22.192019, y: 2.195815, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4117590893418216}
@@ -827,12 +827,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availablePlayers:
-  - {fileID: 1358404660284374, guid: 4811bf37d0fb0084faebf7d6e65fc20f, type: 2}
-  - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
-  - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
-  - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
-  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
   - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
+  - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
+  - {fileID: 1358404660284374, guid: 4811bf37d0fb0084faebf7d6e65fc20f, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!114 &114042033785242800
 MonoBehaviour:
@@ -860,6 +858,9 @@ MonoBehaviour:
   - {fileID: 1150036887815250}
   - {fileID: 1426239787171150}
   SpawnerInanimateEntities: []
+  StrenghEnemies: 0500000005000000050000000500000005000000
+  maxPointsSpawn: 30
+  nbPoints: 0
 --- !u!114 &114220075510982912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -904,12 +905,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availablePlayers:
-  - {fileID: 1358404660284374, guid: 4811bf37d0fb0084faebf7d6e65fc20f, type: 2}
-  - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
-  - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
-  - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
-  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
   - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
+  - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
+  - {fileID: 1358404660284374, guid: 4811bf37d0fb0084faebf7d6e65fc20f, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!114 &114568870197795270
 MonoBehaviour:
@@ -923,12 +922,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availablePlayers:
-  - {fileID: 1358404660284374, guid: 4811bf37d0fb0084faebf7d6e65fc20f, type: 2}
-  - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
-  - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
-  - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
-  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
   - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
+  - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
+  - {fileID: 1358404660284374, guid: 4811bf37d0fb0084faebf7d6e65fc20f, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!114 &114579033321897600
 MonoBehaviour:
@@ -942,12 +939,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availablePlayers:
-  - {fileID: 1358404660284374, guid: 4811bf37d0fb0084faebf7d6e65fc20f, type: 2}
   - {fileID: 1358404660284374, guid: 1f830e78724774c5fa0c4b14038705f2, type: 2}
-  - {fileID: 1358404660284374, guid: 5510a0c09d3f845bd9e899005c5f904a, type: 2}
-  - {fileID: 1945412270941784, guid: f4f2149b0148b402b9434b5a25505c31, type: 2}
-  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
   - {fileID: 1255247613491126, guid: 4b3b42dec00983c428d7e6c8191cddbb, type: 2}
+  - {fileID: 1358404660284374, guid: 4811bf37d0fb0084faebf7d6e65fc20f, type: 2}
+  - {fileID: 1953154233682770, guid: d14d8e844a0686948a764b0a22df1aef, type: 2}
   defaultSprite: {fileID: 21300000, guid: f3c273aa3d35a42578c40023dc03f593, type: 3}
 --- !u!114 &114648762849965372
 MonoBehaviour:

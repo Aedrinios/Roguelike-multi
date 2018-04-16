@@ -21,6 +21,7 @@ public class Arrow : InanimateEntity {
                     if (collision.tag == "Player")
                     {
                         collision.gameObject.GetComponent<Character>().ReceiveHit(0, Holder.gameObject);
+                        StartCoroutine(collision.gameObject.GetComponent<AnimateEntity>().Stun(0.8f));
                         Destroy(gameObject);
                     }
                     else if (collision.tag == "enemy")
@@ -41,7 +42,8 @@ public class Arrow : InanimateEntity {
                     }
                     else if (collision.tag == "enemy")
                     {
-                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(2, Holder.gameObject);
+                        collision.gameObject.GetComponent<AnimateEntity>().ReceiveHit(1, Holder.gameObject);
+                        StartCoroutine(collision.gameObject.GetComponent<AnimateEntity>().Stun(0.4f));
                         Destroy(gameObject);
                     }
                     else if (collision.tag == "Wall")

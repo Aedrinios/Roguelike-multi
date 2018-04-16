@@ -22,9 +22,6 @@ public class Keeper : AnimateEntity {
     protected override void Start()
     {
         base.Start();
-        speed = 4;
-        attack = 3;
-        health = 20;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
         invincibility = new Timer(timeOfInvincibility, true);

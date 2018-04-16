@@ -10,10 +10,6 @@ public float pushPower;
 	[Range(0,6)]
 	public int armorPoints;
 
-    private void Start()
-    {
-        damage = 5;
-    }
 
     protected virtual void Update()
     {

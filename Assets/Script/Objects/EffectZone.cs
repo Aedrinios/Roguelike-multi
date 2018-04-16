@@ -12,7 +12,7 @@ public class EffectZone : MonoBehaviour {
     // Use this for initialization
     void Start () {
         StartCoroutine("die");
-        degat = 1;
+        degat = 3;
         potionManager = FindObjectOfType<PotionManager>();
     }
 	
@@ -21,7 +21,7 @@ public class EffectZone : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         power= potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
         if (other.tag == "enemy" || other.tag == "Player")
@@ -53,7 +53,7 @@ public class EffectZone : MonoBehaviour {
     void powerHeal(Character user)
     {
         Debug.Log("heal fait");
-        user.ReceiveHealt(1, user.gameObject);    // TO DO
+        user.ReceiveHealt(3, user.gameObject);    // TO DO
     }
 
     void powerDegats(Character user)

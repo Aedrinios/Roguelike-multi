@@ -19,9 +19,6 @@ public class Salvator : AnimateEntity {
     // Use this for initialization
     protected override void Start () {
 		base.Start ();
-        speed = 11;
-        health = 20;
-        attack = 0;
         rigidb = gameObject.GetComponent<Rigidbody2D>();
         baseColliderRadius = circleColliderRadius = gameObject.GetComponent<CircleCollider2D>().radius;
         invincibility = new Timer(timeOfInvincibility, true);
@@ -33,10 +30,7 @@ public class Salvator : AnimateEntity {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown("9"))
-        {
-            this.GetComponent<AnimateEntity>().ReceiveHit(2, gameObject);
-        }
+
         
         if (hasTarget) // player in sight
         {
@@ -59,14 +53,14 @@ public class Salvator : AnimateEntity {
         
 
         if (health <= 0)
-        {
+        {   ally.GetComponent<AnimateEntity>().setCanBeDamaged(true);
             //joue le son de mort
             if (deathAudioHasPlayed == false)
             {
                 SoundManager.playSound("salvatorDying");
                 deathAudioHasPlayed = true;
             }
-            ally.GetComponent<AnimateEntity>().setCanBeDamaged(true);
+            
         }
     }
 
@@ -104,15 +98,13 @@ public class Salvator : AnimateEntity {
             }
 
             if (ally.GetComponent<AnimateEntity>().getCanBeDamaged()) { 
-                SoundManager.playSound("putShield");
+                //SoundManager.playSound("putShield");
                 animator.SetBool("isAttacking", true);
 		        yield return new WaitForSeconds (0.5f);
 		        ally.GetComponent<AnimateEntity>().setCanBeDamaged(false);
 		        animator.SetBool ("isAttacking", false);
             }
         }
-      
-
     }
 
     public override void Move(Vector2 direction)

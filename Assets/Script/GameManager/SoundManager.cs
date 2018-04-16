@@ -7,14 +7,16 @@ public class SoundManager : MonoBehaviour {
     public AudioClip[] sounds;
     public static SoundManager instance;
 
+
     void Awake()
     {
         instance = this;
     }
     // Use this for initialization
     void Start () {
-		
-	}
+       
+
+    }
 	
 
     public static AudioClip getSound(string name)

@@ -238,7 +238,7 @@ MonoBehaviour:
   pickupCollider: {fileID: 61365117572809142}
   thumbnail: {fileID: 21300000, guid: ef80e1f3d666d40379c481088be60a59, type: 3}
   holder: {fileID: 0}
-  damage: 3
+  damage: 2
   currentRoom: {x: 0, y: 0}
   pushPower: 50
   animator: {fileID: 95555438622109090}

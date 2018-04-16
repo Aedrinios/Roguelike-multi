@@ -10,11 +10,14 @@ public class portalManager : MonoBehaviour {
     private Animator animator;
     private ArrayList players = new ArrayList();
 	private AudioSource audioSource;
-	// Use this for initialization
-	void Start () {
+    
+    public GameObject creditPrefab;
+
+    // Use this for initialization
+    void Start () {
 		animator = GetComponent<Animator>();
 		audioSource = GetComponent<AudioSource> ();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -37,7 +40,10 @@ public class portalManager : MonoBehaviour {
             if (players.Count == GameManager.instance.players.Count)
             {
                 Character.comptCouleur = 0;
-                SceneManager.LoadScene("Menu");
+                // Afficher le crédit 
+                GameObject panelCredit = Instantiate(creditPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                panelCredit.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+                
             }
         }
     }

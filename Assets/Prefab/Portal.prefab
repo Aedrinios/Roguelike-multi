@@ -178,6 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawn: 0
+  creditPrefab: {fileID: 1371268880891976, guid: 77ab0025df17e424e975daab04d47f71,
+    type: 2}
 --- !u!212 &212952198331371994
 SpriteRenderer:
   m_ObjectHideFlags: 1
