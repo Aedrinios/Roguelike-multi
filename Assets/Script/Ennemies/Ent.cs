@@ -91,7 +91,7 @@ public class Ent : AnimateEntity {
 			claimHealing();            //Les abrisseaux le soignent
 
 			//CHANGEMENT DE PHASE
-			if (health == 200)
+			if (health == 350)
 			{
 				setActivePhase(1);
 				shrubStopPlaySound();

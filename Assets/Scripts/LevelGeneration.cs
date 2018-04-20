@@ -693,7 +693,7 @@ public class LevelGeneration : MonoBehaviour
 
             Vector2 drawPos = room.gridPos;
             drawPos.x *= 30f;
-            drawPos.y *= 18.5f;          //create map obj and assign its variables
+            drawPos.y *= 25f;          //create map obj and assign its variables
 
             // Debug.Log(room.GetHashCode());
             up = room.doorTop;

@@ -93,7 +93,7 @@ public class Shrub : AnimateEntity {
             done = true;
         }
 
-        if (timeCounter >= timeBetweenHeals && transform.parent.gameObject.GetComponent<Ent>().health < 200)
+        if (timeCounter >= timeBetweenHeals && transform.parent.gameObject.GetComponent<Ent>().health < 350)
         {
             //Debug.Log(name + " : Healing ent");
             transform.parent.gameObject.GetComponent<Ent>().health += 1;
