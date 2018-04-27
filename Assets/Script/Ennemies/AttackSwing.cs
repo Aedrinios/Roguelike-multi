@@ -27,7 +27,6 @@ public class AttackSwing : MonoBehaviour {
         if (other.tag == "Player")
         {
             other.gameObject.GetComponent<AnimateEntity>().ReceiveHit(2, other.gameObject);
-            Debug.Log("ATTACK SWING");
         }
 
     }

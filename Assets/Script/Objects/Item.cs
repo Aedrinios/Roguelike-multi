@@ -9,11 +9,9 @@ public class Item : InanimateEntity {
 	public override void Use (Character user) {
 		switch (effect){
 			case effects.SLOW:
-				Debug.Log("Player slowed");
 				break;
 			//Ici, un switch bien moche des familles sur les effets
 			default :
-				Debug.Log("nothing here yet");
 				break;
 		}
 	}

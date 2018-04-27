@@ -16,7 +16,6 @@ public class TimerTester : MonoBehaviour {
 	}
 
 	void methodeDeTest(){
-		Debug.Log ("lol");
 	}
 }
 

@@ -91,7 +91,6 @@ public class LevelGeneration : MonoBehaviour
             {
                 rooms[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, 0);
                 takenPositions.Insert(0, checkPos);
-                // Debug.Log((int)checkPos.x + gridSizeX + " X " + (int)checkPos.y + gridSizeY + " Y ");
             }
 
         }
@@ -681,8 +680,6 @@ public class LevelGeneration : MonoBehaviour
     {
         int i = 1; //variable pour renommer les salles    
         bool firstroom = true;
-        //int blub = (int)Random.Range(0, 5);
-        //Debug.Log(blub);
 
         foreach (Room room in rooms)
         {
@@ -695,7 +692,6 @@ public class LevelGeneration : MonoBehaviour
             drawPos.x *= 30f;
             drawPos.y *= 25f;          //create map obj and assign its variables
 
-            // Debug.Log(room.GetHashCode());
             up = room.doorTop;
             down = room.doorBot;
             right = room.doorRight;

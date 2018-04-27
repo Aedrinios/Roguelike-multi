@@ -63,7 +63,6 @@ public class Cursor : MonoBehaviour {
         switch (isCredit)
         {
             case (true):
-                Debug.Log("dans credit");
                 // Quitte les crédit à la fin du jeu (ramene au menu)
                 if (endOfGame && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4))
                 {
@@ -73,9 +72,7 @@ public class Cursor : MonoBehaviour {
                 // quitte les credits dans le menu 
                 if (!endOfGame && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4)) 
                 {
-                    Debug.Log("Quitte le credit pour le menu");
                     panelCredit.gameObject.SetActive(false);
-                    Debug.Log(panelCredit.gameObject.active);
                     isCredit =false;
                 }
                 break;
@@ -138,18 +135,13 @@ public class Cursor : MonoBehaviour {
                 // Selection de quite
                 if (numb == 1 && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4)) 
                 {
-                    Debug.Log("Je vais quitter");
                     Application.Quit();
                 }
-                Debug.Log(numb);
                 // Selection de credit
                 if (numb == 2 && (butKeyboardStart1 || butKeyboardStart2 || butJoystickStart1 || butJoystickStart2 || butJoystickStart3 || butJoystickStart4))
                 {
-                    Debug.Log("A cliquer sur select credit");
                     panelCredit.SetActive(true);
-                    Debug.Log(panelCredit.active);
                     isCredit=true; ;
-                    Debug.Log("A mis isCredit a true");
                 }
                 break;
         }

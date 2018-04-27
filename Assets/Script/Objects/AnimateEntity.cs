@@ -82,7 +82,6 @@ public abstract class AnimateEntity : InanimateEntity
         if (!isNotSlowed)
         {
             isNotSlowed = true;
-            Debug.Log("SLOW");
             float baseSpeed = speed;
             speed *= 1 - pourcentage;
             yield return new WaitForSeconds(time);
@@ -123,8 +122,6 @@ public abstract class AnimateEntity : InanimateEntity
                 //sprite change de couleur indiquant impossibilité d'être frappé, bouclier posé
                 currentShield = Instantiate(protectionShield, transform.position, Quaternion.identity, transform); 
                 currentShield.transform.localScale = new Vector3((transform.localScale.x + 0.3f) * scaleMultiplier, (transform.localScale.y + 0.3f) * scaleMultiplier, 0);
-                //Debug.Log("Shield :" + this.name + "   " + scaleMultiplier);
-                //Debug.Log(this.name +" : Shield de protection activé");
             }
         }
         else
@@ -133,7 +130,6 @@ public abstract class AnimateEntity : InanimateEntity
             {
                 Destroy(currentShield.gameObject);
                 currentShield = null;
-                //Debug.Log(this.name + " : Shield de protection désactivé");
             }
         }
     }
@@ -146,7 +142,6 @@ public abstract class AnimateEntity : InanimateEntity
 
     public virtual void ReceiveHit(int value, GameObject other)
     {
-        //Debug.Log("je suis dans receive hit"); 
         if (!invincibility.IsFinished())
         {
             return;

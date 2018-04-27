@@ -16,7 +16,6 @@ public float pushPower;
         if (gameObject.GetComponent<Rigidbody2D>().velocity.sqrMagnitude < 0.1)
         {
             this.GetComponent<CircleCollider2D>().enabled = false;
-            Debug.Log("gnééééééééééééééééé");
         }
     }
 

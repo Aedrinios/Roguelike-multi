@@ -40,7 +40,6 @@ public class Keeper : AnimateEntity {
 
         if (hasTarget)
         {
-            Debug.Log("update:"+target);
             direction = target.transform.position - gameObject.transform.position;
             gameObject.GetComponent<CircleCollider2D>().radius = direction.magnitude;
             Move(this.direction);
@@ -83,19 +82,6 @@ public class Keeper : AnimateEntity {
         animator.SetFloat("directionX", direction.x);
         animator.SetFloat("directionY", direction.y);
         animator.SetBool("isMoving", true);
-        Debug.Log(animator.GetBool("isMoving"));
-
-
-        /*shield.offset = new Vector2(direction.normalized.x, direction.normalized.y);
-        if (direction.normalized.x < (-0.5) || direction.normalized.x > 0.5)
-        {
-            shield.size = new Vector2(1, 3);
-        }
-        else
-        {
-            shield.size = new Vector2(3, 1);
-        }*/
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)

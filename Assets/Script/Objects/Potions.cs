@@ -22,14 +22,12 @@ public class Potions : Weapon {
 
         if (powerSelected == "")
         {
-            Debug.Log(potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId]);
             powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
         }
     }
 
     public override void Use(Character user) // peut etre utilise 1 fois on la bois initialise le pouvoir de la potion
     {
-        Debug.Log("Pouvoir de la potion : " + powerSelected);
         SoundManager.playSound("DrinkingPotion");
         base.Use(user);
         powerSelected = potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
@@ -75,13 +73,11 @@ public class Potions : Weapon {
     void powerHeal(Character user)
     {
         user.ReceiveHealt(6, user.gameObject);   
-        Debug.Log("heal fait");
     }
 
     void powerDegats(Character user)
     {
         user.ReceiveHit(degat, user.gameObject);
-        Debug.Log("Vie : " + user.health);
     }
 
     public IEnumerator creationOfEffectZone()
@@ -102,7 +98,6 @@ public class Potions : Weapon {
             sr.enabled = false;
         }
         yield return new WaitForSeconds(1.6f);
-        Debug.Log("trkl");
         
         Destroy(this.gameObject);
 

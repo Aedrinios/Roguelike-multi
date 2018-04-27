@@ -59,7 +59,6 @@ public class Boomerang : Weapon {
         yield return new WaitForSeconds(tps);
         if(isUsed==2) // "ramasse" le boomerang
         {
-            Debug.Log("blub");
             isUsed = 0;
             EndAnim();
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -70,7 +69,6 @@ public class Boomerang : Weapon {
             dir = (holder.transform.position - gameObject.transform.position).normalized;
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             gameObject.GetComponent<Rigidbody2D>().AddForce(dir * 50f, ForceMode2D.Impulse);
-            Debug.Log("blib");
             isUsed = 2;
             StartCoroutine(Wait(0.5f));
         }

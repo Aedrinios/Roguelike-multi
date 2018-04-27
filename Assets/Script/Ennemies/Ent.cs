@@ -60,11 +60,6 @@ public class Ent : AnimateEntity {
 			this.GetComponent<AnimateEntity>().ReceiveHit(20,gameObject);
 		}	
 
-		//DEBUGS
-		//Debug.Log("Ent health : " + health);
-		Debug.Log("Phase Active : " + getActivePhase());
-		//Debug.Log("shrubs alive : " + getNumberOfShrubsAlive());
-
 		//VARIABLE DE COMPTAGE DE TEMPS
 		timeCounterSpells += Time.deltaTime;
 
@@ -138,7 +133,6 @@ public class Ent : AnimateEntity {
 	{
 		int rdm = Mathf.RoundToInt(Random.Range(0, GameManager.instance.players.Count));
 		currentTarget = GameManager.instance.players[rdm];
-		//Debug.Log("Ent Target : " +currentTarget);
 	}
 
 	void castRandomSpellOnRandomTarget(int n)

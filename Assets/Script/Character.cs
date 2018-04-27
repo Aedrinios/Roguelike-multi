@@ -41,7 +41,6 @@ public class Character : AnimateEntity
 
     protected override void Start()
     {
-        Debug.Log("je suis dans le start de Character");
         globalHealthManager = FindObjectOfType<GlobalHealthManager>();
         base.Start();
         inventory = new InanimateEntity[2];
@@ -127,8 +126,6 @@ public class Character : AnimateEntity
 
     public void Update() // déséquiper pour l'instant
     {
-        Debug.Log(inputSetName);
-
         if (health <= 0)
         {
             Die();
@@ -466,12 +463,9 @@ public class Character : AnimateEntity
     }
 
     public void Throw()
-    {
-        Debug.Log("bloub");
-        
+    {        
         if (isCarrying)
         {
-            Debug.Log("blib");
             if (carriedObject.tag == "Player" || carriedObject.tag == "enemy")
             {
                 carriedObject.GetComponent<AnimateEntity>().stun = false;
@@ -499,7 +493,6 @@ public class Character : AnimateEntity
     {
         Transform t = transform.Find("Cible");
         t.GetComponent<SpriteRenderer>().enabled = true;
-        Debug.Log("je suis dans target color"); 
         yield return new WaitForSeconds(2f);
         t.GetComponent<SpriteRenderer>().enabled = false;
     }

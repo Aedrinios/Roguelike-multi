@@ -20,7 +20,6 @@ public class PotionManager : MonoBehaviour
             int rand = Random.Range(0, monArray.Count);
             tabPowerPotions[i] = monArray[rand];
             monArray.RemoveAt(rand);
-            Debug.Log(tabPowerPotions[i]);
         }    
     }
 }

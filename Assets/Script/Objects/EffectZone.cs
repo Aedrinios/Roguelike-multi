@@ -26,7 +26,6 @@ public class EffectZone : MonoBehaviour {
         power= potionManager.GetComponent<PotionManager>().tabPowerPotions[potionColorId];
         if (other.tag == "enemy" || other.tag == "Player")
         {
-            Debug.Log("In Zone this is my power : " + power);
             var user = other.GetComponent<Character>();
             switch (power)
             {
@@ -52,14 +51,12 @@ public class EffectZone : MonoBehaviour {
 
     void powerHeal(Character user)
     {
-        Debug.Log("heal fait");
         user.ReceiveHealt(3, user.gameObject);    // TO DO
     }
 
     void powerDegats(Character user)
     {
         user.ReceiveHit(degat, user.gameObject);
-        Debug.Log("degat fait");
     }
 
     public IEnumerator die()
